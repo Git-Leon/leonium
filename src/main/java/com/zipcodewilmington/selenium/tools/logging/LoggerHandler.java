@@ -44,6 +44,12 @@ public final class LoggerHandler {
         log(INFO, s, args);
     }
 
+    public void eval(boolean condition, String s, Object... args) {
+        String prefixedMessage = "%s " + s;
+        String prefix = condition ? "Successfully" : "Unsuccesfully";
+        info(prefixedMessage, prefix, args);
+    }
+
     public void warn(String s, Object... args) {
         log(WARNING, String.format(s, args));
     }

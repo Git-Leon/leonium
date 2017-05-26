@@ -44,7 +44,7 @@ public class Screenshot {
         return bufferedImage;
     }
 
-    protected BufferedImage getSubImage(Point p, Dimension dim) {
+    protected final BufferedImage getSubImage(Point p, Dimension dim) {
         int xCoord = p.getX();
         int yCoord = p.getY();
         int width = dim.getWidth();

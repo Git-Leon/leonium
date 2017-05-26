@@ -50,4 +50,13 @@ public final class StringUtils {
         }
         return sb.reverse().toString();
     }
+
+    @SafeVarargs
+    public static <T> String toString(T... vals) {
+        StringBuffer sb = new StringBuffer();
+        for (T val : vals) {
+            sb.append(val);
+        }
+        return sb.toString();
+    }
 }
