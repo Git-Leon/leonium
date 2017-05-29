@@ -1,4 +1,4 @@
-package com.zipcodewilmington.selenium.tools.browsertools;
+package com.zipcodewilmington.selenium.tools.browsertools.browserhandler;
 
 import com.zipcodewilmington.selenium.tools.TimeUtils;
 import org.openqa.selenium.*;

@@ -1,5 +1,6 @@
 package com.zipcodewilmington.selenium;
 
+import com.zipcodewilmington.selenium.webcrawl.WebCrawlDemo0;
 import org.junit.Test;
 
 /**
@@ -8,6 +9,6 @@ import org.junit.Test;
 public class TestMyTest {
     @Test
     public void test() {
-        new MyTest().run();
+        new WebCrawlDemo0().run();
     }
 }

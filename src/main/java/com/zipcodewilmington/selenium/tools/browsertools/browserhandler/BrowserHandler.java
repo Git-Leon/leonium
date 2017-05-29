@@ -1,7 +1,6 @@
 package com.zipcodewilmington.selenium.tools.browsertools.browserhandler;
 
 import com.zipcodewilmington.selenium.tools.StringUtils;
-import com.zipcodewilmington.selenium.tools.browsertools.BrowserWait;
 import com.zipcodewilmington.selenium.tools.logging.LoggerHandler;
 import javafx.scene.web.WebEngine;
 import org.eclipse.jetty.util.StringUtil;
@@ -18,7 +17,7 @@ public class BrowserHandler {
     private final WebDriver driver;
     private final LoggerHandler loggerHandler;
     private final BrowserWait wait;
-    private final BrowserHandlerOptions options;
+    public final BrowserHandlerOptions options;
 
     public BrowserHandler(WebDriver driver, LoggerHandler loggerHandler) {
         this.driver = driver;
@@ -66,20 +65,11 @@ public class BrowserHandler {
         String[] waitConditions = {"presence", "visible", "enabled", "clickable", "stale"};
         wait.forConditions(by, options.defaultWait.getValue(), waitConditions);
         WebElement we = getElement(by);
-        click(we);
-    }
 
-    // click by WebElement
-    private void click(WebElement we) {
-        WebElementScreenshot screenshot = null;
-        if (options.screenshotOnClick.getValue()) {
-            screenshot = new WebElementScreenshot(driver, we);
-        }
+        screenshot(options.screenshotOnClick, we);
         we.click();
         loggerHandler.info("Clicked [ %s ]", we.toString());
-        loggerHandler.info(screenshot.toString());
     }
-
 
     // select by byType
     public Select select(By by) {
@@ -88,89 +78,64 @@ public class BrowserHandler {
 
         wait.forConditions(by, defaultWait, waitConditions);
         WebElement we = getElement(by);
-        return select(we);
-    }
-
-    // select by WebElement
-    public Select select(WebElement we) {
         Select select = new Select(we);
-        WebElementScreenshot screenshot = null;
-        if (options.screenshotOnSelect.getValue()) {
-            screenshot = new WebElementScreenshot(driver, we);
-        }
         loggerHandler.info("Selected [ %s ]", we.toString());
-        loggerHandler.info(screenshot.toString());
+        screenshot(options.screenshotOnSelect, we);
         return select;
     }
 
-    public void selectByIndex(By by, int index) {
-        selectByIndex(getElement(by), index);
-    }
-
     // select by WebElement and select index option
-    public void selectByIndex(WebElement we, int index) {
-        select(we).selectByIndex(index);
-        WebElementScreenshot screenshot = null;
-        if (options.screenshotOnSelect.getValue()) {
-            screenshot = new WebElementScreenshot(driver, we);
-        }
+    public void selectByIndex(By by, int index) {
+        WebElement we = getElement(by);
+        select(by).selectByIndex(index);
         loggerHandler.eval(true, "selected index '%s' from [ %s ]", index, we.toString());
-        loggerHandler.info(screenshot.toString());
+        screenshot(options.screenshotOnSelect, we);
     }
 
     public void selectByRandomIndex(By by) {
-        selectByRandomIndex(wait.forConditions(by, options.defaultWait.getValue(), "visible", "enabled", "stale"));
-    }
-
-    public void selectByRandomIndex(WebElement we) {
-        Select select = new Select(we);
-        selectByIndex(we, select.getOptions().size() - 1);
+        String[] elementConditions = {"pres", "visible", "enabled", "stale"};
+        wait.forConditions(by, options.defaultWait.getValue(), elementConditions);
+        WebElement we = getElement(by);
+        Select select = new Select(we); // only used to get options size
+        selectByIndex(by, select.getOptions().size() - 1);
     }
 
     // select visible option by ByType
     public void selectByVisibleText(By by, String visibleText) {
-        selectByVisibleText(getElement(by), visibleText);
-    }
-
-    // select by WebElement and select visible text
-    public void selectByVisibleText(WebElement we, String visibleText) {
-        select(we).selectByVisibleText(visibleText);
-        WebElementScreenshot screenshot = null;
-        if (options.screenshotOnSelect.getValue()) {
-            screenshot = new WebElementScreenshot(driver, we);
-        }
+        WebElement we = getElement(by);
+        select(by).selectByVisibleText(visibleText);
         loggerHandler.eval(true, "selected index '%s' from [ %s ]", visibleText, we.toString());
-        loggerHandler.info(screenshot.toString());
+        screenshot(options.screenshotOnSelect, we);
     }
 
     // send keys by byType
     public void sendKeys(By by, CharSequence... keys) {
-        sendKeys(wait.forKeyable(by, options.defaultWait.getValue()), keys);
+        wait.forKeyable(by, options.defaultWait.getValue());
+        WebElement we = getElement(by);
+
+        if (keys != null) {
+            try {
+                we.clear();
+                we.sendKeys(Keys.HOME);
+            } catch (InvalidElementStateException iese) {
+                // NOTE** some input elements cannot be cleared
+                // this exception is caught when an unclearable element
+                // invokes the .clear() method
+                wait.forKeyable(toByVal(we), options.defaultWait.getValue());
+            }
+
+            we.sendKeys(keys);
+            screenshot(options.screenshotOnSendKeys, we);
+        }
     }
 
-    // send keys by WebElement
-    public void sendKeys(WebElement we, CharSequence... keys) {
-        if (keys == null) {
-            return;
-        }
-
-        try {
-            we.clear();
-            we.sendKeys(Keys.HOME);
-        } catch (InvalidElementStateException iese) {
-            // NOTE** some input elements cannot be cleared
-            // this exception is caught when an unclearable element
-            // invokes the .clear() method
-            wait.forKeyable(toByVal(we), options.defaultWait.getValue());
-        }
-
-        we.sendKeys(keys);
-        loggerHandler.info("Sent keys '%s' to [ %s ]", StringUtils.toString(keys), we.toString());
+    // private method
+    private void screenshot(BrowserHandlerOptions.BrowserOption<Boolean> browserOption, WebElement we) {
         WebElementScreenshot screenshot = null;
-        if (options.screenshotOnSelect.getValue()) {
+        if (browserOption.getValue()) {
             screenshot = new WebElementScreenshot(driver, we);
+            loggerHandler.info(screenshot.toString());
         }
-        loggerHandler.info(screenshot.toString());
     }
 
     // return ByType of WebElement
@@ -203,4 +168,17 @@ public class BrowserHandler {
         return By.class.cast(we);
     }
 
+    public void close() {
+        loggerHandler.info("Closing browser...");
+        try {
+            driver.close();
+        } catch (Exception e) { // TODO - Replace with explicit Exception type
+        }
+
+        try {
+            driver.quit();
+        } catch (Exception e) { // TODO - Replace with explicit Exception type
+        }
+
+    }
 }

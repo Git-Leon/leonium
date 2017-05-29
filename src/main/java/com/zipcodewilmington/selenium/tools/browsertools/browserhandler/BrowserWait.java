@@ -1,4 +1,4 @@
-package com.zipcodewilmington.selenium.tools.browsertools;
+package com.zipcodewilmington.selenium.tools.browsertools.browserhandler;
 
 
 import java.util.List;
@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.base.Function;
 
-public class BrowserWait {
+class BrowserWait {
     private final WebDriver driver;
     private final LoggerHandler loggerHandler;
 

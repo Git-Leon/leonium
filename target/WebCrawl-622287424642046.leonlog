@@ -1,0 +1,6 @@
+May 29, 2017 3:27:34 PM com.zipcodewilmington.selenium.tools.logging.LoggerHandler log
+INFO: Waiting for webpage load-state to be [ complete ]
+May 29, 2017 3:27:34 PM com.zipcodewilmington.selenium.tools.logging.LoggerHandler log
+INFO: Successfully navigated to url '[Ljava.lang.Object;@15ca7889
+May 29, 2017 3:27:34 PM com.zipcodewilmington.selenium.tools.logging.LoggerHandler log
+INFO: Located element [ [[FirefoxBrowser: firefox on ANY (636f8af6-517b-5d49-bfff-e1196ba4a795)] -> xpath: .//*[@id='lst-ib']] ]; true
