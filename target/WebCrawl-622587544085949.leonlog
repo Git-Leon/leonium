@@ -1,8 +1,0 @@
-May 29, 2017 3:32:34 PM com.zipcodewilmington.selenium.tools.logging.LoggerHandler log
-INFO: Waiting for webpage load-state to be [ complete ]
-May 29, 2017 3:32:34 PM com.zipcodewilmington.selenium.tools.logging.LoggerHandler log
-INFO: Successfully navigated to url '[Ljava.lang.Object;@15ca7889
-May 29, 2017 3:32:34 PM com.zipcodewilmington.selenium.tools.logging.LoggerHandler log
-INFO: Located element [ [[FirefoxBrowser: firefox on ANY (8ae0d62d-458a-a842-a932-c804d4ccb98b)] -> xpath: .//*[@id='lst-ib']] ]; true
-May 29, 2017 3:32:35 PM com.zipcodewilmington.selenium.tools.logging.LoggerHandler log
-INFO: <img src = '/Users/leon/IdeaProjects/temp/seleniumtest/UsersleonIdeaProjectstempseleniumtesttargetartifactsFirefoxBrowser firefox on ANY 8ae0d62d458aa842a932c804d4ccb98b  xpath .id=lstib1496086355617.png'>
