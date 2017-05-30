@@ -1,4 +1,4 @@
-package com.zipcodewilmington.selenium.webcrawl;
+package com.zipcodewilmington.selenium.tools.browsertools;
 
 import com.zipcodewilmington.selenium.tools.browsertools.browserhandler.BrowserHandler;
 import com.zipcodewilmington.selenium.tools.browsertools.browserwrapper.FirefoxBrowser;
@@ -27,23 +27,14 @@ public abstract class WebCrawl {
         this.browserHandler = browserHandler;
     }
 
+    @Before
     public void setup() {
     }
 
-    public void run() {
-        try {
-            setup();
-            test();
-        } catch(Exception e) {
-            e.printStackTrace();
-        } finally {
-            tearDown();
-        }
-
-    }
-
+    @Test
     abstract public void test();
 
+    @After
     public void tearDown() {
         try {
             browserHandler.close();

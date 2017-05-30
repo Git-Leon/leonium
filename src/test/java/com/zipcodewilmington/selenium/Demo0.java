@@ -1,12 +1,14 @@
-package com.zipcodewilmington.selenium.webcrawl;
+package com.zipcodewilmington.selenium;
 
+import com.zipcodewilmington.selenium.tools.browsertools.WebCrawl;
+import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 /**
- * Created by leon on 5/26/17.
+ * Created by leon on 5/25/17.
  */
-public class WebCrawlDemo0 extends WebCrawl {
+public class Demo0 extends WebCrawl {
+    @Test
     @Override
     public void test() {
 //        browserHandler.options.screenshotOnEvent.setValue(false);
