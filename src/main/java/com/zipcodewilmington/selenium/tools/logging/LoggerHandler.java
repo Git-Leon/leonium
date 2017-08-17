@@ -14,6 +14,7 @@ import static java.util.logging.Level.*;
 public final class LoggerHandler {
     private final Logger logger;
     private final String loggerName;
+    private boolean printingEnabled;
 
     public LoggerHandler(Class c) {
         this(c.getSimpleName());
@@ -29,6 +30,7 @@ public final class LoggerHandler {
         logger.setUseParentHandlers(false);
         this.removeHandlers();
         this.logger.addHandler(getFileHandler());
+        this.printingEnabled = true;
     }
 
     private void removeHandlers() {
@@ -69,7 +71,11 @@ public final class LoggerHandler {
     }
 
     private void log(Level level, String message, Object... messageArgs) {
-        logger.log(level, String.format(message, messageArgs));
+        String info = String.format(message, messageArgs);
+        if(printingEnabled) {
+            System.out.println(info);
+        }
+        logger.log(level, info);
     }
 
     private FileHandler getFileHandler() {
@@ -88,5 +94,13 @@ public final class LoggerHandler {
 
         }
         return fh;
+    }
+
+    public void enablePrinting() {
+        this.printingEnabled = true;
+    }
+
+    public void disablePrinting() {
+        this.printingEnabled = false;
     }
 }

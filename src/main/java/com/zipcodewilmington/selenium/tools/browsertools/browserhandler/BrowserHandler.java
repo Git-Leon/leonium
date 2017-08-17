@@ -1,13 +1,9 @@
 package com.zipcodewilmington.selenium.tools.browsertools.browserhandler;
 
-import com.zipcodewilmington.selenium.tools.StringUtils;
 import com.zipcodewilmington.selenium.tools.logging.LoggerHandler;
-import javafx.scene.web.WebEngine;
-import org.eclipse.jetty.util.StringUtil;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,11 +12,13 @@ import java.util.List;
 public class BrowserHandler {
     private final WebDriver driver;
     private final LoggerHandler loggerHandler;
-    private final BrowserWait wait;
+    private final JavascriptExecutor javascriptExecutor;
+    public final BrowserWait wait;
     public final BrowserHandlerOptions options;
 
     public BrowserHandler(WebDriver driver, LoggerHandler loggerHandler) {
         this.driver = driver;
+        this.javascriptExecutor = (JavascriptExecutor)driver;
         this.loggerHandler = loggerHandler;
         this.options = new BrowserHandlerOptions();
         this.wait = new BrowserWait(driver, loggerHandler);
@@ -180,5 +178,18 @@ public class BrowserHandler {
         } catch (Exception e) { // TODO - Replace with explicit Exception type
         }
 
+    }
+
+    public void highlightElement(By by, String color) {
+        WebElement we = wait.forConditions(by, options.defaultWait.getValue(), "presence", "visible");
+        String script = "arguments[0].style.border='3px solid %s'";
+        javascriptExecutor.executeScript(String.format(script, color), we);
+        screenshot(options.screenshotOnEvent, we);
+    }
+
+    public void highlightElements(By[] bys, String color) {
+        for (By by : bys) {
+            highlightElement(by, color);
+        }
     }
 }

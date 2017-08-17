@@ -1,8 +1,7 @@
 package com.zipcodewilmington.selenium.tools.browsertools.browserhandler;
 
 
-import java.util.List;
-
+import com.google.common.base.Function;
 import com.zipcodewilmington.selenium.tools.TimeUtils;
 import com.zipcodewilmington.selenium.tools.logging.LoggerHandler;
 import org.openqa.selenium.*;
@@ -10,9 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.google.common.base.Function;
+import java.util.List;
 
-class BrowserWait {
+public class BrowserWait {
     private final WebDriver driver;
     private final LoggerHandler loggerHandler;
 
@@ -257,7 +256,7 @@ class BrowserWait {
      * @param by             selector used to query element on DOM
      * @param waitSeconds    the maximum wait-time in seconds
      * @param waitConditions variable number of string representations of wait conditions
-     * @return respective web element
+     * @return respective browserHandler element
      */
     public WebElement forConditions(By by, int waitSeconds, String... waitConditions) {
         WebElement we = null;

@@ -2,16 +2,19 @@ package com.zipcodewilmington.selenium.tools.browsertools.browserwrapper;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.logging.Level;
 
 public class FirefoxBrowser extends FirefoxDriver {
     public FirefoxBrowser(DesiredCapabilities caps) {
         super(caps);
+        this.setLogLevel(Level.OFF);
+        getErrorHandler().setIncludeServerErrors(false);
     }
 
     public FirefoxBrowser() {
-        this(BrowserUtilities.defaultCapabilities());
+        this(BrowserUtilities.getLoglessFirefoxCapabilities());
     }
 
     private static FirefoxProfile defaultProfile() {

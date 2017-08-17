@@ -13,12 +13,12 @@ public final class StringUtils {
         return str.replaceFirst(firstCharacter, firstCharacter.toUpperCase());
     }
 
-    public static String padLeft(String s, int n) {
-        return String.format("%1$" + n + "s", s);
+    public static String padLeft(Object string, int n) {
+        return String.format("%1$" + n + "s", string);
     }
 
-    public static String padRight(String s, int n) {
-        return String.format("%1$-" + n + "s", s);
+    public static String padRight(Object string, int n) {
+        return padLeft(string, -n);
     }
 
     // removes all specified 'removable' characters from base String
@@ -33,7 +33,7 @@ public final class StringUtils {
         return baseString;
     }
 
-    public static String repeatStr(String str, int n) {
+    public static String repeatString(String str, int n) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
             sb.append(str);
@@ -58,5 +58,15 @@ public final class StringUtils {
             sb.append(val);
         }
         return sb.toString();
+    }
+
+    // return String representation of specified integer
+    public static String getColumnVal(long number) {
+        StringBuilder sb = new StringBuilder();
+        while (number-- > 0) {
+            sb.append((char) ('a' + (number % 26)));
+            number /= 26;
+        }
+        return sb.reverse().toString();
     }
 }
