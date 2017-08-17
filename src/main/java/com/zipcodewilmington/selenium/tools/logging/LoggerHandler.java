@@ -26,7 +26,17 @@ public final class LoggerHandler {
     public LoggerHandler(Logger logger) {
         this.logger = logger;
         this.loggerName = logger.getName();
+        logger.setUseParentHandlers(false);
+        this.removeHandlers();
         this.logger.addHandler(getFileHandler());
+    }
+
+    private void removeHandlers() {
+        Logger globalLogger = Logger.getGlobal();
+        Handler[] handlers = globalLogger.getHandlers();
+        for(Handler handler : handlers) {
+            globalLogger.removeHandler(handler);
+        }
     }
 
     public void throwable(Throwable t, Level level) {

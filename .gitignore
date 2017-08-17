@@ -1,4 +1,9 @@
-./target/*
-/target/*
+# intellij
 .idea
-.idea/*
+*.iml
+
+.project
+.classpath
+.settings
+
+target
