@@ -18,7 +18,7 @@ public class BrowserHandler {
 
     public BrowserHandler(WebDriver driver, LoggerHandler loggerHandler) {
         this.driver = driver;
-        this.javascriptExecutor = (JavascriptExecutor)driver;
+        this.javascriptExecutor = (JavascriptExecutor) driver;
         this.loggerHandler = loggerHandler;
         this.options = new BrowserHandlerOptions();
         this.wait = new BrowserWait(driver, loggerHandler);
@@ -30,6 +30,7 @@ public class BrowserHandler {
         options.screenshotOnEvent.setValue(true);
         options.continueOnNoSuchElement.setValue(false);
         options.continueOnTimeout.setValue(false);
+        options.logOnScreenshot.setValue(false);
     }
 
     // return non-stale WebElement specified by byType
@@ -132,7 +133,9 @@ public class BrowserHandler {
         WebElementScreenshot screenshot = null;
         if (browserOption.getValue()) {
             screenshot = new WebElementScreenshot(driver, we);
-            loggerHandler.info(screenshot.toString());
+            if (options.logOnScreenshot.getValue()) {
+                loggerHandler.info(screenshot.toString());
+            }
         }
     }
 

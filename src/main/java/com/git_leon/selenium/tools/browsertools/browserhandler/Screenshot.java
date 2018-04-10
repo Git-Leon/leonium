@@ -50,7 +50,7 @@ class Screenshot {
         int width = dim.getWidth();
         int height = dim.getHeight();
 
-        return getFullBufferedImage().getSubimage(xCoord, yCoord, width, height);
+        return bufferedImage.getSubimage(xCoord, yCoord, width, height);
     }
 
 
@@ -59,7 +59,7 @@ class Screenshot {
             String filePath = String.format("%s/%s-%s.png", SystemInfo.artifactFolder, imageName, System.currentTimeMillis());
             File outputFile = new File(filePath);
             try {
-                ImageIO.write(getFullBufferedImage(), "png", outputFile);
+                ImageIO.write(bufferedImage, "png", outputFile);
             } catch (IOException e) {
                 e.printStackTrace();
             }

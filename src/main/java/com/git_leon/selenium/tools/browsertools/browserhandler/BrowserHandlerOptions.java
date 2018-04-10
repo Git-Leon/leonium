@@ -12,9 +12,9 @@ public final class BrowserHandlerOptions {
 
     public final BrowserOption<Boolean> continueOnNoSuchElement = new BrowserOption<>();
     public final BrowserOption<Boolean> continueOnTimeout = new BrowserOption<>();
-    public final BrowserOption<Boolean> reportOnWait = new BrowserOption<>();
-    public final BrowserOption<Boolean> repportAutonomously = new BrowserOption<>();
     public final BrowserOption<Integer> defaultWait = new BrowserOption<>(15);
+    public final BrowserOption<Boolean> logOnWait = new BrowserOption<>();
+    public BrowserOption<Boolean> logOnScreenshot = new BrowserOption<>();
 
     public class BrowserOption<T> {
         protected T value;

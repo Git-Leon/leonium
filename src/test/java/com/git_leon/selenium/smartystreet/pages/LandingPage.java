@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
  * Created by leon on 8/17/17.
  */
 public class LandingPage extends WebPage {
-    public final By byButtonDemo = By.id("#header-demo");
+    public final By byButtonDemo = By.id("#header-crawlpaths");
 
     public LandingPage(WebCrawl crawler) {
         super(crawler);
