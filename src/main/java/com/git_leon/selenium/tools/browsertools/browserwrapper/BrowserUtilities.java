@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public final class BrowserUtilities {
     static { // initialize system properties
-        String pathCurrentProject = SystemInfo.currentProjectPath;
+        String pathCurrentProject = SystemInfo.currentProjectPath.toString() ;
         String pathGeckoDriver = pathCurrentProject + "/src/main/resources/geckodriver";
         String pathChromeDriver = pathCurrentProject + "/src/main/resources/chromedriver";
         String pathPhantomDriver = pathCurrentProject + "/src/main/resources/phantomdriver";

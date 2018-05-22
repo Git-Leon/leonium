@@ -17,7 +17,7 @@ public class AppleJuiceWidget extends WebPage {
         By byInputProductReview = By.id("product_review");
         By byButtonSubmit = By.id("submitButton");
         browserHandler.sendKeys(byInputProductReview, reviewMessage);
-        browserHandler.sendKeys(byButtonSubmit);
+        browserHandler.click(byButtonSubmit);
     }
 
     public void spam(Integer numberOfTimes) {

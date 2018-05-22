@@ -52,10 +52,10 @@ public final class StringUtils {
     }
 
     @SafeVarargs
-    public static <T> String toString(T... vals) {
-        StringBuffer sb = new StringBuffer();
-        for (T val : vals) {
-            sb.append(val);
+    public static String toString(CharSequence... sequences) {
+        StringBuilder sb = new StringBuilder();
+        for (CharSequence sequence : sequences) {
+            sb.append(sequence.toString());
         }
         return sb.toString();
     }
