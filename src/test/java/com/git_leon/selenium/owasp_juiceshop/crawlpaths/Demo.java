@@ -2,12 +2,12 @@ package com.git_leon.selenium.owasp_juiceshop.crawlpaths;
 
 import com.git_leon.selenium.owasp_juiceshop.pages.AppleJuiceWidget;
 import com.git_leon.selenium.owasp_juiceshop.pages.SearchPage;
-import com.git_leon.selenium.tools.browsertools.WebCrawl;
+import com.git_leon.selenium.tools.browsertools.MyWebCrawl;
 
 /**
  * @author leon on 4/10/18.
  */
-public class Demo extends WebCrawl {
+public class Demo extends MyWebCrawl {
     private SearchPage searchPage;
     private AppleJuiceWidget appleJuiceWidget;
 

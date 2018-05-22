@@ -1,7 +1,7 @@
 package com.git_leon.selenium.smartystreet.pages;
 
 
-import com.git_leon.selenium.tools.browsertools.WebCrawl;
+import com.git_leon.selenium.tools.browsertools.MyWebCrawl;
 import com.git_leon.selenium.tools.browsertools.WebPage;
 import org.openqa.selenium.By;
 
@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
 public class LandingPage extends WebPage {
     public final By byButtonDemo = By.id("#header-crawlpaths");
 
-    public LandingPage(WebCrawl crawler) {
+    public LandingPage(MyWebCrawl crawler) {
         super(crawler);
     }
 

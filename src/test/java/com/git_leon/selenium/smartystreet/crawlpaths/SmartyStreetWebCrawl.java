@@ -26,6 +26,6 @@ public class SmartyStreetWebCrawl extends AbstractSmartyStreetWebCrawl {
         demoPage.enterDetails(actor.getAddressLine1(), actor.getCity(), actor.getState(), actor.getZipcode());
         browserHandler.click(DemoPage.USView.byButtonSubmit);
         browserHandler.options.defaultWait.setValue(60);
-        browserHandler.wait.forPageLoad(browserHandler.options.defaultWait.getValue());
+        browserHandler.wait.forPageLoad();
     }
 }

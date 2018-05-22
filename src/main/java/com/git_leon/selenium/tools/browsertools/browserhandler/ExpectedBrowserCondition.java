@@ -3,12 +3,8 @@ package com.git_leon.selenium.tools.browsertools.browserhandler;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
-public final class BrowserWaitConditions {
-    private BrowserWaitConditions() {
-        /**
-         * this class is uninstantiable
-         */
-    }
+public final class ExpectedBrowserCondition {
+    private ExpectedBrowserCondition() {}
 
     public static ExpectedCondition<Boolean> pageState(final String state) {
         return new ExpectedCondition<Boolean>() {
