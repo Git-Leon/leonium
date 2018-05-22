@@ -2,18 +2,21 @@ package com.git_leon.selenium.tools.browsertools.browserhandler;
 
 
 import com.google.common.base.Function;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class BrowserWaitLogger {
+public class MyBrowserWaitLogger {
     private final BrowserWait wait;
 
-    public BrowserWaitLogger(WebDriver driver) {
+    public MyBrowserWaitLogger(WebDriver driver) {
         this.wait = new BrowserWait(driver);
     }
 
-    public BrowserWaitLogger(BrowserWait wait) {
+    public MyBrowserWaitLogger(BrowserWait wait) {
         this.wait = wait;
     }
 

@@ -1,8 +1,10 @@
 package com.git_leon.selenium.tools.browsertools.browserhandler;
 
-import com.git_leon.selenium.tools.StringUtils;
 import com.git_leon.selenium.tools.logging.LoggerHandler;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -10,17 +12,15 @@ import java.util.List;
 /**
  * Created by leon on 5/25/17.
  */
-public class BrowserHandler {
+public class MyBrowserHandler {
     private final WebDriver driver;
-    private final LoggerHandler loggerHandler;
     private final JavascriptExecutor javascriptExecutor;
     public final BrowserWaitLogger wait;
     public final BrowserHandlerOptions options;
 
-    public BrowserHandler(WebDriver driver, LoggerHandler loggerHandler) {
+    public MyBrowserHandler(WebDriver driver, LoggerHandler loggerHandler) {
         this.driver = driver;
         this.javascriptExecutor = (JavascriptExecutor) driver;
-        this.loggerHandler = loggerHandler;
         this.options = new BrowserHandlerOptions();
         this.wait = new BrowserWaitLogger(driver);
 
@@ -37,7 +37,6 @@ public class BrowserHandler {
     // return non-stale WebElement specified by byType
     public WebElement getElement(By by) {
         WebElement we = wait.forConditions(by, options.defaultWait.getValue(), "presence", "stale");
-        loggerHandler.info("Located element [ %s ]; %s", we.toString(), we != null);
         return we;
     }
 
@@ -51,7 +50,6 @@ public class BrowserHandler {
         List<WebElement> elements = wait.forPresences(options.defaultWait.getValue(), by);
         int count = elements.size();
         boolean outcome = count > 0;
-        loggerHandler.eval(outcome, "located %s elements [ %s ]", count, by);
         return elements;
     }
 
@@ -62,7 +60,6 @@ public class BrowserHandler {
     public void navigateTo(String url) {
         driver.get(url);
         boolean outcome = wait.forPageLoad(options.defaultWait.getValue());
-        loggerHandler.eval(outcome, "navigated to url '%s", url);
     }
 
 
@@ -71,7 +68,6 @@ public class BrowserHandler {
         WebEntity we = getWebEntity(by);
         String weStr = we.toString();
         we.click();
-        loggerHandler.info("Clicked [ %s ]", weStr);
     }
 
     // toSelect by byType
@@ -85,7 +81,6 @@ public class BrowserHandler {
         WebEntity we = getWebEntity(by);
         String weStr = we.toString();
         we.selectByIndex(index);
-        loggerHandler.info("Selected the [ %s ] index of [ %s ]", index, weStr);
     }
 
     // toSelect visible option by ByType
@@ -93,7 +88,6 @@ public class BrowserHandler {
         WebEntity we = getWebEntity(by);
         String weStr = we.toString();
         we.selectByVisibleText(visibleText);
-        loggerHandler.info("Selected the [ %s ] option of [ %s ]", visibleText, weStr);
     }
 
     // send keys by byType
@@ -101,11 +95,9 @@ public class BrowserHandler {
         WebEntity we = getWebEntity(by);
         String weStr = we.toString();
         we.sendKeys(keys);
-        loggerHandler.info("Sent keys [ %s ] to [ %s ]", StringUtils.toString(keys), weStr);
     }
 
     public void close() {
-        loggerHandler.info("Closing browser...");
         try {
             driver.close();
         } catch (Exception e) { // TODO - Replace with explicit Exception type
