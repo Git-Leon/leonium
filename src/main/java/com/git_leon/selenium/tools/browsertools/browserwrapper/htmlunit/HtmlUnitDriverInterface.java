@@ -1,4 +1,4 @@
-package com.git_leon.selenium.tools.browsertools.browserwrapper;
+package com.git_leon.selenium.tools.browsertools.browserwrapper.htmlunit;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import org.openqa.selenium.*;

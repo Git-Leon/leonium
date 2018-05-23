@@ -1,6 +1,7 @@
-package com.git_leon.selenium.tools.browsertools.browserwrapper;
+package com.git_leon.selenium.tools.browsertools.browserwrapper.htmlunit;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.git_leon.selenium.tools.browsertools.browserwrapper.DesiredCapabilitiesFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitWebElement;
@@ -26,9 +27,7 @@ public class HtmlUnitBrowser implements HtmlUnitDriverInterface {
     }
 
     public HtmlUnitBrowser() {
-        DesiredCapabilities capabilities = DesiredCapabilitiesFactory.getDefaultCapabilities();
-        capabilities.setBrowserName("htmlunit");
-        this.htmlUnitDriver = new HtmlUnitDriver(capabilities);
+        this(DesiredCapabilitiesFactory.getHtmlUnit());
     }
 
     @Override

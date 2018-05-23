@@ -1,5 +1,6 @@
-package com.git_leon.selenium.tools.browsertools.browserwrapper;
+package com.git_leon.selenium.tools.browsertools.browserwrapper.firefox;
 
+import com.git_leon.selenium.tools.browsertools.browserwrapper.DesiredCapabilitiesFactory;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,7 +15,7 @@ public class FirefoxBrowser extends FirefoxDriver {
     }
 
     public FirefoxBrowser() {
-        this(DesiredCapabilitiesFactory.getLoglessFirefoxCapabilities());
+        this(DesiredCapabilitiesFactory.getLoglessFirefox());
     }
 
     private static FirefoxProfile defaultProfile() {

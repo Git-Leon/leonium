@@ -21,8 +21,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
     public BrowserWaitLogger(WebDriver driver, int waitSeconds) {
         this.wait = new BrowserWait(driver, waitSeconds);
 
-        String className = getClass().getSimpleName();
-        String hexDecaVal = Integer.toString(hashCode(), 16);
+        String className = driver.getClass().getSimpleName();
+        String hexDecaVal = Integer.toString(driver.hashCode(), 16);
         this.logger = new LoggerHandler(className + "@" + hexDecaVal);
     }
 

@@ -1,0 +1,176 @@
+[INFO  - 2018-05-23T14:34:01.863Z] GhostDriver - Main - running on port 20687
+[INFO  - 2018-05-23T14:34:02.202Z] Session [565f1f60-5e96-11e8-85d5-fb3cd8338907] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T14:34:02.202Z] Session [565f1f60-5e96-11e8-85d5-fb3cd8338907] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T14:34:02.203Z] Session [565f1f60-5e96-11e8-85d5-fb3cd8338907] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T14:34:02.203Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 565f1f60-5e96-11e8-85d5-fb3cd8338907
+[ERROR - 2018-05-23T14:34:05.882Z] Session [565f1f60-5e96-11e8-85d5-fb3cd8338907] - page.onError - msg: NoModificationAllowedError: DOM Exception 7: An attempt was made to modify an object where modifications are not allowed.
+[ERROR - 2018-05-23T14:34:05.883Z] Session [565f1f60-5e96-11e8-85d5-fb3cd8338907] - page.onError - stack:
+  replace (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2166)
+  map (:0)
+  (anonymous function) (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2222)
+[ERROR - 2018-05-23T14:34:07.184Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1527086047132
+[INFO  - 2018-05-23T14:34:10.054Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-23T14:38:45.684Z] GhostDriver - Main - running on port 18765
+[INFO  - 2018-05-23T14:38:46.071Z] Session [ff91f120-5e96-11e8-87cb-b9a53304cc4e] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T14:38:46.071Z] Session [ff91f120-5e96-11e8-87cb-b9a53304cc4e] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T14:38:46.072Z] Session [ff91f120-5e96-11e8-87cb-b9a53304cc4e] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T14:38:46.072Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: ff91f120-5e96-11e8-87cb-b9a53304cc4e
+[INFO  - 2018-05-23T14:38:54.771Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-23T14:40:14.159Z] GhostDriver - Main - running on port 17481
+[INFO  - 2018-05-23T14:40:14.527Z] Session [344b68b0-5e97-11e8-b991-274aded4a97b] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T14:40:14.528Z] Session [344b68b0-5e97-11e8-b991-274aded4a97b] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T14:40:14.528Z] Session [344b68b0-5e97-11e8-b991-274aded4a97b] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T14:40:14.528Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 344b68b0-5e97-11e8-b991-274aded4a97b
+[ERROR - 2018-05-23T14:40:18.188Z] Session [344b68b0-5e97-11e8-b991-274aded4a97b] - page.onError - msg: NoModificationAllowedError: DOM Exception 7: An attempt was made to modify an object where modifications are not allowed.
+[ERROR - 2018-05-23T14:40:18.188Z] Session [344b68b0-5e97-11e8-b991-274aded4a97b] - page.onError - stack:
+  replace (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2166)
+  map (:0)
+  (anonymous function) (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2222)
+[INFO  - 2018-05-23T14:40:22.863Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-23T15:05:32.991Z] GhostDriver - Main - running on port 11512
+[INFO  - 2018-05-23T15:05:33.283Z] Session [bd8b2ef0-5e9a-11e8-9d56-57b959146c2b] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T15:05:33.283Z] Session [bd8b2ef0-5e9a-11e8-9d56-57b959146c2b] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T15:05:33.283Z] Session [bd8b2ef0-5e9a-11e8-9d56-57b959146c2b] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T15:05:33.283Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: bd8b2ef0-5e9a-11e8-9d56-57b959146c2b
+[INFO  - 2018-05-23T15:07:06.665Z] GhostDriver - Main - running on port 8897
+[INFO  - 2018-05-23T15:07:07.064Z] Session [f5712e50-5e9a-11e8-962f-5175336a1a4b] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T15:07:07.064Z] Session [f5712e50-5e9a-11e8-962f-5175336a1a4b] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T15:07:07.065Z] Session [f5712e50-5e9a-11e8-962f-5175336a1a4b] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T15:07:07.065Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: f5712e50-5e9a-11e8-962f-5175336a1a4b
+[INFO  - 2018-05-23T15:08:26.973Z] GhostDriver - Main - running on port 46806
+[INFO  - 2018-05-23T15:08:27.351Z] Session [254c0140-5e9b-11e8-98d9-19c273c5a297] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T15:08:27.352Z] Session [254c0140-5e9b-11e8-98d9-19c273c5a297] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T15:08:27.352Z] Session [254c0140-5e9b-11e8-98d9-19c273c5a297] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T15:08:27.352Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 254c0140-5e9b-11e8-98d9-19c273c5a297
+[ERROR - 2018-05-23T15:08:29.123Z] Session [254c0140-5e9b-11e8-98d9-19c273c5a297] - page.onError - msg: NoModificationAllowedError: DOM Exception 7: An attempt was made to modify an object where modifications are not allowed.
+[ERROR - 2018-05-23T15:08:29.123Z] Session [254c0140-5e9b-11e8-98d9-19c273c5a297] - page.onError - stack:
+  replace (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2166)
+  map (:0)
+  (anonymous function) (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2222)
+[ERROR - 2018-05-23T15:08:30.443Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1527088110414
+[INFO  - 2018-05-23T15:08:33.131Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-23T15:09:38.652Z] GhostDriver - Main - running on port 35672
+[INFO  - 2018-05-23T15:09:39.035Z] Session [5005f670-5e9b-11e8-a413-a5eaf10e3f92] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T15:09:39.035Z] Session [5005f670-5e9b-11e8-a413-a5eaf10e3f92] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T15:09:39.035Z] Session [5005f670-5e9b-11e8-a413-a5eaf10e3f92] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T15:09:39.035Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 5005f670-5e9b-11e8-a413-a5eaf10e3f92
+[ERROR - 2018-05-23T15:09:40.759Z] Session [5005f670-5e9b-11e8-a413-a5eaf10e3f92] - page.onError - msg: NoModificationAllowedError: DOM Exception 7: An attempt was made to modify an object where modifications are not allowed.
+[ERROR - 2018-05-23T15:09:40.759Z] Session [5005f670-5e9b-11e8-a413-a5eaf10e3f92] - page.onError - stack:
+  replace (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2166)
+  map (:0)
+  (anonymous function) (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2222)
+[INFO  - 2018-05-23T15:09:45.078Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-23T15:10:33.013Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:10:40.085Z] GhostDriver - Main - running on port 5336
+[INFO  - 2018-05-23T15:10:40.439Z] Session [749f7830-5e9b-11e8-ba20-03d06c622bc8] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T15:10:40.439Z] Session [749f7830-5e9b-11e8-ba20-03d06c622bc8] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T15:10:40.439Z] Session [749f7830-5e9b-11e8-ba20-03d06c622bc8] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T15:10:40.439Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 749f7830-5e9b-11e8-ba20-03d06c622bc8
+[ERROR - 2018-05-23T15:10:43.330Z] Session [749f7830-5e9b-11e8-ba20-03d06c622bc8] - page.onError - msg: NoModificationAllowedError: DOM Exception 7: An attempt was made to modify an object where modifications are not allowed.
+[ERROR - 2018-05-23T15:10:43.330Z] Session [749f7830-5e9b-11e8-ba20-03d06c622bc8] - page.onError - stack:
+  replace (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2166)
+  map (:0)
+  (anonymous function) (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2222)
+[INFO  - 2018-05-23T15:10:47.991Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-23T15:10:58.863Z] GhostDriver - Main - running on port 13368
+[INFO  - 2018-05-23T15:10:59.243Z] Session [7fd4bb70-5e9b-11e8-a982-350bb6821acd] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-23T15:10:59.243Z] Session [7fd4bb70-5e9b-11e8-a982-350bb6821acd] - page.customHeaders:  - {}
+[INFO  - 2018-05-23T15:10:59.243Z] Session [7fd4bb70-5e9b-11e8-a982-350bb6821acd] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-23T15:10:59.244Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 7fd4bb70-5e9b-11e8-a982-350bb6821acd
+[ERROR - 2018-05-23T15:11:01.961Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1527088261918
+[INFO  - 2018-05-23T15:11:04.827Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-23T15:12:07.008Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:15:33.000Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:17:06.995Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:20:32.987Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:22:06.982Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:25:32.974Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:27:06.970Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:30:32.961Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:32:06.957Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:35:32.949Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:37:06.944Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:40:32.936Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:42:06.932Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:45:32.923Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:47:06.919Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:50:32.910Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:52:06.906Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:55:32.897Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T15:57:06.893Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:00:32.884Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:02:06.881Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:05:32.872Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:07:06.868Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:10:32.859Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:12:06.855Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:15:32.847Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:17:06.843Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:20:32.835Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:22:06.831Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:25:32.823Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:27:06.820Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:30:32.812Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:32:06.808Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:35:32.800Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:37:06.796Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:40:32.788Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:42:06.784Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:45:32.776Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:47:06.772Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:50:32.764Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:52:06.760Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:55:32.753Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T16:57:06.750Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:00:32.744Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:02:06.741Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:05:32.734Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:07:06.731Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:10:32.724Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:12:06.722Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:15:32.715Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:17:06.712Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:20:32.706Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:22:06.703Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:25:32.696Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:27:06.693Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:30:32.687Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:32:06.684Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:35:32.677Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:37:06.675Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:40:32.670Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:42:06.668Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:45:32.663Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:47:06.660Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:50:32.655Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:52:06.652Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:55:32.647Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T17:57:06.644Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:00:32.639Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:02:06.636Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:05:32.630Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:07:06.627Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:10:32.621Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:12:06.617Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:15:32.611Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:17:06.608Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:20:32.602Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:22:06.599Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:25:32.593Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:27:06.589Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:30:32.583Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:32:06.580Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:35:32.574Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:37:06.570Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:40:32.564Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:42:06.560Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:45:32.554Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:47:06.550Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:50:32.544Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:52:06.540Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:55:32.535Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T18:57:06.531Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T19:00:32.525Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T19:02:06.521Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T19:05:32.514Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-05-23T19:07:06.509Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
