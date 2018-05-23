@@ -25,6 +25,6 @@ public class Demo extends WebCrawl {
         searchPage.search("apple");
         searchPage.clickSearch();
         searchPage.clickAppleJuice();
-        appleJuiceWidget.spam(500);
+        appleJuiceWidget.spam(5);
     }
 }

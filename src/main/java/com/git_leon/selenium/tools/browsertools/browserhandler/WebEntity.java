@@ -11,8 +11,7 @@ import java.io.File;
 public class WebEntity {
     private final By selector;
     private final WebDriver driver;
-    private final BrowserWait wait;
-    private int waitTime;
+    private BrowserWaitLogger wait;
 
     public WebEntity(By by, WebDriver driver) {
         this(by, driver, 5);
@@ -21,26 +20,25 @@ public class WebEntity {
     public WebEntity(By by, WebDriver driver, Integer waitTime) {
         this.selector = by;
         this.driver = driver;
-        this.waitTime = waitTime;
-        this.wait = new BrowserWait(driver);
-    }
-
-    public void setWaitTime(int newWaitTime) {
-        this.waitTime = newWaitTime;
+        this.wait = new BrowserWaitLogger(driver, waitTime);
     }
 
     public void click() {
-        BrowserWait browserWait = new BrowserWait(driver);
-        String[] waitConditions = {"visible", "enabled", "clickable", "stale"};
-        wait.forConditions(selector, waitTime, waitConditions);
+        wait.forConditions(selector,
+                SelectorWaitCondition.VISIBILITY,
+                SelectorWaitCondition.ENABLED,
+                SelectorWaitCondition.CLICKABILITY,
+                SelectorWaitCondition.NOT_STALE);
         getElement().click();
     }
 
 
     // toSelect by byType
     public Select toSelect() {
-        String[] waitConditions = {"visible", "enabled", "stale"};
-        wait.forConditions(selector, waitTime, waitConditions);
+        wait.forConditions(selector,
+                SelectorWaitCondition.VISIBILITY,
+                SelectorWaitCondition.ENABLED,
+                SelectorWaitCondition.NOT_STALE);
         WebElement we = getElement();
         Select select = new Select(we);
         return select;
@@ -67,7 +65,7 @@ public class WebEntity {
                 // NOTE** some input elements cannot be cleared
                 // this exception is caught when an unclearable element
                 // invokes the .clear() method
-                wait.forKeyable(selector, waitTime);
+                wait.forKeyable(selector);
             }
 
             we.sendKeys(keys);
@@ -75,7 +73,7 @@ public class WebEntity {
     }
 
     private WebElement getElement() {
-        wait.forConditions(selector, waitTime, "present");
+        wait.forPresence(selector);
         return driver.findElement(selector);
     }
 

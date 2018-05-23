@@ -10,7 +10,6 @@ import java.util.stream.Stream;
 
 /**
  * Created by leon on 5/19/17.
- * @ATTENTION_TO_STUDENTS You are FORBIDDEN from modifying this class
  */
 public class ReflectionUtils {
     /**

@@ -443,7 +443,7 @@ window.Modernizr = (function( window, document, undefined ) {
      * Additionally, Chrome (desktop) used to lie about its support on this,
      *    but that has since been rectified: crbug.com/36415
      *
-     * We also test for Firefox 4 Multitouch Support.
+     * We also test for firefox 4 Multitouch Support.
      *
      * For more info, see: modernizr.github.com/Modernizr/touch.html
      */
@@ -470,7 +470,7 @@ window.Modernizr = (function( window, document, undefined ) {
     //   1. Leaks memory in IE9: github.com/Modernizr/Modernizr/issues/513
     //   2. Disables page caching in WebKit: webk.it/43956
     //
-    // Meanwhile, in Firefox < 8, an about:config setting could expose
+    // Meanwhile, in firefox < 8, an about:config setting could expose
     // a false positive that would throw an exception: bugzil.la/688158
 
     tests['geolocation'] = function() {
@@ -491,7 +491,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // Vendors had inconsistent prefixing with the experimental Indexed DB:
     // - Webkit's implementation is accessible through webkitIndexedDB
-    // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
+    // - firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
       return !!testPropsAll("indexedDB", window);
@@ -771,7 +771,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // In FF4, if disabled, window.localStorage should === null.
 
     // Normally, we could not test that directly and need to do a
-    //   `('localStorage' in window) && ` test first because otherwise Firefox will
+    //   `('localStorage' in window) && ` test first because otherwise firefox will
     //   throw bugzil.la/365772 if cookies are disabled
 
     // Also in iOS5 Private Browsing mode, attempting to use localStorage.setItem

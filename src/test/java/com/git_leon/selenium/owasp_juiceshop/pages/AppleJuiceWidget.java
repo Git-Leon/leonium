@@ -24,8 +24,6 @@ public class AppleJuiceWidget extends WebPage {
         for (int i = 0; i < numberOfTimes; i++) {
             leaveProductReview("This is such an awesome tool.");
             leaveProductReview("I am testing a selenium bot.");
-            leaveProductReview("I will be using this demonstration to teach students.");
-            leaveProductReview("I am hopeful that they will find this an interesting demonstration.");
         }
     }
 }

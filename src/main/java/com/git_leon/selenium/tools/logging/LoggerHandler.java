@@ -1,6 +1,7 @@
 package com.git_leon.selenium.tools.logging;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -83,9 +84,14 @@ public final class LoggerHandler {
     }
 
     private FileHandler getFileHandler(Formatter formatter) {
+        Long currentTime = System.nanoTime();
+        String timeStamp = Integer.toString(currentTime.intValue(), 16);
+        String fileDirectory = "./target/logs/";
+        String fileName = String.format(fileDirectory + "%s-%s.txt", loggerName, timeStamp);
+
         FileHandler fh = null;
         try {
-            String fileName = String.format("./target/%s-%s.leonlog", loggerName, System.nanoTime());
+            new File(fileDirectory).mkdirs();
             fh = new FileHandler(fileName);
             fh.setFormatter(formatter);
         } catch (IOException ioe) {
