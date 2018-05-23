@@ -1,9 +1,9 @@
 package com.git_leon.selenium.tools.browsertools;
 
-import com.git_leon.selenium.tools.browsertools.browserhandler.MyBrowserHandler;
+import com.git_leon.selenium.tools.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.selenium.tools.browsertools.browserwrapper.DesiredCapabilitiesFactory;
 import com.git_leon.selenium.tools.browsertools.browserwrapper.FirefoxBrowser;
 import com.git_leon.selenium.tools.logging.LoggerHandler;
-import com.git_leon.selenium.tools.logging.LoggerWarehouse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,18 +12,18 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by leon on 5/25/17.
  */
-public abstract class MyWebCrawl {
-    protected final MyBrowserHandler browserHandler;
+public abstract class WebCrawl {
+    protected final BrowserHandler browserHandler;
 
-    public MyWebCrawl() {
-        this(new MyBrowserHandler(new FirefoxBrowser(), LoggerWarehouse.getLogger(MyWebCrawl.class)));
+    public WebCrawl() {
+        this(new BrowserHandler(new FirefoxBrowser(DesiredCapabilitiesFactory.getDefaultCapabilities())));
     }
 
-    public MyWebCrawl(WebDriver browser, LoggerHandler loggerHandler) {
-        this(new MyBrowserHandler(browser, loggerHandler));
+    public WebCrawl(WebDriver browser, LoggerHandler loggerHandler) {
+        this(new BrowserHandler(browser));
     }
 
-    public MyWebCrawl(MyBrowserHandler browserHandler) {
+    public WebCrawl(BrowserHandler browserHandler) {
         this.browserHandler = browserHandler;
     }
 

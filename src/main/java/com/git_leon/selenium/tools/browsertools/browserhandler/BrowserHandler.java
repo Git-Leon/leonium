@@ -12,17 +12,22 @@ import java.util.List;
 /**
  * Created by leon on 5/25/17.
  */
-public class MyBrowserHandler {
+public class BrowserHandler {
     private final WebDriver driver;
     private final JavascriptExecutor javascriptExecutor;
-    public final MyBrowserWaitLogger wait;
+    public final BrowserWaitInterface wait;
     public final BrowserHandlerOptions options;
 
-    public MyBrowserHandler(WebDriver driver, LoggerHandler loggerHandler) {
+    public BrowserHandler(WebDriver driver) {
+        this(driver, new BrowserWaitLogger(driver, 15));
+    }
+
+
+    public BrowserHandler(WebDriver driver, BrowserWaitInterface wait) {
         this.driver = driver;
         this.javascriptExecutor = (JavascriptExecutor) driver;
         this.options = new BrowserHandlerOptions();
-        this.wait = new MyBrowserWaitLogger(driver, 15);
+        this.wait = wait;
     }
 
     // return non-stale WebElement specified by byType
@@ -39,10 +44,7 @@ public class MyBrowserHandler {
 
     // return list of WebElements with specified byType
     public List<WebElement> getElements(By by) {
-        List<WebElement> elements = wait.forPresences(by);
-        int count = elements.size();
-        boolean outcome = count > 0;
-        return elements;
+        return wait.forPresences(by);
     }
 
     public String getPageLoadState() {
@@ -55,33 +57,24 @@ public class MyBrowserHandler {
     }
 
 
-    // click by byType
     public void click(By by) {
         getWebEntity(by).click();
     }
 
-    // toSelect by byType
     public Select select(By by) {
-        WebEntity we = getWebEntity(by);
-        return we.toSelect();
+        return getWebEntity(by).toSelect();
     }
 
-    // toSelect by WebElement and toSelect index option
     public void selectByIndex(By by, int index) {
-        WebEntity we = getWebEntity(by);
-        we.selectByIndex(index);
+        getWebEntity(by).selectByIndex(index);
     }
 
-    // toSelect visible option by ByType
     public void selectByVisibleText(By by, String visibleText) {
-        WebEntity we = getWebEntity(by);
-        we.selectByVisibleText(visibleText);
+        getWebEntity(by).selectByVisibleText(visibleText);
     }
 
-    // send keys by byType
     public void sendKeys(By by, CharSequence... keys) {
-        WebEntity we = getWebEntity(by);
-        we.sendKeys(keys);
+        getWebEntity(by).sendKeys(keys);
     }
 
     public void close() {

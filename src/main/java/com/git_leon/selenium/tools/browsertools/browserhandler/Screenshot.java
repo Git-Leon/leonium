@@ -1,7 +1,7 @@
 package com.git_leon.selenium.tools.browsertools.browserhandler;
 
 import com.git_leon.selenium.tools.StringUtils;
-import com.git_leon.selenium.tools.SystemInfo;
+import com.git_leon.selenium.tools.ProjectInfo;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -56,7 +56,7 @@ class Screenshot {
 
     public File getFile() {
         if (file == null) {
-            String filePath = String.format("%s/%s-%s.png", SystemInfo.artifactFolder, imageName, System.currentTimeMillis());
+            String filePath = String.format("%s/%s-%s.png", ProjectInfo.ARTIFACT_FOLDER, imageName, System.currentTimeMillis());
             File outputFile = new File(filePath);
             try {
                 ImageIO.write(bufferedImage, "png", outputFile);

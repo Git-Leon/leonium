@@ -1,14 +1,14 @@
 package com.git_leon.selenium.tools.browsertools;
 
 import com.git_leon.selenium.tools.ReflectionUtils;
-import com.git_leon.selenium.tools.browsertools.browserhandler.MyBrowserHandler;
+import com.git_leon.selenium.tools.browsertools.browserhandler.BrowserHandler;
 import org.openqa.selenium.By;
 
 public abstract class WebPage {
-    protected MyWebCrawl crawler;
-    protected MyBrowserHandler browserHandler;
+    protected WebCrawl crawler;
+    protected BrowserHandler browserHandler;
 
-    public WebPage(MyWebCrawl web) {
+    public WebPage(WebCrawl web) {
         this.crawler = web;
         this.browserHandler = crawler.browserHandler;
     }

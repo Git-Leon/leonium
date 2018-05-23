@@ -25,19 +25,19 @@ public abstract class With {
      * @return a By object which locates elements by the value of the attribute
      */
     public static By attributeValue(String attribute, String value) {
-        return By.xpath(String.format("(.//*[contains(@%s, '%s')])", attribute, value));
+        return tagAttributeValue("*", attribute, value);
     }
 
     /**
-     * @param attribute the value of the "id" attribute to search for
+     * @param attribute the value of the attribute to search for
      * @return a By object which locates elements by the value of the attribute.
      */
     public static By attribute(String attribute) {
-        return By.cssSelector(String.format("[%s]"));
+        return tagAttribute("*", attribute);
     }
 
     /**
-     * @param text The value of the "text" to search for
+     * @param text The value of the text to search for
      * @return a By which locates elements by the value of the text
      */
     public static By text(String text) {

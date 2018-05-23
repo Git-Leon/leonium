@@ -1,6 +1,6 @@
 package com.git_leon.selenium.owasp_juiceshop.pages;
 
-import com.git_leon.selenium.tools.browsertools.MyWebCrawl;
+import com.git_leon.selenium.tools.browsertools.WebCrawl;
 import com.git_leon.selenium.tools.browsertools.WebPage;
 import com.git_leon.selenium.tools.browsertools.With;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
  * @author leon on 4/10/18.
  */
 public class SearchPage extends WebPage {
-    public SearchPage(MyWebCrawl web) {
+    public SearchPage(WebCrawl web) {
         super(web);
     }
 

@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * @author leon on 4/12/18.
  */
-public class MyBrowserWait {
+public class BrowserWait implements BrowserWaitInterface {
     private final WebDriver driver;
     private final int waitSeconds;
 
-    public MyBrowserWait(WebDriver driver, int waitSeconds) {
+    public BrowserWait(WebDriver driver, int waitSeconds) {
         this.driver = driver;
         this.waitSeconds = waitSeconds;
     }

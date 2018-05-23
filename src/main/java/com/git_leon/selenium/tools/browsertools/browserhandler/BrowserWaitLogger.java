@@ -1,11 +1,11 @@
 package com.git_leon.selenium.tools.browsertools.browserhandler;
 
 
+import com.git_leon.selenium.tools.TimeUtils;
 import com.git_leon.selenium.tools.logging.LoggerHandler;
 import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
@@ -14,40 +14,84 @@ import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class MyBrowserWaitLogger {
-    private final MyBrowserWait wait;
+public class BrowserWaitLogger implements BrowserWaitInterface {
+    private final BrowserWait wait;
     private final LoggerHandler logger;
 
-    public MyBrowserWaitLogger(WebDriver driver, int waitSeconds) {
-        System.out.println(driver);
-        System.out.println(waitSeconds);
-        this.wait = new MyBrowserWait(driver, waitSeconds);
-        this.logger = new LoggerHandler(MyBrowserWaitLogger.class);
-    }
+    public BrowserWaitLogger(WebDriver driver, int waitSeconds) {
+        this.wait = new BrowserWait(driver, waitSeconds);
 
+        String className = getClass().getSimpleName();
+        String hexDecaVal = Integer.toString(hashCode(), 16);
+        this.logger = new LoggerHandler(className + "@" + hexDecaVal);
+    }
 
     private <FirstArgType, SecondArgType, ReturnType> ReturnType invokeAndLog(
             BiFunction<FirstArgType, SecondArgType, ReturnType> forCondition,
             FirstArgType firstArg, SecondArgType secondArg, String logMessage) {
-        logger.info("Waiting for " + logMessage);
-        return forCondition.apply(firstArg, secondArg);
+        String waitMessage = "\n\nWaiting for " + logMessage;
+        String timeElapsedLog = "\tExecution time: %s seconds.";
+        String resultValLog = "\tResulted in %s";
+
+        logger.info(waitMessage);
+
+        long t0 = System.currentTimeMillis();
+        ReturnType returnValue = forCondition.apply(firstArg, secondArg);
+        double timeElapsed = TimeUtils.getElapsedTime(t0);
+
+        logger.info(resultValLog, returnValue);
+        logger.info(timeElapsedLog, timeElapsed);
+
+        return returnValue;
     }
 
 
-    private <ArgType, ReturnType> ReturnType invokeAndLog(Function<ArgType, ReturnType> forCondition, ArgType by, String logMessage) {
-        logger.info("Waiting for " + logMessage);
-        return forCondition.apply(by);
+    private <ArgType, ReturnType> ReturnType invokeAndLog(Function<ArgType, ReturnType> forCondition, ArgType arg, String logMessage) {
+        String waitMessage = "\n\nWaiting for " + logMessage;
+        String timeElapsedLog = "\tExecution time: %s seconds.";
+        String resultValLog = "\tResulted in %s";
+
+        logger.info(waitMessage);
+
+        long t0 = System.currentTimeMillis();
+        ReturnType returnValue = forCondition.apply(arg);
+        double timeElapsed = TimeUtils.getElapsedTime(t0);
+
+        logger.info(resultValLog, returnValue);
+        logger.info(timeElapsedLog, timeElapsed);
+
+        return returnValue;
     }
 
     private <ArgType> void consumeAndLog(Consumer<ArgType> forCondition, ArgType argument, String logMessage) {
-        logger.info("Waiting for " + logMessage);
+        String waitMessage = "\n\nWaiting for " + logMessage;
+        String timeElapsedLog = "\tExecution time: %s seconds.";
+
+        logger.info(waitMessage);
+
+        long t0 = System.currentTimeMillis();
         forCondition.accept(argument);
+        double timeElapsed = TimeUtils.getElapsedTime(t0);
+
+        logger.info(timeElapsedLog, timeElapsed);
     }
 
 
     private <ReturnType> ReturnType invokeAndLog(Supplier<ReturnType> forCondition, String logMessage) {
-        logger.info("Waiting for " + logMessage);
-        return forCondition.get();
+        String waitMessage = "\n\nWaiting for " + logMessage;
+        String timeElapsedLog = "\tExecution time: %s seconds.";
+        String resultValLog = "\tResulted in %s";
+
+        logger.info(waitMessage);
+
+        long t0 = System.currentTimeMillis();
+        ReturnType returnValue = forCondition.get();
+        double timeElapsed = TimeUtils.getElapsedTime(t0);
+
+        logger.info(resultValLog, returnValue);
+        logger.info(timeElapsedLog, timeElapsed);
+
+        return returnValue;
     }
 
 
@@ -213,8 +257,8 @@ public class MyBrowserWaitLogger {
      * @return respective browserHandler element
      */
     public WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
-        String logMessage = "each of the following conditions: %s";
-        logMessage = String.format(logMessage, Arrays.toString(waitConditions));
+        String logMessage = "Selector\n\t\t[ %s ]\n\t\tto suffice each of the following conditions: %s";
+        logMessage = String.format(logMessage, by, Arrays.toString(waitConditions));
         return invokeAndLog(wait::forConditions, by, waitConditions, logMessage);
     }
 }

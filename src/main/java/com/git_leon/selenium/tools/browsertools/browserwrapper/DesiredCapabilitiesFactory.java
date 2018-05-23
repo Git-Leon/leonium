@@ -1,6 +1,5 @@
 package com.git_leon.selenium.tools.browsertools.browserwrapper;
 
-import com.git_leon.selenium.tools.SystemInfo;
 import com.git_leon.selenium.tools.logging.LogUtils;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -16,21 +15,20 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.git_leon.selenium.tools.ProjectInfo.*;
+
 /**
  * @purpose utility class to centralize common BrowserWrapper functionality
  */
-public final class BrowserUtilities {
-    static { // initialize system properties
-        String pathCurrentProject = SystemInfo.currentProjectPath.toString() ;
-        String pathGeckoDriver = pathCurrentProject + "/src/main/resources/geckodriver";
-        String pathChromeDriver = pathCurrentProject + "/src/main/resources/chromedriver";
-        String pathPhantomDriver = pathCurrentProject + "/src/main/resources/phantomdriver";
-        String userAgent = "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1";
+public final class DesiredCapabilitiesFactory {
+    private DesiredCapabilitiesFactory() {
+    }
 
-        System.setProperty("webdriver.gecko.driver", pathGeckoDriver);
-        System.setProperty("webdriver.chrome.driver", pathChromeDriver);
-        System.setProperty("webdriver.phantomjs.driver", pathPhantomDriver);
-        System.setProperty("phantomjs.page.settings.userAgent", userAgent);
+    static { // initialize system properties
+        System.setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
+        System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
+        System.setProperty("webdriver.phantomjs.driver", PHANTOM_DRIVER_PATH);
+        System.setProperty("phantomjs.page.settings.USER_AGENT", USER_AGENT);
         System.setProperty("org.openqa.selenium.remote.RemoteWebDriver", "info");
 
         LogUtils.disableLogging(
@@ -43,13 +41,11 @@ public final class BrowserUtilities {
 
     public static DesiredCapabilities getDefaultCapabilities() {
         DesiredCapabilities caps = new DesiredCapabilities();
-
-        caps.setJavascriptEnabled(true);
         caps.setCapability("takesScreenshot", true);
         caps.setCapability("screen-resolution", "1280x1024");
         caps.setCapability(CapabilityType.TAKES_SCREENSHOT, true);
         caps.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
-        //caps.setCapability(CapabilityType.PROXY, getProxy(null));
+        caps.setJavascriptEnabled(true);
         return caps;
     }
 
@@ -74,12 +70,4 @@ public final class BrowserUtilities {
         desiredCapabilities.setCapability("moz:firefoxOptions", options);
         return desiredCapabilities;
     }
-
-    private static Proxy getProxy(String proxyUrl) {
-        return new Proxy()
-                .setHttpProxy(proxyUrl)
-                .setFtpProxy(proxyUrl)
-                .setSslProxy(proxyUrl);
-    }
-
 }

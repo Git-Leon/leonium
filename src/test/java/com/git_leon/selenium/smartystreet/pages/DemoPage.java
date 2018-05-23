@@ -1,6 +1,6 @@
 package com.git_leon.selenium.smartystreet.pages;
 
-import com.git_leon.selenium.tools.browsertools.MyWebCrawl;
+import com.git_leon.selenium.tools.browsertools.WebCrawl;
 import com.git_leon.selenium.tools.browsertools.WebPage;
 import org.openqa.selenium.By;
 
@@ -32,7 +32,7 @@ public class DemoPage extends WebPage {
         public final static By bySelectLookup = By.id("input-selector-text-international");
     }
 
-    public DemoPage(MyWebCrawl runner) {
+    public DemoPage(WebCrawl runner) {
         super(runner);
     }
 

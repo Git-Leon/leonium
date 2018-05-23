@@ -1,13 +1,13 @@
 package com.git_leon.selenium.google.crawlpaths;
 
-import com.git_leon.selenium.tools.browsertools.MyWebCrawl;
+import com.git_leon.selenium.tools.browsertools.WebCrawl;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 /**
  * Created by leon on 5/25/17.
  */
-public class Demo0 extends MyWebCrawl {
+public class Demo0 extends WebCrawl {
     @Test
     @Override
     public void test() {

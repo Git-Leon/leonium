@@ -14,7 +14,7 @@ public class FirefoxBrowser extends FirefoxDriver {
     }
 
     public FirefoxBrowser() {
-        this(BrowserUtilities.getLoglessFirefoxCapabilities());
+        this(DesiredCapabilitiesFactory.getLoglessFirefoxCapabilities());
     }
 
     private static FirefoxProfile defaultProfile() {

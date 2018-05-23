@@ -1,7 +1,5 @@
 package com.git_leon.selenium.tools.browsertools.browserhandler;
 
-import org.openqa.selenium.By;
-
 /**
  * @author leon on 5/22/18.
  */

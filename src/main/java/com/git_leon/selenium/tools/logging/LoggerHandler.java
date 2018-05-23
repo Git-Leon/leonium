@@ -85,7 +85,9 @@ public final class LoggerHandler {
     private FileHandler getFileHandler(Formatter formatter) {
         FileHandler fh = null;
         try {
-            String fileName = String.format("./target/%s-%s.leonlog", loggerName, System.nanoTime());
+            Long currentTime = System.nanoTime();
+            String timeStamp = Integer.toString(currentTime.intValue(), 16);
+            String fileName = String.format("./target/%s-%s.txt", loggerName, timeStamp);
             fh = new FileHandler(fileName);
             fh.setFormatter(formatter);
         } catch (IOException ioe) {

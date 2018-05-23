@@ -1,6 +1,6 @@
 package com.git_leon.selenium.owasp_juiceshop.pages;
 
-import com.git_leon.selenium.tools.browsertools.MyWebCrawl;
+import com.git_leon.selenium.tools.browsertools.WebCrawl;
 import com.git_leon.selenium.tools.browsertools.WebPage;
 import org.openqa.selenium.By;
 
@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
  * @author leon on 4/10/18.
  */
 public class AppleJuiceWidget extends WebPage {
-    public AppleJuiceWidget(MyWebCrawl web) {
+    public AppleJuiceWidget(WebCrawl web) {
         super(web);
     }
 
@@ -24,8 +24,6 @@ public class AppleJuiceWidget extends WebPage {
         for (int i = 0; i < numberOfTimes; i++) {
             leaveProductReview("This is such an awesome tool.");
             leaveProductReview("I am testing a selenium bot.");
-            leaveProductReview("I will be using this demonstration to teach students.");
-            leaveProductReview("I am hopeful that they will find this an interesting demonstration.");
         }
     }
 }

@@ -4,7 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.File;
-import java.nio.channels.Selector;
 
 /**
  * @author leon on 4/12/18.
@@ -12,7 +11,7 @@ import java.nio.channels.Selector;
 public class WebEntity {
     private final By selector;
     private final WebDriver driver;
-    private MyBrowserWait wait;
+    private BrowserWaitLogger wait;
 
     public WebEntity(By by, WebDriver driver) {
         this(by, driver, 5);
@@ -21,11 +20,10 @@ public class WebEntity {
     public WebEntity(By by, WebDriver driver, Integer waitTime) {
         this.selector = by;
         this.driver = driver;
-        this.wait = new MyBrowserWait(driver, waitTime);
+        this.wait = new BrowserWaitLogger(driver, waitTime);
     }
 
     public void click() {
-        String[] waitConditions = {"visible", "enabled", "clickable", "stale"};
         wait.forConditions(selector,
                 SelectorWaitCondition.VISIBILITY,
                 SelectorWaitCondition.ENABLED,
