@@ -9,7 +9,8 @@ import org.openqa.selenium.By;
 /**
  * @purpose Mechanism to locate elements within a document
  */
-public abstract class With {
+public final class With {
+    private With() {}
 
     /**
      * @param text The value of the "text" to search for

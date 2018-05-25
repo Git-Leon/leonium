@@ -1,99 +1,31 @@
 package com.git_leon.selenium.tools.browsertools.browserhandler;
 
 
-import com.git_leon.selenium.tools.TimeUtils;
-import com.git_leon.selenium.tools.logging.LoggerHandler;
-import com.google.common.base.Function;
+import com.git_leon.selenium.tools.logging.InvokeAndLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.logging.Logger;
 
 public class BrowserWaitLogger implements BrowserWaitInterface {
     private final BrowserWait wait;
-    private final LoggerHandler logger;
+    private final InvokeAndLogger logger;
 
     public BrowserWaitLogger(WebDriver driver, int waitSeconds) {
         this.wait = new BrowserWait(driver, waitSeconds);
 
         String className = driver.getClass().getSimpleName();
         String hexDecaVal = Integer.toString(driver.hashCode(), 16);
-        this.logger = new LoggerHandler(className + "@" + hexDecaVal);
+        this.logger = new InvokeAndLogger(Logger.getLogger(className + "@" + hexDecaVal));
     }
 
-    private <FirstArgType, SecondArgType, ReturnType> ReturnType invokeAndLog(
-            BiFunction<FirstArgType, SecondArgType, ReturnType> forCondition,
-            FirstArgType firstArg, SecondArgType secondArg, String logMessage) {
-        String waitMessage = "\n\nWaiting for " + logMessage;
-        String timeElapsedLog = "\tExecution time: %s seconds.";
-        String resultValLog = "\tResulted in %s";
-
-        logger.info(waitMessage);
-
-        Long t0 = System.currentTimeMillis();
-        ReturnType returnValue = forCondition.apply(firstArg, secondArg);
-        double timeElapsed = TimeUtils.getElapsedTime(t0);
-
-        logger.info(resultValLog, returnValue);
-        logger.info(timeElapsedLog, timeElapsed);
-
-        return returnValue;
+    private String formatMessage(String s, Object... o) {
+        String logMessagePrefix = "\n\nWaiting for ";
+        return String.format(logMessagePrefix + s, o);
     }
-
-
-    private <ArgType, ReturnType> ReturnType invokeAndLog(Function<ArgType, ReturnType> forCondition, ArgType arg, String logMessage) {
-        String waitMessage = "\n\nWaiting for " + logMessage;
-        String timeElapsedLog = "\tExecution time: %s seconds.";
-        String resultValLog = "\tResulted in %s";
-
-        logger.info(waitMessage);
-
-        long t0 = System.currentTimeMillis();
-        ReturnType returnValue = forCondition.apply(arg);
-        double timeElapsed = TimeUtils.getElapsedTime(t0);
-
-        logger.info(resultValLog, returnValue);
-        logger.info(timeElapsedLog, timeElapsed);
-
-        return returnValue;
-    }
-
-    private <ArgType> void consumeAndLog(Consumer<ArgType> forCondition, ArgType argument, String logMessage) {
-        String waitMessage = "\n\nWaiting for " + logMessage;
-        String timeElapsedLog = "\tExecution time: %s seconds.";
-
-        logger.info(waitMessage);
-
-        long t0 = System.currentTimeMillis();
-        forCondition.accept(argument);
-        double timeElapsed = TimeUtils.getElapsedTime(t0);
-
-        logger.info(timeElapsedLog, timeElapsed);
-    }
-
-
-    private <ReturnType> ReturnType invokeAndLog(Supplier<ReturnType> forCondition, String logMessage) {
-        String waitMessage = "\n\nWaiting for " + logMessage;
-        String timeElapsedLog = "\tExecution time: %s seconds.";
-        String resultValLog = "\tResulted in %s";
-
-        logger.info(waitMessage);
-
-        long t0 = System.currentTimeMillis();
-        ReturnType returnValue = forCondition.get();
-        double timeElapsed = TimeUtils.getElapsedTime(t0);
-
-        logger.info(resultValLog, returnValue);
-        logger.info(timeElapsedLog, timeElapsed);
-
-        return returnValue;
-    }
-
 
     /**
      * wait for element to be enabled
@@ -104,8 +36,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public WebElement forEnabled(By by, boolean isEnabled) {
         String logMessage = "%s to be enabled";
-        logMessage = String.format(logMessage, by);
-        return invokeAndLog(wait::forEnabled, by, isEnabled, logMessage);
+        logMessage = formatMessage(logMessage, by);
+        return logger.invokeAndLog(wait::forEnabled, by, isEnabled, logMessage);
     }
 
     /**
@@ -116,8 +48,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public WebElement forVisibility(By by) {
         String logMessage = "%s to be visible";
-        logMessage = String.format(logMessage, by);
-        return invokeAndLog(wait::forVisibility, by, logMessage);
+        logMessage = formatMessage(logMessage, by);
+        return logger.invokeAndLog(wait::forVisibility, by, logMessage);
     }
 
     /**
@@ -128,8 +60,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public void forInvisibility(By by) {
         String logMessage = "%s to be invisible";
-        logMessage = String.format(logMessage, by);
-        consumeAndLog(wait::forInvisibility, by, logMessage);
+        logMessage = formatMessage(logMessage, by);
+        logger.consumeAndLog(wait::forInvisibility, by, logMessage);
     }
 
     /**
@@ -140,8 +72,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public WebElement forClickability(By by) {
         String logMessage = "%s to be clickable";
-        logMessage = String.format(logMessage, by);
-        return invokeAndLog(wait::forClickability, by, logMessage);
+        logMessage = formatMessage(logMessage, by);
+        return logger.invokeAndLog(wait::forClickability, by, logMessage);
     }
 
 
@@ -153,8 +85,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public WebElement forPresence(By by) {
         String logMessage = "%s to be present";
-        logMessage = String.format(logMessage, by);
-        return invokeAndLog(wait::forPresence, by, logMessage);
+        logMessage = formatMessage(logMessage, by);
+        return logger.invokeAndLog(wait::forPresence, by, logMessage);
     }
 
     /**
@@ -165,8 +97,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public WebElement forNotStale(By by) {
         String logMessage = "%s to not be stale";
-        logMessage = String.format(logMessage, by);
-        return invokeAndLog(wait::forNotStale, by, logMessage);
+        logMessage = formatMessage(logMessage, by);
+        return logger.invokeAndLog(wait::forNotStale, by, logMessage);
     }
 
     /**
@@ -176,8 +108,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public boolean forAlert() {
         String logMessage = "an alert to be present";
-        logMessage = String.format(logMessage);
-        return invokeAndLog(wait::forAlert, logMessage);
+        logMessage = formatMessage(logMessage);
+        return logger.invokeAndLog(wait::forAlert, logMessage);
     }
 
     /**
@@ -188,8 +120,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public boolean forUrlToContain(String... partUrls) {
         String logMessage = "the url to contain any of the following: %s";
-        logMessage = String.format(logMessage, Arrays.toString(partUrls));
-        return invokeAndLog(wait::forUrlToContain, partUrls, logMessage);
+        logMessage = formatMessage(logMessage, Arrays.toString(partUrls));
+        return logger.invokeAndLog(wait::forUrlToContain, partUrls, logMessage);
     }
 
     /**
@@ -200,8 +132,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public List<WebElement> forVisibilities(By by) {
         String logMessage = "visibilities of all elements selected by [ %s ]";
-        logMessage = String.format(logMessage, by);
-        return invokeAndLog(wait::forVisibilities, by, logMessage);
+        logMessage = formatMessage(logMessage, by);
+        return logger.invokeAndLog(wait::forVisibilities, by, logMessage);
     }
 
     /**
@@ -212,8 +144,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public List<WebElement> forPresences(By by) {
         String logMessage = "presences of all elements selected by [ %s ]";
-        logMessage = String.format(logMessage, by);
-        return invokeAndLog(wait::forPresences, by, logMessage);
+        logMessage = formatMessage(logMessage, by);
+        return logger.invokeAndLog(wait::forPresences, by, logMessage);
     }
 
     /**
@@ -223,8 +155,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public boolean forPageLoad() {
         String logMessage = "page to load";
-        logMessage = String.format(logMessage);
-        return invokeAndLog(wait::forPageLoad, logMessage);
+        logMessage = formatMessage(logMessage);
+        return logger.invokeAndLog(wait::forPageLoad, logMessage);
     }
 
     /**
@@ -235,8 +167,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public boolean forPageState(String desiredState) {
         String logMessage = "page state to be [ %s ]";
-        logMessage = String.format(logMessage);
-        return invokeAndLog(wait::forPageState, desiredState, logMessage);
+        logMessage = formatMessage(logMessage);
+        return logger.invokeAndLog(wait::forPageState, desiredState, logMessage);
     }
 
     /**
@@ -247,8 +179,8 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public WebElement forKeyable(By by) {
         String logMessage = "[ %s ] to become keyable";
-        logMessage = String.format(logMessage);
-        return invokeAndLog(wait::forKeyable, by, logMessage);
+        logMessage = formatMessage(logMessage);
+        return logger.invokeAndLog(wait::forKeyable, by, logMessage);
     }
 
     /**
@@ -258,7 +190,7 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
         String logMessage = "Selector\n\t\t[ %s ]\n\t\tto suffice each of the following conditions: %s";
-        logMessage = String.format(logMessage, by, Arrays.toString(waitConditions));
-        return invokeAndLog(wait::forConditions, by, waitConditions, logMessage);
+        logMessage = formatMessage(logMessage, by, Arrays.toString(waitConditions));
+        return logger.invokeAndLog(wait::forConditions, by, waitConditions, logMessage);
     }
 }

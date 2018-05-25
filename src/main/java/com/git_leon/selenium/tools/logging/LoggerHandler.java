@@ -109,4 +109,8 @@ public final class LoggerHandler {
     public void disablePrinting() {
         this.printingEnabled = false;
     }
+
+    public Logger getLogger() {
+        return logger;
+    }
 }

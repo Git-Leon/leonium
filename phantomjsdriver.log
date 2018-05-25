@@ -518,3 +518,34 @@ https://juice-shop.herokuapp.com/dist/juice-shop.min.js:1
 [INFO  - 2018-05-25T22:14:00.478Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: ed0d0980-6068-11e8-9d46-c1cbdda14cb6
 [ERROR - 2018-05-25T22:14:04.366Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1527286444360
 [INFO  - 2018-05-25T22:14:07.645Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-25T22:57:26.507Z] GhostDriver - Main - running on port 21957
+[INFO  - 2018-05-25T22:57:26.886Z] Session [fe97a420-606e-11e8-8fb8-190eed44a9c2] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-25T22:57:26.886Z] Session [fe97a420-606e-11e8-8fb8-190eed44a9c2] - page.customHeaders:  - {}
+[INFO  - 2018-05-25T22:57:26.886Z] Session [fe97a420-606e-11e8-8fb8-190eed44a9c2] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-25T22:57:26.886Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: fe97a420-606e-11e8-8fb8-190eed44a9c2
+[INFO  - 2018-05-25T22:57:29.668Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-25T22:58:12.992Z] GhostDriver - Main - running on port 12599
+[INFO  - 2018-05-25T22:58:13.373Z] Session [1a4cfe90-606f-11e8-a5ad-052b44b634df] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-25T22:58:13.373Z] Session [1a4cfe90-606f-11e8-a5ad-052b44b634df] - page.customHeaders:  - {}
+[INFO  - 2018-05-25T22:58:13.373Z] Session [1a4cfe90-606f-11e8-a5ad-052b44b634df] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-25T22:58:13.373Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 1a4cfe90-606f-11e8-a5ad-052b44b634df
+[ERROR - 2018-05-25T22:58:16.780Z] Session [1a4cfe90-606f-11e8-a5ad-052b44b634df] - page.onError - msg: NoModificationAllowedError: DOM Exception 7: An attempt was made to modify an object where modifications are not allowed.
+[ERROR - 2018-05-25T22:58:16.780Z] Session [1a4cfe90-606f-11e8-a5ad-052b44b634df] - page.onError - stack:
+  replace (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2166)
+  map (:0)
+  (anonymous function) (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2222)
+[ERROR - 2018-05-25T22:58:18.051Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1527289097999
+[INFO  - 2018-05-25T22:58:21.257Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-25T22:58:58.617Z] GhostDriver - Main - running on port 5044
+[INFO  - 2018-05-25T22:58:59.042Z] Session [358587e0-606f-11e8-835c-cdba2a65fb9d] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-25T22:58:59.042Z] Session [358587e0-606f-11e8-835c-cdba2a65fb9d] - page.customHeaders:  - {}
+[INFO  - 2018-05-25T22:58:59.042Z] Session [358587e0-606f-11e8-835c-cdba2a65fb9d] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-25T22:58:59.042Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 358587e0-606f-11e8-835c-cdba2a65fb9d
+[INFO  - 2018-05-25T22:59:06.136Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-25T22:59:41.065Z] GhostDriver - Main - running on port 26189
+[INFO  - 2018-05-25T22:59:41.429Z] Session [4ec94610-606f-11e8-9b88-139168bef7ca] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-25T22:59:41.429Z] Session [4ec94610-606f-11e8-9b88-139168bef7ca] - page.customHeaders:  - {}
+[INFO  - 2018-05-25T22:59:41.429Z] Session [4ec94610-606f-11e8-9b88-139168bef7ca] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-25T22:59:41.429Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 4ec94610-606f-11e8-9b88-139168bef7ca
+[ERROR - 2018-05-25T22:59:44.688Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1527289184656
+[INFO  - 2018-05-25T22:59:48.422Z] ShutdownReqHand - _handle - About to shutdown
