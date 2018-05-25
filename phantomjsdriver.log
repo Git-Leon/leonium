@@ -549,3 +549,26 @@ https://juice-shop.herokuapp.com/dist/juice-shop.min.js:1
 [INFO  - 2018-05-25T22:59:41.429Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 4ec94610-606f-11e8-9b88-139168bef7ca
 [ERROR - 2018-05-25T22:59:44.688Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1527289184656
 [INFO  - 2018-05-25T22:59:48.422Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-25T23:10:41.894Z] GhostDriver - Main - running on port 10351
+[INFO  - 2018-05-25T23:10:42.261Z] Session [d8ac3c10-6070-11e8-ba9a-fb825d4f54fc] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-25T23:10:42.261Z] Session [d8ac3c10-6070-11e8-ba9a-fb825d4f54fc] - page.customHeaders:  - {}
+[INFO  - 2018-05-25T23:10:42.261Z] Session [d8ac3c10-6070-11e8-ba9a-fb825d4f54fc] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-25T23:10:42.261Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: d8ac3c10-6070-11e8-ba9a-fb825d4f54fc
+[ERROR - 2018-05-25T23:10:44.326Z] Session [d8ac3c10-6070-11e8-ba9a-fb825d4f54fc] - page.onError - msg: NoModificationAllowedError: DOM Exception 7: An attempt was made to modify an object where modifications are not allowed.
+[ERROR - 2018-05-25T23:10:44.326Z] Session [d8ac3c10-6070-11e8-ba9a-fb825d4f54fc] - page.onError - stack:
+  replace (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2166)
+  map (:0)
+  (anonymous function) (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2222)
+[ERROR - 2018-05-25T23:10:45.746Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1527289845727
+[INFO  - 2018-05-25T23:10:49.224Z] ShutdownReqHand - _handle - About to shutdown
+[INFO  - 2018-05-25T23:23:01.768Z] GhostDriver - Main - running on port 29614
+[INFO  - 2018-05-25T23:23:02.128Z] Session [91aafac0-6072-11e8-a816-5f7547ded275] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-05-25T23:23:02.128Z] Session [91aafac0-6072-11e8-a816-5f7547ded275] - page.customHeaders:  - {}
+[INFO  - 2018-05-25T23:23:02.128Z] Session [91aafac0-6072-11e8-a816-5f7547ded275] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.11 (El Capitan)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-05-25T23:23:02.128Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 91aafac0-6072-11e8-a816-5f7547ded275
+[ERROR - 2018-05-25T23:23:04.096Z] Session [91aafac0-6072-11e8-a816-5f7547ded275] - page.onError - msg: NoModificationAllowedError: DOM Exception 7: An attempt was made to modify an object where modifications are not allowed.
+[ERROR - 2018-05-25T23:23:04.096Z] Session [91aafac0-6072-11e8-a816-5f7547ded275] - page.onError - stack:
+  replace (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2166)
+  map (:0)
+  (anonymous function) (https://juice-shop.herokuapp.com/private/fontawesome-all.js:2222)
+[INFO  - 2018-05-25T23:23:09.391Z] ShutdownReqHand - _handle - About to shutdown
