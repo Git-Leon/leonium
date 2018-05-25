@@ -59,14 +59,4 @@ public final class StringUtils {
         }
         return sb.toString();
     }
-
-    // return String representation of specified integer
-    public static String getColumnVal(long number) {
-        StringBuilder sb = new StringBuilder();
-        while (number-- > 0) {
-            sb.append((char) ('a' + (number % 26)));
-            number /= 26;
-        }
-        return sb.reverse().toString();
-    }
 }

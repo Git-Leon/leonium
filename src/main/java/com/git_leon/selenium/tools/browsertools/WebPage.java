@@ -18,9 +18,6 @@ public abstract class WebPage {
     }
 
     public void highlightElements() {
-        boolean defaultOption = browserHandler.options.continueOnNoSuchElement.getValue();
-        browserHandler.options.continueOnNoSuchElement.setValue(true);
         browserHandler.highlightElements(getDeclaredBys(), "yellow");
-        browserHandler.options.continueOnNoSuchElement.setValue(defaultOption);
     }
 }

@@ -4,6 +4,9 @@ package com.git_leon.selenium.tools.browsertools.browserhandler;
 import com.git_leon.selenium.tools.TimeUtils;
 import com.git_leon.selenium.tools.logging.LoggerHandler;
 import com.google.common.base.Function;
+import com.zipcodewilmington.temporalutils.methodtimer.BiFunctionTimer;
+import com.zipcodewilmington.temporalutils.methodtimer.FunctionTimer;
+import com.zipcodewilmington.temporalutils.methodtimer.TimeResult;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,7 +38,7 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
 
         logger.info(waitMessage);
 
-        long t0 = System.currentTimeMillis();
+        Long t0 = System.currentTimeMillis();
         ReturnType returnValue = forCondition.apply(firstArg, secondArg);
         double timeElapsed = TimeUtils.getElapsedTime(t0);
 
