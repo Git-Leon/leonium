@@ -5,16 +5,11 @@ package com.git_leon.selenium.tools.browsertools.browserhandler;
  */
 
 public final class BrowserHandlerOptions {
-    public final BrowserOption<Boolean> screenshotOnEvent = screenshotOnEvent();
-    public final BrowserOption<Boolean> screenshotOnClick = new BrowserOption<>();
-    public final BrowserOption<Boolean> screenshotOnSelect = new BrowserOption<>();
-    public final BrowserOption<Boolean> screenshotOnSendKeys = new BrowserOption<>();
-
-    public final BrowserOption<Boolean> continueOnNoSuchElement = new BrowserOption<>();
-    public final BrowserOption<Boolean> continueOnTimeout = new BrowserOption<>();
-    public final BrowserOption<Integer> defaultWait = new BrowserOption<>(15);
-    public final BrowserOption<Boolean> logOnWait = new BrowserOption<>();
-    public BrowserOption<Boolean> logOnScreenshot = new BrowserOption<>();
+    public final BrowserOption<Boolean> SCREENSHOT_ON_EVENT = screenshotOnEvent();
+    public final BrowserOption<Boolean> SCREENSHOT_ON_CLICK = new BrowserOption<>();
+    public final BrowserOption<Boolean> SCREENSHOT_ON_SELECT = new BrowserOption<>();
+    public final BrowserOption<Boolean> SCREENSHOT_ON_SENDKEYS = new BrowserOption<>();
+    public final BrowserOption<Integer> DEFAULT_WAIT = new BrowserOption<>(15);
 
     public class BrowserOption<T> {
         protected T value;
@@ -39,9 +34,9 @@ public final class BrowserHandlerOptions {
             @Override
             public void setValue(Boolean value) {
                 this.value = value;
-                screenshotOnClick.setValue(value);
-                screenshotOnSendKeys.setValue(value);
-                screenshotOnSelect.setValue(value);
+                SCREENSHOT_ON_CLICK.setValue(value);
+                SCREENSHOT_ON_SENDKEYS.setValue(value);
+                SCREENSHOT_ON_SELECT.setValue(value);
             }
         };
     }

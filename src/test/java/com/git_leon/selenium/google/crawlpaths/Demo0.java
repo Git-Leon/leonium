@@ -1,6 +1,8 @@
 package com.git_leon.selenium.google.crawlpaths;
 
 import com.git_leon.selenium.tools.browsertools.WebCrawl;
+import com.git_leon.selenium.tools.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.selenium.tools.browsertools.browserwrapper.BrowserFactory;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
@@ -11,7 +13,8 @@ public class Demo0 extends WebCrawl {
     @Test
     @Override
     public void test() {
-//        browserHandler.options.screenshotOnEvent.setValue(false);
+        BrowserHandler browserHandler = BrowserFactory.PHANTOMJS.getBrowserHandler();
+//        browserHandler.options.SCREENSHOT_ON_EVENT.setValue(false);
         String url = "https://www.google.com/";
         browserHandler.navigateTo(url);
         By by = By.xpath(".//*[@id='lst-ib']");

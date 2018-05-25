@@ -7,6 +7,21 @@
     <groupId>zcw</groupId>
     <artifactId>seleniumtest</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <repositories>
+        <repository>
+            <id>git-leon-utils</id>
+            <url>https://packagecloud.io/git-leon/utils/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+
     <build>
         <plugins>
             <plugin>
@@ -42,6 +57,17 @@
             <version>2.2.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>temporalutils</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>randomutils</artifactId>
+            <version>1.0</version>
+        </dependency>
 
     </dependencies>
 

@@ -1,6 +1,5 @@
 package com.git_leon.selenium.tools.browsertools.browserhandler;
 
-import com.git_leon.selenium.tools.logging.LoggerHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
