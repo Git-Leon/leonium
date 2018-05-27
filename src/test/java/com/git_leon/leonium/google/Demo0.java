@@ -1,8 +1,8 @@
-package com.git_leon.selenium.google;
+package com.git_leon.leonium.google;
 
-import com.git_leon.selenium.tools.browsertools.WebCrawl;
-import com.git_leon.selenium.tools.browsertools.browserhandler.BrowserHandler;
-import com.git_leon.selenium.tools.browsertools.browserwrapper.BrowserHandlerFactory;
+import com.git_leon.leonium.browsertools.WebCrawl;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import org.junit.Test;
 import org.openqa.selenium.By;
 

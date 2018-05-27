@@ -1,7 +1,7 @@
-package com.git_leon.selenium.tools.browsertools;
+package com.git_leon.leonium.browsertools;
 
-import com.git_leon.selenium.tools.ReflectionUtils;
-import com.git_leon.selenium.tools.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.ReflectionUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

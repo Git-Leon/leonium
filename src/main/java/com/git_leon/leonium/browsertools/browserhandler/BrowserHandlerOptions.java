@@ -1,4 +1,4 @@
-package com.git_leon.selenium.tools.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler;
 
 /**
  * Created by leon on 5/25/17.

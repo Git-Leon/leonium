@@ -1,4 +1,4 @@
-package com.git_leon.selenium.tools.browsertools;
+package com.git_leon.leonium.browsertools;
 
 /**
  * @author leon on 4/10/18.

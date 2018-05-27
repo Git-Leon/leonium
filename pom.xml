@@ -54,7 +54,7 @@
 
     <dependencies>
 
-        <!--selenium test automation-->
+        <!--leonium test automation-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>

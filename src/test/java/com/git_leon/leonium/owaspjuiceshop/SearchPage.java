@@ -1,7 +1,7 @@
-package com.git_leon.selenium.owaspjuiceshop;
+package com.git_leon.leonium.owaspjuiceshop;
 
-import com.git_leon.selenium.tools.browsertools.WebPage;
-import com.git_leon.selenium.tools.browsertools.With;
+import com.git_leon.leonium.browsertools.WebPage;
+import com.git_leon.leonium.browsertools.With;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

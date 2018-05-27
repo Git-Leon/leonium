@@ -1,6 +1,6 @@
-package com.git_leon.selenium.tools.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler;
 
-import com.git_leon.selenium.tools.TimeUtils;
+import com.git_leon.leonium.TimeUtils;
 import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;

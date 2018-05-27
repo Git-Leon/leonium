@@ -1,6 +1,6 @@
-package com.git_leon.selenium.owaspjuiceshop;
+package com.git_leon.leonium.owaspjuiceshop;
 
-import com.git_leon.selenium.tools.browsertools.WebCrawl;
+import com.git_leon.leonium.browsertools.WebCrawl;
 
 /**
  * @author leon on 4/10/18.

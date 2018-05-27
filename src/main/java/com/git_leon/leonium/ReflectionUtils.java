@@ -1,4 +1,4 @@
-package com.git_leon.selenium.tools;
+package com.git_leon.leonium;
 
 /**
  * Created by leon on 8/17/17.

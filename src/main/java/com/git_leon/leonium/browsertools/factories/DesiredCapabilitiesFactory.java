@@ -1,4 +1,4 @@
-package com.git_leon.selenium.tools.browsertools.browserwrapper;
+package com.git_leon.leonium.browsertools.factories;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;

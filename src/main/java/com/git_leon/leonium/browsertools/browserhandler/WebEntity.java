@@ -1,4 +1,4 @@
-package com.git_leon.selenium.tools.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
@@ -11,16 +11,12 @@ import java.io.File;
 public class WebEntity {
     private final By selector;
     private final WebDriver driver;
-    private BrowserWaitLogger wait;
+    private BrowserWaitInterface wait;
 
-    public WebEntity(By by, WebDriver driver) {
-        this(by, driver, 5);
-    }
-
-    public WebEntity(By by, WebDriver driver, Integer waitTime) {
+    public WebEntity(By by, WebDriver driver, BrowserWaitInterface browserWait) {
         this.selector = by;
         this.driver = driver;
-        this.wait = new BrowserWaitLogger(driver, waitTime);
+        this.wait = browserWait;
     }
 
     public void click() {

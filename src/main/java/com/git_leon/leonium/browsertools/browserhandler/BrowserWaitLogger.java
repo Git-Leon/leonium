@@ -1,4 +1,4 @@
-package com.git_leon.selenium.tools.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler;
 
 
 import com.github.git_leon.logging.FunctionExecutionTimeLogger;

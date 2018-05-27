@@ -1,4 +1,4 @@
-package com.git_leon.selenium.tools.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -38,7 +38,7 @@ public class BrowserHandler {
     }
 
     public WebEntity getWebEntity(By by) {
-        return new WebEntity(by, driver);
+        return new WebEntity(by, driver, wait);
     }
 
     // return list of WebElements with specified byType
