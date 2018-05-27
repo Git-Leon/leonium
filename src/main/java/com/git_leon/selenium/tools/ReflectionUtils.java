@@ -6,7 +6,7 @@ package com.git_leon.selenium.tools;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.stream.Stream;
+import java.util.List;
 
 /**
  * Created by leon on 5/19/17.
@@ -17,13 +17,13 @@ public class ReflectionUtils {
      * @param fieldClass type of field to retrieve
      * @return Stream of values
      */
-    public static <T, E> Stream<E> getFieldValues(T object, Class<E> fieldClass) {
-        ArrayList<E> fields = new ArrayList<E>();
+    public static <ObjectToInspect, FieldType> List<FieldType> getFieldValues(ObjectToInspect object, Class<FieldType> fieldClass) {
+     List<FieldType> fields = new ArrayList<>();
         for (Field f : object.getClass().getDeclaredFields()) {
             if (f.getType().equals(fieldClass)) {
                 try {
                     boolean defaultAccess = f.isAccessible();
-                    E obj = fieldClass.cast(f.get(object));
+                    FieldType obj = fieldClass.cast(f.get(object));
 
                     f.setAccessible(true);
                     fields.add(obj);
@@ -37,6 +37,6 @@ public class ReflectionUtils {
                 }
             }
         }
-        return fields.stream();
+        return fields;
     }
 }

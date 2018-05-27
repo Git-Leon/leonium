@@ -15,7 +15,10 @@ public abstract class WebPage {
     }
 
     public By[] getDeclaredBys() {
-        return ReflectionUtils.getFieldValues(this, By.class).toArray(By[]::new);
+        return ReflectionUtils
+                .getFieldValues(this, By.class)
+                .stream()
+                .toArray(By[]::new);
     }
 
     public void highlightElements() {

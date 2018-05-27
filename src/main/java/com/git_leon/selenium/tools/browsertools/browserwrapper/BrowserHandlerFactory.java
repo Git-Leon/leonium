@@ -12,19 +12,19 @@ import java.util.function.Supplier;
 /**
  * @author leon on 5/24/18.
  */
-public enum BrowserFactory {
+public enum BrowserHandlerFactory {
     CHROME(() -> {return new ChromeDriver(DesiredCapabilitiesFactory.getChrome());}),
     FIREFOX(() -> {return new FirefoxDriver(DesiredCapabilitiesFactory.getFirefox());}),
     PHANTOMJS(() -> {return new PhantomJSDriver(DesiredCapabilitiesFactory.getPhantomJs());}),
     HTMLUNIT(() -> {return new HtmlUnitDriver(DesiredCapabilitiesFactory.getHtmlUnit());});
     private final Supplier<WebDriver> webDriverConstructor;
 
-    BrowserFactory(Supplier<WebDriver> constructor) {
+    BrowserHandlerFactory(Supplier<WebDriver> constructor) {
         this.webDriverConstructor = constructor;
     }
 
     public BrowserHandler getBrowserHandler() {
-        return new BrowserHandler(webDriverConstructor.get());
+        return new BrowserHandler(getDriver());
     }
 
     public WebDriver getDriver() {

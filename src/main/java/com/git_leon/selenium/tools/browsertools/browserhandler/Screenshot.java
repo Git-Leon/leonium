@@ -1,7 +1,7 @@
 package com.git_leon.selenium.tools.browsertools.browserhandler;
 
-import com.git_leon.selenium.tools.StringUtils;
 import com.git_leon.selenium.tools.ProjectInfo;
+import com.github.git_leon.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -23,7 +23,7 @@ class Screenshot {
 
     public Screenshot(WebDriver driver, String imageName) {
         this.remoteWebDriver = (RemoteWebDriver) driver;
-        this.imageName = StringUtils.removeChars(imageName, "[,;']}{/.|*!@#$%^&()~`:->");
+        this.imageName = StringUtils.removeCharacters(imageName, "[,;']}{/.|*!@#$%^&()~`:->");
         this.bufferedImage = createBufferedImage();
     }
 

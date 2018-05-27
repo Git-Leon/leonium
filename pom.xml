@@ -74,6 +74,17 @@
             <version>1.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>randomutils</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>stringutils</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

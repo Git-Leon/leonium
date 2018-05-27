@@ -1,7 +1,6 @@
 package com.git_leon.selenium.owaspjuiceshop;
 
 import com.git_leon.selenium.tools.browsertools.WebCrawl;
-import com.git_leon.selenium.tools.browsertools.browserwrapper.BrowserFactory;
 
 /**
  * @author leon on 4/10/18.

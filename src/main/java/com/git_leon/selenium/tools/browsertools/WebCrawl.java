@@ -1,7 +1,7 @@
 package com.git_leon.selenium.tools.browsertools;
 
 import com.git_leon.selenium.tools.browsertools.browserhandler.BrowserHandler;
-import com.git_leon.selenium.tools.browsertools.browserwrapper.BrowserFactory;
+import com.git_leon.selenium.tools.browsertools.browserwrapper.BrowserHandlerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ public abstract class WebCrawl {
     protected final WebDriver driver;
 
     public WebCrawl() {
-        this(BrowserFactory.HTMLUNIT.getDriver());
+        this(BrowserHandlerFactory.HTMLUNIT.getDriver());
     }
 
     public WebCrawl(WebDriver driver) {
