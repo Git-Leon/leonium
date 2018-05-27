@@ -8,6 +8,7 @@
     <artifactId>leonium</artifactId>
     <version>1.0</version>
 
+    <!--my private repo-->
     <repositories>
         <repository>
             <id>git-leon-utils</id>
@@ -24,6 +25,7 @@
 
     <build>
         <plugins>
+            <!--configure for java 8-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -33,7 +35,7 @@
                 </configuration>
             </plugin>
 
-
+            <!--maven shade plugin for uber jars-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -52,16 +54,24 @@
 
     <dependencies>
 
+        <!--selenium test automation-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.4.0</version>
         </dependency>
 
+        <!--web driver configuration automation-->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>2.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>loggingutils</artifactId>
+            <version>1.1</version>
         </dependency>
 
     </dependencies>

@@ -1,13 +1,10 @@
 package com.git_leon.selenium.tools;
 
-import com.git_leon.selenium.tools.logging.LogUtils;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.GeckoDriverService;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
-import org.openqa.selenium.remote.Augmenter;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.util.logging.Logger;
+
 
 /**
  * Created by leon on 5/25/17.
@@ -26,11 +23,5 @@ public class ProjectInfo {
         System.setProperty(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, PHANTOM_DRIVER_PATH);
         System.setProperty("phantomjs.page.settings.USER_AGENT", USER_AGENT);
         System.setProperty("org.openqa.selenium.remote.RemoteWebDriver", "info");
-        LogUtils.disableLogging(
-                PhantomJSDriverService.class,
-                RemoteWebDriver.class,
-                Augmenter.class,
-                GeckoDriverService.class,
-                Logger.class);
     }
 }
