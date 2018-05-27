@@ -1,4 +1,4 @@
-package com.git_leon.selenium.google.crawlpaths;
+package com.git_leon.selenium.google;
 
 import com.git_leon.selenium.tools.browsertools.WebCrawl;
 import com.git_leon.selenium.tools.browsertools.browserhandler.BrowserHandler;

@@ -13,7 +13,7 @@ import static java.util.logging.Level.*;
  * Created by leon on 5/15/17.
  */
 public final class LoggerHandler {
-    private final java.util.logging.Logger logger;
+    private final Logger logger;
     private final String loggerName;
     private boolean printingEnabled;
 
@@ -25,7 +25,7 @@ public final class LoggerHandler {
         this(Logger.getLogger(loggerName));
     }
 
-    public LoggerHandler(java.util.logging.Logger logger) {
+    public LoggerHandler(Logger logger) {
         this.logger = logger;
         this.loggerName = logger.getName();
         logger.setUseParentHandlers(false);
@@ -83,6 +83,18 @@ public final class LoggerHandler {
         return getFileHandler(new SimpleFormatter());
     }
 
+    public void enablePrinting() {
+        this.printingEnabled = true;
+    }
+
+    public void disablePrinting() {
+        this.printingEnabled = false;
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
     private FileHandler getFileHandler(Formatter formatter) {
         Long currentTime = System.nanoTime();
         String timeStamp = Integer.toString(currentTime.intValue(), 16);
@@ -100,17 +112,5 @@ public final class LoggerHandler {
 
         }
         return fh;
-    }
-
-    public void enablePrinting() {
-        this.printingEnabled = true;
-    }
-
-    public void disablePrinting() {
-        this.printingEnabled = false;
-    }
-
-    public Logger getLogger() {
-        return logger;
     }
 }

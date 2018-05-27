@@ -3,14 +3,15 @@ package com.git_leon.selenium.tools.browsertools;
 import com.git_leon.selenium.tools.ReflectionUtils;
 import com.git_leon.selenium.tools.browsertools.browserhandler.BrowserHandler;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public abstract class WebPage {
-    protected WebCrawl crawler;
+    protected final WebDriver driver;
     protected BrowserHandler browserHandler;
 
-    public WebPage(WebCrawl web) {
-        this.crawler = web;
-        this.browserHandler = crawler.browserHandler;
+    public WebPage(WebDriver driver) {
+        this.driver = driver;
+        this.browserHandler = new BrowserHandler(driver);
     }
 
     public By[] getDeclaredBys() {

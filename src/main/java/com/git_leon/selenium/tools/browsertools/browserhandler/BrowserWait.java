@@ -26,34 +26,6 @@ public class BrowserWait implements BrowserWaitInterface {
     }
 
     /**
-     * check if element is enabled & handle potential exception
-     *
-     * @param we element to check enabledness of
-     * @return true if element is enabled
-     */
-    private boolean isEnabled(WebElement we) {
-        try {
-            return we.isEnabled();
-        } catch (WebDriverException e) {
-            return false;
-        }
-    }
-
-    /**
-     * check if element is displaed & handle potential exception
-     *
-     * @param we element to check display of
-     * @return true if element is display
-     */
-    private boolean isDisplayed(WebElement we) {
-        try {
-            return we.isDisplayed();
-        } catch (WebDriverException e) {
-            return false;
-        }
-    }
-
-    /**
      * wait for element to be enabled
      *
      * @param by        selector used to query for element on DOM
@@ -276,5 +248,34 @@ public class BrowserWait implements BrowserWaitInterface {
             outcome = true;
         }
         return outcome;
+    }
+
+
+    /**
+     * check if element is enabled & handle potential exception
+     *
+     * @param we element to check enabledness of
+     * @return true if element is enabled
+     */
+    private boolean isEnabled(WebElement we) {
+        try {
+            return we.isEnabled();
+        } catch (WebDriverException e) {
+            return false;
+        }
+    }
+
+    /**
+     * check if element is displaed & handle potential exception
+     *
+     * @param we element to check display of
+     * @return true if element is display
+     */
+    private boolean isDisplayed(WebElement we) {
+        try {
+            return we.isDisplayed();
+        } catch (WebDriverException e) {
+            return false;
+        }
     }
 }

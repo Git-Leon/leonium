@@ -1,15 +1,15 @@
-package com.git_leon.selenium.owasp_juiceshop.pages;
+package com.git_leon.selenium.owaspjuiceshop;
 
-import com.git_leon.selenium.tools.browsertools.WebCrawl;
 import com.git_leon.selenium.tools.browsertools.WebPage;
 import com.git_leon.selenium.tools.browsertools.With;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 /**
  * @author leon on 4/10/18.
  */
 public class SearchPage extends WebPage {
-    public SearchPage(WebCrawl web) {
+    public SearchPage(WebDriver web) {
         super(web);
     }
 
@@ -38,8 +38,9 @@ public class SearchPage extends WebPage {
         browserHandler.click(byButtonSearch);
     }
 
-    public void clickAppleJuice() {
+    public AppleJuiceWidget clickAppleJuice() {
         By byImageAppleJuice = With.attributeValue("src", "/public/images/products/apple_juice.jpg");
         browserHandler.click(byImageAppleJuice);
+        return new AppleJuiceWidget(super.driver);
     }
 }

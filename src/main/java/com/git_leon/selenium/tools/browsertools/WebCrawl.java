@@ -5,19 +5,22 @@ import com.git_leon.selenium.tools.browsertools.browserwrapper.BrowserFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 
 /**
  * Created by leon on 5/25/17.
  */
 public abstract class WebCrawl {
     protected final BrowserHandler browserHandler;
+    protected final WebDriver driver;
 
     public WebCrawl() {
-        this(BrowserFactory.HTMLUNIT.getBrowserHandler());
+        this(BrowserFactory.HTMLUNIT.getDriver());
     }
 
-    public WebCrawl(BrowserHandler browserHandler) {
-        this.browserHandler = browserHandler;
+    public WebCrawl(WebDriver driver) {
+        this.driver = driver;
+        this.browserHandler = new BrowserHandler(driver);
     }
 
     @Before

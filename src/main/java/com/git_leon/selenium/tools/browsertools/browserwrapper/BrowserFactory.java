@@ -26,4 +26,8 @@ public enum BrowserFactory {
     public BrowserHandler getBrowserHandler() {
         return new BrowserHandler(webDriverConstructor.get());
     }
+
+    public WebDriver getDriver() {
+        return webDriverConstructor.get();
+    }
 }
