@@ -58,24 +58,10 @@
             <version>3.4.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.detro.ghostdriver/phantomjsdriver -->
-        <!-- https://mvnrepository.com/artifact/com.github.klieber/phantomjs -->
-        <dependency>
-            <groupId>com.github.klieber</groupId>
-            <artifactId>phantomjs</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>2.2.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.git-leon</groupId>
-            <artifactId>randomutils</artifactId>
-            <version>1.0</version>
         </dependency>
 
     </dependencies>

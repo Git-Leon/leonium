@@ -13,7 +13,7 @@ import static java.util.logging.Level.*;
  * Created by leon on 5/15/17.
  */
 public final class LoggerHandler {
-    private final Logger logger;
+    private final java.util.logging.Logger logger;
     private final String loggerName;
     private boolean printingEnabled;
 
@@ -25,7 +25,7 @@ public final class LoggerHandler {
         this(Logger.getLogger(loggerName));
     }
 
-    public LoggerHandler(Logger logger) {
+    public LoggerHandler(java.util.logging.Logger logger) {
         this.logger = logger;
         this.loggerName = logger.getName();
         logger.setUseParentHandlers(false);

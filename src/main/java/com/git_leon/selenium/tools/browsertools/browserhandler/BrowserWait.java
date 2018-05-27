@@ -16,6 +16,10 @@ public class BrowserWait implements BrowserWaitInterface {
     private final WebDriver driver;
     private final int waitSeconds;
 
+    public BrowserWait(WebDriver driver) {
+        this(driver, 15);
+    }
+
     public BrowserWait(WebDriver driver, int waitSeconds) {
         this.driver = driver;
         this.waitSeconds = waitSeconds;
@@ -247,33 +251,8 @@ public class BrowserWait implements BrowserWaitInterface {
      */
     public WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
         for (SelectorWaitCondition condition : waitConditions) {
-            switch (condition) {
-                case INVISIBILITY:
-                    forInvisibility(by);
-                    break;
-
-                case VISIBILITY:
-                    forVisibility(by);
-                    break;
-
-                case ENABLED:
-                    forEnabled(by, true);
-                    break;
-
-                case DISABLED:
-                    forEnabled(by, false);
-                    break;
-
-                case CLICKABILITY:
-                    forClickability(by);
-                    break;
-
-                case NOT_STALE:
-                    forNotStale(by);
-                    break;
-            }
+            condition.waitFor(by, driver); // TODO - Make a decision
         }
-
         return forPresence(by);
     }
 

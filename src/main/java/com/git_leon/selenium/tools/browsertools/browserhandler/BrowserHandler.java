@@ -57,23 +57,43 @@ public class BrowserHandler {
 
 
     public void click(By by) {
-        getWebEntity(by).click();
+        WebEntity we = getWebEntity(by);
+        if (options.SCREENSHOT_ON_CLICK.getValue()) {
+            we.getScreenshot();
+        }
+        we.click();
     }
 
     public Select select(By by) {
-        return getWebEntity(by).toSelect();
+        WebEntity we = getWebEntity(by);
+        if (options.SCREENSHOT_ON_SELECT.getValue()) {
+            we.getScreenshot();
+        }
+        return we.toSelect();
     }
 
     public void selectByIndex(By by, int index) {
-        getWebEntity(by).selectByIndex(index);
+        WebEntity we = getWebEntity(by);
+        if (options.SCREENSHOT_ON_SELECT.getValue()) {
+            we.getScreenshot();
+        }
+        we.selectByIndex(index);
     }
 
     public void selectByVisibleText(By by, String visibleText) {
-        getWebEntity(by).selectByVisibleText(visibleText);
+        WebEntity we = getWebEntity(by);
+        if (options.SCREENSHOT_ON_SELECT.getValue()) {
+            we.getScreenshot();
+        }
+        we.selectByVisibleText(visibleText);
     }
 
     public void sendKeys(By by, CharSequence... keys) {
-        getWebEntity(by).sendKeys(keys);
+        WebEntity we = getWebEntity(by);
+        if (options.SCREENSHOT_ON_SENDKEYS.getValue()) {
+            we.getScreenshot();
+        }
+        we.sendKeys(keys);
     }
 
     public void close() {

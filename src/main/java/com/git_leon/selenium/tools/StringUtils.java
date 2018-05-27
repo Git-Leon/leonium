@@ -13,11 +13,11 @@ public final class StringUtils {
         return str.replaceFirst(firstCharacter, firstCharacter.toUpperCase());
     }
 
-    public static String padLeft(Object string, int n) {
+    public static String padLeft(String string, int n) {
         return String.format("%1$" + n + "s", string);
     }
 
-    public static String padRight(Object string, int n) {
+    public static String padRight(String string, int n) {
         return padLeft(string, -n);
     }
 
@@ -26,9 +26,9 @@ public final class StringUtils {
         return removeSubstrings(original, removableChars.split(""));
     }
 
-    public static String removeSubstrings(String baseString, String... removeableStrings) {
-        for (String removeableString : removeableStrings) {
-            baseString = baseString.replace(removeableString, "");
+    public static String removeSubstrings(String baseString, String... removableStrings) {
+        for (String removableString : removableStrings) {
+            baseString = baseString.replace(removableString, "");
         }
         return baseString;
     }
@@ -42,7 +42,7 @@ public final class StringUtils {
     }
 
     // return String representation of specified integer
-    public static String toAlphaString(long number) {
+    public static String getAlphaValue(long number) {
         StringBuilder sb = new StringBuilder();
         while (number-- > 0) {
             sb.append((char) ('a' + (number % 26)));

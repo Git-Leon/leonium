@@ -13,7 +13,7 @@ public abstract class WebCrawl {
     protected final BrowserHandler browserHandler;
 
     public WebCrawl() {
-        this(BrowserFactory.PHANTOMJS.getBrowserHandler());
+        this(BrowserFactory.HTMLUNIT.getBrowserHandler());
     }
 
     public WebCrawl(BrowserHandler browserHandler) {

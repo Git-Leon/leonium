@@ -13,7 +13,7 @@ public final class LoggerWarehouse {
     /**
      * Only one logger per class
      * @param c - class to generate a logger for
-     * @return respective LoggerHandler object
+     * @return respective MyLogger object
      */ // TODO - Rethink the nature of the "one logger per class" rule
     public static final LoggerHandler getLogger(Class c) {
         addLogger(c);

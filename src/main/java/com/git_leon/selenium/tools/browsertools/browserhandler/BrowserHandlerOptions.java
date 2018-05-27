@@ -6,9 +6,9 @@ package com.git_leon.selenium.tools.browsertools.browserhandler;
 
 public final class BrowserHandlerOptions {
     public final BrowserOption<Boolean> SCREENSHOT_ON_EVENT = screenshotOnEvent();
-    public final BrowserOption<Boolean> SCREENSHOT_ON_CLICK = new BrowserOption<>();
-    public final BrowserOption<Boolean> SCREENSHOT_ON_SELECT = new BrowserOption<>();
-    public final BrowserOption<Boolean> SCREENSHOT_ON_SENDKEYS = new BrowserOption<>();
+    public final BrowserOption<Boolean> SCREENSHOT_ON_CLICK = new BrowserOption<>(false);
+    public final BrowserOption<Boolean> SCREENSHOT_ON_SELECT = new BrowserOption<>(false);
+    public final BrowserOption<Boolean> SCREENSHOT_ON_SENDKEYS = new BrowserOption<>(false);
     public final BrowserOption<Integer> DEFAULT_WAIT = new BrowserOption<>(15);
 
     public class BrowserOption<T> {
@@ -18,6 +18,7 @@ public final class BrowserHandlerOptions {
         }
 
         public BrowserOption(T value) {
+            this.value = value;
         }
 
         public void setValue(T value) {

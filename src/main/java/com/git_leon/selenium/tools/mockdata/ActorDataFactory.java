@@ -1,7 +1,7 @@
 package com.git_leon.selenium.tools.mockdata;
 
+import com.git_leon.selenium.tools.RandomUtils;
 import com.git_leon.selenium.tools.StringUtils;
-import com.github.git_leon.RandomUtils;
 
 /**
  * Created by leon on 8/17/17.
@@ -12,7 +12,7 @@ public class ActorDataFactory {
     }
 
     public static String createUniqueName() {
-        String name = StringUtils.toAlphaString(System.nanoTime());
+        String name = StringUtils.getAlphaValue(System.nanoTime());
         return StringUtils.capitalizeFirstChar(name);
     }
 
