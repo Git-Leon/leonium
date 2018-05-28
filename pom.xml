@@ -71,7 +71,7 @@
         <dependency>
             <groupId>com.github.git-leon</groupId>
             <artifactId>loggingutils</artifactId>
-            <version>1.1</version>
+            <version>1.2</version>
         </dependency>
 
         <dependency>

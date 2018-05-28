@@ -76,7 +76,6 @@ public class BrowserWait implements BrowserWaitInterface {
      * @return element if clickable within specified wait-time
      */
     public WebElement forClickability(By by) {
-        long t0 = System.currentTimeMillis();
         until(waitSeconds, ExpectedConditions.elementToBeClickable(by));
         return forPresence(by);
     }

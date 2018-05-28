@@ -13,27 +13,13 @@ public enum SelectorWaitCondition {
         new BrowserWait(driver).forInvisibility(by);
         return null;
     }),
-    VISIBILITY((By by, WebDriver driver) -> {
-        return new BrowserWait(driver).forVisibility(by);
-    }),
-    CLICKABILITY((By by, WebDriver driver) -> {
-        return new BrowserWait(driver).forClickability(by);
-    }),
-    ENABLED((By by, WebDriver driver) -> {
-        return new BrowserWait(driver).forEnabled(by, true);
-    }),
-    DISABLED((By by, WebDriver driver) -> {
-        return new BrowserWait(driver).forEnabled(by, false);
-    }),
-    PRESENT((By by, WebDriver driver) -> {
-        return new BrowserWait(driver).forPresence(by);
-    }),
-    PRESENCES((By by, WebDriver driver) -> {
-        return new BrowserWait(driver).forPresences(by);
-    }),
-    NOT_STALE((By by, WebDriver driver) -> {
-        return new BrowserWait(driver).forNotStale(by);
-    });
+    VISIBILITY((By by, WebDriver driver) -> new BrowserWait(driver).forVisibility(by)),
+    CLICKABILITY((By by, WebDriver driver) -> new BrowserWait(driver).forClickability(by)),
+    ENABLED((By by, WebDriver driver) -> new BrowserWait(driver).forEnabled(by, true)),
+    DISABLED((By by, WebDriver driver) -> new BrowserWait(driver).forEnabled(by, false)),
+    PRESENT((By by, WebDriver driver) -> new BrowserWait(driver).forPresence(by)),
+    PRESENCES((By by, WebDriver driver) -> new BrowserWait(driver).forPresences(by)),
+    NOT_STALE((By by, WebDriver driver) -> new BrowserWait(driver).forNotStale(by));
     private final BiFunction<By, WebDriver, Object> waitFunction;
 
     SelectorWaitCondition(BiFunction<By, WebDriver, Object> waitFunction) {
