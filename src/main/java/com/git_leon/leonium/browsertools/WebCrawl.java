@@ -15,7 +15,7 @@ public abstract class WebCrawl {
     protected final WebDriver driver;
 
     public WebCrawl() {
-        this(BrowserHandlerFactory.HTMLUNIT.getDriver());
+        this(BrowserHandlerFactory.PHANTOMJS.getDriver());
     }
 
     public WebCrawl(WebDriver driver) {

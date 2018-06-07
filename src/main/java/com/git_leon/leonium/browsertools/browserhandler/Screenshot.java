@@ -61,9 +61,10 @@ class Screenshot {
             String filePath = String.format("%s/%s-%s.png", artifactFolder, imageName, currentTime);
             File outputFile = new File(filePath);
             try {
-                ImageIO.write(bufferedImage, "png", outputFile);
+                outputFile.getParentFile().mkdirs();
+                ImageIO.write(getFullBufferedImage(), "png", outputFile);
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new Error(e);
             }
             this.file = outputFile;
         }

@@ -1,9 +1,6 @@
 package com.git_leon.leonium.browsertools.browserhandler;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -31,10 +28,7 @@ public class BrowserHandler {
 
     // return non-stale WebElement specified by byType
     public WebElement getElement(By by) {
-        WebElement we = wait.forConditions(by,
-                SelectorWaitCondition.PRESENT,
-                SelectorWaitCondition.VISIBILITY);
-        return we;
+        return getWebEntity(by).getElement();
     }
 
     public WebEntity getWebEntity(By by) {
@@ -99,14 +93,13 @@ public class BrowserHandler {
     public void close() {
         try {
             driver.close();
-        } catch (Exception e) { // TODO - Replace with explicit Exception type
+        } catch (WebDriverException e) {
+            try {
+                driver.quit();
+            } catch (WebDriverException ee) {
+                throw new Error(ee);
+            }
         }
-
-        try {
-            driver.quit();
-        } catch (Exception e) { // TODO - Replace with explicit Exception type
-        }
-
     }
 
     public void highlightElement(By by, String color) {
@@ -121,5 +114,10 @@ public class BrowserHandler {
         for (By by : bys) {
             highlightElement(by, color);
         }
+    }
+
+    @Override
+    public void finalize() {
+        close();
     }
 }

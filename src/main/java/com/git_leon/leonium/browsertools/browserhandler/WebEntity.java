@@ -68,7 +68,7 @@ public class WebEntity {
         }
     }
 
-    private WebElement getElement() {
+    public WebElement getElement() {
         wait.forPresence(selector);
         return driver.findElement(selector);
     }

@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 public class SearchPage extends WebPage {
     public SearchPage(WebDriver web) {
         super(web);
+        browserHandler.options.SCREENSHOT_ON_EVENT.setValue(true);
     }
 
     public String getUrl() {
