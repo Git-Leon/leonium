@@ -10,15 +10,16 @@ import java.awt.image.BufferedImage;
  * Created by leon on 5/25/17.
  */
 class WebElementScreenshot extends Screenshot {
-    private final WebElement webElement;
+    private final WebEntity webEntity;
 
-    public WebElementScreenshot(WebDriver driver, WebElement webElement) {
-        super(driver, webElement.toString());
-        this.webElement = webElement;
+    public WebElementScreenshot(WebDriver driver, By by) {
+        super(driver, new WebEntity(by, driver).toString());
+        this.webEntity = new WebEntity(by, driver);
     }
 
     @Override
     public BufferedImage getFullBufferedImage() {
+        WebElement webElement = webEntity.getElement();
         Point p = webElement.getLocation();
         Dimension dim = webElement.getSize();
 

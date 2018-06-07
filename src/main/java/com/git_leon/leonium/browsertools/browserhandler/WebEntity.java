@@ -13,6 +13,10 @@ public class WebEntity {
     private final WebDriver driver;
     private BrowserWaitInterface wait;
 
+    public WebEntity(By by, WebDriver driver) {
+        this(by, driver, new BrowserWait(driver));
+    }
+
     public WebEntity(By by, WebDriver driver, BrowserWaitInterface browserWait) {
         this.selector = by;
         this.driver = driver;
@@ -74,7 +78,7 @@ public class WebEntity {
     }
 
     public File getScreenshot() {
-        WebElementScreenshot screenshot = new WebElementScreenshot(driver, getElement());
+        WebElementScreenshot screenshot = new WebElementScreenshot(driver, selector);
         return screenshot.getFile();
     }
 
