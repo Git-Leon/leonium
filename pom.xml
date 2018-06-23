@@ -8,6 +8,7 @@
     <artifactId>leonium</artifactId>
     <version>1.0</version>
 
+    <!--my private repo-->
     <repositories>
         <repository>
             <id>git-leon-utils</id>
@@ -24,6 +25,7 @@
 
     <build>
         <plugins>
+            <!--configure for java 8-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -33,7 +35,7 @@
                 </configuration>
             </plugin>
 
-
+            <!--maven shade plugin for uber jars-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -52,20 +54,14 @@
 
     <dependencies>
 
+        <!--leonium test automation-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.4.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.detro.ghostdriver/phantomjsdriver -->
-        <!-- https://mvnrepository.com/artifact/com.github.klieber/phantomjs -->
-        <dependency>
-            <groupId>com.github.klieber</groupId>
-            <artifactId>phantomjs</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-
+        <!--web driver configuration automation-->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
@@ -74,10 +70,21 @@
 
         <dependency>
             <groupId>com.github.git-leon</groupId>
+            <artifactId>simplelogger</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
             <artifactId>randomutils</artifactId>
             <version>1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>stringutils</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>
