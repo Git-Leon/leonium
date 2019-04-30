@@ -8,20 +8,22 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
  * @author leon on 5/24/18.
  */
 public enum BrowserHandlerFactory {
-    CHROME(() -> new ChromeDriver(DesiredCapabilitiesFactory.getChrome())),
-    FIREFOX(() -> new FirefoxDriver(DesiredCapabilitiesFactory.getFirefox())),
-    PHANTOMJS(() -> new PhantomJSDriver(DesiredCapabilitiesFactory.getPhantomJs())),
-    HTMLUNIT(() -> new HtmlUnitDriver(DesiredCapabilitiesFactory.getHtmlUnit()));
+    CHROME(DesiredCapabilitiesFactory.getChrome(), ChromeDriver::new),
+    FIREFOX(DesiredCapabilitiesFactory.getFirefox(), FirefoxDriver::new),
+    PHANTOMJS(DesiredCapabilitiesFactory.getPhantomJs(), PhantomJSDriver::new),
+    HTMLUNIT(DesiredCapabilitiesFactory.getHtmlUnit(), HtmlUnitDriver::new);
+
     private final Supplier<WebDriver> webDriverConstructor;
 
-    BrowserHandlerFactory(Supplier<WebDriver> constructor) {
-        this.webDriverConstructor = constructor;
+    BrowserHandlerFactory(Capabilities capabilities, Function<Capabilities, WebDriver> constructor) {
+        this.webDriverConstructor = () -> constructor.apply(capabilities);
     }
 
     public BrowserHandler getBrowserHandler() {
