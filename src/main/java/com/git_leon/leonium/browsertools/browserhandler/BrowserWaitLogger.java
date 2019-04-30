@@ -168,7 +168,7 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public boolean forPageState(String desiredState) {
         String logMessage = "page state to be [ %s ]";
-        logMessage = formatMessage(logMessage);
+        logMessage = formatMessage(logMessage, desiredState);
         return logger.invokeAndLog(wait::forPageState, desiredState, logMessage);
     }
 
@@ -180,7 +180,7 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      */
     public WebElement forKeyable(By by) {
         String logMessage = "[ %s ] to become keyable";
-        logMessage = formatMessage(logMessage);
+        logMessage = formatMessage(logMessage, by);
         return logger.invokeAndLog(wait::forKeyable, by, logMessage);
     }
 
