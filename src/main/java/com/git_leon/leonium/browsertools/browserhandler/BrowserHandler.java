@@ -116,6 +116,10 @@ public class BrowserHandler {
         }
     }
 
+    public Screenshot screenshot() {
+        return new Screenshot(this.driver, this.driver.getTitle());
+    }
+
     @Override
     public void finalize() {
         close();
