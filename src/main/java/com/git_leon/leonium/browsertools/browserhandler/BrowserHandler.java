@@ -26,6 +26,10 @@ public class BrowserHandler {
         this.wait = wait;
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     // return non-stale WebElement specified by byType
     public WebElement getElement(By by) {
         return getWebEntity(by).getElement();
