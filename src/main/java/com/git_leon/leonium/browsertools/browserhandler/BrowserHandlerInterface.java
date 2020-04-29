@@ -83,7 +83,7 @@ public interface BrowserHandlerInterface {
     }
 
 
-    default void sendKeys(By by, CharSequence... keys) {
+    default void sendKeys(By by, String keys) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SENDKEYS.getValue()) {
             we.getScreenshot();

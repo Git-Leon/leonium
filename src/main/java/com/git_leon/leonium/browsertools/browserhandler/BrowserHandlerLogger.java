@@ -169,7 +169,7 @@ public class BrowserHandlerLogger implements BrowserHandlerInterface {
     }
 
     @Override
-    public void sendKeys(By by, CharSequence... keys) {
+    public void sendKeys(By by, String keys) {
         String attemptMessage = "Attempting to send keys [ %s ], using selector [ %s ]";
         String successMessage = "Successfully sent keys [ %s ], using selector [ %s ]";
 
