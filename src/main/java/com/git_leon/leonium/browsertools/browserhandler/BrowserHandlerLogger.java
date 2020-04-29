@@ -27,7 +27,8 @@ public class BrowserHandlerLogger implements BrowserHandlerInterface {
     }
 
     public BrowserHandlerLogger(BrowserHandlerInterface browserHandler) {
-        this(browserHandler, SimpleLoggerWarehouse.getLogger(browserHandler.getDriver().toString()));
+        this(browserHandler, SimpleLoggerWarehouse.getLogger(
+                browserHandler.getDriver().toString()));
     }
 
     public BrowserHandlerLogger(WebDriver driver) {
@@ -182,9 +183,9 @@ public class BrowserHandlerLogger implements BrowserHandlerInterface {
         String attemptMessage = "Attempting to close `BrowserHandler` instance, [ %s ]";
         String successMessage  = "Successfully closed `BrowserHandler` instance, [ %s ]";
 
-        getLogger().info(attemptMessage);
+        getLogger().info(attemptMessage, decoratee.toString());
         decoratee.close();
-        getLogger().info(successMessage);
+        getLogger().info(successMessage, decoratee.toString());
     }
 
     @Override
