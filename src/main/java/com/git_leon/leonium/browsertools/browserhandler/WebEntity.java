@@ -96,6 +96,15 @@ public class WebEntity {
                 .replaceAll("]", "");
     }
 
+    public static String toString(WebElement webElement) {
+        // By format = "[foundFrom] -> locator: term"
+        // see RemoteWebElement toString() implementation
+        String webElementStr = webElement.toString();
+        return webElementStr
+                .replaceAll("\\[.*?\\] -> ", "")
+                .replaceAll("]", "");
+    }
+
     public static By getByValue(WebElement we) {
         // By format = "[foundFrom] -> locator: term"
         // see RemoteWebElement toString() implementation

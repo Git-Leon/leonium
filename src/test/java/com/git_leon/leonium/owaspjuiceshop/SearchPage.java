@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 public class SearchPage extends WebPage {
     public SearchPage(WebDriver web) {
         super(web);
-        browserHandler.options.SCREENSHOT_ON_EVENT.setValue(true);
+        getBrowserHandler().getOptions().SCREENSHOT_ON_EVENT.setValue(true);
     }
 
     public String getUrl() {
@@ -19,29 +19,29 @@ public class SearchPage extends WebPage {
     }
 
     public void navigateTo() {
-        browserHandler.navigateTo(getUrl());
+        getBrowserHandler().navigateTo(getUrl());
     }
 
     public void selectLanguage(String language) {
         By bySelectLanguage = By.id("languageMenu");
         By byLanguageNameHopefully = With.text(language);
-        browserHandler.click(bySelectLanguage);
-        browserHandler.click(byLanguageNameHopefully);
+        getBrowserHandler().click(bySelectLanguage);
+        getBrowserHandler().click(byLanguageNameHopefully);
     }
 
     public void search(String keysToSend) {
         By byInputSearch = By.className("form-control");
-        browserHandler.sendKeys(byInputSearch, keysToSend);
+        getBrowserHandler().sendKeys(byInputSearch, keysToSend);
     }
 
     public void clickSearch() {
         By byButtonSearch = By.id("searchButton");
-        browserHandler.click(byButtonSearch);
+        getBrowserHandler().click(byButtonSearch);
     }
 
     public AppleJuiceWidget clickAppleJuice() {
         By byImageAppleJuice = With.attributeValue("src", "/public/images/products/apple_juice.jpg");
-        browserHandler.click(byImageAppleJuice);
-        return new AppleJuiceWidget(super.driver);
+        getBrowserHandler().click(byImageAppleJuice);
+        return new AppleJuiceWidget(getBrowserHandler().getDriver());
     }
 }

@@ -1,15 +1,14 @@
 package com.git_leon.leonium.browsertools.browserhandler;
 
 
-
 import com.github.git_leon.logging.FunctionExecutionTimeLogger;
+import com.github.git_leon.logging.SimpleLoggerWarehouse;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class BrowserWaitLogger implements BrowserWaitInterface {
     private final BrowserWait wait;
@@ -20,7 +19,7 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
 
         String className = driver.getClass().getSimpleName();
         String hexDecaVal = Integer.toString(driver.hashCode(), 16);
-        this.logger = new FunctionExecutionTimeLogger(Logger.getLogger(className + "@" + hexDecaVal));
+        this.logger = new FunctionExecutionTimeLogger(SimpleLoggerWarehouse.getLogger(className + "@" + hexDecaVal));
     }
 
     private String formatMessage(String s, Object... o) {

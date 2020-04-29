@@ -17,8 +17,8 @@ public class AppleJuiceWidget extends WebPage {
     public void leaveProductReview(String reviewMessage) {
         By byInputProductReview = By.id("product_review");
         By byButtonSubmit = By.id("submitButton");
-        browserHandler.sendKeys(byInputProductReview, reviewMessage);
-        browserHandler.click(byButtonSubmit);
+        getBrowserHandler().sendKeys(byInputProductReview, reviewMessage);
+        getBrowserHandler().click(byButtonSubmit);
     }
 
     public void spam(Integer numberOfTimes) {
@@ -26,5 +26,10 @@ public class AppleJuiceWidget extends WebPage {
             leaveProductReview("This is such an awesome tool.");
             leaveProductReview("I am testing a selenium bot.");
         }
+    }
+
+    @Override
+    public void navigateTo() {
+
     }
 }
