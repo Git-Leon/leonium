@@ -23,6 +23,7 @@ public class BrowserHandlerLogger implements BrowserHandlerInterface {
     public BrowserHandlerLogger(BrowserHandlerInterface browserHandler, SimpleLoggerInterface logger) {
         this.decoratee = browserHandler;
         this.logger = logger;
+        logger.enabled();
     }
 
     public BrowserHandlerLogger(BrowserHandlerInterface browserHandler) {
