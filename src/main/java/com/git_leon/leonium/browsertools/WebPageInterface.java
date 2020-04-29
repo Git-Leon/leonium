@@ -2,6 +2,7 @@ package com.git_leon.leonium.browsertools;
 
 import com.git_leon.leonium.ReflectionUtils;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -21,7 +22,7 @@ public interface WebPageInterface {
         getBrowserHandler().highlightElements(getDeclaredBys(), "yellow");
     }
 
-    BrowserHandler getBrowserHandler();
+    BrowserHandlerInterface getBrowserHandler();
 
     void navigateTo();
 }

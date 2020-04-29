@@ -1,20 +1,22 @@
 package com.git_leon.leonium.browsertools;
 
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerLogger;
 import org.openqa.selenium.WebDriver;
 
 public abstract class WebPage implements WebPageInterface {
-    private BrowserHandler browserHandler;
+    private BrowserHandlerInterface browserHandler;
 
-    public WebPage(BrowserHandler browserHandler) {
-        this(browserHandler.getDriver());
+    public WebPage(BrowserHandlerInterface browserHandler) {
+        this.browserHandler = browserHandler;
     }
 
     public WebPage(WebDriver driver) {
-        this.browserHandler = new BrowserHandler(driver);
+        this.browserHandler = new BrowserHandlerLogger(driver);
     }
 
-    public BrowserHandler getBrowserHandler() {
+    public BrowserHandlerInterface getBrowserHandler() {
         return browserHandler;
     }
 }

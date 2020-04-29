@@ -29,6 +29,10 @@ public class BrowserHandlerLogger implements BrowserHandlerInterface {
         this(browserHandler, SimpleLoggerWarehouse.getLogger(browserHandler.getDriver().toString()));
     }
 
+    public BrowserHandlerLogger(WebDriver driver) {
+        this(new BrowserHandler(driver));
+    }
+
     public SimpleLoggerInterface getLogger() {
         return logger;
     }
