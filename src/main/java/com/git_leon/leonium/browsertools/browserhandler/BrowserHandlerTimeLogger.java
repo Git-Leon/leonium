@@ -104,10 +104,7 @@ public class BrowserHandlerTimeLogger extends BrowserHandlerDecorateeAbstractCla
         WebEntity we = new WebEntity(by, getDriver());
 
         attemptMessage = String.format(attemptMessage, by);
-        getLogger().invokeAndLog((nil) -> {
-            getBrowserHandlerDecoratee().click(by);
-            return null;
-        }, null, attemptMessage);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::click, by, attemptMessage);
         getLogger().info(successMessage, we.toString(), by);
     }
 
@@ -131,10 +128,7 @@ public class BrowserHandlerTimeLogger extends BrowserHandlerDecorateeAbstractCla
         String successMessage = "Successfully selected index [ %s ], using selector [ %s ]";
 
         attemptMessage = String.format(attemptMessage, by);
-        getLogger().invokeAndLog((nil) -> {
-            getBrowserHandlerDecoratee().selectByIndex(by, index);
-            return null;
-        }, null, attemptMessage);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::selectByIndex, by, index, attemptMessage);
         getLogger().info(successMessage, index, by);
     }
 
@@ -145,10 +139,7 @@ public class BrowserHandlerTimeLogger extends BrowserHandlerDecorateeAbstractCla
         String successMessage = "Successfully selected text [ %s ], using selector [ %s ]";
 
         attemptMessage = String.format(attemptMessage, visibleText, by);
-        getLogger().invokeAndLog((nil) -> {
-            getBrowserHandlerDecoratee().selectByVisibleText(by, visibleText);
-            return null;
-        }, null, attemptMessage);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::selectByVisibleText, by, visibleText, attemptMessage);
         getLogger().info(successMessage, visibleText, by);
     }
 
@@ -159,10 +150,7 @@ public class BrowserHandlerTimeLogger extends BrowserHandlerDecorateeAbstractCla
         String successMessage = "Successfully sent keys [ '%s' ], using selector [ %s ]";
 
         attemptMessage = String.format(attemptMessage, keys, by);
-        getLogger().invokeAndLog((nil) -> {
-            getBrowserHandlerDecoratee().sendKeys(by, keys);
-            return null;
-        }, null, attemptMessage);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::sendKeys, by, keys, attemptMessage);
         getLogger().info(successMessage, keys, by);
     }
 
@@ -184,10 +172,7 @@ public class BrowserHandlerTimeLogger extends BrowserHandlerDecorateeAbstractCla
         String successMessage = "Successfully highlighted element with color [ %s ], using selector [ %s ]";
 
         attemptMessage = String.format(attemptMessage, color, by);
-        getLogger().invokeAndLog((nil) -> {
-            getBrowserHandlerDecoratee().highlightElement(by, color);
-            return null;
-        }, null, attemptMessage);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::highlightElement, by, color, attemptMessage);
         getLogger().info(successMessage, color, by);
     }
 
@@ -199,10 +184,7 @@ public class BrowserHandlerTimeLogger extends BrowserHandlerDecorateeAbstractCla
         String selectors = Arrays.toString(bys);
 
         attemptMessage = String.format(attemptMessage, color, selectors);
-        getLogger().invokeAndLog((nil) -> {
-            getBrowserHandlerDecoratee().highlightElements(bys, color);
-            return null;
-        }, null, attemptMessage);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::highlightElements, bys, color, attemptMessage);
         getLogger().info(successMessage, color, selectors);
     }
 

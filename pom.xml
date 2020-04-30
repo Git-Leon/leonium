@@ -71,7 +71,7 @@
         <dependency>
             <groupId>com.github.git_leon</groupId>
             <artifactId>simplelogger</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.2</version>
         </dependency>
 
 
