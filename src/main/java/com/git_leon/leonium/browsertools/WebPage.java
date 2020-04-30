@@ -2,6 +2,7 @@ package com.git_leon.leonium.browsertools;
 
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerLoggerImpl;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerTimeLogger;
 import org.openqa.selenium.WebDriver;
 
 public abstract class WebPage implements WebPageInterface {
@@ -12,7 +13,7 @@ public abstract class WebPage implements WebPageInterface {
     }
 
     public WebPage(WebDriver driver) {
-        this.browserHandler = new BrowserHandlerLoggerImpl(driver);
+        this(new BrowserHandlerTimeLogger(new BrowserHandlerLoggerImpl(driver)));
     }
 
     public BrowserHandlerInterface getBrowserHandler() {
