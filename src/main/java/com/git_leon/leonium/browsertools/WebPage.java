@@ -1,8 +1,8 @@
 package com.git_leon.leonium.browsertools;
 
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
-import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerLoggerImpl;
-import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerTimeLogger;
+import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
+import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerTimeLogger;
 import org.openqa.selenium.WebDriver;
 
 public abstract class WebPage implements WebPageInterface {

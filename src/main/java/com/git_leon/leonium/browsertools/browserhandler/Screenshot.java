@@ -14,7 +14,7 @@ import java.io.InputStream;
 /**
  * Created by leon on 5/25/17.
  */
-class Screenshot {
+public class Screenshot {
     protected final RemoteWebDriver remoteWebDriver;
     protected final BufferedImage bufferedImage;
     protected final String imageName;
