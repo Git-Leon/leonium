@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver;
  * @author leonhunter
  * @created 04/29/2020 - 8:42 PM
  */
-abstract public class BrowserHandlerDecorateeAbstractClass implements BrowserHandlerDecoratorInterface {
+abstract public class BrowserHandlerDecoratorAbstractClass implements BrowserHandlerDecoratorInterface {
     private final BrowserHandlerInterface decoratee;
 
-    public BrowserHandlerDecorateeAbstractClass(BrowserHandlerInterface decoratee) {
+    public BrowserHandlerDecoratorAbstractClass(BrowserHandlerInterface decoratee) {
         this.decoratee = decoratee;
     }
 
-    public BrowserHandlerDecorateeAbstractClass(WebDriver driver) {
+    public BrowserHandlerDecoratorAbstractClass(WebDriver driver) {
         this(new BrowserHandler(driver));
     }
 

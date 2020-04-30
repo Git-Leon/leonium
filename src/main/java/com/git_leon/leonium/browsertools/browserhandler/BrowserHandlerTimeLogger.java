@@ -13,7 +13,7 @@ import java.util.List;
  * @author leonhunter
  * @created 04/29/2020 - 8:35 PM
  */
-public class BrowserHandlerTimeLogger extends BrowserHandlerDecorateeAbstractClass implements BrowserHandlerLoggerInterface {
+public class BrowserHandlerTimeLogger extends BrowserHandlerDecoratorAbstractClass implements BrowserHandlerLoggerInterface {
     public BrowserHandlerTimeLogger(BrowserHandlerInterface decoratee) {
         super(decoratee);
     }
