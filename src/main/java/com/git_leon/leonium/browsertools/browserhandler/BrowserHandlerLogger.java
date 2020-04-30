@@ -171,8 +171,8 @@ public class BrowserHandlerLogger implements BrowserHandlerInterface {
 
     @Override
     public void sendKeys(By by, String keys) {
-        String attemptMessage = "Attempting to send keys [ %s ], using selector [ %s ]";
-        String successMessage = "Successfully sent keys [ %s ], using selector [ %s ]";
+        String attemptMessage = "Attempting to send keys [ '%s' ], using selector [ %s ]";
+        String successMessage = "Successfully sent keys [ '%s' ], using selector [ %s ]";
 
         getLogger().info(attemptMessage, keys, by);
         decoratee.sendKeys(by, keys);
