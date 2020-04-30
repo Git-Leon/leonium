@@ -28,8 +28,8 @@ public class BrowserHandlerLogger implements BrowserHandlerInterface {
     }
 
     public BrowserHandlerLogger(BrowserHandlerInterface browserHandler) {
-        this(browserHandler, SimpleLoggerWarehouse.getLogger(
-                StringUtils.removeCharacters(browserHandler.getDriver().toString(), ":;'`<>~!@#$%^&*()\\[\\]")));
+        this(browserHandler, SimpleLoggerWarehouse.getLogger(StringUtils.removeCharacters(
+                browserHandler.getDriver().toString(), ":;'`<>~!@#$%^&*()\\[\\]")));
     }
 
     public BrowserHandlerLogger(WebDriver driver) {
