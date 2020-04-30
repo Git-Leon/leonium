@@ -8,16 +8,15 @@ import com.github.git_leon.logging.SimpleLoggerWarehouse;
  * @author leonhunter
  * @created 04/29/2020 - 8:35 PM
  */
-public class BrowserHandlerTimeLogger implements BrowserHandlerLoggerInterface {
+public class BrowserHandlerTimeLogger extends BrowserHandlerDecorateeAbstractClass implements BrowserHandlerLoggerInterface {
+    public BrowserHandlerTimeLogger(BrowserHandlerInterface decoratee) {
+        super(decoratee);
+    }
+
     @Override
     public SimpleLoggerInterface getLogger() {
         return new FunctionExecutionTimeLogger(SimpleLoggerWarehouse.getLogger(
                 getBrowserHandlerDecoratee().getDriver().toString()));
-    }
-
-    @Override
-    public BrowserHandlerInterface getBrowserHandlerDecoratee() {
-        return null;
     }
 
     @Override
