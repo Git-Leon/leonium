@@ -1,4 +1,4 @@
-package com.git_leon.leonium.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler.waiting;
 
 
 import com.github.git_leon.logging.FunctionExecutionTimeLogger;

@@ -1,4 +1,4 @@
-package com.git_leon.leonium.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler.waiting;
 
 import com.git_leon.leonium.TimeUtils;
 import com.google.common.base.Function;

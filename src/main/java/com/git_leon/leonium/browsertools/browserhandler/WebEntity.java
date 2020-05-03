@@ -1,5 +1,8 @@
 package com.git_leon.leonium.browsertools.browserhandler;
 
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWait;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.SelectorWaitCondition;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 

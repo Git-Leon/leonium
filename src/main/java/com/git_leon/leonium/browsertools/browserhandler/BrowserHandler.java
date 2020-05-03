@@ -1,5 +1,7 @@
 package com.git_leon.leonium.browsertools.browserhandler;
 
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
 import org.openqa.selenium.WebDriver;
 
 /**
