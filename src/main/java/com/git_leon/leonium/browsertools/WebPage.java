@@ -13,7 +13,7 @@ public abstract class WebPage implements WebPageInterface {
     }
 
     public WebPage(WebDriver driver) {
-        this(new BrowserHandlerLoggerImpl(new BrowserHandlerTimeLogger(driver)));
+        this(new BrowserHandlerTimeLogger(new BrowserHandlerLoggerImpl(driver)));
     }
 
     public BrowserHandlerInterface getBrowserHandler() {
