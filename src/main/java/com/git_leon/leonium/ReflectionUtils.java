@@ -23,9 +23,9 @@ public class ReflectionUtils {
             if (f.getType().equals(fieldClass)) {
                 try {
                     boolean defaultAccess = f.isAccessible();
+                    f.setAccessible(true);
                     FieldType obj = fieldClass.cast(f.get(object));
 
-                    f.setAccessible(true);
                     fields.add(obj);
                     f.setAccessible(defaultAccess);
                 } catch (IllegalArgumentException e) {

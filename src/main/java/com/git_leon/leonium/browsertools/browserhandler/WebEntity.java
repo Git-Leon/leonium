@@ -78,6 +78,7 @@ public class WebEntity {
     }
 
     public File getScreenshot() {
+        wait.forConditions(selector, SelectorWaitCondition.VISIBILITY);
         WebElementScreenshot screenshot = new WebElementScreenshot(driver, selector);
         return screenshot.getFile();
     }

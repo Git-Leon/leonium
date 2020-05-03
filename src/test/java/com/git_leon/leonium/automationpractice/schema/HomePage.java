@@ -1,4 +1,4 @@
-package com.git_leon.leonium.automationpractice;
+package com.git_leon.leonium.automationpractice.schema;
 
 import com.git_leon.leonium.browsertools.WebPage;
 import com.git_leon.leonium.browsertools.With;
@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class HomePage extends WebPage {
     private By inputSearch = By.id("search_query_top");
+    private By submitSearchButton = By.name("submit_search");
     private By buttonWomanCategory = With.tagAttributeValue("li", "title", "Women");
     private By buttonDressesCategory = With.tagAttributeValue("li", "title", "Dresses");
     private By buttonShirtCategory = With.tagAttributeValue("li", "title", "T-shirts");
@@ -19,8 +20,11 @@ public class HomePage extends WebPage {
         super(driver);
     }
 
-    public void search(String text) {
+    public SearchResultPage search(String text) {
         getBrowserHandler().sendKeys(inputSearch, text);
+        getBrowserHandler().click(submitSearchButton);
+        getBrowserHandler().getWait().forPageLoad();
+        return new SearchResultPage(getBrowserHandler());
     }
 
     public void checkAllCheckBoxes() {
