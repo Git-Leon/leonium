@@ -20,6 +20,10 @@ public class TestSiteTraversal extends WebCrawl {
     @Override
     public void setup() {
         super.setup();
+        browserHandler
+                .getOptions()
+                .SCREENSHOT_ON_EVENT
+                .setValue(true);
     }
 
     @Override

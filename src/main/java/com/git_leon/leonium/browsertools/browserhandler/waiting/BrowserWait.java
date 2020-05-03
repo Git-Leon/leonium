@@ -9,4 +9,7 @@ public class BrowserWait extends AbstractBrowserWait {
     public BrowserWait(int waitSeconds, WebDriver driver) {
         super(waitSeconds, driver);
     }
+    public BrowserWait(WebDriver driver) {
+        super(15, driver);
+    }
 }

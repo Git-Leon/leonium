@@ -2,6 +2,7 @@ package com.git_leon.leonium.browsertools.browserhandler;
 
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWait;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.SelectorWaitCondition;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
@@ -17,7 +18,7 @@ public class WebEntity {
     private BrowserWaitInterface wait;
 
     public WebEntity(By by, WebDriver driver) {
-        this(by, driver, new BrowserWait(driver));
+        this(by, driver, new BrowserWaitLogger(driver));
     }
 
     public WebEntity(By by, WebDriver driver, BrowserWaitInterface browserWait) {

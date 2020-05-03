@@ -10,10 +10,6 @@ public abstract class WebPage implements WebPageInterface {
 
     public WebPage(BrowserHandlerInterface browserHandler) {
         this.browserHandler = browserHandler;
-        browserHandler
-                .getOptions()
-                .SCREENSHOT_ON_EVENT
-                .setValue(true);
     }
 
     public WebPage(WebDriver driver) {
