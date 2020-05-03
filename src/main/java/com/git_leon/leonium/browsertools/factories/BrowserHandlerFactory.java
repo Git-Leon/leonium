@@ -9,7 +9,6 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * @author leon on 5/24/18.
