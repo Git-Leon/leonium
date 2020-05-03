@@ -35,6 +35,10 @@ public class BrowserWaitLogger extends AbstractBrowserWait {
         this(driver, 15);
     }
 
+    public SimpleLoggerInterface getLogger() {
+        return logger;
+    }
+
     private String formatMessage(String s, Object... o) {
         String logMessagePrefix = "\n\nWaiting for ";
         return String.format(logMessagePrefix + s, o);
