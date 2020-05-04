@@ -88,7 +88,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
     @Override
     default void click(By by) {
         String attemptMessage = "Attempting to click `WebElement`, using selector [ %s ]";
-        String successMessage = "Successfully clicked `WebElement` [ %s ], using selector [ %s ]";
+        String successMessage = "Successfully clicked `WebElement` [ %s ], using selector [ %s ]\n";
         WebEntity we = new WebEntity(by, getDriver());
 
         getLogger().info(attemptMessage, by);

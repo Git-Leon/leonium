@@ -18,11 +18,15 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
     private final String testName;
     private final String testDescription;
 
-    public BrowserHandlerLoggerExtentReporter(BrowserHandlerInterface decoratee, String filePath, String testName, String testDescription) {
-        this.extentTestLoggerFactory = new ExtentTestLoggerFactory(filePath);
+    public BrowserHandlerLoggerExtentReporter(BrowserHandlerInterface decoratee, ExtentTestLoggerFactory extentTestLoggerFactory, String testName, String testDescription) {
         this.decoratee = decoratee;
+        this.extentTestLoggerFactory = extentTestLoggerFactory;
         this.testName = testName;
         this.testDescription = testDescription;
+    }
+
+    public BrowserHandlerLoggerExtentReporter(BrowserHandlerInterface decoratee, String filePath, String testName, String testDescription) {
+        this(decoratee, new ExtentTestLoggerFactory(filePath), testName, testDescription);
     }
 
     public BrowserHandlerLoggerExtentReporter(BrowserHandlerInterface decoratee, String reportName, String testName) {

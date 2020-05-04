@@ -21,6 +21,10 @@ public abstract class WebPage implements WebPageInterface {
                 "test-" + Long.toHexString(System.nanoTime())));
     }
 
+    public WebPage(WebDriver driver, String reportName, String testName) {
+        this(new BrowserHandlerLayeredLogger(driver,reportName, testName));
+    }
+
     public BrowserHandlerInterface getBrowserHandler() {
         return browserHandler;
     }

@@ -6,6 +6,8 @@ import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerTimer;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.WebDriver;
 
@@ -14,6 +16,8 @@ import org.openqa.selenium.WebDriver;
  * @created 05/04/2020 - 10:05 AM
  */
 public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterface {
+    private final BrowserWaitLoggerInterface browserWaitLogger;
+    private final BrowserWaitLoggerExtentReporter browserWaitExtentReporter;
     private final BrowserHandler browserHandlerImplementation;
     private final BrowserHandlerLoggerExtentReporter browserHandlerExtentReporter;
     private final BrowserHandlerLoggerImpl browserHandlerLogger;
@@ -21,11 +25,13 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
     private final String directoryName;
     private final String testName;
 
-    public BrowserHandlerLayeredLogger(WebDriver driver, String directoryName, String testName) {
-        this.directoryName = directoryName;
+    public BrowserHandlerLayeredLogger(WebDriver driver, String reportFilePath, String testName) {
+        this.directoryName = reportFilePath;
         this.testName = testName;
-        this.browserHandlerImplementation = new BrowserHandler(driver, 5);
-        this.browserHandlerExtentReporter = new BrowserHandlerLoggerExtentReporter(browserHandlerImplementation, directoryName, testName);
+        this.browserWaitLogger = new BrowserWaitLogger(driver, 15);
+        this.browserWaitExtentReporter = new BrowserWaitLoggerExtentReporter(browserWaitLogger, reportFilePath, testName);
+        this.browserHandlerImplementation = new BrowserHandler(driver, browserWaitLogger);
+        this.browserHandlerExtentReporter = new BrowserHandlerLoggerExtentReporter(browserHandlerImplementation, browserWaitExtentReporter.getExtentTestLoggerFactory(), testName, "");
         this.browserHandlerLogger = new BrowserHandlerLoggerImpl(browserHandlerExtentReporter);
         this.browserHandlerTimeLogger = new BrowserHandlerLoggerTimer(browserHandlerLogger);
     }
