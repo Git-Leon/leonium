@@ -1,6 +1,9 @@
 package com.git_leon.leonium.browsertools.browserhandler.logging;
 
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWait;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
 import com.git_leon.leonium.extentreporting.ExtentTestLogger;
 import com.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
 
@@ -28,6 +31,11 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
     @Override
     public ExtentTestLogger getLogger() {
         return extentTestLoggerFactory.getExtentTestLogger(this.testName, testDescription);
+    }
+
+    @Override
+    public BrowserWaitInterface getWait() {
+        return new BrowserWaitLogger(new BrowserWait(15, decoratee.getDriver()), getLogger());
     }
 
     @Override

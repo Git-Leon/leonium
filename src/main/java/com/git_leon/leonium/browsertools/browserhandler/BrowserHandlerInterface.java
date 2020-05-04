@@ -5,6 +5,7 @@ import com.git_leon.leonium.browsertools.browserhandler.waiting.SelectorWaitCond
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import java.awt.image.RasterFormatException;
 import java.util.List;
 
 public interface BrowserHandlerInterface {

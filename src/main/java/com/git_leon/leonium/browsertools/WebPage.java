@@ -16,12 +16,12 @@ public abstract class WebPage implements WebPageInterface {
     }
 
     public WebPage(WebDriver driver) {
-        this(new BrowserHandlerTimeLogger(new BrowserHandlerLoggerImpl(new BrowserHandlerLoggerExtentReporter(new BrowserHandler(driver),
+        this(new BrowserHandlerTimeLogger(new BrowserHandlerLoggerImpl(new BrowserHandlerLoggerExtentReporter(new BrowserHandler(driver, 5),
                 DirectoryReference
                         .TARGET_DIRECTORY
-                        .getFileFromDirectory("Report " + Long.toHexString(System.nanoTime()) + ".html")
+                        .getFileFromDirectory("Report " + System.nanoTime() + ".html")
                         .getAbsolutePath(),
-                "test" + Long.toHexString(System.nanoTime())))));
+                "test-" + Long.toHexString(System.nanoTime())))));
     }
 
     public BrowserHandlerInterface getBrowserHandler() {

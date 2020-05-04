@@ -21,7 +21,7 @@ public class HomePage extends WebPage {
         getBrowserHandler()
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
-                .setValue(false);
+                .setValue(true);
     }
 
     public SearchResultPage search(String text) {

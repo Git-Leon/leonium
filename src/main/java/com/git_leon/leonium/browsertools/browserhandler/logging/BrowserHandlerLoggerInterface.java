@@ -134,8 +134,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void sendKeys(By by, String keys) {
-        String attemptMessage = "Attempting to send keys [ '%s' ], using selector [ %s ]";
-        String successMessage = "Successfully sent keys [ '%s' ], using selector [ %s ]";
+        String attemptMessage = "Attempting to send keys [ %s ], using selector [ %s ]";
+        String successMessage = "Successfully sent keys [ %s ], using selector [ %s ]";
 
         getLogger().info(attemptMessage, keys, by);
         getBrowserHandlerDecoratee().sendKeys(by, keys);
@@ -180,12 +180,14 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
     @Override
     default Screenshot screenshot() {
         String attemptMessage = "Attempting to screenshot from [ %s ]";
-        String currentUrl = getBrowserHandlerDecoratee().getCurrentUrl();
-        Screenshot screenshot = getBrowserHandlerDecoratee().screenshot();
         String successMessage = "Successfully retrieved screenshot of [ %s ]";
-
+        String currentUrl = getBrowserHandlerDecoratee().getCurrentUrl();
         getLogger().info(attemptMessage, currentUrl);
-        getLogger().info(successMessage, screenshot, currentUrl);
+
+        Screenshot screenshot = getBrowserHandlerDecoratee().screenshot();
+        if (screenshot.getFile().exists()) {
+            getLogger().info(successMessage, screenshot, currentUrl);
+        }
 
         return screenshot;
     }

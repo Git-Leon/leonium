@@ -26,7 +26,7 @@ public class TestSiteTraversal extends WebCrawl {
         browserHandler
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
-                .setValue(false);
+                .setValue(true);
     }
 
     @Override
