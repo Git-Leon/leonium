@@ -1,5 +1,6 @@
 package com.git_leon.leonium.extentreporting;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.github.git_leon.logging.SimpleLoggerInterface;
@@ -11,12 +12,13 @@ import java.util.logging.Level;
  * @created 05/04/2020 - 2:03 AM
  */
 public class ExtentTestLogger implements SimpleLoggerInterface {
-    private ExtentTest extentTest;
+    private final ExtentReports extentReports;
+    private final ExtentTest extentTest;
     private boolean isEnabled;
 
-    public ExtentTestLogger(ExtentTest extentTest) {
-        this.extentTest = extentTest;
-        this.isEnabled = true;
+    public ExtentTestLogger(ExtentReports extentReports, String testName, String description) {
+        this.extentReports = extentReports;
+        this.extentTest = extentReports.createTest(testName, description);
     }
 
     @Override
@@ -43,6 +45,10 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
 
     public ExtentTest getExtentTest() {
         return extentTest;
+    }
+
+    public ExtentReports getExtentReports() {
+        return extentReports;
     }
 
     private Status getStatus(Level level) {

@@ -33,6 +33,7 @@ public class BrowserHandlerLoggerImpl implements BrowserHandlerLoggerInterface {
         return logger;
     }
 
+
     @Override
     public BrowserHandlerInterface getBrowserHandlerDecoratee() {
         return decoratee;

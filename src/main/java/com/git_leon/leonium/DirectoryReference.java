@@ -20,8 +20,6 @@ public enum DirectoryReference {
 
     DirectoryReference(String path) {
         this.path = path;
-        System.out.println(name());
-        System.out.println(path);
     }
 
     public String getDirectoryPath() {

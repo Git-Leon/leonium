@@ -59,14 +59,14 @@ public class ExtentTestLoggerFactory {
         if (mapKey.isPresent()) {
             return getExtentTestLoggerMap().get(mapKey.get());
         } else {
-            ExtentTestLogger extentTestLogger = new ExtentTestLogger(extentReports.createTest(testName, description));
+            ExtentTestLogger extentTestLogger = new ExtentTestLogger(getExtentReports(), testName, description);
             getExtentTestLoggerMap().put(testName, extentTestLogger);
             return extentTestLogger;
         }
     }
 
     public void flush() {
-        extentHtmlReporter.flush();
-        extentReports.flush();
+        getExtentHtmlReporter().flush();
+        getExtentReports().flush();
     }
 }
