@@ -27,7 +27,7 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
 
     @Override
     public ExtentTestLogger getLogger() {
-        return extentTestLoggerFactory.createExtentTestLogger(this.testName, testDescription);
+        return extentTestLoggerFactory.getExtentTestLogger(this.testName, testDescription);
     }
 
     @Override

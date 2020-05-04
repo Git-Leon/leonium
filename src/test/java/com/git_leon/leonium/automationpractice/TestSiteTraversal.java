@@ -5,6 +5,7 @@ import com.git_leon.leonium.automationpractice.schema.SearchResultPage;
 import com.git_leon.leonium.automationpractice.schema.ShoppingCartSummaryPage;
 import com.git_leon.leonium.browsertools.WebCrawl;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWait;
 import com.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import com.git_leon.leonium.owaspjuiceshop.AppleJuiceWidget;
@@ -30,8 +31,10 @@ public class TestSiteTraversal extends WebCrawl {
 
     @Override
     public void test() {
+        HomePage homePage = new HomePage(driver);
+        BrowserHandlerInterface browserHandler = homePage.getBrowserHandler();
         try {
-            HomePage homePage = new HomePage(driver);
+
             homePage.navigateTo();
             SearchResultPage searchResultPage = homePage.search("shirt");
             searchResultPage.clickProductImageContainer();

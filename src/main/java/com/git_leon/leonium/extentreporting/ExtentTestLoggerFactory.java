@@ -8,9 +8,9 @@ package com.git_leon.leonium.extentreporting;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author leonhunter
@@ -19,18 +19,18 @@ import java.util.Optional;
 public class ExtentTestLoggerFactory {
     private final ExtentHtmlReporter extentHtmlReporter;
     private final ExtentReports extentReports;
-    private final List<ExtentTestLogger> extentTests;
+    private final Map<String, ExtentTestLogger> extentTestLoggerMap;
 
-    public ExtentTestLoggerFactory(ExtentReports extentReports, ExtentHtmlReporter extentHtmlReporter, List<ExtentTestLogger> extentTests) {
+    public ExtentTestLoggerFactory(ExtentReports extentReports, ExtentHtmlReporter extentHtmlReporter, Map<String, ExtentTestLogger> extentTestLoggerMap) {
         this.extentReports = extentReports;
         this.extentHtmlReporter = extentHtmlReporter;
-        this.extentTests = extentTests;
+        this.extentTestLoggerMap = extentTestLoggerMap;
         extentReports.attachReporter(extentHtmlReporter);
         extentHtmlReporter.start();
     }
 
     public ExtentTestLoggerFactory(String filePath) {
-        this(new ExtentReports(), new ExtentHtmlReporter(filePath), new ArrayList<>());
+        this(new ExtentReports(), new ExtentHtmlReporter(filePath), new ConcurrentHashMap<>());
     }
 
     public ExtentReports getExtentReports() {
@@ -41,23 +41,28 @@ public class ExtentTestLoggerFactory {
         return extentHtmlReporter;
     }
 
-    public List<ExtentTestLogger> getExtentTestLoggers() {
-        return extentTests;
+    public Map<String, ExtentTestLogger> getExtentTestLoggerMap() {
+        return extentTestLoggerMap;
     }
 
-    public ExtentTestLogger createExtentTestLogger(String testName, String description) {
-        return getExtentTestLogger(testName).orElse(new ExtentTestLogger(extentReports.createTest(testName, description)));
+    public ExtentTestLogger getExtentTestLogger(String testName) {
+        return getExtentTestLogger(testName, "");
     }
 
-    public Optional<ExtentTestLogger> getExtentTestLogger(String testName) {
-        return getExtentTestLoggers()
+    public ExtentTestLogger getExtentTestLogger(String testName, String description) {
+        Optional<String> mapKey = getExtentTestLoggerMap()
+                .entrySet()
                 .stream()
-                .filter(extentTest -> extentTest
-                        .getExtentTest()
-                        .getModel()
-                        .getName()
-                        .equals(testName))
+                .map(Map.Entry::getKey)
+                .filter(key -> key.equalsIgnoreCase(testName))
                 .findFirst();
+        if (mapKey.isPresent()) {
+            return getExtentTestLoggerMap().get(mapKey.get());
+        } else {
+            ExtentTestLogger extentTestLogger = new ExtentTestLogger(extentReports.createTest(testName, description));
+            getExtentTestLoggerMap().put(testName, extentTestLogger);
+            return extentTestLogger;
+        }
     }
 
     public void flush() {
