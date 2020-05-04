@@ -30,7 +30,7 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
         this.testName = testName;
         this.browserWaitLogger = new BrowserWaitLogger(driver, 15);
         this.browserWaitExtentReporter = new BrowserWaitLoggerExtentReporter(browserWaitLogger, reportFilePath, testName);
-        this.browserHandlerImplementation = new BrowserHandler(driver, browserWaitLogger);
+        this.browserHandlerImplementation = new BrowserHandler(driver, browserWaitExtentReporter);
         this.browserHandlerExtentReporter = new BrowserHandlerLoggerExtentReporter(browserHandlerImplementation, browserWaitExtentReporter.getExtentTestLoggerFactory(), testName, "");
         this.browserHandlerLogger = new BrowserHandlerLoggerImpl(browserHandlerExtentReporter);
         this.browserHandlerTimeLogger = new BrowserHandlerLoggerTimer(browserHandlerLogger);
