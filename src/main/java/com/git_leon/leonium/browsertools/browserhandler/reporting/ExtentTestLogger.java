@@ -1,4 +1,4 @@
-package com.git_leon.leonium.extentreporting;
+package com.git_leon.leonium.browsertools.browserhandler.reporting;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
