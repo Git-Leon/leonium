@@ -1,6 +1,9 @@
 package com.git_leon.leonium.browsertools;
 
+import com.git_leon.leonium.DirectoryReference;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerExtentReporter;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerTimeLogger;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +16,12 @@ public abstract class WebPage implements WebPageInterface {
     }
 
     public WebPage(WebDriver driver) {
-        this(new BrowserHandlerTimeLogger(new BrowserHandlerLoggerImpl(driver)));
+        this(new BrowserHandlerTimeLogger(new BrowserHandlerLoggerImpl(new BrowserHandlerLoggerExtentReporter(new BrowserHandler(driver),
+                DirectoryReference
+                        .TARGET_DIRECTORY
+                        .getFileFromDirectory("Report " + Long.toHexString(System.nanoTime()) + ".html")
+                        .getAbsolutePath(),
+                "test" + Long.toHexString(System.nanoTime())))));
     }
 
     public BrowserHandlerInterface getBrowserHandler() {

@@ -4,6 +4,8 @@ import com.git_leon.leonium.automationpractice.schema.HomePage;
 import com.git_leon.leonium.automationpractice.schema.SearchResultPage;
 import com.git_leon.leonium.automationpractice.schema.ShoppingCartSummaryPage;
 import com.git_leon.leonium.browsertools.WebCrawl;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWait;
 import com.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import com.git_leon.leonium.owaspjuiceshop.AppleJuiceWidget;
 import com.git_leon.leonium.owaspjuiceshop.SearchPage;
@@ -23,19 +25,24 @@ public class TestSiteTraversal extends WebCrawl {
         browserHandler
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
-                .setValue(true);
+                .setValue(false);
     }
 
     @Override
     public void test() {
-        HomePage homePage = new HomePage(driver);
-        homePage.navigateTo();
-        SearchResultPage searchResultPage = homePage.search("shirt");
-        searchResultPage.clickProductImageContainer();
-        searchResultPage.clickAddToCart();
-        ShoppingCartSummaryPage shoppingCartSummaryPage = searchResultPage.clickProceedToCheckout();
-        shoppingCartSummaryPage.clickProceedToCheckout();
-        shoppingCartSummaryPage.clickCreateAnAccountButton();
+        try {
+            HomePage homePage = new HomePage(driver);
+            homePage.navigateTo();
+            SearchResultPage searchResultPage = homePage.search("shirt");
+            searchResultPage.clickProductImageContainer();
+            searchResultPage.clickAddToCart();
+            ShoppingCartSummaryPage shoppingCartSummaryPage = searchResultPage.clickProceedToCheckout();
+            shoppingCartSummaryPage.clickProceedToCheckout();
+            shoppingCartSummaryPage.clickCreateAnAccountButton();
+        } finally {
+            browserHandler.screenshot().getFile();
+            browserHandler.close();
+        }
     }
 
 }

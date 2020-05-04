@@ -53,6 +53,11 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>3.1.5</version>
+        </dependency>
 
         <!--leonium test automation-->
         <dependency>
