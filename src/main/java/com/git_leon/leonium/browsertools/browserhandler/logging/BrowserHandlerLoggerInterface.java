@@ -23,7 +23,6 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         getLogger().info(attemptMessage, by);
         WebElement we = getBrowserHandlerDecoratee().getElement(by);
         getLogger().info(successMessage, WebEntity.toString(we), by);
-
         return we;
     }
 
@@ -75,12 +74,11 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
     @Override
     default void navigateTo(String newUrl) {
         String attemptMessage = "Attempting to navigate to [ %s ] from [ %s ]";
-        String formerUrl = getBrowserHandlerDecoratee().getCurrentUrl();
-        getBrowserHandlerDecoratee().navigateTo(newUrl);
         String successMessage = "Successfully navigated to [ %s ] from [ %s ]";
 
-
+        String formerUrl = getBrowserHandlerDecoratee().getCurrentUrl();
         getLogger().info(attemptMessage, newUrl, formerUrl);
+        getBrowserHandlerDecoratee().navigateTo(newUrl);
         getLogger().info(successMessage, newUrl, formerUrl);
     }
 
@@ -91,9 +89,14 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String successMessage = "Successfully clicked `WebElement` [ %s ], using selector [ %s ]\n";
         WebEntity we = new WebEntity(by, getDriver());
 
+        SimpleLoggerInterface logger = getLogger();
         getLogger().info(attemptMessage, by);
         getBrowserHandlerDecoratee().click(by);
         getLogger().info(successMessage, we.toString(), by);
+
+        if(getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
+            getLogger().info("screenshot after execution<br> %s", we.getScreenshot().toString());
+        }
     }
 
 
@@ -106,6 +109,10 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         getLogger().info(attemptMessage, by);
         Select select = getBrowserHandlerDecoratee().select(by);
         getLogger().info(successMessage, we.toString(), by);
+
+        if(getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_SELECT.getValue()) {
+            getLogger().info("screenshot after execution<br> %s", we.getScreenshot().toString());
+        }
         return select;
     }
 
@@ -118,6 +125,10 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         getLogger().info(attemptMessage, index, by);
         getBrowserHandlerDecoratee().selectByIndex(by, index);
         getLogger().info(successMessage, index, by);
+
+        if(getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_SELECT.getValue()) {
+            getLogger().info("screenshot after execution<br> %s", new WebEntity(by, getDriver()).getScreenshot().toString());
+        }
     }
 
 
@@ -129,6 +140,10 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         getLogger().info(attemptMessage, visibleText, by);
         getBrowserHandlerDecoratee().selectByVisibleText(by, visibleText);
         getLogger().info(successMessage, visibleText, by);
+
+        if(getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_SELECT.getValue()) {
+            getLogger().info("screenshot after execution<br> %s", new WebEntity(by, getDriver()).getScreenshot().toString());
+        }
     }
 
 
@@ -140,6 +155,10 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         getLogger().info(attemptMessage, keys, by);
         getBrowserHandlerDecoratee().sendKeys(by, keys);
         getLogger().info(successMessage, keys, by);
+
+        if(getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_SENDKEYS.getValue()) {
+            getLogger().info("screenshot after execution<br> %s", new WebEntity(by, getDriver()).getScreenshot().toString());
+        }
     }
 
 

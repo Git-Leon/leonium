@@ -1,4 +1,4 @@
-package com.git_leon.leonium.browsertools.browserhandler.reporting;
+package com.git_leon.leonium.extentreporting;
 
 /**
  * @author leonhunter

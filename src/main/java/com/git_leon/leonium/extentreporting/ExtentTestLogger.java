@@ -1,4 +1,4 @@
-package com.git_leon.leonium.browsertools.browserhandler.reporting;
+package com.git_leon.leonium.extentreporting;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -19,6 +19,7 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
     public ExtentTestLogger(ExtentReports extentReports, String testName, String description) {
         this.extentReports = extentReports;
         this.extentTest = extentReports.createTest(testName, description);
+        this.isEnabled = true;
     }
 
     @Override

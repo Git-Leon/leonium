@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * @author leonhunter
@@ -113,6 +114,7 @@ public class BrowserHandlerLoggerTimer extends BrowserHandlerDecoratorAbstractCl
 
     @Override
     public Screenshot screenshot() {
-        return getLogger().invokeAndLog(getBrowserHandlerDecoratee()::screenshot, "");
+        Supplier<Screenshot> screenshotSupplier = getBrowserHandlerDecoratee()::screenshot;
+        return getLogger().invokeAndLog(screenshotSupplier, "");
     }
 }

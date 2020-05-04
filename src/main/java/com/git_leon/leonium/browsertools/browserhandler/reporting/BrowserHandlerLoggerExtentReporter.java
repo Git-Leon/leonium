@@ -5,6 +5,8 @@ import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLo
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWait;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
+import com.git_leon.leonium.extentreporting.ExtentTestLogger;
+import com.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
 
 /**
  * @author leonhunter

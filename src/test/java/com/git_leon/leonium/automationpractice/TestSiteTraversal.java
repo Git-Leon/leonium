@@ -10,29 +10,27 @@ import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWait;
 import com.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import com.git_leon.leonium.owaspjuiceshop.AppleJuiceWidget;
 import com.git_leon.leonium.owaspjuiceshop.SearchPage;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 
 /**
  * @author leonhunter
  * @created 05/03/2020 - 5:36 PM
  */
-public class TestSiteTraversal extends WebCrawl {
-    public TestSiteTraversal() {
-        super(BrowserHandlerFactory.CHROME.getDriver());
-    }
+public class TestSiteTraversal   {
+    private WebDriver driver;
 
-    @Override
+    @Before
     public void setup() {
-        super.setup();
-        browserHandler
-                .getOptions()
-                .SCREENSHOT_ON_EVENT
-                .setValue(true);
+        this.driver = BrowserHandlerFactory.CHROME.getDriver();
     }
 
-    @Override
+    @Test
     public void test() {
         HomePage homePage = new HomePage(driver);
         BrowserHandlerInterface browserHandler = homePage.getBrowserHandler();
+        browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(true);
         try {
 
             homePage.navigateTo();

@@ -2,7 +2,10 @@ package com.git_leon.leonium.browsertools.browserhandler.reporting;
 
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
+import com.git_leon.leonium.extentreporting.ExtentTestLogger;
+import com.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
 import com.github.git_leon.logging.FunctionExecutionTimeLogger;
+import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.WebDriver;
 
 /**

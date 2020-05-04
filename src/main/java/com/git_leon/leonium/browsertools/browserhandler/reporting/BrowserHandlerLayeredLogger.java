@@ -61,7 +61,7 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
 
     @Override
     public void close() {
-        browserHandlerExtentReporter.getExtentTestLoggerFactory().flush();
+        getBrowserHandlerExtentReporter().getExtentTestLoggerFactory().flush();
         BrowserHandlerLoggerInterface.super.close();
     }
 

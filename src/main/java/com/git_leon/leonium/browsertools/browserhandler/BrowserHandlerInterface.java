@@ -128,6 +128,10 @@ public interface BrowserHandlerInterface {
         return new Screenshot(getDriver(), getDriver().getTitle());
     }
 
+    default Screenshot screenshot(By by) {
+        return new WebEntity(by, getDriver()).getScreenshot();
+    }
+
     default String getCurrentUrl() {
         return getDriver().getCurrentUrl();
     }

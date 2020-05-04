@@ -24,6 +24,10 @@ public class BrowserHandlerLoggerImpl implements BrowserHandlerLoggerInterface {
         this(browserHandler, SimpleLoggerWarehouse.getLogger(browserHandler.getDriver().toString()));
     }
 
+    public BrowserHandlerLoggerImpl(BrowserHandlerLoggerInterface browserHandler) {
+        this(browserHandler, browserHandler.getLogger());
+    }
+
     public BrowserHandlerLoggerImpl(WebDriver driver) {
         this(new BrowserHandler(driver));
     }
@@ -41,6 +45,6 @@ public class BrowserHandlerLoggerImpl implements BrowserHandlerLoggerInterface {
 
     @Override
     public void finalize() {
-        decoratee.finalize();
+        getBrowserHandlerDecoratee().finalize();
     }
 }
