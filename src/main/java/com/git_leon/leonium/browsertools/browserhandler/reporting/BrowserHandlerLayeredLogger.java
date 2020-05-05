@@ -21,19 +21,17 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
     private final BrowserHandler browserHandlerImplementation;
     private final BrowserHandlerLoggerExtentReporter browserHandlerExtentReporter;
     private final BrowserHandlerLoggerImpl browserHandlerLogger;
-    private final BrowserHandlerLoggerTimer browserHandlerTimeLogger;
     private final String directoryName;
     private final String testName;
 
     public BrowserHandlerLayeredLogger(WebDriver driver, String reportFilePath, String testName) {
         this.directoryName = reportFilePath;
         this.testName = testName;
-        this.browserWaitLogger = new BrowserWaitLogger(driver, 15);
+        this.browserWaitLogger = new BrowserWaitLogger(driver, 5);
         this.browserWaitExtentReporter = new BrowserWaitLoggerExtentReporter(browserWaitLogger, reportFilePath, testName);
-        this.browserHandlerImplementation = new BrowserHandler(driver, browserWaitExtentReporter);
+        this.browserHandlerImplementation = new BrowserHandler(driver, new BrowserWaitLogger(browserWaitExtentReporter, browserWaitExtentReporter));
         this.browserHandlerExtentReporter = new BrowserHandlerLoggerExtentReporter(browserHandlerImplementation, browserWaitExtentReporter.getExtentTestLoggerFactory(), testName, "");
         this.browserHandlerLogger = new BrowserHandlerLoggerImpl(browserHandlerExtentReporter);
-        this.browserHandlerTimeLogger = new BrowserHandlerLoggerTimer(browserHandlerLogger);
     }
 
     public BrowserHandlerLayeredLogger(WebDriver driver) {
@@ -46,12 +44,12 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
 
     @Override
     public SimpleLoggerInterface getLogger() {
-        return getBrowserHandlerTimeLogger().getLogger();
+        return getBrowserHandlerLogger().getLogger();
     }
 
     @Override
     public BrowserHandlerInterface getBrowserHandlerDecoratee() {
-        return getBrowserHandlerTimeLogger();
+        return getBrowserHandlerLogger();
     }
 
     @Override
@@ -75,10 +73,6 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
 
     public BrowserHandlerLoggerImpl getBrowserHandlerLogger() {
         return browserHandlerLogger;
-    }
-
-    public BrowserHandlerLoggerTimer getBrowserHandlerTimeLogger() {
-        return browserHandlerTimeLogger;
     }
 
     public String getDirectoryName() {

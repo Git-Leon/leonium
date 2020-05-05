@@ -4,7 +4,7 @@ import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerDecoratorA
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.Screenshot;
 import com.git_leon.leonium.browsertools.browserhandler.WebEntity;
-import com.github.git_leon.logging.FunctionExecutionTimeLogger;
+import com.github.git_leon.logging.FunctionExecutionLoggerAndTimer;
 import com.github.git_leon.logging.SimpleLoggerWarehouse;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,32 +28,32 @@ public class BrowserHandlerLoggerTimer extends BrowserHandlerDecoratorAbstractCl
     }
 
     @Override
-    public FunctionExecutionTimeLogger getLogger() {
-        return new FunctionExecutionTimeLogger(SimpleLoggerWarehouse.getLogger(
+    public FunctionExecutionLoggerAndTimer getLogger() {
+        return new FunctionExecutionLoggerAndTimer(SimpleLoggerWarehouse.getLogger(
                 getBrowserHandlerDecoratee().getDriver().toString()));
     }
 
 
     @Override
     public WebElement getElement(By by) {
-        return getLogger().invokeAndLog(getBrowserHandlerDecoratee()::getElement, by, "");
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getElement, by, "");
     }
 
     @Override
     public WebEntity getWebEntity(By by) {
-        return getLogger().invokeAndLog(getBrowserHandlerDecoratee()::getWebEntity, by, "");
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getWebEntity, by, "");
     }
 
 
     @Override
     public List<WebElement> getElements(By by) {
-        return getLogger().invokeAndLog(getBrowserHandlerDecoratee()::getElements, by, "");
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getElements, by, "");
     }
 
 
     @Override
     public String getPageLoadState() {
-        return getLogger().invokeAndLog(getBrowserHandlerDecoratee()::getPageLoadState, "");
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getPageLoadState, "");
     }
 
 
@@ -72,7 +72,7 @@ public class BrowserHandlerLoggerTimer extends BrowserHandlerDecoratorAbstractCl
 
     @Override
     public Select select(By by) {
-        return getLogger().invokeAndLog(getBrowserHandlerDecoratee()::select, by, "");
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::select, by, "");
     }
 
 
@@ -96,7 +96,7 @@ public class BrowserHandlerLoggerTimer extends BrowserHandlerDecoratorAbstractCl
 
     @Override
     public void close() {
-        getLogger().invokeAndLog(getBrowserHandlerDecoratee()::close, "");
+        getLogger().logAndInvoke(getBrowserHandlerDecoratee()::close, "");
     }
 
 
@@ -115,6 +115,6 @@ public class BrowserHandlerLoggerTimer extends BrowserHandlerDecoratorAbstractCl
     @Override
     public Screenshot screenshot() {
         Supplier<Screenshot> screenshotSupplier = getBrowserHandlerDecoratee()::screenshot;
-        return getLogger().invokeAndLog(screenshotSupplier, "");
+        return getLogger().logAndInvoke(screenshotSupplier, "");
     }
 }

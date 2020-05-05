@@ -4,8 +4,6 @@ import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInter
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
 import com.git_leon.leonium.extentreporting.ExtentTestLogger;
 import com.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
-import com.github.git_leon.logging.FunctionExecutionTimeLogger;
-import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -15,15 +13,15 @@ import org.openqa.selenium.WebDriver;
 public class BrowserWaitLoggerExtentReporter implements BrowserWaitLoggerInterface {
     private final ExtentTestLoggerFactory extentTestLoggerFactory;
     private final BrowserWaitInterface wait;
-    private final FunctionExecutionTimeLogger logger;
+    private final ExtentTestLogger logger;
 
     public BrowserWaitLoggerExtentReporter(BrowserWaitLoggerInterface browserHandlerImplementation, String filePath, String testName) {
         this.extentTestLoggerFactory = new ExtentTestLoggerFactory(filePath);
         this.wait = browserHandlerImplementation.getWait();
-        this.logger = new FunctionExecutionTimeLogger(extentTestLoggerFactory.getExtentTestLogger(testName));
+        this.logger = extentTestLoggerFactory.getExtentTestLogger(testName);
     }
 
-    public BrowserWaitLoggerExtentReporter(ExtentTestLoggerFactory extentTestLoggerFactory, BrowserWaitInterface wait, FunctionExecutionTimeLogger logger) {
+    public BrowserWaitLoggerExtentReporter(ExtentTestLoggerFactory extentTestLoggerFactory, BrowserWaitInterface wait, ExtentTestLogger logger) {
         this.extentTestLoggerFactory = extentTestLoggerFactory;
         this.wait = wait;
         this.logger = logger;
@@ -39,7 +37,7 @@ public class BrowserWaitLoggerExtentReporter implements BrowserWaitLoggerInterfa
     }
 
     @Override
-    public FunctionExecutionTimeLogger getLogger() {
+    public ExtentTestLogger getFunctionExecutionLogger() {
         return logger;
     }
 
