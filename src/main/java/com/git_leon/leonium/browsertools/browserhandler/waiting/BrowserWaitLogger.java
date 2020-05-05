@@ -28,7 +28,7 @@ public class BrowserWaitLogger extends AbstractBrowserWait implements BrowserWai
     }
 
     @Override
-    public FunctionExecutionLoggerInterface getFunctionExecutionLogger() {
+    public SimpleLoggerInterface getLogger() {
         return logger;
     }
 

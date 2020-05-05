@@ -4,6 +4,7 @@ import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInter
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
 import com.git_leon.leonium.extentreporting.ExtentTestLogger;
 import com.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
+import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -32,13 +33,12 @@ public class BrowserWaitLoggerExtentReporter implements BrowserWaitLoggerInterfa
     }
 
     @Override
+    public SimpleLoggerInterface getLogger() {
+        return logger;
+    }
+    @Override
     public BrowserWaitInterface getWait() {
         return wait;
-    }
-
-    @Override
-    public ExtentTestLogger getFunctionExecutionLogger() {
-        return logger;
     }
 
     @Override
