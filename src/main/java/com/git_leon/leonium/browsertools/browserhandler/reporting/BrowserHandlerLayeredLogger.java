@@ -2,6 +2,8 @@ package com.git_leon.leonium.browsertools.browserhandler.reporting;
 
 import com.git_leon.leonium.DirectoryReference;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerDecoratorAbstractClass;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerDecoratorInterface;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
@@ -14,7 +16,7 @@ import org.openqa.selenium.WebDriver;
  * @author leonhunter
  * @created 05/04/2020 - 10:05 AM
  */
-public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterface {
+public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterface, BrowserHandlerDecoratorInterface {
     private final BrowserWaitLoggerInterface browserWaitLogger;
     private final BrowserWaitLoggerExtentReporter browserWaitExtentReporter;
     private final BrowserHandler browserHandlerImplementation;
@@ -72,16 +74,12 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
         BrowserHandlerLoggerInterface.super.close();
     }
 
-    public BrowserHandler getBrowserHandlerImplementation() {
-        return browserHandlerImplementation;
-    }
-
     public BrowserHandlerLoggerExtentReporter getBrowserHandlerExtentReporter() {
         return browserHandlerExtentReporter;
     }
 
     public BrowserHandlerLoggerInterface getBrowserHandlerLogger() {
-        return browserHandlerExtentReporter;
+        return getBrowserHandlerExtentReporter();
     }
 
     public String getReportFilePath() {

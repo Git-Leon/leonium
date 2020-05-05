@@ -21,7 +21,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default WebElement getElement(By by) {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to get `WebElement`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebElement` [ %s ], using selector [ %s ]";
 
@@ -33,7 +34,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default WebEntity getWebEntity(By by) {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to wrap `WebElement` with `WebEntity`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebEntity` [ %s ], using selector [ %s ]";
 
@@ -47,7 +49,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default List<WebElement> getElements(By by) {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to wrap `WebElement` with `WebEntity`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebEntity` [ %s ], using selector [ %s ]";
 
@@ -65,7 +68,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default String getPageLoadState() {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to get page-load-state from [ %s ]";
         String currentUrl = getBrowserHandlerDecoratee().getCurrentUrl();
         String pageLoadState = getBrowserHandlerDecoratee().getPageLoadState();
@@ -81,7 +85,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void navigateTo(String newUrl) {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to navigate to [ %s ] from [ %s ]";
         String successMessage = "Successfully navigated to [ %s ] from [ %s ]";
 
@@ -94,9 +99,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void click(By by) {
-        getLogger().info(new String(new char[50]).replaceAll("\0", "-"));
-        getLogger().info(getClass().getName());
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to click `WebElement`, using selector [ %s ]";
         String successMessage = "Successfully clicked `WebElement` [ %s ], using selector [ %s ]\n";
         WebEntity we = new WebEntity(by, getDriver());
@@ -119,9 +123,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default Select select(By by) {
-        getLogger().info(new String(new char[50]).replaceAll("\0", "-"));
-        getLogger().info(getClass().getName());
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to select dropdown, using selector [ %s ]";
         String successMessage = "Successfully selected dropdown `WebElement` [ %s ], using selector [ %s ]";
         WebEntity we = new WebEntity(by, getDriver());
@@ -142,9 +145,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void selectByIndex(By by, int index) {
-        getLogger().info(new String(new char[50]).replaceAll("\0", "-"));
-        getLogger().info(getClass().getName());
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to select index [ %s ], using selector [ %s ]";
         String successMessage = "Successfully selected index [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
@@ -164,9 +166,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void selectByVisibleText(By by, String visibleText) {
-        getLogger().info(new String(new char[50]).replaceAll("\0", "-"));
-        getLogger().info(getClass().getName());
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to select text [ %s ], using selector [ %s ]";
         String successMessage = "Successfully selected text [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
@@ -187,9 +188,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void sendKeys(By by, String keys) {
-        getLogger().info(new String(new char[50]).replaceAll("\0", "-"));
-        getLogger().info(getClass().getName());
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to send keys [ %s ], using selector [ %s ]";
         String successMessage = "Successfully sent keys [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
@@ -209,7 +209,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void close() {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to close `BrowserHandler` instance, [ %s ]";
         String successMessage = "Successfully closed `BrowserHandler` instance, [ %s ]";
 
@@ -221,7 +222,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void highlightElement(By by, String color) {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to highlight element with color [ %s ], using selector [ %s ]";
         String successMessage = "Successfully highlighted element with color [ %s ], using selector [ %s ]";
 
@@ -233,7 +235,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void highlightElements(By[] bys, String color) {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to highlight elements with color [ %s ], using selectors [ %s ]";
         String successMessage = "Successfully highlighted elements with color [ %s ], using selectors [ %s ]";
         String selectors = Arrays.toString(bys);
@@ -246,7 +249,8 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default Screenshot screenshot() {
-        getLogger().info(getClass().getSimpleName());
+        String className = getClass().getSimpleName();
+        getLogger().info(className);
         String attemptMessage = "Attempting to screenshot from [ %s ]";
         String successMessage = "Successfully retrieved screenshot of [ %s ]";
         String currentUrl = getBrowserHandlerDecoratee().getCurrentUrl();
