@@ -8,10 +8,6 @@ import org.openqa.selenium.WebDriver;
 public abstract class WebPage implements WebPageInterface {
     private BrowserHandlerInterface browserHandler;
 
-    public WebPage(BrowserHandlerInterface browserHandler) {
-        this.browserHandler = browserHandler;
-    }
-
     public WebPage(WebDriver driver) {
         this(new BrowserHandlerLayeredLogger(driver,
                 DirectoryReference
@@ -19,6 +15,14 @@ public abstract class WebPage implements WebPageInterface {
                         .getFileFromDirectory("Report " + System.nanoTime() + ".html")
                         .getAbsolutePath(),
                 "test-" + Long.toHexString(System.nanoTime())));
+    }
+
+    public WebPage(BrowserHandlerInterface browserHandler) {
+        this.browserHandler = browserHandler;
+        getBrowserHandler()
+                .getOptions()
+                .SCREENSHOT_ON_EVENT
+                .setValue(true);
     }
 
     public WebPage(WebDriver driver, String reportName, String testName) {

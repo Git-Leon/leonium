@@ -18,10 +18,6 @@ public class HomePage extends WebPage {
 
     public HomePage(WebDriver driver) {
         super(driver);
-        getBrowserHandler()
-                .getOptions()
-                .SCREENSHOT_ON_EVENT
-                .setValue(true);
     }
 
     public SearchResultPage search(String text) {
