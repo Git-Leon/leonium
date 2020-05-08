@@ -8,6 +8,7 @@ import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerDecorator;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.WebDriver;
@@ -40,7 +41,7 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
         this.testName = testName;
         this.browserWaitLogger = new BrowserWaitLogger(driver, 5);
         this.browserWaitExtentReporter = new BrowserWaitLoggerExtentReporter(browserWaitLogger, reportFilePath, testName);
-        this.browserHandlerImplementation = new BrowserHandler(driver, new BrowserWaitLogger(browserWaitExtentReporter, browserWaitExtentReporter));
+        this.browserHandlerImplementation = new BrowserHandler(driver, new BrowserWaitLoggerDecorator(browserWaitExtentReporter, browserWaitExtentReporter));
         this.browserHandlerLoggerImpl = new BrowserHandlerLoggerImpl(browserHandlerImplementation);
         this.browserHandlerExtentReporter = new BrowserHandlerLoggerExtentReporter(browserHandlerLoggerImpl, browserWaitExtentReporter.getExtentTestLoggerFactory(), testName, "");
     }

@@ -14,155 +14,148 @@ import java.util.logging.Level;
  * @created 05/08/2020 - 3:04 PM
  */
 public interface BrowserWaitLoggerInterfaceDecoratorInterface extends BrowserWaitLoggerInterface {
-    BrowserWaitLoggerInterface getDecoratee();
+    SimpleLoggerInterface getLogger();
 
-    @Override
-    default SimpleLoggerInterface getLogger() {
-        return getDecoratee().getLogger();
-    }
 
-    @Override
-    default BrowserWaitInterface getWait() {
-        return getDecoratee().getWait();
-    }
+    BrowserWaitInterface getWait();
 
     @Override
     default WebElement forEnabled(By by, boolean isEnabled) {
-        return getDecoratee().forEnabled(by, isEnabled);
+        return getWait().forEnabled(by, isEnabled);
     }
 
     @Override
     default WebElement forVisibility(By by) {
-        return getDecoratee().forVisibility(by);
+        return getWait().forVisibility(by);
     }
 
     @Override
     default void forInvisibility(By by) {
-        getDecoratee().forInvisibility(by);
+        getWait().forInvisibility(by);
     }
 
     @Override
     default WebElement forClickability(By by) {
-        return getDecoratee().forClickability(by);
+        return getWait().forClickability(by);
     }
 
     @Override
     default WebElement forPresence(By by) {
-        return getDecoratee().forPresence(by);
+        return getWait().forPresence(by);
     }
 
     @Override
     default WebElement forNotStale(By by) {
-        return getDecoratee().forNotStale(by);
+        return getWait().forNotStale(by);
     }
 
     @Override
     default boolean forAlert() {
-        return getDecoratee().forAlert();
+        return getWait().forAlert();
     }
 
     @Override
     default boolean forUrlToContain(String... partUrls) {
-        return getDecoratee().forUrlToContain(partUrls);
+        return getWait().forUrlToContain(partUrls);
     }
 
     @Override
     default List<WebElement> forVisibilities(By by) {
-        return getDecoratee().forVisibilities(by);
+        return getWait().forVisibilities(by);
     }
 
     @Override
     default List<WebElement> forPresences(By by) {
-        return getDecoratee().forPresences(by);
+        return getWait().forPresences(by);
     }
 
     @Override
     default boolean forPageLoad() {
-        return getDecoratee().forPageLoad();
+        return getWait().forPageLoad();
     }
 
     @Override
     default boolean forPageState(String desiredState) {
-        return getDecoratee().forPageState(desiredState);
+        return getWait().forPageState(desiredState);
     }
 
     @Override
     default WebElement forKeyable(By by) {
-        return getDecoratee().forKeyable(by);
+        return getWait().forKeyable(by);
     }
 
     @Override
     default WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
-        return getDecoratee().forConditions(by, waitConditions);
+        return getWait().forConditions(by, waitConditions);
     }
 
     @Override
     default <T> boolean until(int waitSeconds, Function<WebDriver, T> condition) {
-        return getDecoratee().until(waitSeconds, condition);
+        return getWait().until(waitSeconds, condition);
     }
 
     @Override
     default boolean isEnabled(WebElement we) {
-        return getDecoratee().isEnabled(we);
+        return getWait().isEnabled(we);
     }
 
     @Override
     default boolean isDisplayed(WebElement we) {
-        return getDecoratee().isDisplayed(we);
+        return getWait().isDisplayed(we);
     }
 
     @Override
     default void info(String s, Object... args) {
-        getDecoratee().info(s, args);
+        getLogger().info(s, args);
     }
 
     @Override
     default void error(String s, Object... args) {
-        getDecoratee().error(s,args);
+        getLogger().error(s, args);
     }
 
     @Override
     default void warn(String s, Object... args) {
-        getDecoratee().warn(s, args);
+        getLogger().warn(s, args);
     }
 
     @Override
     default void throwable(Throwable t) {
-        getDecoratee().throwable(t);
+        getLogger().throwable(t);
     }
 
     @Override
     default void throwable(Throwable t, Level level) {
-        getDecoratee().throwable(t, level);
+        getLogger().throwable(t, level);
     }
 
     @Override
     default void log(Level level, String s, Object... objects) {
-        getDecoratee().log(level, s, objects);
+        getLogger().log(level, s, objects);
     }
 
     @Override
     default void enable() {
-        getDecoratee().enable();
+        getLogger().enable();
     }
 
     @Override
     default void disble() {
-        getDecoratee().disble();
+        getLogger().disble();
     }
 
     @Override
     default boolean isEnabled() {
-        return getDecoratee().isEnabled();
+        return getLogger().isEnabled();
     }
 
     @Override
     default int getWaitSeconds() {
-        return getDecoratee().getWaitSeconds();
+        return getWait().getWaitSeconds();
     }
 
     @Override
     default WebDriver getDriver() {
-        return getDecoratee().getDriver();
+        return getWait().getDriver();
     }
 }
