@@ -18,117 +18,117 @@ import java.util.List;
  * @author leonhunter
  * @created 05/04/2020 - 10:17 PM
  */
-public interface BrowserHandlerLoggerDecoratorInterface extends BrowserHandlerLoggerInterface {
-    BrowserHandlerLoggerInterface getDecoratee();
+public interface BrowserHandlerLoggerInterfaceDecorator extends BrowserHandlerLoggerInterface {
+    BrowserHandlerLoggerInterface getBrowserHandlerLoggerDecoratee();
 
     @Override
     default SimpleLoggerInterface getLogger() {
-        return getDecoratee().getLogger();
+        return getBrowserHandlerLoggerDecoratee().getLogger();
     }
 
     @Override
     default WebElement getElement(By by) {
-        return getDecoratee().getElement(by);
+        return getBrowserHandlerLoggerDecoratee().getElement(by);
     }
 
     @Override
     default WebEntity getWebEntity(By by) {
-        return getDecoratee().getWebEntity(by);
+        return getBrowserHandlerLoggerDecoratee().getWebEntity(by);
     }
 
     @Override
     default List<WebElement> getElements(By by) {
-        return getDecoratee().getElements(by);
+        return getBrowserHandlerLoggerDecoratee().getElements(by);
     }
 
     @Override
     default String getPageLoadState() {
-        return getDecoratee().getPageLoadState();
+        return getBrowserHandlerLoggerDecoratee().getPageLoadState();
     }
 
     @Override
     default void navigateTo(String newUrl) {
-        getDecoratee().navigateTo(newUrl);
+        getBrowserHandlerLoggerDecoratee().navigateTo(newUrl);
     }
 
     @Override
     default void click(By by) {
-        getDecoratee().click(by);
+        getBrowserHandlerLoggerDecoratee().click(by);
     }
 
     @Override
     default Select select(By by) {
-        return getDecoratee().select(by);
+        return getBrowserHandlerLoggerDecoratee().select(by);
     }
 
     @Override
     default void selectByIndex(By by, int index) {
-        getDecoratee().selectByIndex(by, index);
+        getBrowserHandlerLoggerDecoratee().selectByIndex(by, index);
     }
 
     @Override
     default void selectByVisibleText(By by, String visibleText) {
-        getDecoratee().selectByVisibleText(by, visibleText);
+        getBrowserHandlerLoggerDecoratee().selectByVisibleText(by, visibleText);
     }
 
     @Override
     default void sendKeys(By by, String keys) {
-        getDecoratee().sendKeys(by, keys);
+        getBrowserHandlerLoggerDecoratee().sendKeys(by, keys);
     }
 
     @Override
     default void close() {
-        getDecoratee().close();
+        getBrowserHandlerLoggerDecoratee().close();
     }
 
     @Override
     default void highlightElement(By by, String color) {
-        getDecoratee().highlightElement(by, color);
+        getBrowserHandlerLoggerDecoratee().highlightElement(by, color);
     }
 
     @Override
     default void highlightElements(By[] bys, String color) {
-        getDecoratee().highlightElements(bys, color);
+        getBrowserHandlerLoggerDecoratee().highlightElements(bys, color);
     }
 
     @Override
     default Screenshot screenshot() {
-        return getDecoratee().screenshot();
+        return getBrowserHandlerLoggerDecoratee().screenshot();
     }
 
     @Override
     default Screenshot screenshot(By by) {
-        return getDecoratee().screenshot(by);
+        return getBrowserHandlerLoggerDecoratee().screenshot(by);
     }
 
     @Override
     default String getCurrentUrl() {
-        return getDecoratee().getCurrentUrl();
+        return getBrowserHandlerLoggerDecoratee().getCurrentUrl();
     }
 
     @Override
     default BrowserHandlerInterface getBrowserHandlerDecoratee() {
-        return getDecoratee().getBrowserHandlerDecoratee();
+        return getBrowserHandlerLoggerDecoratee().getBrowserHandlerDecoratee();
     }
 
     @Override
     default WebDriver getDriver() {
-        return getDecoratee().getDriver();
+        return getBrowserHandlerLoggerDecoratee().getDriver();
     }
 
     @Override
     default BrowserWaitInterface getWait() {
-        return getDecoratee().getWait();
+        return getBrowserHandlerLoggerDecoratee().getWait();
     }
 
     @Override
     default BrowserHandlerOptions getOptions() {
-        return getDecoratee().getOptions();
+        return getBrowserHandlerLoggerDecoratee().getOptions();
     }
 
     @Override
     default JavascriptExecutor getJavascriptExecutor() {
-        return getDecoratee().getJavascriptExecutor();
+        return getBrowserHandlerLoggerDecoratee().getJavascriptExecutor();
     }
 
     @Override
