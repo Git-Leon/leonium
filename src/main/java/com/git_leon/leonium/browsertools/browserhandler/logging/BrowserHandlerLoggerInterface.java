@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.Select;
 import java.awt.image.RasterFormatException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -21,8 +19,6 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default WebElement getElement(By by) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to get `WebElement`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebElement` [ %s ], using selector [ %s ]";
 
@@ -34,8 +30,6 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default WebEntity getWebEntity(By by) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to wrap `WebElement` with `WebEntity`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebEntity` [ %s ], using selector [ %s ]";
 
@@ -49,17 +43,15 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default List<WebElement> getElements(By by) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to wrap `WebElement` with `WebEntity`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebEntity` [ %s ], using selector [ %s ]";
 
         getLogger().info(attemptMessage, by);
         List<WebElement> elements = getBrowserHandlerDecoratee().getElements(by);
         List<String> webEntityStringsToBeLogged = elements
-                .stream()
-                .map(WebEntity::toString)
-                .collect(Collectors.toList());
+            .stream()
+            .map(WebEntity::toString)
+            .collect(Collectors.toList());
         getLogger().info(successMessage, webEntityStringsToBeLogged, by);
 
         return elements;
@@ -68,8 +60,6 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default String getPageLoadState() {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to get page-load-state from [ %s ]";
         String currentUrl = getBrowserHandlerDecoratee().getCurrentUrl();
         String pageLoadState = getBrowserHandlerDecoratee().getPageLoadState();
@@ -85,8 +75,6 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void navigateTo(String newUrl) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to navigate to [ %s ] from [ %s ]";
         String successMessage = "Successfully navigated to [ %s ] from [ %s ]";
 
@@ -99,16 +87,18 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void click(By by) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to click `WebElement`, using selector [ %s ]";
         String successMessage = "Successfully clicked `WebElement` [ %s ], using selector [ %s ]\n";
         WebEntity we = new WebEntity(by, getDriver());
         Consumer<String> screenshotLog = (String preposition) -> {
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
                 try {
-                    getLogger().info("screenshot " + preposition + " execution<br> %s", we.getScreenshot().toString());
+                    String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
+                    String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
+                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
                 } catch (RasterFormatException rfe) {
+                    getLogger().error("Failed to get screenshot of interaction.");
+                    getLogger().throwable(rfe);
                 }
             }
         };
@@ -123,14 +113,19 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default Select select(By by) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to select dropdown, using selector [ %s ]";
         String successMessage = "Successfully selected dropdown `WebElement` [ %s ], using selector [ %s ]";
         WebEntity we = new WebEntity(by, getDriver());
         Consumer<String> screenshotLog = (String preposition) -> {
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
-                getLogger().info("screenshot " + preposition + " execution<br> %s", we.getScreenshot().toString());
+                try {
+                    String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
+                    String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
+                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                } catch (RasterFormatException rfe) {
+                    getLogger().error("Failed to get screenshot of interaction.");
+                    getLogger().throwable(rfe);
+                }
             }
         };
 
@@ -145,14 +140,19 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void selectByIndex(By by, int index) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to select index [ %s ], using selector [ %s ]";
         String successMessage = "Successfully selected index [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
             WebEntity we = new WebEntity(by, getDriver());
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
-                getLogger().info("screenshot " + preposition + " execution<br> %s", we.getScreenshot().toString());
+                try {
+                    String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
+                    String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
+                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                } catch (RasterFormatException rfe) {
+                    getLogger().error("Failed to get screenshot of interaction.");
+                    getLogger().throwable(rfe);
+                }
             }
         };
 
@@ -166,14 +166,19 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void selectByVisibleText(By by, String visibleText) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to select text [ %s ], using selector [ %s ]";
         String successMessage = "Successfully selected text [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
             WebEntity we = new WebEntity(by, getDriver());
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
-                getLogger().info("screenshot " + preposition + " execution<br> %s", we.getScreenshot().toString());
+                try {
+                    String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
+                    String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
+                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                } catch (RasterFormatException rfe) {
+                    getLogger().error("Failed to get screenshot of interaction.");
+                    getLogger().throwable(rfe);
+                }
             }
         };
 
@@ -188,14 +193,19 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void sendKeys(By by, String keys) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to send keys [ %s ], using selector [ %s ]";
         String successMessage = "Successfully sent keys [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
             WebEntity we = new WebEntity(by, getDriver());
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
-                getLogger().info("screenshot " + preposition + " execution<br> %s", we.getScreenshot().toString());
+                try {
+                    String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
+                    String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
+                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                } catch (RasterFormatException rfe) {
+                    getLogger().error("Failed to get screenshot of interaction.");
+                    getLogger().throwable(rfe);
+                }
             }
         };
 
@@ -209,8 +219,6 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void close() {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to close `BrowserHandler` instance, [ %s ]";
         String successMessage = "Successfully closed `BrowserHandler` instance, [ %s ]";
 
@@ -222,8 +230,6 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void highlightElement(By by, String color) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to highlight element with color [ %s ], using selector [ %s ]";
         String successMessage = "Successfully highlighted element with color [ %s ], using selector [ %s ]";
 
@@ -235,8 +241,6 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default void highlightElements(By[] bys, String color) {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to highlight elements with color [ %s ], using selectors [ %s ]";
         String successMessage = "Successfully highlighted elements with color [ %s ], using selectors [ %s ]";
         String selectors = Arrays.toString(bys);
@@ -249,18 +253,20 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
     @Override
     default Screenshot screenshot() {
-        String className = getClass().getSimpleName();
-        getLogger().info(className);
         String attemptMessage = "Attempting to screenshot from [ %s ]";
         String successMessage = "Successfully retrieved screenshot of [ %s ]";
         String currentUrl = getBrowserHandlerDecoratee().getCurrentUrl();
         getLogger().info(attemptMessage, currentUrl);
-
         Screenshot screenshot = getBrowserHandlerDecoratee().screenshot();
-        if (screenshot.getFile().exists()) {
-            getLogger().info(successMessage, screenshot, currentUrl);
-        }
 
+        if (screenshot.getFile().exists()) {
+            try {
+                getLogger().info(successMessage, screenshot, currentUrl);
+            } catch (RasterFormatException rfe) {
+                getLogger().error("Failed to get screenshot of interaction.");
+                getLogger().throwable(rfe);
+            }
+        }
         return screenshot;
     }
 }

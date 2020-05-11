@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
 class WebElementScreenshot extends Screenshot {
     private final WebEntity webEntity;
 
-    public WebElementScreenshot(WebDriver driver, By by) {
-        super(driver, new WebEntity(by, driver).toString());
+    public WebElementScreenshot(WebDriver driver, By by, String fileDirectory) {
+        super(driver, fileDirectory, new WebEntity(by, driver).toString());
         this.webEntity = new WebEntity(by, driver);
     }
 

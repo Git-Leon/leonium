@@ -3,8 +3,11 @@ package com.git_leon.leonium.extentreporting;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.github.git_leon.StringUtils;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.logging.Level;
 
 /**
@@ -24,8 +27,8 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
 
     @Override
     public void log(Level level, String logMessage, Object... logMessageArgs) {
-        if (isEnabled) {
-            extentTest.log(getStatus(level), String.format(logMessage, logMessageArgs));
+        if (isEnabled()) {
+            getExtentTest().log(getStatus(level), String.format(logMessage, logMessageArgs));
         }
     }
 
@@ -43,6 +46,17 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
     public boolean isEnabled() {
         return isEnabled;
     }
+
+    @Override
+    public void throwable(Throwable t, Level level) {
+        StringWriter out = new StringWriter();
+        t.printStackTrace(new PrintWriter(out));
+        String description = out
+            .toString()
+            .replaceAll("\n", "<br>");
+        this.error(description);
+    }
+
 
     public ExtentTest getExtentTest() {
         return extentTest;

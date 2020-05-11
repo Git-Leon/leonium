@@ -31,6 +31,7 @@ public class ExtentTestLoggerFactory {
 
     public ExtentTestLoggerFactory(String filePath) {
         this(new ExtentReports(), new ExtentHtmlReporter(filePath), new ConcurrentHashMap<>());
+        System.out.println("extenthtmlreporter = " + filePath);
     }
 
     public ExtentReports getExtentReports() {

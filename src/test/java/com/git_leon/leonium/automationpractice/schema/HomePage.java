@@ -2,6 +2,7 @@ package com.git_leon.leonium.automationpractice.schema;
 
 import com.git_leon.leonium.browsertools.WebPage;
 import com.git_leon.leonium.browsertools.With;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -20,6 +21,14 @@ public class HomePage extends WebPage {
         super(driver);
     }
 
+    public HomePage(WebDriver driver, String reportName, String testName) {
+        super(driver, reportName, testName);
+    }
+
+    public HomePage(BrowserHandlerInterface browserHandler) {
+        super(browserHandler);
+    }
+
     public SearchResultPage search(String text) {
         getBrowserHandler().sendKeys(inputSearch, text);
         getBrowserHandler().click(submitSearchButton);
@@ -28,7 +37,7 @@ public class HomePage extends WebPage {
     }
 
     public void checkAllCheckBoxes() {
-        
+
     }
 
 

@@ -81,11 +81,11 @@ public class WebEntity {
         return driver.findElement(selector);
     }
 
-    public Screenshot getScreenshot() {
+    public Screenshot getScreenshot(String fileDirectory) {
         if (screenshot == null) {
             try {
                 wait.forConditions(selector, SelectorWaitCondition.VISIBILITY);
-                WebElementScreenshot screenshot = new WebElementScreenshot(driver, selector);
+                WebElementScreenshot screenshot = new WebElementScreenshot(driver, selector, fileDirectory);
                 this.screenshot = screenshot;
             } catch (RasterFormatException rfe) {
                 // TODO - Identify how to elegantly avoid this

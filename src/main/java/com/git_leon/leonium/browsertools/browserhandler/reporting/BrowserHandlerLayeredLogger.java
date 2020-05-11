@@ -25,16 +25,6 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
     private final String reportFilePath;
     private final String testName;
     private final BrowserHandlerLoggerImpl browserHandlerLoggerImpl;
-//
-//    public BrowserHandlerLayeredLogger(WebDriver driver, String reportFilePath, String testName) {
-//        this.directoryName = reportFilePath;
-//        this.testName = testName;
-//        this.browserWaitLogger = new BrowserWaitLogger(driver, 5);
-//        this.browserWaitExtentReporter = new BrowserWaitLoggerExtentReporter(browserWaitLogger, reportFilePath, testName);
-//        this.browserHandlerImplementation = new BrowserHandler(driver, new BrowserWaitLogger(browserWaitExtentReporter, browserWaitExtentReporter));
-//        this.browserHandlerExtentReporter = new BrowserHandlerLoggerExtentReporter(browserHandlerImplementation, browserWaitExtentReporter.getExtentTestLoggerFactory(), testName, "");
-//        this.browserHandlerLogger = new BrowserHandlerLoggerImpl(browserHandlerExtentReporter);
-//    }
 
     public BrowserHandlerLayeredLogger(WebDriver driver, String reportFilePath, String testName) {
         this.reportFilePath = reportFilePath;
@@ -60,11 +50,6 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
     }
 
     @Override
-    public BrowserHandlerInterface getBrowserHandlerDecoratee() {
-        return getBrowserHandlerLogger();
-    }
-
-    @Override
     public void finalize() {
         close();
     }
@@ -75,19 +60,24 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
         BrowserHandlerLoggerInterface.super.close();
     }
 
-    public BrowserHandlerLoggerExtentReporter getBrowserHandlerExtentReporter() {
-        return browserHandlerExtentReporter;
-    }
-
-    public BrowserHandlerLoggerInterface getBrowserHandlerLogger() {
-        return getBrowserHandlerExtentReporter();
-    }
-
     public String getReportFilePath() {
         return reportFilePath;
     }
 
     public String getTestName() {
         return testName;
+    }
+
+    @Override
+    public BrowserHandlerInterface getBrowserHandlerDecoratee() {
+        return browserHandlerExtentReporter;
+    }
+
+    public BrowserHandlerLoggerExtentReporter getBrowserHandlerExtentReporter() {
+        return browserHandlerExtentReporter;
+    }
+
+    public BrowserHandlerLoggerInterface getBrowserHandlerLogger() {
+        return browserHandlerExtentReporter;
     }
 }

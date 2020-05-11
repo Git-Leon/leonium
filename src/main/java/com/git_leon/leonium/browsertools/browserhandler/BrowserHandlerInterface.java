@@ -53,7 +53,7 @@ public interface BrowserHandlerInterface {
     default void click(By by) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_CLICK.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         we.click();
     }
@@ -62,7 +62,7 @@ public interface BrowserHandlerInterface {
     default Select select(By by) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         return we.toSelect();
     }
@@ -71,7 +71,7 @@ public interface BrowserHandlerInterface {
     default void selectByIndex(By by, int index) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         we.selectByIndex(index);
     }
@@ -80,7 +80,7 @@ public interface BrowserHandlerInterface {
     default void selectByVisibleText(By by, String visibleText) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         we.selectByVisibleText(visibleText);
     }
@@ -89,7 +89,7 @@ public interface BrowserHandlerInterface {
     default void sendKeys(By by, String keys) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SENDKEYS.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         we.sendKeys(keys);
     }
@@ -125,11 +125,11 @@ public interface BrowserHandlerInterface {
 
 
     default Screenshot screenshot() {
-        return new Screenshot(getDriver(), getDriver().getTitle());
+        return new Screenshot(getDriver(), getOptions().SCREENSHOT_DIRECTORY.getValue(), getDriver().getTitle());
     }
 
     default Screenshot screenshot(By by) {
-        return new WebEntity(by, getDriver()).getScreenshot();
+        return new WebEntity(by, getDriver()).getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
     }
 
     default String getCurrentUrl() {
