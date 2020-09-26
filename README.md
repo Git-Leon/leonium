@@ -37,3 +37,4 @@
 ### Sample Animation
 
 <img src="./automation-test-example.gif">
+<img src="./leonium-demo.gif">
