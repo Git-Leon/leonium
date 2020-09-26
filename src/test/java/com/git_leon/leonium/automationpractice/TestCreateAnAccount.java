@@ -25,7 +25,7 @@ public class TestCreateAnAccount {
     private void test(String searchText) {
         String testName = "test-" + Long.toHexString(System.nanoTime());
         String email = testName + "@leonium.com";
-        BrowserHandlerInterface browserHandler = new BrowserHandlerLayeredLogger(driver, DirectoryReference
+        BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, DirectoryReference
                 .TARGET_DIRECTORY
                 .getFileFromDirectory("Report-" + System.nanoTime() + ".html")
                 .getAbsolutePath(),

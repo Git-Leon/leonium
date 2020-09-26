@@ -110,7 +110,7 @@ public class CreateAnAccountPage extends WebPage {
 
     public void inputPersonalInfoDropDownBirthMonth(String personalInfoDropDownBirthMonth) {
         try {
-            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthMonth, personalInfoDropDownBirthMonth);
+            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthMonth, personalInfoDropDownBirthMonth.concat("\n"));
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -118,7 +118,7 @@ public class CreateAnAccountPage extends WebPage {
 
     public void inputPersonalInfoDropDownBirthDay(String personalInfoDropDownBirthDay) {
         try {
-            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthDay, personalInfoDropDownBirthDay);
+            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthDay, personalInfoDropDownBirthDay.concat("\n"));
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -126,7 +126,7 @@ public class CreateAnAccountPage extends WebPage {
 
     public void inputPersonalInfoDropDownBirthYear(String personalInfoDropDownBirthYear) {
         try {
-            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthYear, personalInfoDropDownBirthYear);
+            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthYear, personalInfoDropDownBirthYear.concat("\n"));
         } catch (Throwable t) {
             t.printStackTrace();
         }

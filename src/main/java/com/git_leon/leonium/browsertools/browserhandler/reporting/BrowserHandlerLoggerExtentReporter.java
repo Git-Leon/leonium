@@ -46,7 +46,7 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
 
     @Override
     public BrowserWaitInterface getWait() {
-        return new BrowserWaitLogger(new BrowserWait(15, decoratee.getDriver()), getLogger());
+        return getBrowserHandlerDecoratee().getWait();
     }
 
     @Override

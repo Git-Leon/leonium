@@ -17,7 +17,7 @@ import org.openqa.selenium.WebDriver;
  * @author leonhunter
  * @created 05/04/2020 - 10:05 AM
  */
-public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterface, BrowserHandlerDecoratorInterface {
+public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterface {
     private final BrowserWaitLoggerInterface browserWaitLogger;
     private final BrowserWaitLoggerExtentReporter browserWaitExtentReporter;
     private final BrowserHandler browserHandlerImplementation;
