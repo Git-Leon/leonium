@@ -3,6 +3,7 @@ package com.git_leon.leonium.automationpractice.webpages;
 import com.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPage;
 import com.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPageStateBuilder;
 import com.git_leon.leonium.browsertools.WebPage;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,7 +15,7 @@ public class SignInPage extends WebPage {
     private By buttonCreateAccount = By.id("SubmitCreate");
 
 
-    public SignInPage(WebDriver driver) {
+    public SignInPage(BrowserHandlerInterface driver) {
         super(driver);
     }
 
@@ -32,7 +33,7 @@ public class SignInPage extends WebPage {
     public CreateAnAccountPage createAccount(String email) {
         getBrowserHandler().sendKeys(inputEmailCreateAccount,email);
         getBrowserHandler().click(buttonCreateAccount);
-        CreateAnAccountPage createAnAccountPage =  new CreateAnAccountPage(getBrowserHandler().getDriver());
+        CreateAnAccountPage createAnAccountPage =  new CreateAnAccountPage(getBrowserHandler());
         createAnAccountPage.setPageState(new CreateAnAccountPageStateBuilder()
                 .setPersonalInfoEmail(email)
                 .build());

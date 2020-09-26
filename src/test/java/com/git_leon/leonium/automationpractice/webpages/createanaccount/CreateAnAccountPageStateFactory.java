@@ -15,7 +15,9 @@ public class CreateAnAccountPageStateFactory {
                 .setAddressInfoInputCity("Delaware")
                 .setPersonalInfoDropDownBirthDay(RandomUtils.createInteger(1, 28).toString())
                 .setPersonalInfoDropDownBirthMonth(RandomUtils.createInteger(1, 12).toString())
-                .setPersonalInfoDropDownBirthYear(RandomUtils.createInteger(1900, 2020).toString());
+                .setPersonalInfoDropDownBirthYear(RandomUtils.createInteger(1900, 2020).toString())
+                .setAddressInfoInputPhone(RandomUtils.createLong(1000000000L, 9999999999L).toString())
+                .setAddressInfoInputMobilePhone(RandomUtils.createLong(1000000000L, 9999999999L).toString());
     }
 
     public static CreateAnAccountPageState createRandomCreateAnAccountPageState() {

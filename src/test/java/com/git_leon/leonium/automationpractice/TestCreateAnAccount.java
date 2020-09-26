@@ -30,9 +30,8 @@ public class TestCreateAnAccount {
                 .getFileFromDirectory("Report-" + System.nanoTime() + ".html")
                 .getAbsolutePath(),
                 testName);
-
-        HomePage homePage = new HomePage(browserHandler);
         browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(false);
+        HomePage homePage = new HomePage(browserHandler);
         try {
 
             homePage.navigateTo();
@@ -41,6 +40,7 @@ public class TestCreateAnAccount {
             createAnAccountPage.setPageState(CreateAnAccountPageStateFactory
                     .createRandomCreateAnAccountPageStateBuilder()
                     .setPersonalInfoEmail(email)
+                    .setPersonalInfoPassword(email)
                     .build());
             createAnAccountPage.inputData();
         } catch (Throwable t) {

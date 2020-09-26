@@ -1,21 +1,22 @@
 package com.git_leon.leonium.automationpractice.webpages.createanaccount;
 
 import com.git_leon.leonium.browsertools.WebPage;
-import com.git_leon.leonium.browsertools.browserhandler.WebEntity;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CreateAnAccountPage extends WebPage {
     private CreateAnAccountPageState pageState;
     private By byPersonalInfoRadioButtonMrTitle = By.id("uniform-id_gender1");
-    private By byPersonalInfoRadioButtonMrsTitle= By.id("uniform-id_gender2");
+    private By byPersonalInfoRadioButtonMrsTitle = By.id("uniform-id_gender2");
     private By byPersonalInfoInputFirstName = By.id("customer_firstname");
     private By byPersonalInfoInputLastName = By.id("customer_lastname");
     private By byPersonalInfoEmail = By.id("email");
     private By byPersonalInfoPassword = By.id("passwd");
-    private By byPersonalInfoDropDownBirthMonth = By.id("months");
-    private By byPersonalInfoDropDownBirthDay = By.id("days");
-    private By byPersonalInfoDropDownBirthYear = By.id("years");
+    private By byPersonalInfoDropDownBirthMonth = By.cssSelector("#months");//By.id("months");
+    private By byPersonalInfoDropDownBirthDay = By.cssSelector("#days");//By.id("days");
+    private By byPersonalInfoDropDownBirthYear = By.cssSelector("#years");//By.id("years");
     private By byPersonalInfoCheckBoxSignUpForNewsLetter = By.id("newsletter");
     private By byPersonalInfoCheckBoxReceiveSpecialOffers = By.id("optin");
     private By byAddressInfoInputFirstName = By.id("firstname");
@@ -34,9 +35,8 @@ public class CreateAnAccountPage extends WebPage {
     private By byButtonSubmitAccount = By.id("submitAccount");
 
 
-
-    public CreateAnAccountPage(WebDriver driver) {
-        super(driver);
+    public CreateAnAccountPage(BrowserHandlerInterface browserHandler) {
+        super(browserHandler);
     }
 
     @Override
@@ -45,17 +45,10 @@ public class CreateAnAccountPage extends WebPage {
     }
 
     public void inputData() {
-        inputPersonalInfoRadioButtonMrTitle(getPageState().getPersonalInfoRadioButtonMrTitle());
-        inputPersonalInfoRadioButtonMrsTitle(getPageState().getPersonalInfoRadioButtonMrsTitle());
         inputPersonalInfoInputFirstName(getPageState().getPersonalInfoInputFirstName());
         inputPersonalInfoInputLastName(getPageState().getPersonalInfoInputLastName());
         inputPersonalInfoEmail(getPageState().getPersonalInfoEmail());
         inputPersonalInfoPassword(getPageState().getPersonalInfoPassword());
-        inputPersonalInfoDropDownBirthMonth(getPageState().getPersonalInfoDropDownBirthMonth());
-        inputPersonalInfoDropDownBirthDay(getPageState().getPersonalInfoDropDownBirthDay());
-        inputPersonalInfoDropDownBirthYear(getPageState().getPersonalInfoDropDownBirthYear());
-        inputPersonalInfoCheckBoxSignUpForNewsLetter(getPageState().getPersonalInfoCheckBoxSignUpForNewsLetter());
-        inputPersonalInfoCheckBoxReceiveSpecialOffers(getPageState().getPersonalInfoCheckBoxReceiveSpecialOffers());
         inputAddressInfoInputFirstName(getPageState().getAddressInfoInputFirstName());
         inputAddressInfoInputLastName(getPageState().getAddressInfoInputLastName());
         inputAddressInfoInputCompany(getPageState().getAddressInfoInputCompany());
@@ -69,6 +62,13 @@ public class CreateAnAccountPage extends WebPage {
         inputAddressInfoInputAddressAlias(getPageState().getAddressInfoInputAddressAlias());
         inputAddressInfoDropDownState(getPageState().getAddressInfoDropDownState());
         inputAddressInfoDropDownCountry(getPageState().getAddressInfoDropDownCountry());
+        inputPersonalInfoRadioButtonMrTitle(getPageState().getPersonalInfoRadioButtonMrTitle());
+        inputPersonalInfoRadioButtonMrsTitle(getPageState().getPersonalInfoRadioButtonMrsTitle());
+        inputPersonalInfoDropDownBirthMonth(getPageState().getPersonalInfoDropDownBirthMonth());
+        inputPersonalInfoDropDownBirthDay(getPageState().getPersonalInfoDropDownBirthDay());
+        inputPersonalInfoDropDownBirthYear(getPageState().getPersonalInfoDropDownBirthYear());
+        inputPersonalInfoCheckBoxSignUpForNewsLetter(getPageState().getPersonalInfoCheckBoxSignUpForNewsLetter());
+        inputPersonalInfoCheckBoxReceiveSpecialOffers(getPageState().getPersonalInfoCheckBoxReceiveSpecialOffers());
         clickButtonSubmitAccount();
     }
 
@@ -109,25 +109,37 @@ public class CreateAnAccountPage extends WebPage {
     }
 
     public void inputPersonalInfoDropDownBirthMonth(String personalInfoDropDownBirthMonth) {
-        getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthMonth, personalInfoDropDownBirthMonth);
+        try {
+            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthMonth, personalInfoDropDownBirthMonth);
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
     }
 
     public void inputPersonalInfoDropDownBirthDay(String personalInfoDropDownBirthDay) {
-        getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthDay, personalInfoDropDownBirthDay);
+        try {
+            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthDay, personalInfoDropDownBirthDay);
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
     }
 
     public void inputPersonalInfoDropDownBirthYear(String personalInfoDropDownBirthYear) {
-        getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthYear, personalInfoDropDownBirthYear);
+        try {
+            getBrowserHandler().sendKeys(byPersonalInfoDropDownBirthYear, personalInfoDropDownBirthYear);
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
     }
 
     public void inputPersonalInfoCheckBoxSignUpForNewsLetter(Boolean selectButton) {
-        if(selectButton) {
+        if (selectButton) {
             getBrowserHandler().select(byPersonalInfoCheckBoxSignUpForNewsLetter);
         }
     }
 
     public void inputPersonalInfoCheckBoxReceiveSpecialOffers(Boolean selectButton) {
-        if(selectButton) {
+        if (selectButton) {
             getBrowserHandler().select(byPersonalInfoCheckBoxReceiveSpecialOffers);
         }
     }

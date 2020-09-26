@@ -39,7 +39,7 @@ public class HomePage extends WebPage {
 
     public SignInPage clickSignIn() {
         getBrowserHandler().click(buttonSignIn);
-        return new SignInPage(getBrowserHandler().getDriver());
+        return new SignInPage(getBrowserHandler());
     }
 
     @Override
