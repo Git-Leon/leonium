@@ -1,4 +1,4 @@
-package com.git_leon.leonium.automationpractice.schema;
+package com.git_leon.leonium.automationpractice.webpages;
 
 import com.git_leon.leonium.browsertools.WebPage;
 import com.git_leon.leonium.browsertools.With;

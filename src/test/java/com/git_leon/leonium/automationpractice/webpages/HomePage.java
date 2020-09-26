@@ -1,4 +1,4 @@
-package com.git_leon.leonium.automationpractice.schema;
+package com.git_leon.leonium.automationpractice.webpages;
 
 import com.git_leon.leonium.browsertools.WebPage;
 import com.git_leon.leonium.browsertools.With;
@@ -16,6 +16,7 @@ public class HomePage extends WebPage {
     private By buttonWomanCategory = With.tagAttributeValue("li", "title", "Women");
     private By buttonDressesCategory = With.tagAttributeValue("li", "title", "Dresses");
     private By buttonShirtCategory = With.tagAttributeValue("li", "title", "T-shirts");
+    private By buttonSignIn = By.className("login");
 
     public HomePage(WebDriver driver) {
         super(driver);
