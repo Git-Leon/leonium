@@ -1,5 +1,7 @@
 package com.git_leon.leonium.automationpractice.webpages;
 
+import com.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPage;
+import com.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPageStateBuilder;
 import com.git_leon.leonium.browsertools.WebPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +23,19 @@ public class SignInPage extends WebPage {
         getBrowserHandler().navigateTo("http://automationpractice.com/index.php?controller=authentication&back=my-account");
     }
 
-    public static void main(String[] args) {
-        System.out.println("test-" + Long.toHexString(System.nanoTime()));
+    public void signIn(String email, String password) {
+        getBrowserHandler().sendKeys(inputEmailLogin, email);
+        getBrowserHandler().sendKeys(inputPasswordLogin, password);
+        getBrowserHandler().click(buttonLogin);
+    }
+
+    public CreateAnAccountPage createAccount(String email) {
+        getBrowserHandler().sendKeys(inputEmailCreateAccount,email);
+        getBrowserHandler().click(buttonCreateAccount);
+        CreateAnAccountPage createAnAccountPage =  new CreateAnAccountPage(getBrowserHandler().getDriver());
+        createAnAccountPage.setPageState(new CreateAnAccountPageStateBuilder()
+                .setPersonalInfoEmail(email)
+                .build());
+        return createAnAccountPage;
     }
 }

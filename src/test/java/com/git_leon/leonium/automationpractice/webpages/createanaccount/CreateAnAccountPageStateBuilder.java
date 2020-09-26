@@ -1,8 +1,8 @@
 package com.git_leon.leonium.automationpractice.webpages.createanaccount;
 
 public class CreateAnAccountPageStateBuilder {
-    private String personalInfoRadioButtonMrTitle;
-    private String personalInfoRadioButtonMrsTitle;
+    private Boolean personalInfoRadioButtonMrTitle;
+    private Boolean personalInfoRadioButtonMrsTitle;
     private String personalInfoInputFirstName;
     private String personalInfoInputLastName;
     private String personalInfoEmail;
@@ -10,8 +10,8 @@ public class CreateAnAccountPageStateBuilder {
     private String personalInfoDropDownBirthMonth;
     private String personalInfoDropDownBirthDay;
     private String personalInfoDropDownBirthYear;
-    private String personalInfoCheckBoxSignUpForNewsLetter;
-    private String personalInfoCheckBoxReceiveSpecialOffers;
+    private Boolean personalInfoCheckBoxSignUpForNewsLetter;
+    private Boolean personalInfoCheckBoxReceiveSpecialOffers;
     private String addressInfoInputFirstName;
     private String addressInfoInputLastName;
     private String addressInfoInputCompany;
@@ -27,12 +27,46 @@ public class CreateAnAccountPageStateBuilder {
     private String addressInfoDropDownCountry;
     private String buttonSubmitAccount;
 
-    public CreateAnAccountPageStateBuilder setPersonalInfoRadioButtonMrTitle(String personalInfoRadioButtonMrTitle) {
+    public CreateAnAccountPageStateBuilder() {
+    }
+
+    public CreateAnAccountPageStateBuilder(CreateAnAccountPageState preBuild) {
+        this.personalInfoRadioButtonMrTitle = preBuild.getPersonalInfoRadioButtonMrTitle();
+        this.personalInfoRadioButtonMrsTitle = preBuild.getPersonalInfoRadioButtonMrsTitle();
+        this.personalInfoInputFirstName = preBuild.getPersonalInfoInputFirstName();
+        this.personalInfoInputLastName = preBuild.getPersonalInfoInputLastName();
+        this.personalInfoEmail = preBuild.getPersonalInfoEmail();
+        this.personalInfoPassword = preBuild.getPersonalInfoPassword();
+        this.personalInfoDropDownBirthMonth = preBuild.getPersonalInfoDropDownBirthMonth();
+        this.personalInfoDropDownBirthDay = preBuild.getPersonalInfoDropDownBirthDay();
+        this.personalInfoDropDownBirthYear = preBuild.getPersonalInfoDropDownBirthYear();
+        this.personalInfoCheckBoxSignUpForNewsLetter = preBuild.getPersonalInfoCheckBoxSignUpForNewsLetter();
+        this.personalInfoCheckBoxReceiveSpecialOffers = preBuild.getPersonalInfoCheckBoxReceiveSpecialOffers();
+        this.addressInfoInputFirstName = preBuild.getAddressInfoInputFirstName();
+        this.addressInfoInputLastName = preBuild.getAddressInfoInputLastName();
+        this.addressInfoInputCompany = preBuild.getAddressInfoInputCompany();
+        this.addressInfoInputLine1 = preBuild.getAddressInfoInputLine1();
+        this.addressInfoInputLine2 = preBuild.getAddressInfoInputLine2();
+        this.addressInfoInputCity = preBuild.getAddressInfoInputCity();
+        this.addressInfoInputZipcode = preBuild.getAddressInfoInputZipcode();
+        this.addressInfoInputAdditionalInfo = preBuild.getAddressInfoInputAdditionalInfo();
+        this.addressInfoInputPhone = preBuild.getAddressInfoInputPhone();
+        this.addressInfoInputMobilePhone = preBuild.getAddressInfoInputMobilePhone();
+        this.addressInfoInputAddressAlias = preBuild.getAddressInfoInputAddressAlias();
+        this.addressInfoDropDownState = preBuild.getAddressInfoDropDownState();
+        this.addressInfoDropDownCountry = preBuild.getAddressInfoDropDownCountry();
+        this.buttonSubmitAccount = preBuild.getButtonSubmitAccount();
+    }
+    public CreateAnAccountPageStateBuilder(CreateAnAccountPageStateBuilder preBuild) {
+        this(preBuild.build());
+    }
+
+    public CreateAnAccountPageStateBuilder setPersonalInfoRadioButtonMrTitle(Boolean personalInfoRadioButtonMrTitle) {
         this.personalInfoRadioButtonMrTitle = personalInfoRadioButtonMrTitle;
         return this;
     }
 
-    public CreateAnAccountPageStateBuilder setPersonalInfoRadioButtonMrsTitle(String personalInfoRadioButtonMrsTitle) {
+    public CreateAnAccountPageStateBuilder setPersonalInfoRadioButtonMrsTitle(Boolean personalInfoRadioButtonMrsTitle) {
         this.personalInfoRadioButtonMrsTitle = personalInfoRadioButtonMrsTitle;
         return this;
     }
@@ -72,12 +106,12 @@ public class CreateAnAccountPageStateBuilder {
         return this;
     }
 
-    public CreateAnAccountPageStateBuilder setPersonalInfoCheckBoxSignUpForNewsLetter(String personalInfoCheckBoxSignUpForNewsLetter) {
+    public CreateAnAccountPageStateBuilder setPersonalInfoCheckBoxSignUpForNewsLetter(Boolean personalInfoCheckBoxSignUpForNewsLetter) {
         this.personalInfoCheckBoxSignUpForNewsLetter = personalInfoCheckBoxSignUpForNewsLetter;
         return this;
     }
 
-    public CreateAnAccountPageStateBuilder setPersonalInfoCheckBoxReceiveSpecialOffers(String personalInfoCheckBoxReceiveSpecialOffers) {
+    public CreateAnAccountPageStateBuilder setPersonalInfoCheckBoxReceiveSpecialOffers(Boolean personalInfoCheckBoxReceiveSpecialOffers) {
         this.personalInfoCheckBoxReceiveSpecialOffers = personalInfoCheckBoxReceiveSpecialOffers;
         return this;
     }
@@ -152,7 +186,7 @@ public class CreateAnAccountPageStateBuilder {
         return this;
     }
 
-    public CreateAnAccountPageState createCreateAnAccountPageState() {
+    public CreateAnAccountPageState build() {
         return new CreateAnAccountPageState(personalInfoRadioButtonMrTitle, personalInfoRadioButtonMrsTitle, personalInfoInputFirstName, personalInfoInputLastName, personalInfoEmail, personalInfoPassword, personalInfoDropDownBirthMonth, personalInfoDropDownBirthDay, personalInfoDropDownBirthYear, personalInfoCheckBoxSignUpForNewsLetter, personalInfoCheckBoxReceiveSpecialOffers, addressInfoInputFirstName, addressInfoInputLastName, addressInfoInputCompany, addressInfoInputLine1, addressInfoInputLine2, addressInfoInputCity, addressInfoInputZipcode, addressInfoInputAdditionalInfo, addressInfoInputPhone, addressInfoInputMobilePhone, addressInfoInputAddressAlias, addressInfoDropDownState, addressInfoDropDownCountry, buttonSubmitAccount);
     }
 }

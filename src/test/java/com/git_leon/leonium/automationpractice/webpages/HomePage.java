@@ -37,10 +37,10 @@ public class HomePage extends WebPage {
         return new SearchResultPage(getBrowserHandler());
     }
 
-    public void checkAllCheckBoxes() {
-
+    public SignInPage clickSignIn() {
+        getBrowserHandler().click(buttonSignIn);
+        return new SignInPage(getBrowserHandler().getDriver());
     }
-
 
     @Override
     public void navigateTo() {
