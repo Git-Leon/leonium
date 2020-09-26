@@ -2,8 +2,6 @@ package com.git_leon.leonium.automationpractice.webpages.createanaccount;
 
 import com.github.git_leon.RandomUtils;
 
-import java.util.Arrays;
-
 public class CreateAnAccountPageStateFactory {
     public static CreateAnAccountPageStateBuilder createRandomCreateAnAccountPageStateBuilder() {
         return new CreateAnAccountPageStateBuilder()
@@ -13,7 +11,7 @@ public class CreateAnAccountPageStateFactory {
                 .setPersonalInfoCheckBoxReceiveSpecialOffers(RandomUtils.createBoolean(50))
                 .setAddressInfoDropDownCountry("United State")
                 .setAddressInfoInputAdditionalInfo(RandomUtils.createString('a', 'z', 10))
-                .setAddressInfoInputAddressAlias(RandomUtils.createString('a', 'z', 5))
+                .setAddressInfoInputAddressAlias(RandomUtils.createString('a', 'z', 7))
                 .setAddressInfoInputCity("Delaware")
                 .setPersonalInfoDropDownBirthDay(RandomUtils.createInteger(1, 28).toString())
                 .setPersonalInfoDropDownBirthMonth(RandomUtils.selectElement("January,February,March,April,May,June,July,August,September,October,November,December".split(",")))

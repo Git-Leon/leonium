@@ -1,10 +1,8 @@
 package com.git_leon.leonium.automationpractice.webpages.createanaccount;
 
 import com.git_leon.leonium.browsertools.WebPage;
-import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class CreateAnAccountPage extends WebPage {
     private CreateAnAccountPageState pageState;
@@ -14,11 +12,11 @@ public class CreateAnAccountPage extends WebPage {
     private By byPersonalInfoInputLastName = By.id("customer_lastname");
     private By byPersonalInfoEmail = By.id("email");
     private By byPersonalInfoPassword = By.id("passwd");
-    private By byPersonalInfoDropDownBirthMonth = By.cssSelector("#months");//By.id("months");
-    private By byPersonalInfoDropDownBirthDay = By.cssSelector("#days");//By.id("days");
-    private By byPersonalInfoDropDownBirthYear = By.cssSelector("#years");//By.id("years");
-    private By byPersonalInfoCheckBoxSignUpForNewsLetter = By.id("newsletter");
-    private By byPersonalInfoCheckBoxReceiveSpecialOffers = By.id("optin");
+    private By byPersonalInfoDropDownBirthMonth = By.id("months");//By.id("months");
+    private By byPersonalInfoDropDownBirthDay = By.id("days");//By.id("days");
+    private By byPersonalInfoDropDownBirthYear = By.id("years");//By.id("years");
+    private By byPersonalInfoCheckBoxSignUpForNewsLetter = By.id("uniform-newsletter");
+    private By byPersonalInfoCheckBoxReceiveSpecialOffers = By.id("uniform-optin");
     private By byAddressInfoInputFirstName = By.id("firstname");
     private By byAddressInfoInputLastName = By.id("lastname");
     private By byAddressInfoInputCompany = By.id("company");
