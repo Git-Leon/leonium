@@ -32,3 +32,8 @@
   <version>1.0</version>
 </dependency>
 ```
+
+
+### Sample Animation
+
+<img src="./automation-test-example.gif">

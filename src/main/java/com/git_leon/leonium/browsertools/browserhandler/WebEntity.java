@@ -1,9 +1,12 @@
 package com.git_leon.leonium.browsertools.browserhandler;
 
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.SelectorWaitCondition;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
-import java.io.File;
+import java.awt.image.RasterFormatException;
 
 /**
  * @author leon on 4/12/18.
@@ -12,9 +15,10 @@ public class WebEntity {
     private final By selector;
     private final WebDriver driver;
     private BrowserWaitInterface wait;
+    private WebElementScreenshot screenshot;
 
     public WebEntity(By by, WebDriver driver) {
-        this(by, driver, new BrowserWait(driver));
+        this(by, driver, new BrowserWaitLogger(driver));
     }
 
     public WebEntity(By by, WebDriver driver, BrowserWaitInterface browserWait) {
@@ -77,9 +81,18 @@ public class WebEntity {
         return driver.findElement(selector);
     }
 
-    public File getScreenshot() {
-        WebElementScreenshot screenshot = new WebElementScreenshot(driver, selector);
-        return screenshot.getFile();
+    public Screenshot getScreenshot(String fileDirectory) {
+        if (screenshot == null) {
+            try {
+                wait.forConditions(selector, SelectorWaitCondition.VISIBILITY);
+                WebElementScreenshot screenshot = new WebElementScreenshot(driver, selector, fileDirectory);
+                this.screenshot = screenshot;
+            } catch (RasterFormatException rfe) {
+                // TODO - Identify how to elegantly avoid this
+                return null;
+            }
+        }
+        return screenshot;
     }
 
     public By getSelector() {
@@ -88,12 +101,7 @@ public class WebEntity {
 
     @Override
     public String toString() {
-        // By format = "[foundFrom] -> locator: term"
-        // see RemoteWebElement toString() implementation
-        String webElementStr = getElement().toString();
-        return webElementStr
-                .replaceAll("\\[.*?\\] -> ", "")
-                .replaceAll("]", "");
+        return toString(getElement());
     }
 
     public static String toString(WebElement webElement) {

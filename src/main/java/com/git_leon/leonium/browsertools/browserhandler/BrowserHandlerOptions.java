@@ -10,6 +10,11 @@ public final class BrowserHandlerOptions {
     public final BrowserOption<Boolean> SCREENSHOT_ON_SELECT = new BrowserOption<>(false);
     public final BrowserOption<Boolean> SCREENSHOT_ON_SENDKEYS = new BrowserOption<>(false);
     public final BrowserOption<Integer> DEFAULT_WAIT = new BrowserOption<>(15);
+    public final BrowserOption<String> SCREENSHOT_DIRECTORY = new BrowserOption<>(new StringBuilder()
+        .append(System.getProperty("user.dir"))
+        .append("/target/screenshots/")
+        .toString());
+
 
     public class BrowserOption<T> {
         protected T value;

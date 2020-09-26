@@ -1,28 +1,20 @@
-package com.git_leon.leonium.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler.waiting;
 
-
-import com.github.git_leon.logging.FunctionExecutionTimeLogger;
-import com.github.git_leon.logging.SimpleLoggerWarehouse;
+import com.github.git_leon.logging.FunctionExecutionLoggerInterface;
+import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 
-public class BrowserWaitLogger implements BrowserWaitInterface {
-    private final BrowserWait wait;
-    private final FunctionExecutionTimeLogger logger;
+public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, SimpleLoggerInterface {
+    SimpleLoggerInterface getLogger();
 
-    public BrowserWaitLogger(WebDriver driver, int waitSeconds) {
-        this.wait = new BrowserWait(driver, waitSeconds);
+    BrowserWaitInterface getWait();
 
-        String className = driver.getClass().getSimpleName();
-        String hexDecaVal = Integer.toString(driver.hashCode(), 16);
-        this.logger = new FunctionExecutionTimeLogger(SimpleLoggerWarehouse.getLogger(className + "@" + hexDecaVal));
-    }
-
-    private String formatMessage(String s, Object... o) {
+    static String formatMessage(String s, Object... o) {
         String logMessagePrefix = "\n\nWaiting for ";
         return String.format(logMessagePrefix + s, o);
     }
@@ -34,10 +26,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param isEnabled desired enabledness
      * @return element if enabled state matches desired enabledness within specified wait-time
      */
-    public WebElement forEnabled(By by, boolean isEnabled) {
+    @Override
+    default WebElement forEnabled(By by, boolean isEnabled) {
         String logMessage = "%s to be enabled";
         logMessage = formatMessage(logMessage, by);
-        return logger.invokeAndLog(wait::forEnabled, by, isEnabled, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forEnabled, by, isEnabled, logMessage);
     }
 
     /**
@@ -46,10 +40,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if visible within specified wait-time
      */
-    public WebElement forVisibility(By by) {
+    @Override
+    default WebElement forVisibility(By by) {
         String logMessage = "%s to be visible";
         logMessage = formatMessage(logMessage, by);
-        return logger.invokeAndLog(wait::forVisibility, by, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forVisibility, by, logMessage);
     }
 
     /**
@@ -58,10 +54,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if invisible within specified wait-time
      */
-    public void forInvisibility(By by) {
+    @Override
+    default void forInvisibility(By by) {
         String logMessage = "%s to be invisible";
         logMessage = formatMessage(logMessage, by);
-        logger.consumeAndLog(wait::forInvisibility, by, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        functionExecutionLogger.consumeAndLog(getWait()::forInvisibility, by, logMessage);
     }
 
     /**
@@ -70,10 +68,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if clickable within specified wait-time
      */
-    public WebElement forClickability(By by) {
+    @Override
+    default WebElement forClickability(By by) {
         String logMessage = "%s to be clickable";
         logMessage = formatMessage(logMessage, by);
-        return logger.invokeAndLog(wait::forClickability, by, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forClickability, by, logMessage);
     }
 
 
@@ -83,10 +83,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if present within specified wait-time
      */
-    public WebElement forPresence(By by) {
+    @Override
+    default WebElement forPresence(By by) {
         String logMessage = "%s to be present";
         logMessage = formatMessage(logMessage, by);
-        return logger.invokeAndLog(wait::forPresence, by, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forPresence, by, logMessage);
     }
 
     /**
@@ -95,10 +97,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if not stale within specified wait-time
      */
-    public WebElement forNotStale(By by) {
+    @Override
+    default WebElement forNotStale(By by) {
         String logMessage = "%s to not be stale";
         logMessage = formatMessage(logMessage, by);
-        return logger.invokeAndLog(wait::forNotStale, by, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forNotStale, by, logMessage);
     }
 
     /**
@@ -106,10 +110,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      *
      * @return element if alert is present within specified wait-time
      */
-    public boolean forAlert() {
+    @Override
+    default boolean forAlert() {
         String logMessage = "an alert to be present";
         logMessage = formatMessage(logMessage);
-        return logger.invokeAndLog(wait::forAlert, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forAlert, logMessage);
     }
 
     /**
@@ -118,10 +124,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param partUrls the urls to check against
      * @return true if url contains at least one of the specified urls
      */
-    public boolean forUrlToContain(String... partUrls) {
+    @Override
+    default boolean forUrlToContain(String... partUrls) {
         String logMessage = "the url to contain any of the following: %s";
         logMessage = formatMessage(logMessage, Arrays.toString(partUrls));
-        return logger.invokeAndLog(wait::forUrlToContain, partUrls, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forUrlToContain, partUrls, logMessage);
     }
 
     /**
@@ -130,10 +138,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param by selector used to query elements on DOM
      * @return List of queried elements
      */
-    public List<WebElement> forVisibilities(By by) {
+    @Override
+    default List<WebElement> forVisibilities(By by) {
         String logMessage = "visibilities of all elements selected by [ %s ]";
         logMessage = formatMessage(logMessage, by);
-        return logger.invokeAndLog(wait::forVisibilities, by, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forVisibilities, by, logMessage);
     }
 
     /**
@@ -142,10 +152,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return List of queried elements
      */
-    public List<WebElement> forPresences(By by) {
+    @Override
+    default List<WebElement> forPresences(By by) {
         String logMessage = "presences of all elements selected by [ %s ]";
         logMessage = formatMessage(logMessage, by);
-        return logger.invokeAndLog(wait::forPresences, by, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forPresences, by, logMessage);
     }
 
     /**
@@ -153,10 +165,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      *
      * @return true if page's load state was 'complete' within specified wait-time
      */
-    public boolean forPageLoad() {
+    @Override
+    default boolean forPageLoad() {
         String logMessage = "page to load";
         logMessage = formatMessage(logMessage);
-        return logger.invokeAndLog(wait::forPageLoad, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forPageLoad, logMessage);
     }
 
     /**
@@ -165,10 +179,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param desiredState desired state of page
      * @return true if page's load state was desired state within specified wait-time
      */
-    public boolean forPageState(String desiredState) {
+    @Override
+    default boolean forPageState(String desiredState) {
         String logMessage = "page state to be [ %s ]";
         logMessage = formatMessage(logMessage, desiredState);
-        return logger.invokeAndLog(wait::forPageState, desiredState, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forPageState, desiredState, logMessage);
     }
 
     /**
@@ -177,10 +193,12 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param by selector used to query element on DOM
      * @return respective WebElement
      */
-    public WebElement forKeyable(By by) {
+    @Override
+    default WebElement forKeyable(By by) {
         String logMessage = "[ %s ] to become keyable";
         logMessage = formatMessage(logMessage, by);
-        return logger.invokeAndLog(wait::forKeyable, by, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forKeyable, by, logMessage);
     }
 
     /**
@@ -188,9 +206,35 @@ public class BrowserWaitLogger implements BrowserWaitInterface {
      * @param waitConditions variable number of string representations of wait conditions
      * @return respective browserHandler element
      */
-    public WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
+    @Override
+    default WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
         String logMessage = "Selector\n\t\t[ %s ]\n\t\tto suffice each of the following conditions: %s";
         logMessage = formatMessage(logMessage, by, Arrays.toString(waitConditions));
-        return logger.invokeAndLog(wait::forConditions, by, waitConditions, logMessage);
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.logAndInvoke(getWait()::forConditions, by, waitConditions, logMessage);
+    }
+
+    @Override
+    default void log(Level level, String s, Object... objects) {
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        functionExecutionLogger.log(level, s, objects);
+    }
+
+    @Override
+    default void enable() {
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        functionExecutionLogger.enable();
+    }
+
+    @Override
+    default void disble() {
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        functionExecutionLogger.disble();
+    }
+
+    @Override
+    default boolean isEnabled() {
+        FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
+        return functionExecutionLogger.isEnabled();
     }
 }

@@ -1,5 +1,7 @@
 package com.git_leon.leonium.browsertools.browserhandler;
 
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -7,7 +9,11 @@ import org.openqa.selenium.WebDriver;
  */
 public class BrowserHandler extends BrowserHandlerAbstractClass {
     public BrowserHandler(WebDriver driver) {
-        this(driver, new BrowserWaitLogger(driver, 15));
+        this(driver, 15);
+    }
+
+    public BrowserHandler(WebDriver driver, int waitSeconds) {
+        this(driver, new BrowserWaitLogger(driver, waitSeconds));
     }
 
     public BrowserHandler(WebDriver driver, BrowserWaitInterface wait) {

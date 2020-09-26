@@ -41,7 +41,7 @@ public final class DesiredCapabilitiesFactory {
         return capabilities;
     }
 
-    public static DesiredCapabilities getLoglessFirefox() {
+    public static Capabilities getLoglessFirefox() {
         DesiredCapabilities desiredCapabilities = getLogless().merge(getFirefox());
         FirefoxOptions options = new FirefoxOptions();
         options.addPreference("log", "{level: info}");
@@ -51,7 +51,7 @@ public final class DesiredCapabilitiesFactory {
     }
 
 
-    public static DesiredCapabilities getFirefox() {
+    public static Capabilities getFirefox() {
         WebDriverManager.firefoxdriver().setup();
         return getDefault().merge(DesiredCapabilities.firefox());
     }
@@ -63,11 +63,10 @@ public final class DesiredCapabilitiesFactory {
 
     public static Capabilities getChrome() {
         WebDriverManager.chromedriver().setup();
-        DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.chrome());
-        return capabilities;
+        return getDefault().merge(DesiredCapabilities.chrome());
     }
 
-    public static DesiredCapabilities getHtmlUnit() {
+    public static Capabilities getHtmlUnit() {
         DesiredCapabilities capabilities = DesiredCapabilitiesFactory.getDefault();
         capabilities.setBrowserName("htmlunit");
         return capabilities;

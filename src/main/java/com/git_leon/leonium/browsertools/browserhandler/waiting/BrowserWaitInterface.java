@@ -1,4 +1,4 @@
-package com.git_leon.leonium.browsertools.browserhandler;
+package com.git_leon.leonium.browsertools.browserhandler.waiting;
 
 import com.git_leon.leonium.TimeUtils;
 import com.google.common.base.Function;
@@ -10,20 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 /**
- * @author leon on 4/12/18.
+ * @author leon on 5/22/18.
  */
-public class BrowserWait implements BrowserWaitInterface {
-    private final WebDriver driver;
-    private final int waitSeconds;
+public interface BrowserWaitInterface {
 
-    public BrowserWait(WebDriver driver) {
-        this(driver, 15);
-    }
+    int getWaitSeconds();
 
-    public BrowserWait(WebDriver driver, int waitSeconds) {
-        this.driver = driver;
-        this.waitSeconds = waitSeconds;
-    }
+    WebDriver getDriver();
 
     /**
      * wait for element to be enabled
@@ -32,16 +25,15 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param isEnabled desired enabledness
      * @return element if enabled state matches desired enabledness within specified wait-time
      */
-    public WebElement forEnabled(By by, boolean isEnabled) {
+    default WebElement forEnabled(By by, boolean isEnabled) {
         long t0 = System.currentTimeMillis();
         WebElement we = forPresence(by);
         if (we != null && isEnabled(we) != isEnabled) {
-            int remainingTime = TimeUtils.remainingTime(waitSeconds, t0);
+            int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
             until(remainingTime, ExpectedBrowserCondition.elementEnabledness(by, isEnabled));
         }
         return forPresence(by);
     }
-
 
     /**
      * wait for element to be visible
@@ -49,11 +41,11 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if visible within specified wait-time
      */
-    public WebElement forVisibility(By by) {
+    default WebElement forVisibility(By by) {
         long t0 = System.currentTimeMillis();
         WebElement we = forPresence(by);
         if (we != null && !we.isDisplayed()) {
-            int remainingTime = TimeUtils.remainingTime(waitSeconds, t0);
+            int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
             until(remainingTime, ExpectedConditions.visibilityOfElementLocated(by));
         }
         return we;
@@ -65,8 +57,8 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if invisible within specified wait-time
      */
-    public void forInvisibility(By by) {
-        until(waitSeconds, ExpectedConditions.invisibilityOfElementLocated(by));
+    default void forInvisibility(By by) {
+        until(getWaitSeconds(), ExpectedConditions.invisibilityOfElementLocated(by));
     }
 
     /**
@@ -75,11 +67,10 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if clickable within specified wait-time
      */
-    public WebElement forClickability(By by) {
-        until(waitSeconds, ExpectedConditions.elementToBeClickable(by));
+    default WebElement forClickability(By by) {
+        until(getWaitSeconds(), ExpectedConditions.elementToBeClickable(by));
         return forPresence(by);
     }
-
 
     /**
      * wait for element to be present
@@ -87,12 +78,12 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if present within specified wait-time
      */
-    public WebElement forPresence(By by) {
+    default WebElement forPresence(By by) {
         try {
-            return driver.findElement(by);
+            return getDriver().findElement(by);
         } catch (NoSuchElementException nsee) {
-            until(waitSeconds, ExpectedConditions.presenceOfElementLocated(by));
-            return driver.findElement(by);
+            until(getWaitSeconds(), ExpectedConditions.presenceOfElementLocated(by));
+            return getDriver().findElement(by);
         }
     }
 
@@ -102,13 +93,13 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return element if not stale within specified wait-time
      */
-    public WebElement forNotStale(By by) {
+    default WebElement forNotStale(By by) {
         long t0 = System.currentTimeMillis();
         WebElement we = forPresence(by);
         try {
             we.getText();
         } catch (StaleElementReferenceException stere) {
-            int remainingTime = TimeUtils.remainingTime(waitSeconds, t0);
+            int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
             until(remainingTime, ExpectedConditions.not(ExpectedConditions.stalenessOf(we)));
         }
         return we;
@@ -119,8 +110,8 @@ public class BrowserWait implements BrowserWaitInterface {
      *
      * @return element if alert is present within specified wait-time
      */
-    public boolean forAlert() {
-        return until(waitSeconds, ExpectedConditions.alertIsPresent());
+    default boolean forAlert() {
+        return until(getWaitSeconds(), ExpectedConditions.alertIsPresent());
     }
 
     /**
@@ -129,8 +120,8 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param partUrls the urls to check against
      * @return true if url contains at least one of the specified urls
      */
-    public boolean forUrlToContain(String... partUrls) {
-        return until(waitSeconds, ExpectedBrowserCondition.urlContains(partUrls));
+    default boolean forUrlToContain(String... partUrls) {
+        return until(getWaitSeconds(), ExpectedBrowserCondition.urlContains(partUrls));
     }
 
     /**
@@ -139,10 +130,10 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param by selector used to query elements on DOM
      * @return List of queried elements
      */
-    public List<WebElement> forVisibilities(By by) {
+    default List<WebElement> forVisibilities(By by) {
         long t0 = System.currentTimeMillis();
         List<WebElement> webElements = forPresences(by);
-        int remainingTime = TimeUtils.remainingTime(waitSeconds, t0);
+        int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
         until(remainingTime, ExpectedConditions.visibilityOfAllElements(webElements));
         return webElements;
     }
@@ -153,9 +144,9 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param by selector used to query for element on DOM
      * @return List of queried elements
      */
-    public List<WebElement> forPresences(By by) {
-        until(waitSeconds, ExpectedConditions.presenceOfAllElementsLocatedBy(by));
-        return driver.findElements(by);
+    default List<WebElement> forPresences(By by) {
+        until(getWaitSeconds(), ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+        return getDriver().findElements(by);
     }
 
     /**
@@ -163,7 +154,7 @@ public class BrowserWait implements BrowserWaitInterface {
      *
      * @return true if page's load state was 'complete' within specified wait-time
      */
-    public boolean forPageLoad() {
+    default boolean forPageLoad() {
         return forPageState("complete");
     }
 
@@ -173,8 +164,8 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param desiredState desired state of page
      * @return true if page's load state was desired state within specified wait-time
      */
-    public boolean forPageState(String desiredState) {
-        JavascriptExecutor jse = ((JavascriptExecutor) driver);
+    default boolean forPageState(String desiredState) {
+        JavascriptExecutor jse = ((JavascriptExecutor) getDriver());
         Object returnVal = jse.executeScript("return document.readyState");
         String currentState = returnVal.toString();
         ExpectedCondition<Boolean> condition = ExpectedBrowserCondition.pageState(desiredState);
@@ -182,7 +173,7 @@ public class BrowserWait implements BrowserWaitInterface {
         if (currentState.equals(desiredState)) {
             return true;
         } else {
-            return condition.apply(driver).booleanValue() ? true : until(waitSeconds, condition);
+            return condition.apply(getDriver()).booleanValue() ? true : until(getWaitSeconds(), condition);
         }
     }
 
@@ -192,7 +183,7 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param by selector used to query element on DOM
      * @return respective WebElement
      */ // TODO - Migrate logic to ExpectedBrowserCondition
-    public WebElement forKeyable(By by) {
+    default WebElement forKeyable(By by) {
         boolean isKeyable = false;
         long t0 = System.currentTimeMillis();
 
@@ -202,7 +193,7 @@ public class BrowserWait implements BrowserWaitInterface {
             we.sendKeys(" ", Keys.BACK_SPACE);
             isKeyable = true;
         } catch (Exception e) {
-            while (!isKeyable && TimeUtils.timeRemains(waitSeconds, t0)) {
+            while (!isKeyable && TimeUtils.timeRemains(getWaitSeconds(), t0)) {
                 try {
                     we.sendKeys(" ", Keys.BACK_SPACE);
                     isKeyable = true;
@@ -220,9 +211,9 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param waitConditions variable number of string representations of wait conditions
      * @return respective browserHandler element
      */
-    public WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
+    default WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
         for (SelectorWaitCondition condition : waitConditions) {
-            condition.waitFor(by, driver); // TODO - Make a decision
+            condition.waitFor(by, getDriver()); // TODO - Make a decision
         }
         return forPresence(by);
     }
@@ -235,10 +226,10 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param <T>
      * @return true if condition is true within specified wait seconds
      */
-    public <T> boolean until(int waitSeconds, Function<WebDriver, T> condition) {
+    default <T> boolean until(int waitSeconds, Function<WebDriver, T> condition) {
         boolean outcome = false;
-        if (waitSeconds > 0) {
-            WebDriverWait wait = new WebDriverWait(driver, waitSeconds);
+        if (getWaitSeconds() > 0) {
+            WebDriverWait wait = new WebDriverWait(getDriver(), getWaitSeconds());
             try {
                 wait.until(ExpectedConditions.refreshed((ExpectedCondition<T>) condition));
             } catch (ClassCastException cce) {
@@ -256,7 +247,7 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param we element to check enabledness of
      * @return true if element is enabled
      */
-    private boolean isEnabled(WebElement we) {
+    default boolean isEnabled(WebElement we) {
         try {
             return we.isEnabled();
         } catch (WebDriverException e) {
@@ -270,7 +261,7 @@ public class BrowserWait implements BrowserWaitInterface {
      * @param we element to check display of
      * @return true if element is display
      */
-    private boolean isDisplayed(WebElement we) {
+    default boolean isDisplayed(WebElement we) {
         try {
             return we.isDisplayed();
         } catch (WebDriverException e) {

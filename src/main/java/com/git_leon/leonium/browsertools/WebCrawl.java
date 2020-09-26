@@ -12,15 +12,17 @@ import org.openqa.selenium.WebDriver;
  */
 public abstract class WebCrawl {
     protected final BrowserHandler browserHandler;
-    protected final WebDriver driver;
 
     public WebCrawl() {
         this(BrowserHandlerFactory.PHANTOMJS.getDriver());
     }
 
     public WebCrawl(WebDriver driver) {
-        this.driver = driver;
-        this.browserHandler = new BrowserHandler(driver);
+        this(new BrowserHandler(driver));
+    }
+
+    public WebCrawl(BrowserHandler browserHandler) {
+        this.browserHandler = browserHandler;
     }
 
     @Before

@@ -9,7 +9,6 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * @author leon on 5/24/18.
@@ -20,10 +19,12 @@ public enum BrowserHandlerFactory {
     PHANTOMJS(DesiredCapabilitiesFactory.getPhantomJs(), PhantomJSDriver::new),
     HTMLUNIT(DesiredCapabilitiesFactory.getHtmlUnit(), HtmlUnitDriver::new);
 
-    private final Supplier<WebDriver> webDriverConstructor;
+    private final Function<Capabilities, WebDriver> webDriverConstructor;
+    private final Capabilities capabilities;
 
     BrowserHandlerFactory(Capabilities capabilities, Function<Capabilities, WebDriver> constructor) {
-        this.webDriverConstructor = () -> constructor.apply(capabilities);
+        this.webDriverConstructor = constructor;
+        this.capabilities = capabilities;
     }
 
     public BrowserHandler getBrowserHandler() {
@@ -31,6 +32,10 @@ public enum BrowserHandlerFactory {
     }
 
     public WebDriver getDriver() {
-        return webDriverConstructor.get();
+        return webDriverConstructor.apply(capabilities);
+    }
+
+    public WebDriver getDriver(Capabilities capabilities) {
+        return webDriverConstructor.apply(this.capabilities.merge(capabilities));
     }
 }

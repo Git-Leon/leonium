@@ -14,16 +14,18 @@ import java.io.InputStream;
 /**
  * Created by leon on 5/25/17.
  */
-class Screenshot {
+public class Screenshot {
     protected final RemoteWebDriver remoteWebDriver;
     protected final BufferedImage bufferedImage;
     protected final String imageName;
     protected File file;
+    protected String filePath;
 
-    public Screenshot(WebDriver driver, String imageName) {
+    public Screenshot(WebDriver driver, String filePath, String imageName) {
         this.remoteWebDriver = (RemoteWebDriver) driver;
         this.imageName = StringUtils.removeCharacters(imageName, "[,;']}{/.|*!@#$%^&()~`:->");
         this.bufferedImage = createBufferedImage();
+        this.filePath = filePath + imageName + ".png";
     }
 
     protected BufferedImage getFullBufferedImage() {
@@ -54,11 +56,11 @@ class Screenshot {
 
 
     public File getFile() {
+        return getFile(filePath);
+    }
+
+    public File getFile(String filePath) {
         if (file == null) {
-            Long currentTime = System.currentTimeMillis();
-            String currentProjectPath = System.getProperty("user.dir");
-            String artifactFolder = currentProjectPath + "/target/screenshots";
-            String filePath = String.format("%s/%s-%s.png", artifactFolder, imageName, currentTime);
             File outputFile = new File(filePath);
             try {
                 outputFile.getParentFile().mkdirs();

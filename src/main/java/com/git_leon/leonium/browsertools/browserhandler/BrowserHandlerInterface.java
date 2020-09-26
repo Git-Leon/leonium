@@ -1,8 +1,11 @@
 package com.git_leon.leonium.browsertools.browserhandler;
 
+import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
+import com.git_leon.leonium.browsertools.browserhandler.waiting.SelectorWaitCondition;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import java.awt.image.RasterFormatException;
 import java.util.List;
 
 public interface BrowserHandlerInterface {
@@ -50,7 +53,7 @@ public interface BrowserHandlerInterface {
     default void click(By by) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_CLICK.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         we.click();
     }
@@ -59,7 +62,7 @@ public interface BrowserHandlerInterface {
     default Select select(By by) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         return we.toSelect();
     }
@@ -68,7 +71,7 @@ public interface BrowserHandlerInterface {
     default void selectByIndex(By by, int index) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         we.selectByIndex(index);
     }
@@ -77,7 +80,7 @@ public interface BrowserHandlerInterface {
     default void selectByVisibleText(By by, String visibleText) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         we.selectByVisibleText(visibleText);
     }
@@ -86,7 +89,7 @@ public interface BrowserHandlerInterface {
     default void sendKeys(By by, String keys) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SENDKEYS.getValue()) {
-            we.getScreenshot();
+            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
         }
         we.sendKeys(keys);
     }
@@ -122,7 +125,11 @@ public interface BrowserHandlerInterface {
 
 
     default Screenshot screenshot() {
-        return new Screenshot(getDriver(), getDriver().getTitle());
+        return new Screenshot(getDriver(), getOptions().SCREENSHOT_DIRECTORY.getValue(), getDriver().getTitle());
+    }
+
+    default Screenshot screenshot(By by) {
+        return new WebEntity(by, getDriver()).getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
     }
 
     default String getCurrentUrl() {
