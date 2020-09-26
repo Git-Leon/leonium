@@ -5,7 +5,6 @@ import com.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAn
 import com.git_leon.leonium.browsertools.WebPage;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class SignInPage extends WebPage {
     private By inputEmailLogin = By.id("email");
@@ -31,9 +30,9 @@ public class SignInPage extends WebPage {
     }
 
     public CreateAnAccountPage createAccount(String email) {
-        getBrowserHandler().sendKeys(inputEmailCreateAccount,email);
+        getBrowserHandler().sendKeys(inputEmailCreateAccount, email);
         getBrowserHandler().click(buttonCreateAccount);
-        CreateAnAccountPage createAnAccountPage =  new CreateAnAccountPage(getBrowserHandler());
+        CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(getBrowserHandler());
         createAnAccountPage.setPageState(new CreateAnAccountPageStateBuilder()
                 .setPersonalInfoEmail(email)
                 .build());
