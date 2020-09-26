@@ -1,8 +1,8 @@
 package com.git_leon.leonium.automationpractice.webpages.createanaccount;
 
 public class CreateAnAccountPageStateBuilder {
-    private Boolean personalInfoRadioButtonMrTitle;
-    private Boolean personalInfoRadioButtonMrsTitle;
+    private boolean personalInfoRadioButtonMrTitle;
+    private boolean personalInfoRadioButtonMrsTitle;
     private String personalInfoInputFirstName;
     private String personalInfoInputLastName;
     private String personalInfoEmail;
@@ -10,8 +10,8 @@ public class CreateAnAccountPageStateBuilder {
     private String personalInfoDropDownBirthMonth;
     private String personalInfoDropDownBirthDay;
     private String personalInfoDropDownBirthYear;
-    private Boolean personalInfoCheckBoxSignUpForNewsLetter;
-    private Boolean personalInfoCheckBoxReceiveSpecialOffers;
+    private boolean personalInfoCheckBoxSignUpForNewsLetter;
+    private boolean personalInfoCheckBoxReceiveSpecialOffers;
     private String addressInfoInputFirstName;
     private String addressInfoInputLastName;
     private String addressInfoInputCompany;
@@ -61,12 +61,12 @@ public class CreateAnAccountPageStateBuilder {
         this(preBuild.build());
     }
 
-    public CreateAnAccountPageStateBuilder setPersonalInfoRadioButtonMrTitle(Boolean personalInfoRadioButtonMrTitle) {
+    public CreateAnAccountPageStateBuilder setPersonalInfoRadioButtonMrTitle(boolean personalInfoRadioButtonMrTitle) {
         this.personalInfoRadioButtonMrTitle = personalInfoRadioButtonMrTitle;
         return this;
     }
 
-    public CreateAnAccountPageStateBuilder setPersonalInfoRadioButtonMrsTitle(Boolean personalInfoRadioButtonMrsTitle) {
+    public CreateAnAccountPageStateBuilder setPersonalInfoRadioButtonMrsTitle(boolean personalInfoRadioButtonMrsTitle) {
         this.personalInfoRadioButtonMrsTitle = personalInfoRadioButtonMrsTitle;
         return this;
     }
@@ -106,12 +106,12 @@ public class CreateAnAccountPageStateBuilder {
         return this;
     }
 
-    public CreateAnAccountPageStateBuilder setPersonalInfoCheckBoxSignUpForNewsLetter(Boolean personalInfoCheckBoxSignUpForNewsLetter) {
+    public CreateAnAccountPageStateBuilder setPersonalInfoCheckBoxSignUpForNewsLetter(boolean personalInfoCheckBoxSignUpForNewsLetter) {
         this.personalInfoCheckBoxSignUpForNewsLetter = personalInfoCheckBoxSignUpForNewsLetter;
         return this;
     }
 
-    public CreateAnAccountPageStateBuilder setPersonalInfoCheckBoxReceiveSpecialOffers(Boolean personalInfoCheckBoxReceiveSpecialOffers) {
+    public CreateAnAccountPageStateBuilder setPersonalInfoCheckBoxReceiveSpecialOffers(boolean personalInfoCheckBoxReceiveSpecialOffers) {
         this.personalInfoCheckBoxReceiveSpecialOffers = personalInfoCheckBoxReceiveSpecialOffers;
         return this;
     }

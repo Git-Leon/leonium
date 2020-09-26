@@ -5,10 +5,17 @@ import com.github.git_leon.RandomUtils;
 public class CreateAnAccountPageStateFactory {
     public static CreateAnAccountPageStateBuilder createRandomCreateAnAccountPageStateBuilder() {
         return new CreateAnAccountPageStateBuilder()
+                .setPersonalInfoRadioButtonMrTitle(RandomUtils.createBoolean(50))
+                .setPersonalInfoRadioButtonMrsTitle(RandomUtils.createBoolean(50))
+                .setPersonalInfoCheckBoxSignUpForNewsLetter(RandomUtils.createBoolean(50))
+                .setPersonalInfoCheckBoxReceiveSpecialOffers(RandomUtils.createBoolean(50))
                 .setAddressInfoDropDownCountry("United State")
                 .setAddressInfoInputAdditionalInfo(RandomUtils.createString('a', 'z', 10))
                 .setAddressInfoInputAddressAlias(RandomUtils.createString('a', 'z', 5))
-                .setAddressInfoInputCity("Delaware");
+                .setAddressInfoInputCity("Delaware")
+                .setPersonalInfoDropDownBirthDay(RandomUtils.createInteger(1, 28).toString())
+                .setPersonalInfoDropDownBirthMonth(RandomUtils.createInteger(1, 12).toString())
+                .setPersonalInfoDropDownBirthYear(RandomUtils.createInteger(1900, 2020).toString());
     }
 
     public static CreateAnAccountPageState createRandomCreateAnAccountPageState() {

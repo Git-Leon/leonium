@@ -82,13 +82,13 @@ public class CreateAnAccountPage extends WebPage {
 
     public void inputPersonalInfoRadioButtonMrTitle(Boolean selectButton) {
         if (selectButton) {
-            getBrowserHandler().select(byPersonalInfoRadioButtonMrTitle);
+            getBrowserHandler().click(byPersonalInfoRadioButtonMrTitle);
         }
     }
 
     public void inputPersonalInfoRadioButtonMrsTitle(Boolean selectButton) {
         if (selectButton) {
-            getBrowserHandler().select(byPersonalInfoRadioButtonMrsTitle);
+            getBrowserHandler().click(byPersonalInfoRadioButtonMrsTitle);
         }
     }
 

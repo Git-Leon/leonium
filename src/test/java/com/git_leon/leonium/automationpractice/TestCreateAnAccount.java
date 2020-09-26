@@ -30,8 +30,9 @@ public class TestCreateAnAccount {
                 .getFileFromDirectory("Report-" + System.nanoTime() + ".html")
                 .getAbsolutePath(),
                 testName);
+
         HomePage homePage = new HomePage(browserHandler);
-        browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(true);
+        browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(false);
         try {
 
             homePage.navigateTo();
@@ -42,6 +43,8 @@ public class TestCreateAnAccount {
                     .setPersonalInfoEmail(email)
                     .build());
             createAnAccountPage.inputData();
+        } catch (Throwable t) {
+            t.printStackTrace();
         } finally {
             browserHandler.screenshot().getFile();
             browserHandler.close();

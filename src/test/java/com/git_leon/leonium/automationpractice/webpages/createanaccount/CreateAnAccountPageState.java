@@ -1,8 +1,8 @@
 package com.git_leon.leonium.automationpractice.webpages.createanaccount;
 
 public class CreateAnAccountPageState {
-    private Boolean personalInfoRadioButtonMrTitle;
-    private Boolean personalInfoRadioButtonMrsTitle;
+    private boolean personalInfoRadioButtonMrTitle;
+    private boolean personalInfoRadioButtonMrsTitle;
     private String personalInfoInputFirstName;
     private String personalInfoInputLastName;
     private String personalInfoEmail;
@@ -10,8 +10,8 @@ public class CreateAnAccountPageState {
     private String personalInfoDropDownBirthMonth;
     private String personalInfoDropDownBirthDay;
     private String personalInfoDropDownBirthYear;
-    private Boolean personalInfoCheckBoxSignUpForNewsLetter;
-    private Boolean personalInfoCheckBoxReceiveSpecialOffers;
+    private boolean personalInfoCheckBoxSignUpForNewsLetter;
+    private boolean personalInfoCheckBoxReceiveSpecialOffers;
     private String addressInfoInputFirstName;
     private String addressInfoInputLastName;
     private String addressInfoInputCompany;
@@ -27,7 +27,7 @@ public class CreateAnAccountPageState {
     private String addressInfoDropDownCountry;
     private String buttonSubmitAccount;
 
-    public CreateAnAccountPageState(Boolean personalInfoRadioButtonMrTitle, Boolean personalInfoRadioButtonMrsTitle, String personalInfoInputFirstName, String personalInfoInputLastName, String personalInfoEmail, String personalInfoPassword, String personalInfoDropDownBirthMonth, String personalInfoDropDownBirthDay, String personalInfoDropDownBirthYear, Boolean personalInfoCheckBoxSignUpForNewsLetter, Boolean personalInfoCheckBoxReceiveSpecialOffers, String addressInfoInputFirstName, String addressInfoInputLastName, String addressInfoInputCompany, String addressInfoInputLine1, String addressInfoInputLine2, String addressInfoInputCity, String addressInfoInputZipcode, String addressInfoInputAdditionalInfo, String addressInfoInputPhone, String addressInfoInputMobilePhone, String addressInfoInputAddressAlias, String addressInfoDropDownState, String addressInfoDropDownCountry, String buttonSubmitAccount) {
+    public CreateAnAccountPageState(boolean personalInfoRadioButtonMrTitle, boolean personalInfoRadioButtonMrsTitle, String personalInfoInputFirstName, String personalInfoInputLastName, String personalInfoEmail, String personalInfoPassword, String personalInfoDropDownBirthMonth, String personalInfoDropDownBirthDay, String personalInfoDropDownBirthYear, boolean personalInfoCheckBoxSignUpForNewsLetter, boolean personalInfoCheckBoxReceiveSpecialOffers, String addressInfoInputFirstName, String addressInfoInputLastName, String addressInfoInputCompany, String addressInfoInputLine1, String addressInfoInputLine2, String addressInfoInputCity, String addressInfoInputZipcode, String addressInfoInputAdditionalInfo, String addressInfoInputPhone, String addressInfoInputMobilePhone, String addressInfoInputAddressAlias, String addressInfoDropDownState, String addressInfoDropDownCountry, String buttonSubmitAccount) {
         this.personalInfoRadioButtonMrTitle = personalInfoRadioButtonMrTitle;
         this.personalInfoRadioButtonMrsTitle = personalInfoRadioButtonMrsTitle;
         this.personalInfoInputFirstName = personalInfoInputFirstName;
@@ -55,19 +55,19 @@ public class CreateAnAccountPageState {
         this.buttonSubmitAccount = buttonSubmitAccount;
     }
 
-    public Boolean getPersonalInfoRadioButtonMrTitle() {
+    public boolean getPersonalInfoRadioButtonMrTitle() {
         return personalInfoRadioButtonMrTitle;
     }
 
-    public void setPersonalInfoRadioButtonMrTitle(Boolean personalInfoRadioButtonMrTitle) {
+    public void setPersonalInfoRadioButtonMrTitle(boolean personalInfoRadioButtonMrTitle) {
         this.personalInfoRadioButtonMrTitle = personalInfoRadioButtonMrTitle;
     }
 
-    public Boolean getPersonalInfoRadioButtonMrsTitle() {
+    public boolean getPersonalInfoRadioButtonMrsTitle() {
         return personalInfoRadioButtonMrsTitle;
     }
 
-    public void setPersonalInfoRadioButtonMrsTitle(Boolean personalInfoRadioButtonMrsTitle) {
+    public void setPersonalInfoRadioButtonMrsTitle(boolean personalInfoRadioButtonMrsTitle) {
         this.personalInfoRadioButtonMrsTitle = personalInfoRadioButtonMrsTitle;
     }
 
@@ -127,19 +127,19 @@ public class CreateAnAccountPageState {
         this.personalInfoDropDownBirthYear = personalInfoDropDownBirthYear;
     }
 
-    public Boolean getPersonalInfoCheckBoxSignUpForNewsLetter() {
+    public boolean getPersonalInfoCheckBoxSignUpForNewsLetter() {
         return personalInfoCheckBoxSignUpForNewsLetter;
     }
 
-    public void setPersonalInfoCheckBoxSignUpForNewsLetter(Boolean personalInfoCheckBoxSignUpForNewsLetter) {
+    public void setPersonalInfoCheckBoxSignUpForNewsLetter(boolean personalInfoCheckBoxSignUpForNewsLetter) {
         this.personalInfoCheckBoxSignUpForNewsLetter = personalInfoCheckBoxSignUpForNewsLetter;
     }
 
-    public Boolean getPersonalInfoCheckBoxReceiveSpecialOffers() {
+    public boolean getPersonalInfoCheckBoxReceiveSpecialOffers() {
         return personalInfoCheckBoxReceiveSpecialOffers;
     }
 
-    public void setPersonalInfoCheckBoxReceiveSpecialOffers(Boolean personalInfoCheckBoxReceiveSpecialOffers) {
+    public void setPersonalInfoCheckBoxReceiveSpecialOffers(boolean personalInfoCheckBoxReceiveSpecialOffers) {
         this.personalInfoCheckBoxReceiveSpecialOffers = personalInfoCheckBoxReceiveSpecialOffers;
     }
 
