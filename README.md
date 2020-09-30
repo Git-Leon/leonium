@@ -36,4 +36,8 @@
 
 ### Sample Animation
 
+#### Screenshot after every element
 <img src="./automation-test-example.gif">
+
+#### Screenshot on close only
+<img src="./leonium-demo.gif">
