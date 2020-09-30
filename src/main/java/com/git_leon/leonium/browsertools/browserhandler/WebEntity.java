@@ -10,6 +10,7 @@ import java.awt.image.RasterFormatException;
 
 /**
  * @author leon on 4/12/18.
+ * wraps each DOM-interaction via `WebElement` with smart-waits
  */
 public class WebEntity {
     private final By selector;

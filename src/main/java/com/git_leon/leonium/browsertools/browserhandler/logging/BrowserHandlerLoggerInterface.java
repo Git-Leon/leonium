@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * Interface which decorates each composite `BrowserHandlerInterface` call with a log statement
+ */
 public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorInterface {
     SimpleLoggerInterface getLogger();
 

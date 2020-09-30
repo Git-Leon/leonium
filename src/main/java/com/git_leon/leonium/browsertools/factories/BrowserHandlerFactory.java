@@ -1,6 +1,7 @@
 package com.git_leon.leonium.browsertools.factories;
 
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +13,7 @@ import java.util.function.Function;
 
 /**
  * @author leon on 5/24/18.
+ * Produces new instances of
  */
 public enum BrowserHandlerFactory {
     CHROME(DesiredCapabilitiesFactory.getChrome(), ChromeDriver::new),

@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+/**
+ * Interface which decorates each composite `BrowserHandlerInterface` call
+ */
 public interface BrowserHandlerDecoratorInterface extends BrowserHandlerInterface {
     BrowserHandlerInterface getBrowserHandlerDecoratee();
 

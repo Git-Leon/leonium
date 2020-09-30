@@ -8,6 +8,10 @@ import org.openqa.selenium.support.ui.Select;
 import java.awt.image.RasterFormatException;
 import java.util.List;
 
+/**
+ * Created by leon on 5/25/20
+ * Interface which wraps each DOM-interaction via `WebDriver` with smart-waits
+ */
 public interface BrowserHandlerInterface {
     void finalize();
 

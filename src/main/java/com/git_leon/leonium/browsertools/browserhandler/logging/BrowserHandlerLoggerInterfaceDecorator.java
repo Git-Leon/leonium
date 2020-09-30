@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * @author leonhunter
  * @created 05/04/2020 - 10:17 PM
+ * Interface which decorates each composite `BrowserHandlerLoggerInterface` call
  */
 public interface BrowserHandlerLoggerInterfaceDecorator extends BrowserHandlerLoggerInterface {
     BrowserHandlerLoggerInterface getBrowserHandlerLoggerDecoratee();

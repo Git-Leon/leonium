@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.logging.Level;
 
 /**
- * @purpose utility class to centralize common BrowserWrapper functionality
+ * @purpose generates browser-capabilities and leverages bonigarcia.wdm.WebDriverManager to dynamically fetch Browser binaries
  */
 public final class DesiredCapabilitiesFactory {
 

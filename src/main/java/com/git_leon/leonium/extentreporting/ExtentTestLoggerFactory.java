@@ -1,10 +1,5 @@
 package com.git_leon.leonium.extentreporting;
 
-/**
- * @author leonhunter
- * @created 05/04/2020 - 2:18 AM
- */
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 

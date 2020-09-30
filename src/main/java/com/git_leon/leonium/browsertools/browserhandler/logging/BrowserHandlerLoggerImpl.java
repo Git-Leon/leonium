@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * @author leonhunter
  * @created 04/29/2020 - 5:03 PM
+ * default implementation of `BrowserHandlerLoggerInterface`
  */
 public class BrowserHandlerLoggerImpl implements BrowserHandlerLoggerInterface {
     private final BrowserHandlerInterface decoratee;

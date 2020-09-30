@@ -16,6 +16,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * @author leonhunter
  * @created 05/04/2020 - 10:05 AM
+ * default `BrowserHandlerInterface` leveraged by leonium.browsertools.WebPage
  */
 public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterface {
     private final BrowserWaitLoggerInterface browserWaitLogger;

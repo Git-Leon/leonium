@@ -17,6 +17,7 @@ import java.util.function.Supplier;
 /**
  * @author leonhunter
  * @created 04/29/2020 - 8:35 PM
+ * Interface which decorates each composite `BrowserHandlerInterface` call with a log detailing execution time
  */
 public class BrowserHandlerLoggerTimer extends BrowserHandlerDecoratorAbstractClass implements BrowserHandlerLoggerInterface {
     public BrowserHandlerLoggerTimer(BrowserHandlerInterface decoratee) {
