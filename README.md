@@ -4,6 +4,12 @@
 ## Usage
 * This dependency is hosted on [packagecloud.io](https://packagecloud.io/git-leon/utils/)
 
+
+
+### Java Docs
+* Click [here](./docs/index.html) to view the official java docs for this project.
+
+
 ### Step 1 - Add Maven Repository to `pom.xml`
 * Because this dependency is hosted on a private server, not MavenCentral, the `pom.xml` must be configured to search in the proper repository.
 
@@ -32,10 +38,6 @@
   <version>1.0</version>
 </dependency>
 ```
-
-### Java Docs
-* Click [here](./docs/index.html) to view the official java docs for this project.
-
 
 ### Sample Animation
 
