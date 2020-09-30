@@ -7,7 +7,7 @@
 
 
 ### Java Docs
-* Click [here](./docs/index.html) to view the official java docs for this project.
+* Click [here](https://git-leon.github.io/leonium/docs/index.html) to view the official java docs for this project.
 
 
 ### Step 1 - Add Maven Repository to `pom.xml`
