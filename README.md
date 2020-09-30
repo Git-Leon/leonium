@@ -33,6 +33,9 @@
 </dependency>
 ```
 
+### Java Docs
+* Click [here](./docs/index.html) to view the official java docs for this project.
+
 
 ### Sample Animation
 
