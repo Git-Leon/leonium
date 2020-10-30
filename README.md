@@ -1,4 +1,4 @@
-# Leonium Demonstration
+# Leonium
 * The purpose of this repository is to demonstrate the use of `Leonium`, a `Selenium` wrapper framework.
 
 ## Usage
