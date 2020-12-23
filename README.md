@@ -35,7 +35,7 @@
 <dependency>
   <groupId>com.github.git-leon</groupId>
   <artifactId>leonium</artifactId>
-  <version>1.0</version>
+  <version>2.1.3</version>
 </dependency>
 ```
 
