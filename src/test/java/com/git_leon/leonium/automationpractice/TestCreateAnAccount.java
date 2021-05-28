@@ -1,10 +1,10 @@
 package com.git_leon.leonium.automationpractice;
 
-import com.git_leon.leonium.DirectoryReference;
 import com.git_leon.leonium.automationpractice.webpages.HomePage;
 import com.git_leon.leonium.automationpractice.webpages.SignInPage;
 import com.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPage;
 import com.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPageStateFactory;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
 import com.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import org.junit.Test;
@@ -16,12 +16,8 @@ public class TestCreateAnAccount {
         String testName = "test-" + Long.toHexString(System.nanoTime());
         String email = testName + "@leonium.com";
         WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
-        BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, DirectoryReference
-                .TARGET_DIRECTORY
-                .getFileFromDirectory("Report-" + System.nanoTime() + ".html")
-                .getAbsolutePath(),
-                testName);
-        browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(false);
+        BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver);
+        browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(true);
         HomePage homePage = new HomePage(browserHandler);
         try {
             homePage.navigateTo();
@@ -37,5 +33,10 @@ public class TestCreateAnAccount {
             browserHandler.screenshot().getFile();
             browserHandler.close();
         }
+
+        String reportFilePath = browserHandler.getReportFilePath();
+        BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.FIREFOX.getBrowserHandler();
+        tempBrowser.navigateTo(reportFilePath);
+        System.out.println(tempBrowser.getDriver().getPageSource());
     }
 }

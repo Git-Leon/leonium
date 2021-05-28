@@ -2,8 +2,6 @@ package com.git_leon.leonium.browsertools.browserhandler.reporting;
 
 import com.git_leon.leonium.DirectoryReference;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
-import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerDecoratorAbstractClass;
-import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerDecoratorInterface;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
@@ -12,6 +10,8 @@ import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogge
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.WebDriver;
+
+import java.io.File;
 
 /**
  * @author leonhunter
@@ -35,14 +35,18 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
         this.browserHandlerImplementation = new BrowserHandler(driver, new BrowserWaitLoggerDecorator(browserWaitExtentReporter, browserWaitExtentReporter));
         this.browserHandlerLoggerImpl = new BrowserHandlerLoggerImpl(browserHandlerImplementation);
         this.browserHandlerExtentReporter = new BrowserHandlerLoggerExtentReporter(browserHandlerLoggerImpl, browserWaitExtentReporter.getExtentTestLoggerFactory(), testName, "");
+
+        getOptions().SCREENSHOT_DIRECTORY.setValue(new File(getReportFilePath()).getParentFile().getAbsolutePath().concat("/"));
     }
 
     public BrowserHandlerLayeredLogger(WebDriver driver) {
-        this(driver, DirectoryReference
-                .TARGET_DIRECTORY
-                .getFileFromDirectory("Report " + System.nanoTime() + ".html")
-                .getAbsolutePath(),
-                "test-" + Long.toHexString(System.nanoTime()));
+        this(
+                driver,
+                DirectoryReference
+                        .TARGET_DIRECTORY
+                        .getFileFromDirectory("Report-" + System.nanoTime() + ".html")
+                        .getAbsolutePath(),
+                Long.toHexString(System.nanoTime()));
     }
 
     @Override

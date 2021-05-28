@@ -1,6 +1,5 @@
 package com.git_leon.leonium.automationpractice;
 
-import com.git_leon.leonium.DirectoryReference;
 import com.git_leon.leonium.automationpractice.webpages.HomePage;
 import com.git_leon.leonium.automationpractice.webpages.SearchResultPage;
 import com.git_leon.leonium.automationpractice.webpages.ShoppingCartSummaryPage;
@@ -17,7 +16,6 @@ import org.openqa.selenium.WebDriver;
  */
 public class TestSiteTraversal   {
     private WebDriver driver;
-    private static final String reportName = "Site Traversal Reports";
 
     @Before
     public void setup() {
@@ -25,11 +23,7 @@ public class TestSiteTraversal   {
     }
 
     private void test(String searchText) {
-        BrowserHandlerInterface browserHandler = new BrowserHandlerLayeredLogger(driver, DirectoryReference
-                .TARGET_DIRECTORY
-                .getFileFromDirectory("Report-" + System.nanoTime() + ".html")
-                .getAbsolutePath(),
-                "test-" + Long.toHexString(System.nanoTime()));
+        BrowserHandlerInterface browserHandler = new BrowserHandlerLayeredLogger(driver);
         HomePage homePage = new HomePage(browserHandler);
         browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(true);
         try {

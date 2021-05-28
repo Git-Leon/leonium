@@ -12,7 +12,7 @@ public final class BrowserHandlerOptions {
     public final BrowserOption<Integer> DEFAULT_WAIT = new BrowserOption<>(15);
     public final BrowserOption<String> SCREENSHOT_DIRECTORY = new BrowserOption<>(new StringBuilder()
         .append(System.getProperty("user.dir"))
-        .append("/target/screenshots/")
+        .append("/target/")
         .toString());
 
 

@@ -13,7 +13,10 @@ class WebElementScreenshot extends Screenshot {
     private final WebEntity webEntity;
 
     public WebElementScreenshot(WebDriver driver, By by, String fileDirectory) {
-        super(driver, fileDirectory, new WebEntity(by, driver).toString());
+        super(driver, fileDirectory, new WebEntity(by, driver)
+                .toString()
+                .concat("@")
+                .concat(Long.toHexString(System.nanoTime())));
         this.webEntity = new WebEntity(by, driver);
     }
 
