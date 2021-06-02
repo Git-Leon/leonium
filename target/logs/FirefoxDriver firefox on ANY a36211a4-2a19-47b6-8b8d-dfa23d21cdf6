@@ -1,0 +1,119 @@
+Jun 02, 2021 7:00:05 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to navigate to [ http://automationpractice.com/index.php ] from [ about:blank ]
+Jun 02, 2021 7:00:07 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully navigated to [ http://automationpractice.com/index.php ] from [ about:blank ]
+Jun 02, 2021 7:00:07 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to click `WebElement`, using selector [ By.className: login ]
+Jun 02, 2021 7:00:09 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully clicked `WebElement` [ class-name-login ], using selector [ By.className: login ]
+
+Jun 02, 2021 7:00:09 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ test-1003115d67918@leonium.com ], using selector [ By.id: email_create ]
+Jun 02, 2021 7:00:09 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ test-1003115d67918@leonium.com ], using selector [ By.id: email_create ]
+Jun 02, 2021 7:00:09 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to click `WebElement`, using selector [ By.id: SubmitCreate ]
+Jun 02, 2021 7:00:10 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully clicked `WebElement` [ id-SubmitCreate ], using selector [ By.id: SubmitCreate ]
+
+Jun 02, 2021 7:00:10 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ null ], using selector [ By.id: customer_firstname ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ null ], using selector [ By.id: customer_firstname ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ null ], using selector [ By.id: customer_lastname ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ null ], using selector [ By.id: customer_lastname ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ test-1003115d67918@leonium.com ], using selector [ By.id: email ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ test-1003115d67918@leonium.com ], using selector [ By.id: email ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ test-1003115d67918@leonium.com ], using selector [ By.id: passwd ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ test-1003115d67918@leonium.com ], using selector [ By.id: passwd ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ null ], using selector [ By.id: firstname ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ null ], using selector [ By.id: firstname ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ null ], using selector [ By.id: lastname ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ null ], using selector [ By.id: lastname ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ null ], using selector [ By.id: city ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ null ], using selector [ By.id: city ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ null ], using selector [ By.id: address1 ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ null ], using selector [ By.id: address1 ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ null ], using selector [ By.id: address2 ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ null ], using selector [ By.id: address2 ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ Delaware ], using selector [ By.id: city ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ Delaware ], using selector [ By.id: city ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ 56728 ], using selector [ By.id: postcode ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ 56728 ], using selector [ By.id: postcode ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ eeoeqergut ], using selector [ By.id: other ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ eeoeqergut ], using selector [ By.id: other ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ 8283789312 ], using selector [ By.id: phone ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ 8283789312 ], using selector [ By.id: phone ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ 2116415232 ], using selector [ By.id: phone_mobile ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ 2116415232 ], using selector [ By.id: phone_mobile ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ rviwboi ], using selector [ By.id: alias ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ rviwboi ], using selector [ By.id: alias ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ null ], using selector [ By.id: id_state ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ null ], using selector [ By.id: id_state ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ United State ], using selector [ By.id: id_country ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ United State ], using selector [ By.id: id_country ]
+Jun 02, 2021 7:00:12 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to click `WebElement`, using selector [ By.id: uniform-id_gender2 ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully clicked `WebElement` [ id-uniform-id_gender2 ], using selector [ By.id: uniform-id_gender2 ]
+
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ July
+ ], using selector [ By.id: months ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ July
+ ], using selector [ By.id: months ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ 25
+ ], using selector [ By.id: days ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ 25
+ ], using selector [ By.id: days ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to send keys [ 2015
+ ], using selector [ By.id: years ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully sent keys [ 2015
+ ], using selector [ By.id: years ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to select dropdown, using selector [ By.id: uniform-newsletter ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to screenshot from [ http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully retrieved screenshot of [ <img src = 'C:\Users\hunte\dev\curriculeon\leonium\target\Login - My Store.png'> ]
+Jun 02, 2021 7:00:13 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Attempting to close `BrowserHandler` instance, [ com.git_leon.leonium.browsertools.browserhandler.BrowserHandler@6f139fc9 ]
+Jun 02, 2021 7:00:14 PM com.github.git_leon.logging.SimpleLogger log
+INFO: Successfully closed `BrowserHandler` instance, [ com.git_leon.leonium.browsertools.browserhandler.BrowserHandler@6f139fc9 ]

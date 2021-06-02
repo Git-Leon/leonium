@@ -2,6 +2,7 @@ package com.git_leon.leonium.browsertools.factories;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
@@ -56,9 +57,26 @@ public final class DesiredCapabilitiesFactory {
         return getDefault().merge(DesiredCapabilities.firefox());
     }
 
+    public static Capabilities getHeadlessFirefox() {
+        WebDriverManager.firefoxdriver().setup();
+        final DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.firefox());
+        final FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.addArguments("--headless");
+        return capabilities.merge(firefoxOptions.toCapabilities());
+    }
+
     public static Capabilities getPhantomJs() {
         WebDriverManager.phantomjs().setup();
         return getDefault().merge(DesiredCapabilities.phantomjs());
+    }
+
+    public static Capabilities getHeadlessChrome() {
+        WebDriverManager.chromedriver().setup();
+        final DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.chrome());
+        final ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        return capabilities;
     }
 
     public static Capabilities getChrome() {
