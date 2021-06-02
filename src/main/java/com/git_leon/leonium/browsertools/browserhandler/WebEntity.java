@@ -111,7 +111,9 @@ public class WebEntity {
         String webElementStr = webElement.toString();
         return webElementStr
                 .replaceAll("\\[.*?\\] -> ", "")
-                .replaceAll("]", "");
+                .replaceAll("]", "")
+                .replaceAll(":", "")
+                .replaceAll(" ", "-");
     }
 
     public static By getByValue(WebElement we) {
