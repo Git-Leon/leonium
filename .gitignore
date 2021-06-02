@@ -117,3 +117,7 @@ Temporary Items
 mvnw
 mvnw.cmd
 dependency-reduced-pom.xml
+
+target
+target
+!*.jar
