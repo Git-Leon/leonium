@@ -118,6 +118,5 @@ mvnw
 mvnw.cmd
 dependency-reduced-pom.xml
 
-target
-target
-!target/*.jar
+target/*
+!*.jar
