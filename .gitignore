@@ -117,3 +117,4 @@ target/
 .mvn/*
 mvnw
 mvnw.cmd
+dependency-reduced-pom.xml

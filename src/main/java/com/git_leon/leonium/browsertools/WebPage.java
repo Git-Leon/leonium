@@ -3,7 +3,10 @@ package com.git_leon.leonium.browsertools;
 import com.git_leon.leonium.DirectoryReference;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Collection;
 
 public abstract class WebPage implements WebPageInterface {
     private BrowserHandlerInterface browserHandler;
@@ -27,5 +30,9 @@ public abstract class WebPage implements WebPageInterface {
 
     public BrowserHandlerInterface getBrowserHandler() {
         return browserHandler;
+    }
+
+    public Collection<Cookie> getAllCookies() {
+        return getBrowserHandler().getDriver().manage().getCookies();
     }
 }
