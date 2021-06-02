@@ -61,7 +61,7 @@ local.properties
 .buildpath
 
 # sbteclipse plugin
-.target
+
 
 # Tern plugin
 .tern-project
@@ -111,8 +111,7 @@ Temporary Items
 .idea
 *.iml
 
-#maven build target
-target/
+
 
 .mvn/*
 mvnw

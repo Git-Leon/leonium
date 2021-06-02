@@ -8,6 +8,20 @@
     <artifactId>leonium</artifactId>
     <version>2.1.6</version>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <shade.version>3.1.1</shade.version>
+        <extentreports.version>3.1.5</extentreports.version>
+        <selenium.version>3.4.0</selenium.version>
+        <webdrivermanager.version>4.0.0</webdrivermanager.version>
+        <leon.simplelogger.version>2.1.1</leon.simplelogger.version>
+        <leon.stringutils.version>2.0.0</leon.stringutils.version>
+        <leon.randomutils.version>1.0</leon.randomutils.version>
+
+
+    </properties>
+
+
     <!--my private repo-->
     <repositories>
         <repository>
@@ -30,8 +44,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
@@ -39,7 +53,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${shade.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -56,39 +70,39 @@
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>3.1.5</version>
+            <version>${extentreports.version}</version>
         </dependency>
 
         <!--leonium test automation-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium.version}</version>
         </dependency>
 
         <!--web driver configuration automation-->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>3.8.1</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.git-leon</groupId>
             <artifactId>simplelogger</artifactId>
-            <version>2.1.1</version>
+            <version>${leon.simplelogger.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.git-leon</groupId>
             <artifactId>randomutils</artifactId>
-            <version>1.0</version>
+            <version>${leon.randomutils.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.git-leon</groupId>
             <artifactId>stringutils</artifactId>
-            <version>2.0.0</version>
+            <version>${leon.stringutils.version}</version>
         </dependency>
     </dependencies>
 
