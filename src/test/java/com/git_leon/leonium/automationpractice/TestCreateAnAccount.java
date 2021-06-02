@@ -15,7 +15,7 @@ public class TestCreateAnAccount {
     public void test() {
         String testName = "test-" + Long.toHexString(System.nanoTime());
         String email = testName + "@leonium.com";
-        WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
+        WebDriver driver = BrowserHandlerFactory.HEADLESS_FIREFOX.getDriver();
         BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver);
         browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(false);
         HomePage homePage = new HomePage(browserHandler);
