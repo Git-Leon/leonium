@@ -17,7 +17,7 @@ public class TestCreateAnAccount {
         String email = testName + "@leonium.com";
         WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
         BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver);
-        browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(true);
+        browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(false);
         HomePage homePage = new HomePage(browserHandler);
         try {
             homePage.navigateTo();
