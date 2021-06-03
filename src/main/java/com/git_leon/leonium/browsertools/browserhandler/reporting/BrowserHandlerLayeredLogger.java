@@ -39,14 +39,15 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
         getOptions().SCREENSHOT_DIRECTORY.setValue(new File(getReportFilePath()).getParentFile().getAbsolutePath().concat("/"));
     }
 
+    public BrowserHandlerLayeredLogger(WebDriver driver, String reportFilePath) {
+        this(driver, reportFilePath, Long.toHexString(System.nanoTime()));
+    }
+
     public BrowserHandlerLayeredLogger(WebDriver driver) {
-        this(
-                driver,
-                DirectoryReference
-                        .TARGET_DIRECTORY
-                        .getFileFromDirectory("Report-" + System.nanoTime() + ".html")
-                        .getAbsolutePath(),
-                Long.toHexString(System.nanoTime()));
+        this(driver, DirectoryReference
+                .TARGET_DIRECTORY
+                .getFileFromDirectory("Report-" + System.nanoTime() + ".html")
+                .getAbsolutePath());
     }
 
     @Override
