@@ -78,7 +78,8 @@
             <version>${selenium.version}</version>
         </dependency>
 
-        <!--web driver configuration automation-->
+        <!--w
+        eb driver configuration automation-->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
