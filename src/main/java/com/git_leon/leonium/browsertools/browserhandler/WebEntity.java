@@ -4,7 +4,6 @@ import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInter
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.SelectorWaitCondition;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.awt.image.RasterFormatException;
@@ -35,11 +34,7 @@ public class WebEntity {
                 SelectorWaitCondition.ENABLED,
                 SelectorWaitCondition.CLICKABILITY,
                 SelectorWaitCondition.NOT_STALE);
-        try {
-            getElement().click();
-        } catch (WebDriverException wde) {
-            new Actions(driver).moveToElement(getElement()).click().perform();
-        }
+        getElement().click();
     }
 
 
@@ -78,11 +73,7 @@ public class WebEntity {
                 wait.forKeyable(selector);
             }
 
-            try {
-                we.sendKeys(keys);
-            } catch (WebDriverException wde) {
-                driver.switchTo().activeElement().sendKeys(keys);
-            }
+            we.sendKeys(keys);
         }
     }
 
