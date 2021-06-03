@@ -1,6 +1,9 @@
 package com.git_leon.leonium.browsertools.factories;
 
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
+import com.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,8 +33,12 @@ public enum BrowserHandlerFactory {
         this.capabilities = capabilities;
     }
 
-    public BrowserHandler getBrowserHandler() {
+    public BrowserHandlerInterface getBrowserHandler() {
         return new BrowserHandler(getDriver());
+    }
+
+    public BrowserHandlerLoggerInterface getBrowserHandlerLogger() {
+        return new BrowserHandlerLoggerImpl(getDriver());
     }
 
     public WebDriver getDriver() {

@@ -119,4 +119,3 @@ mvnw.cmd
 dependency-reduced-pom.xml
 
 target/*
-!*.jar

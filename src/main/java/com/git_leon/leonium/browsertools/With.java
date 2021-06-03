@@ -72,4 +72,8 @@ public final class With {
     public static By tagAttribute(String tag, String attribute) {
         return By.xpath(String.format(".//%s['%s']", tag, attribute));
     }
+
+    public static By containingTagAttributeValue(String tag, String attribute, String value) {
+        return By.xpath(String.format("%s[contains(@%s,'%s')]", tag, attribute, value));
+    }
 }
