@@ -30,17 +30,15 @@ public class WebEntity {
     }
 
     public void click() {
+        wait.forConditions(selector,
+                SelectorWaitCondition.VISIBILITY,
+                SelectorWaitCondition.ENABLED,
+                SelectorWaitCondition.CLICKABILITY,
+                SelectorWaitCondition.NOT_STALE);
         try {
-            wait.forConditions(selector,
-                    SelectorWaitCondition.VISIBILITY,
-                    SelectorWaitCondition.ENABLED,
-                    SelectorWaitCondition.CLICKABILITY,
-                    SelectorWaitCondition.NOT_STALE);
             getElement().click();
         } catch (WebDriverException wde) {
-            wait.forClickability(selector);
-            WebElement byElementAddName = getElement();
-            new Actions(driver).moveToElement(byElementAddName).click().perform();
+            new Actions(driver).moveToElement(getElement()).click().perform();
         }
     }
 
