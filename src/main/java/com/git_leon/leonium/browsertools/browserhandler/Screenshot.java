@@ -25,7 +25,7 @@ public class Screenshot {
         this.remoteWebDriver = (RemoteWebDriver) driver;
         this.imageName = StringUtils.removeCharacters(imageName, "[,;']}{/.|*!@#$%^&()~`:->");
         this.bufferedImage = createBufferedImage();
-        this.filePath = filePath + imageName + ".png";
+        this.filePath = filePath + this.imageName + ".png";
     }
 
     protected BufferedImage getFullBufferedImage() {
