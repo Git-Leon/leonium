@@ -19,9 +19,28 @@
         <leon.randomutils.version>1.0</leon.randomutils.version>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Git-Leon Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/Git-Leon/leonium</url>
+        </repository>
+    </distributionManagement>
 
-    <!--my private repo-->
+
     <repositories>
+        <!--primary maven repository-->
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>http://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <!--my private repo-->
         <repository>
             <id>git-leon-utils</id>
             <url>https://packagecloud.io/git-leon/utils/maven2</url>
