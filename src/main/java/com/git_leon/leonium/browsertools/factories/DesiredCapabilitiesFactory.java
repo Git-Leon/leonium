@@ -1,5 +1,6 @@
 package com.git_leon.leonium.browsertools.factories;
 
+import io.github.bonigarcia.wdm.Config;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -61,6 +62,13 @@ public final class DesiredCapabilitiesFactory {
         WebDriverManager.firefoxdriver().setup();
         final DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.firefox());
         final FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.addPreference("network.automatic-ntlm-auth.trusted-uris", "http://,https://");
+        firefoxOptions.addPreference("network.automatic-ntlm-auth.allow-non-fqdn", true);
+        firefoxOptions.addPreference("network.negotiate-auth.delegation-uris", "http://,https://");
+        firefoxOptions.addPreference("network.negotiate-auth.trusted-uris", "http://,https://");
+        firefoxOptions.addPreference("network.http.phishy-userpass-length", 255);
+        firefoxOptions.addPreference("security.csp.enable", false);
+        firefoxOptions.addPreference("network.proxy.no_proxies_on", "");
         firefoxOptions.addArguments(
                 "--headless",
                 "--disable-gpu",
@@ -69,6 +77,7 @@ public final class DesiredCapabilitiesFactory {
                 "--disable-extensions",
                 "--no-sandbox",
                 "--disable-dev-shm-usage");
+        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         return capabilities.merge(firefoxOptions.toCapabilities());
     }
 
@@ -90,6 +99,7 @@ public final class DesiredCapabilitiesFactory {
                 "--no-sandbox",
                 "--disable-dev-shm-usage");
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         return capabilities;
     }
 
