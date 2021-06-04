@@ -139,4 +139,11 @@ public interface BrowserHandlerInterface {
     default String getCurrentUrl() {
         return getDriver().getCurrentUrl();
     }
+
+    default void setWindowSize(int width, int height) {
+        getDriver()
+                .manage()
+                .window()
+                .setSize(new Dimension(width, height));
+    }
 }

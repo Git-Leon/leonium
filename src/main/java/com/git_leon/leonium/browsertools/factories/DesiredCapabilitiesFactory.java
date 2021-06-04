@@ -3,13 +3,18 @@ package com.git_leon.leonium.browsertools.factories;
 import io.github.bonigarcia.wdm.Config;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -58,8 +63,12 @@ public final class DesiredCapabilitiesFactory {
         return getDefault().merge(DesiredCapabilities.firefox());
     }
 
+    public static Capabilities getChrome() {
+        WebDriverManager.chromedriver().setup();
+        return getDefault().merge(DesiredCapabilities.chrome());
+    }
+
     public static Capabilities getHeadlessFirefox() {
-        WebDriverManager.firefoxdriver().setup();
         final DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.firefox());
         final FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.addPreference("network.automatic-ntlm-auth.trusted-uris", "http://,https://");
@@ -81,11 +90,6 @@ public final class DesiredCapabilitiesFactory {
         return capabilities.merge(firefoxOptions.toCapabilities());
     }
 
-    public static Capabilities getPhantomJs() {
-        WebDriverManager.phantomjs().setup();
-        return getDefault().merge(DesiredCapabilities.phantomjs());
-    }
-
     public static Capabilities getHeadlessChrome() {
         WebDriverManager.chromedriver().setup();
         final DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.chrome());
@@ -98,20 +102,34 @@ public final class DesiredCapabilitiesFactory {
                 "--disable-extensions",
                 "--no-sandbox",
                 "--disable-dev-shm-usage");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        return capabilities;
+
+    }
+
+    public static Capabilities getPhantomJs() {
+        WebDriverManager.phantomjs().setup();
+        DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.phantomjs());
+        capabilities.setCapability("takesScreenshot", true);
+        capabilities.setCapability(
+                PhantomJSDriverService.PHANTOMJS_CLI_ARGS,
+                Arrays.asList(
+                        "--web-security=false",
+                        "--ssl-protocol=any",
+                        "--ignore-ssl-errors=true"));
+        capabilities.setCapability(
+                PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS,
+                new String[]{"--logLevel=2"});
+        capabilities.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
         return capabilities;
     }
 
-    public static Capabilities getChrome() {
-        WebDriverManager.chromedriver().setup();
-        return getDefault().merge(DesiredCapabilities.chrome());
-    }
-
     public static Capabilities getHtmlUnit() {
-        DesiredCapabilities capabilities = DesiredCapabilitiesFactory.getDefault();
-        capabilities.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
-        capabilities.setBrowserName("htmlunit");
+        DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.htmlUnit());
+        capabilities.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
+        capabilities.setJavascriptEnabled(true);
+        capabilities.setCapability("takesScreenshot", true);
         return capabilities;
     }
 }
