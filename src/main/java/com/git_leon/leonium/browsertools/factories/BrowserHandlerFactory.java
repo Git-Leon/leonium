@@ -12,25 +12,26 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author leon on 5/24/18.
  * Produces new instances of
  */
 public enum BrowserHandlerFactory {
-    CHROME(DesiredCapabilitiesFactory.getChrome(), ChromeDriver::new),
-    FIREFOX(DesiredCapabilitiesFactory.getFirefox(), FirefoxDriver::new),
-    HEADLESS_CHROME(DesiredCapabilitiesFactory.getHeadlessChrome(), ChromeDriver::new),
-    HEADLESS_FIREFOX(DesiredCapabilitiesFactory.getHeadlessFirefox(), FirefoxDriver::new),
-    PHANTOMJS(DesiredCapabilitiesFactory.getPhantomJs(), PhantomJSDriver::new),
-    HTMLUNIT(DesiredCapabilitiesFactory.getHtmlUnit(), HtmlUnitDriver::new);
+    CHROME(DesiredCapabilitiesFactory::getChrome, ChromeDriver::new),
+    FIREFOX(DesiredCapabilitiesFactory::getFirefox, FirefoxDriver::new),
+    HEADLESS_CHROME(DesiredCapabilitiesFactory::getHeadlessChrome, ChromeDriver::new),
+    HEADLESS_FIREFOX(DesiredCapabilitiesFactory::getHeadlessFirefox, FirefoxDriver::new),
+    PHANTOMJS(DesiredCapabilitiesFactory::getPhantomJs, PhantomJSDriver::new),
+    HTMLUNIT(DesiredCapabilitiesFactory::getHtmlUnit, HtmlUnitDriver::new);
 
     private final Function<Capabilities, WebDriver> webDriverConstructor;
-    private final Capabilities capabilities;
+    private final Supplier<Capabilities> capabilitiesSupplier;
 
-    BrowserHandlerFactory(Capabilities capabilities, Function<Capabilities, WebDriver> constructor) {
+    BrowserHandlerFactory(Supplier<Capabilities> capabilitiesSupplier, Function<Capabilities, WebDriver> constructor) {
         this.webDriverConstructor = constructor;
-        this.capabilities = capabilities;
+        this.capabilitiesSupplier = capabilitiesSupplier;
     }
 
     public BrowserHandlerInterface getBrowserHandler() {
@@ -42,11 +43,11 @@ public enum BrowserHandlerFactory {
     }
 
     public WebDriver getDriver() {
-        return webDriverConstructor.apply(capabilities);
+        return webDriverConstructor.apply(capabilitiesSupplier.get());
     }
 
     public WebDriver getDriver(Capabilities capabilities) {
-        return webDriverConstructor.apply(this.capabilities.merge(capabilities));
+        return webDriverConstructor.apply(this.capabilitiesSupplier.get().merge(capabilities));
     }
 
     public static BrowserHandlerFactory getValueOf(String userInput) {

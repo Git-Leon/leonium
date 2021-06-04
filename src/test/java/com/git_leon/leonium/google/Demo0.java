@@ -2,6 +2,7 @@ package com.git_leon.leonium.google;
 
 import com.git_leon.leonium.browsertools.WebCrawl;
 import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
 import com.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,7 +14,7 @@ public class Demo0 extends WebCrawl {
     @Test
     @Override
     public void test() {
-        BrowserHandler browserHandler = BrowserHandlerFactory.PHANTOMJS.getBrowserHandler();
+        BrowserHandlerInterface browserHandler = BrowserHandlerFactory.PHANTOMJS.getBrowserHandler();
 //        browserHandler.options.SCREENSHOT_ON_EVENT.setValue(false);
         String url = "https://www.google.com/";
         browserHandler.navigateTo(url);
