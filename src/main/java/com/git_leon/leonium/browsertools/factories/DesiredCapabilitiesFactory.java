@@ -1,6 +1,7 @@
 package com.git_leon.leonium.browsertools.factories;
 
 import io.github.bonigarcia.wdm.Config;
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
@@ -112,7 +113,6 @@ public final class DesiredCapabilitiesFactory {
         WebDriverManager.phantomjs().setup();
         DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.phantomjs());
         capabilities.setCapability("takesScreenshot", true);
-        capabilities.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
         capabilities.setCapability(
                 PhantomJSDriverService.PHANTOMJS_CLI_ARGS,
                 Arrays.asList(

@@ -38,8 +38,16 @@ public enum BrowserHandlerFactory {
         return new BrowserHandler(getDriver());
     }
 
+    public BrowserHandlerInterface getBrowserHandler(Capabilities capabilities) {
+        return new BrowserHandler(getDriver(capabilities));
+    }
+
     public BrowserHandlerLoggerInterface getBrowserHandlerLogger() {
         return new BrowserHandlerLoggerImpl(getDriver());
+    }
+
+    public BrowserHandlerLoggerInterface getBrowserHandlerLogger(Capabilities capabilities) {
+        return new BrowserHandlerLoggerImpl(getDriver(capabilities));
     }
 
     public WebDriver getDriver() {

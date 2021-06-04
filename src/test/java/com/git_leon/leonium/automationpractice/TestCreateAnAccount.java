@@ -9,13 +9,14 @@ import com.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandler
 import com.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class TestCreateAnAccount {
     @Test
     public void test() {
         String testName = "test-" + Long.toHexString(System.nanoTime());
         String email = testName + "@leonium.com";
-        WebDriver driver = BrowserHandlerFactory.HEADLESS_FIREFOX.getDriver();
+        WebDriver driver = BrowserHandlerFactory.PHANTOMJS.getDriver();
         BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver);
         browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(false);
         HomePage homePage = new HomePage(browserHandler);
