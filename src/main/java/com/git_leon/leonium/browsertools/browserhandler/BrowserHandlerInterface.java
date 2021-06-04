@@ -151,7 +151,7 @@ public interface BrowserHandlerInterface {
     }
 
     default Collection<Cookie> getCookies() {
-        List<Cookie> list = new ArrayList<Cookie>(getDriver().manage().getCookies()) {
+        return new ArrayList<Cookie>(getDriver().manage().getCookies()) {
             @Override
             public String toString() {
                 final StringJoiner cookieString = new StringJoiner(";");
@@ -164,6 +164,5 @@ public interface BrowserHandlerInterface {
                 return cookieString.toString();
             }
         };
-        return list;
     }
 }
