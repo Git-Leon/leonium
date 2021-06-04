@@ -6,8 +6,10 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.awt.image.RasterFormatException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by leon on 5/25/20
@@ -149,6 +151,19 @@ public interface BrowserHandlerInterface {
     }
 
     default Collection<Cookie> getCookies() {
-        return getDriver().manage().getCookies();
+        List<Cookie> list = new ArrayList<Cookie>(getDriver().manage().getCookies()) {
+            @Override
+            public String toString() {
+                final StringJoiner cookieString = new StringJoiner(";");
+                this.forEach(cookie -> {
+                    cookieString.add(cookie
+                            .getName()
+                            .concat("=")
+                            .concat(cookie.getValue()));
+                });
+                return cookieString.toString();
+            }
+        };
+        return list;
     }
 }
