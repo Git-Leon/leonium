@@ -48,4 +48,11 @@ public enum BrowserHandlerFactory {
     public WebDriver getDriver(Capabilities capabilities) {
         return webDriverConstructor.apply(this.capabilities.merge(capabilities));
     }
+
+    public static BrowserHandlerFactory getValueOf(String userInput) {
+        return valueOf(userInput
+                .toUpperCase()
+                .replaceAll("-", "_")
+                .replaceAll(" ", "_"));
+    }
 }

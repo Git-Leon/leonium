@@ -61,7 +61,14 @@ public final class DesiredCapabilitiesFactory {
         WebDriverManager.firefoxdriver().setup();
         final DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.firefox());
         final FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.addArguments("--headless");
+        firefoxOptions.addArguments(
+                "--headless",
+                "--disable-gpu",
+                "--window-size=1920,1200",
+                "--ignore-certificate-errors",
+                "--disable-extensions",
+                "--no-sandbox",
+                "--disable-dev-shm-usage");
         return capabilities.merge(firefoxOptions.toCapabilities());
     }
 
@@ -74,7 +81,14 @@ public final class DesiredCapabilitiesFactory {
         WebDriverManager.chromedriver().setup();
         final DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.chrome());
         final ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments(
+                "--headless",
+                "--disable-gpu",
+                "--window-size=1920,1200",
+                "--ignore-certificate-errors",
+                "--disable-extensions",
+                "--no-sandbox",
+                "--disable-dev-shm-usage");
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         return capabilities;
     }
@@ -86,6 +100,7 @@ public final class DesiredCapabilitiesFactory {
 
     public static Capabilities getHtmlUnit() {
         DesiredCapabilities capabilities = DesiredCapabilitiesFactory.getDefault();
+        capabilities.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
         capabilities.setBrowserName("htmlunit");
         return capabilities;
     }
