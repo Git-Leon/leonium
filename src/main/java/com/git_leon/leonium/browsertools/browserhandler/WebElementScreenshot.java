@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 /**
  * Created by leon on 5/25/17.
  */
-class WebElementScreenshot extends Screenshot {
+public class WebElementScreenshot extends Screenshot {
     private final WebEntity webEntity;
 
     public WebElementScreenshot(WebDriver driver, By by, String fileDirectory) {

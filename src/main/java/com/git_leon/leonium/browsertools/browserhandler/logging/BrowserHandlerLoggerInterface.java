@@ -1,8 +1,6 @@
 package com.git_leon.leonium.browsertools.browserhandler.logging;
 
-import com.git_leon.leonium.browsertools.browserhandler.BrowserHandlerDecoratorInterface;
-import com.git_leon.leonium.browsertools.browserhandler.Screenshot;
-import com.git_leon.leonium.browsertools.browserhandler.WebEntity;
+import com.git_leon.leonium.browsertools.browserhandler.*;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -27,7 +25,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
 
         getLogger().info(attemptMessage, by);
         WebElement we = getBrowserHandlerDecoratee().getElement(by);
-        getLogger().info(successMessage, WebEntity.toString(we), by);
+        getLogger().info(successMessage, WebEntityInterface.toString(we), by);
         return we;
     }
 
@@ -52,9 +50,9 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         getLogger().info(attemptMessage, by);
         List<WebElement> elements = getBrowserHandlerDecoratee().getElements(by);
         List<String> webEntityStringsToBeLogged = elements
-            .stream()
-            .map(WebEntity::toString)
-            .collect(Collectors.toList());
+                .stream()
+                .map(WebEntityInterface::toString)
+                .collect(Collectors.toList());
         getLogger().info(successMessage, webEntityStringsToBeLogged, by);
 
         return elements;
@@ -203,7 +201,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
-                    String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
+                    WebElementScreenshot screenshotFilePath = we.getScreenshot(screenshotDirectory);
                     getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
                 } catch (RasterFormatException rfe) {
                     getLogger().error("Failed to get screenshot of interaction.");

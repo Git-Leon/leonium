@@ -2,17 +2,14 @@ package com.git_leon.leonium.browsertools.browserhandler;
 
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
 import com.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
-import com.git_leon.leonium.browsertools.browserhandler.waiting.SelectorWaitCondition;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-
-import java.awt.image.RasterFormatException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 /**
  * @author leon on 4/12/18.
  * wraps each DOM-interaction via `WebElement` with smart-waits
  */
-public class WebEntity {
+public class WebEntity implements WebEntityInterface {
     private final By selector;
     private final WebDriver driver;
     private BrowserWaitInterface wait;
@@ -28,117 +25,34 @@ public class WebEntity {
         this.wait = browserWait;
     }
 
-    public void click() {
-        wait.forConditions(selector,
-                SelectorWaitCondition.VISIBILITY,
-                SelectorWaitCondition.ENABLED,
-                SelectorWaitCondition.CLICKABILITY,
-                SelectorWaitCondition.NOT_STALE);
-        getElement().click();
+    @Override
+    public WebDriver getDriver() {
+        return driver;
     }
 
-
-    // toSelect by byType
-    public Select toSelect() {
-        wait.forConditions(selector,
-                SelectorWaitCondition.VISIBILITY,
-                SelectorWaitCondition.ENABLED,
-                SelectorWaitCondition.NOT_STALE);
-        WebElement we = getElement();
-        Select select = new Select(we);
-        return select;
+    @Override
+    public BrowserWaitInterface getWait() {
+        return wait;
     }
 
-    // toSelect by WebElement and toSelect index option
-    public void selectByIndex(int index) {
-        toSelect().selectByIndex(index);
-    }
-
-    // toSelect visible option by ByType
-    public void selectByVisibleText(String visibleText) {
-        toSelect().selectByVisibleText(visibleText);
-    }
-
-    // send keys by byType
-    public void sendKeys(CharSequence... keys) {
-        WebElement we = getElement();
-        if (keys != null) {
-            try {
-                we.clear();
-                we.sendKeys(Keys.HOME);
-            } catch (InvalidElementStateException iese) {
-                // NOTE** some input elements cannot be cleared
-                // this exception is caught when an unclearable element
-                // invokes the .clear() method
-                wait.forKeyable(selector);
-            }
-
-            we.sendKeys(keys);
-        }
-    }
-
-    public WebElement getElement() {
-        wait.forPresence(selector);
-        return driver.findElement(selector);
-    }
-
-    public Screenshot getScreenshot(String fileDirectory) {
-        if (screenshot == null) {
-            try {
-                wait.forConditions(selector, SelectorWaitCondition.VISIBILITY);
-                WebElementScreenshot screenshot = new WebElementScreenshot(driver, selector, fileDirectory);
-                this.screenshot = screenshot;
-            } catch (RasterFormatException rfe) {
-                // TODO - Identify how to elegantly avoid this
-                return null;
-            }
-        }
-        return screenshot;
-    }
-
+    @Override
     public By getSelector() {
-        return this.selector;
+        return selector;
     }
 
     @Override
     public String toString() {
-        return toString(getElement());
+        return WebEntityInterface.toString(getElement());
     }
 
-    public static String toString(WebElement webElement) {
-        // By format = "[foundFrom] -> locator: term"
-        // see RemoteWebElement toString() implementation
-        String webElementStr = webElement.toString();
-        return webElementStr
-                .replaceAll("\\[.*?\\] -> ", "")
-                .replaceAll("]", "")
-                .replaceAll(":", "")
-                .replaceAll(" ", "-");
+    @Override
+    public WebElementScreenshot getScreenshot() {
+        return screenshot;
     }
 
-    public static By getByValue(WebElement we) {
-        // By format = "[foundFrom] -> locator: term"
-        // see RemoteWebElement toString() implementation
-        String[] data = we.toString().split(" -> ")[1].replace("]", "").split(": ");
-        String locator = data[0];
-        String term = data[1];
-
-        switch (locator) {
-            case "xpath":
-                return By.xpath(term);
-            case "css selector":
-                return By.cssSelector(term);
-            case "id":
-                return By.id(term);
-            case "tag name":
-                return By.tagName(term);
-            case "name":
-                return By.name(term);
-            case "link text":
-                return By.linkText(term);
-            case "class name":
-                return By.className(term);
-        }
-        return (By) we;
+    @Override
+    public WebElementScreenshot getScreenshot(String fileDirectory) {
+        this.screenshot = WebEntityInterface.super.getScreenshot(fileDirectory);
+        return this.screenshot;
     }
 }

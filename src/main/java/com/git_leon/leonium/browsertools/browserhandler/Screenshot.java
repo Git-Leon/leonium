@@ -23,7 +23,9 @@ public class Screenshot {
 
     public Screenshot(WebDriver driver, String filePath, String imageName) {
         this.remoteWebDriver = (RemoteWebDriver) driver;
-        this.imageName = StringUtils.removeCharacters(imageName, "[,;']}{/.|*!@#$%^&()~`:->");
+        this.imageName = StringUtils
+                .removeCharacters(imageName, "[,;']}{/.|*!@#$%^&()~`:->")
+                .replaceAll(" ", "_");
         this.bufferedImage = createBufferedImage();
         this.filePath = filePath + this.imageName + ".png";
     }
@@ -56,21 +58,14 @@ public class Screenshot {
 
 
     public File getFile() {
-        return getFile(filePath);
-    }
-
-    public File getFile(String filePath) {
-        if (file == null) {
-            File outputFile = new File(filePath);
-            try {
-                outputFile.getParentFile().mkdirs();
-                ImageIO.write(getFullBufferedImage(), "png", outputFile);
-            } catch (IOException e) {
-                throw new Error(e);
-            }
-            this.file = outputFile;
+        File outputFile = new File(filePath);
+        try {
+            outputFile.getParentFile().mkdirs();
+            ImageIO.write(getFullBufferedImage(), "png", outputFile);
+        } catch (IOException e) {
+            throw new Error(e);
         }
-        return file;
+        return outputFile;
     }
 
     @Override

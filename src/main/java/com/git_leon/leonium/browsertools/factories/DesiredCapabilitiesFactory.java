@@ -111,8 +111,10 @@ public final class DesiredCapabilitiesFactory {
 
     public static Capabilities getPhantomJs() {
         WebDriverManager.phantomjs().setup();
-        DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.phantomjs());
+        final DesiredCapabilities capabilities = getDefault().merge(DesiredCapabilities.phantomjs());
+        final String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36";
         capabilities.setCapability("takesScreenshot", true);
+        capabilities.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
         capabilities.setCapability(
                 PhantomJSDriverService.PHANTOMJS_CLI_ARGS,
                 Arrays.asList(
@@ -122,7 +124,10 @@ public final class DesiredCapabilitiesFactory {
         capabilities.setCapability(
                 PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS,
                 new String[]{"--logLevel=2"});
-        capabilities.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, true);
+        capabilities.setCapability(
+                PhantomJSDriverService.PHANTOMJS_PAGE_SETTINGS_PREFIX.concat("userAgent"),
+                userAgent);
+        System.setProperty("phantomjs.page.settings.userAgent", userAgent);
         return capabilities;
     }
 
