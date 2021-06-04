@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.awt.image.RasterFormatException;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -145,5 +146,9 @@ public interface BrowserHandlerInterface {
                 .manage()
                 .window()
                 .setSize(new Dimension(width, height));
+    }
+
+    default Collection<Cookie> getCookies() {
+        return getDriver().manage().getCookies();
     }
 }

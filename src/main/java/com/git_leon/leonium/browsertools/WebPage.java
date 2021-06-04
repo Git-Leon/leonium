@@ -33,6 +33,6 @@ public abstract class WebPage implements WebPageInterface {
     }
 
     public Collection<Cookie> getAllCookies() {
-        return getBrowserHandler().getDriver().manage().getCookies();
+        return getBrowserHandler().getCookies();
     }
 }
