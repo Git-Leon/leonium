@@ -13,11 +13,10 @@ import java.util.logging.Level;
  * @author leonhunter
  * @created 05/08/2020 - 3:04 PM
  */
-public interface BrowserWaitLoggerInterfaceDecoratorInterface extends BrowserWaitLoggerInterface {
+public interface BrowserWaitLoggerDecoratorInterface extends BrowserWaitLoggerInterface {
     SimpleLoggerInterface getLogger();
 
-
-    BrowserWaitInterface getWait();
+    BrowserWaitLoggerInterface getWait();
 
     @Override
     default WebElement forEnabled(By by, boolean isEnabled) {

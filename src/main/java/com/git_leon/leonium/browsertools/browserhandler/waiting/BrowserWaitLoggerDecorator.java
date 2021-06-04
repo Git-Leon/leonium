@@ -6,11 +6,11 @@ import com.github.git_leon.logging.SimpleLoggerInterface;
  * @author leonhunter
  * @created 05/08/2020 - 3:09 PM
  */
-public class BrowserWaitLoggerDecorator implements BrowserWaitLoggerInterfaceDecoratorInterface {
-    private final BrowserWaitInterface wait;
+public class BrowserWaitLoggerDecorator implements BrowserWaitLoggerDecoratorInterface {
+    private final BrowserWaitLoggerInterface wait;
     private final SimpleLoggerInterface logger;
 
-    public BrowserWaitLoggerDecorator(BrowserWaitInterface wait, SimpleLoggerInterface logger) {
+    public BrowserWaitLoggerDecorator(BrowserWaitLoggerInterface wait, SimpleLoggerInterface logger) {
         this.wait = wait;
         this.logger = logger;
     }
@@ -21,7 +21,7 @@ public class BrowserWaitLoggerDecorator implements BrowserWaitLoggerInterfaceDec
     }
 
     @Override
-    public BrowserWaitInterface getWait() {
+    public BrowserWaitLoggerInterface getWait() {
         return wait;
     }
 }

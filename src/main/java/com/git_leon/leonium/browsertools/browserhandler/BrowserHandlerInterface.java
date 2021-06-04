@@ -109,7 +109,7 @@ public interface BrowserHandlerInterface {
             try {
                 getDriver().quit();
             } catch (WebDriverException ee) {
-                throw new Error(ee);
+                throw new RuntimeException(ee);
             }
         }
     }
