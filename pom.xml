@@ -18,10 +18,13 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub Git-Leon Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/Git-Leon/leonium</url>
+            <id>packagecloud-git-leon</id>
+            <url>packagecloud+https://packagecloud.io/git-leon/utils</url>
         </repository>
+        <snapshotRepository>
+            <id>packagecloud-git-leon</id>
+            <url>packagecloud+https://packagecloud.io/git-leon/utils</url>
+        </snapshotRepository>
     </distributionManagement>
 
 
@@ -66,6 +69,13 @@
                 </executions>
             </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>io.packagecloud.maven.wagon</groupId>
+                <artifactId>maven-packagecloud-wagon</artifactId>
+                <version>0.0.6</version>
+            </extension>
+        </extensions>
     </build>
 
     <dependencies>
