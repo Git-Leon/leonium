@@ -38,7 +38,7 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
     }
 
     @Override
-    public void disble() {
+    public void disable() {
         this.isEnabled = false;
     }
 

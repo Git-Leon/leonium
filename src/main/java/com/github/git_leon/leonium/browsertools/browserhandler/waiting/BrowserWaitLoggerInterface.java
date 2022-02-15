@@ -227,9 +227,9 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
     }
 
     @Override
-    default void disble() {
+    default void disable() {
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        functionExecutionLogger.disble();
+        functionExecutionLogger.disable();
     }
 
     @Override

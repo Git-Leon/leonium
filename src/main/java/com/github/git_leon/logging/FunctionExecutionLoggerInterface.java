@@ -110,8 +110,8 @@ public interface FunctionExecutionLoggerInterface extends SimpleLoggerInterface 
     }
 
     @Override
-    default void disble() {
-        getLogger().disble();
+    default void disable() {
+        getLogger().disable();
     }
 
     @Override

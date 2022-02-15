@@ -44,7 +44,7 @@ public final class SimpleLogger implements SimpleLoggerInterface {
     }
 
     @Override
-    public void disble() {
+    public void disable() {
         this.isEnabled = false;
     }
 

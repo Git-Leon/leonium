@@ -23,21 +23,23 @@ public class TestSiteTraversal   {
     }
 
     private void test(String searchText) {
-        BrowserHandlerInterface browserHandler = new BrowserHandlerLayeredLogger(driver);
-        HomePage homePage = new HomePage(browserHandler);
+        final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver);
+        final HomePage homePage = new HomePage(browserHandler);
         browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(true);
         try {
 
             homePage.navigateTo();
-            SearchResultPage searchResultPage = homePage.search(searchText);
+            final SearchResultPage searchResultPage = homePage.search(searchText);
             searchResultPage.clickProductImageContainer();
             searchResultPage.clickAddToCart();
-            ShoppingCartSummaryPage shoppingCartSummaryPage = searchResultPage.clickProceedToCheckout();
+            final ShoppingCartSummaryPage shoppingCartSummaryPage = searchResultPage.clickProceedToCheckout();
             shoppingCartSummaryPage.clickProceedToCheckout();
             shoppingCartSummaryPage.clickCreateAnAccountButton();
         } finally {
             browserHandler.screenshot().getFile();
             browserHandler.close();
+            final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
+            tempBrowser.navigateTo(browserHandler.getReportFilePath());
         }
     }
 

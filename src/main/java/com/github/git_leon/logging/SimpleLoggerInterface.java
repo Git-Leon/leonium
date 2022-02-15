@@ -35,7 +35,7 @@ public interface SimpleLoggerInterface {
 
     void enable();
 
-    void disble();
+    void disable();
 
     boolean isEnabled();
 

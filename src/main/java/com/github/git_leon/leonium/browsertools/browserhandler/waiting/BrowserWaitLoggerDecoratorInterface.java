@@ -139,8 +139,8 @@ public interface BrowserWaitLoggerDecoratorInterface extends BrowserWaitLoggerIn
     }
 
     @Override
-    default void disble() {
-        getLogger().disble();
+    default void disable() {
+        getLogger().disable();
     }
 
     @Override

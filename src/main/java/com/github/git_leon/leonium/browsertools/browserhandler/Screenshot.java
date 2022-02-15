@@ -70,6 +70,6 @@ public class Screenshot {
 
     @Override
     public String toString() {
-        return String.format("<img src = '%s'>", getFile().getAbsoluteFile());
+        return String.format("<img src='%s'>", getFile().getAbsoluteFile());
     }
 }
