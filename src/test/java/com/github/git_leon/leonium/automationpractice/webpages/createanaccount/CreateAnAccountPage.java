@@ -1,7 +1,7 @@
 package com.github.git_leon.leonium.automationpractice.webpages.createanaccount;
 
 import com.github.git_leon.leonium.browsertools.WebPage;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import org.openqa.selenium.By;
 
 public class CreateAnAccountPage extends WebPage {

@@ -2,7 +2,7 @@ package com.github.git_leon.leonium.automationpractice.webpages;
 
 import com.github.git_leon.leonium.browsertools.WebPage;
 import com.github.git_leon.leonium.browsertools.With;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

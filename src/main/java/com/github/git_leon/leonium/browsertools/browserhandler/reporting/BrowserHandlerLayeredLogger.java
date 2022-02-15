@@ -1,19 +1,18 @@
 package com.github.git_leon.leonium.browsertools.browserhandler.reporting;
 
 import com.github.git_leon.leonium.DirectoryReference;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandler;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
-import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
-import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerDecorator;
-import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.waiting.*;
+import com.github.git_leon.logging.SimpleLogger;
 import com.github.git_leon.logging.SimpleLoggerInterface;
+import com.github.git_leon.logging.SimpleLoggerWarehouse;
 import com.github.git_leon.stringutils.StringUtils;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -27,8 +26,11 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
     private final String testName;
 
     public BrowserHandlerLayeredLogger(WebDriver driver, String reportFilePath, String testName) {
-        BrowserWaitLoggerInterface browserWaitLogger = new BrowserWaitLogger(driver, 5);
+        SimpleLogger simpleLogger = SimpleLoggerWarehouse.getLogger(toString());
+        BrowserWaitInterface browserWait = new BrowserWait(5, driver);
+        BrowserWaitLoggerInterface browserWaitLogger = new BrowserWaitLogger(browserWait, simpleLogger);
         BrowserWaitLoggerExtentReporter browserWaitExtentReporter = new BrowserWaitLoggerExtentReporter(browserWaitLogger, reportFilePath, testName);
+
         BrowserHandler browserHandlerImplementation = new BrowserHandler(driver, new BrowserWaitLoggerDecorator(browserWaitExtentReporter, browserWaitExtentReporter));
         BrowserHandlerLoggerImpl browserHandlerLoggerImpl = new BrowserHandlerLoggerImpl(browserHandlerImplementation);
         this.testName = testName;

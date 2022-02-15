@@ -1,7 +1,7 @@
 package com.github.git_leon.leonium.browsertools.factories;
 
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandler;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;

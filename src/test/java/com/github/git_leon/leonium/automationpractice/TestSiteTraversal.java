@@ -3,7 +3,7 @@ package com.github.git_leon.leonium.automationpractice;
 import com.github.git_leon.leonium.automationpractice.webpages.HomePage;
 import com.github.git_leon.leonium.automationpractice.webpages.SearchResultPage;
 import com.github.git_leon.leonium.automationpractice.webpages.ShoppingCartSummaryPage;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
 import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import org.junit.Before;

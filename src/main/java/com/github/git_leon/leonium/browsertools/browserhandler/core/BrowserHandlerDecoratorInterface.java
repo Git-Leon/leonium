@@ -1,4 +1,4 @@
-package com.github.git_leon.leonium.browsertools.browserhandler;
+package com.github.git_leon.leonium.browsertools.browserhandler.core;
 
 import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
 import org.openqa.selenium.By;

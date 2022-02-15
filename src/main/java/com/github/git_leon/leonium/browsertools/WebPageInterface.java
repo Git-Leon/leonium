@@ -1,7 +1,7 @@
 package com.github.git_leon.leonium.browsertools;
 
 import com.github.git_leon.leonium.ReflectionUtils;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import org.openqa.selenium.By;
 
 /**

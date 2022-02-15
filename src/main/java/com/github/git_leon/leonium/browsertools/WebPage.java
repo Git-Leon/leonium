@@ -1,7 +1,7 @@
 package com.github.git_leon.leonium.browsertools;
 
 import com.github.git_leon.leonium.DirectoryReference;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;

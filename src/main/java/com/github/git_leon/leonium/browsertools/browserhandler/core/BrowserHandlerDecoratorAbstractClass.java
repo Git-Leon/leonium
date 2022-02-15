@@ -1,4 +1,4 @@
-package com.github.git_leon.leonium.browsertools.browserhandler;
+package com.github.git_leon.leonium.browsertools.browserhandler.core;
 
 import org.openqa.selenium.WebDriver;
 

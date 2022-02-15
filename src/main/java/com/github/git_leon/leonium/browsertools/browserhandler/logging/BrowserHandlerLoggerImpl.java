@@ -1,7 +1,7 @@
 package com.github.git_leon.leonium.browsertools.browserhandler.logging;
 
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandler;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 import com.github.git_leon.logging.SimpleLoggerWarehouse;
 import org.openqa.selenium.WebDriver;

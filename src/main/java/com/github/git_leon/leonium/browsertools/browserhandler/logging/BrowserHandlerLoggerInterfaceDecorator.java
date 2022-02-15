@@ -1,9 +1,9 @@
 package com.github.git_leon.leonium.browsertools.browserhandler.logging;
 
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerOptions;
-import com.github.git_leon.leonium.browsertools.browserhandler.Screenshot;
-import com.github.git_leon.leonium.browsertools.browserhandler.WebEntity;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerOptions;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.Screenshot;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.WebEntity;
 import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.By;

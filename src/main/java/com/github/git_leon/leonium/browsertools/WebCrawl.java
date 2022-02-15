@@ -1,6 +1,6 @@
 package com.github.git_leon.leonium.browsertools;
 
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandler;
 import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import org.junit.After;
 import org.junit.Before;

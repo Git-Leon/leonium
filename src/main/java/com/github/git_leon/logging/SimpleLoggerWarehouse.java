@@ -22,6 +22,7 @@ public final class SimpleLoggerWarehouse {
      */ // TODO - Rethink the nature of the "one logger per class" rule
     public static synchronized SimpleLogger getLogger(String name) {
         addLogger(name);
+        loggerMap.get(name).enable();
         return loggerMap.get(name);
     }
 

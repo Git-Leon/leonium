@@ -1,9 +1,9 @@
 package com.github.git_leon.leonium.browsertools.browserhandler.logging;
 
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerDecoratorAbstractClass;
-import com.github.git_leon.leonium.browsertools.browserhandler.BrowserHandlerInterface;
-import com.github.git_leon.leonium.browsertools.browserhandler.Screenshot;
-import com.github.git_leon.leonium.browsertools.browserhandler.WebEntity;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerDecoratorAbstractClass;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.Screenshot;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.WebEntity;
 import com.github.git_leon.logging.FunctionExecutionLoggerAndTimer;
 import com.github.git_leon.logging.SimpleLoggerWarehouse;
 import org.openqa.selenium.By;
