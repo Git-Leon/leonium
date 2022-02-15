@@ -14,9 +14,6 @@
         <extentreports.version>3.1.5</extentreports.version>
         <selenium.version>3.4.0</selenium.version>
         <webdrivermanager.version>3.8.1</webdrivermanager.version>
-        <leon.simplelogger.version>2.1.1</leon.simplelogger.version>
-        <leon.stringutils.version>2.0.0</leon.stringutils.version>
-        <leon.randomutils.version>1.0</leon.randomutils.version>
     </properties>
 
     <distributionManagement>
