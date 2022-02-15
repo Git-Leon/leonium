@@ -39,18 +39,6 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-
-        <!--my private repo-->
-        <repository>
-            <id>git-leon-utils</id>
-            <url>https://packagecloud.io/git-leon/utils/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
     </repositories>
 
 
@@ -103,24 +91,6 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.git-leon</groupId>
-            <artifactId>simplelogger</artifactId>
-            <version>${leon.simplelogger.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.git-leon</groupId>
-            <artifactId>randomutils</artifactId>
-            <version>${leon.randomutils.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.git-leon</groupId>
-            <artifactId>stringutils</artifactId>
-            <version>${leon.stringutils.version}</version>
         </dependency>
     </dependencies>
 
