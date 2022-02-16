@@ -131,9 +131,4 @@ public interface BrowserHandlerLoggerInterfaceDecorator extends BrowserHandlerLo
     default JavascriptExecutor getJavascriptExecutor() {
         return getBrowserHandlerLoggerDecoratee().getJavascriptExecutor();
     }
-
-    @Override
-    default void finalize() {
-
-    }
 }

@@ -6,6 +6,7 @@ import com.github.git_leon.leonium.automationpractice.webpages.ShoppingCartSumma
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
 import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ import org.openqa.selenium.WebDriver;
  * @author leonhunter
  * @created 05/03/2020 - 5:36 PM
  */
-public class TestSiteTraversal   {
+public class TestSiteTraversal {
     private WebDriver driver;
 
     @Before
@@ -27,7 +28,6 @@ public class TestSiteTraversal   {
         final HomePage homePage = new HomePage(browserHandler);
         browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(true);
         try {
-
             homePage.navigateTo();
             final SearchResultPage searchResultPage = homePage.search(searchText);
             searchResultPage.clickProductImageContainer();
@@ -35,12 +35,15 @@ public class TestSiteTraversal   {
             final ShoppingCartSummaryPage shoppingCartSummaryPage = searchResultPage.clickProceedToCheckout();
             shoppingCartSummaryPage.clickProceedToCheckout();
             shoppingCartSummaryPage.clickCreateAnAccountButton();
+        } catch (Throwable t) {
+            throw new RuntimeException(t);
         } finally {
             browserHandler.screenshot().getFile();
             browserHandler.close();
             final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
             tempBrowser.navigateTo(browserHandler.getReportFilePath());
         }
+
     }
 
     @Test

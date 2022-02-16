@@ -1,11 +1,8 @@
 package com.github.git_leon.leonium.browsertools.browserhandler.logging;
 
-import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerDecoratorAbstractClass;
-import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.Screenshot;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.WebEntity;
 import com.github.git_leon.logging.FunctionExecutionLoggerAndTimer;
-import com.github.git_leon.logging.SimpleLoggerWarehouse;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,21 +16,31 @@ import java.util.function.Supplier;
  * @created 04/29/2020 - 8:35 PM
  * Interface which decorates each composite `BrowserHandlerInterface` call with a log detailing execution time
  */
-public class BrowserHandlerLoggerTimer extends BrowserHandlerDecoratorAbstractClass implements BrowserHandlerLoggerInterface {
-    public BrowserHandlerLoggerTimer(BrowserHandlerInterface decoratee) {
-        super(decoratee);
+public class BrowserHandlerLoggerTimer implements BrowserHandlerLoggerInterfaceDecorator {
+    private final BrowserHandlerLoggerInterface decoratee;
+
+    public BrowserHandlerLoggerTimer(BrowserHandlerLoggerInterface decoratee) {
+        this.decoratee = decoratee;
     }
 
     public BrowserHandlerLoggerTimer(WebDriver driver) {
-        super(driver);
+        this(new BrowserHandlerLoggerImpl(driver));
+    }
+
+    @Override
+    public BrowserHandlerLoggerInterface getBrowserHandlerLoggerDecoratee() {
+        return this.decoratee;
     }
 
     @Override
     public FunctionExecutionLoggerAndTimer getLogger() {
-        return new FunctionExecutionLoggerAndTimer(SimpleLoggerWarehouse.getLogger(
-                getBrowserHandlerDecoratee().getDriver().toString()));
+        return new FunctionExecutionLoggerAndTimer(getBrowserHandlerLoggerDecoratee().getLogger());
     }
 
+    @Override
+    public void finalize() {
+
+    }
 
     @Override
     public WebElement getElement(By by) {
@@ -63,7 +70,6 @@ public class BrowserHandlerLoggerTimer extends BrowserHandlerDecoratorAbstractCl
         getLogger().consumeAndLog(getBrowserHandlerDecoratee()::navigateTo, newUrl, "");
 
     }
-
 
     @Override
     public void click(By by) {

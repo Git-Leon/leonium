@@ -16,4 +16,3 @@ public class FunctionExecutionLoggerImpl implements FunctionExecutionLoggerInter
         return logger;
     }
 }
-//    cd - ; mvn package ; cd - ; package_cloud push git-leon/utils simplelogger-2.1.1.jar --coordinates=com.github.git-leon:simplelogger:2.1.1;

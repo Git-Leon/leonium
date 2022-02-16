@@ -10,17 +10,15 @@ public class BrowserWaitLogger extends AbstractBrowserWait implements BrowserWai
 
     public BrowserWaitLogger(BrowserWaitInterface browserWaitInterface, SimpleLoggerInterface simpleLogger) {
         super(browserWaitInterface.getWaitSeconds(), browserWaitInterface.getDriver());
-        simpleLogger.enable();
         this.wait = browserWaitInterface;
         this.logger = new FunctionExecutionLoggerImpl(simpleLogger);
+        this.logger.enable();
     }
 
     public BrowserWaitLogger(WebDriver driver, int seconds) {
-        super(seconds, driver);
-        SimpleLogger simpleLogger = SimpleLoggerWarehouse.getLogger(toString());
-        simpleLogger.enable();
-        this.wait = new BrowserWait(seconds, driver);
-        this.logger = new FunctionExecutionLoggerImpl(simpleLogger);
+        this(
+                new BrowserWait(seconds, driver),
+                new FunctionExecutionLoggerImpl(SimpleLoggerWarehouse.getLogger(BrowserWaitLogger.class.toString())));
     }
 
     public BrowserWaitLogger(WebDriver driver) {

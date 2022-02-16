@@ -15,8 +15,6 @@ import java.util.StringJoiner;
  * Interface which wraps each DOM-interaction via `WebDriver` with smart-waits
  */
 public interface BrowserHandlerInterface {
-    void finalize();
-
     WebDriver getDriver();
 
     BrowserWaitInterface getWait();
@@ -68,7 +66,7 @@ public interface BrowserHandlerInterface {
     default Select select(By by) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
+            screenshot(by);
         }
         return we.toSelect();
     }
@@ -77,7 +75,7 @@ public interface BrowserHandlerInterface {
     default void selectByIndex(By by, int index) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
+            screenshot(by);
         }
         we.selectByIndex(index);
     }
@@ -86,7 +84,7 @@ public interface BrowserHandlerInterface {
     default void selectByVisibleText(By by, String visibleText) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SELECT.getValue()) {
-            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
+            screenshot(by);
         }
         we.selectByVisibleText(visibleText);
     }
@@ -95,11 +93,14 @@ public interface BrowserHandlerInterface {
     default void sendKeys(By by, String keys) {
         WebEntity we = getWebEntity(by);
         if (getOptions().SCREENSHOT_ON_SENDKEYS.getValue()) {
-            we.getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
+            screenshot(by);
         }
         we.sendKeys(keys);
     }
 
+    default void finalize() {
+        close();
+    }
 
     default void close() {
         try {
@@ -135,7 +136,7 @@ public interface BrowserHandlerInterface {
     }
 
     default Screenshot screenshot(By by) {
-        return new WebEntity(by, getDriver()).getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
+        return getWebEntity(by).getScreenshot(getOptions().SCREENSHOT_DIRECTORY.getValue());
     }
 
     default String getCurrentUrl() {
