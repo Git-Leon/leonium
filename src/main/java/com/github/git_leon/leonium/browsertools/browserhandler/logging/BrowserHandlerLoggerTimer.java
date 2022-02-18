@@ -3,6 +3,8 @@ package com.github.git_leon.leonium.browsertools.browserhandler.logging;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.Screenshot;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.WebEntity;
 import com.github.git_leon.logging.FunctionExecutionLoggerAndTimer;
+import com.github.git_leon.logging.SimpleLogger;
+import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,7 +36,8 @@ public class BrowserHandlerLoggerTimer implements BrowserHandlerLoggerInterfaceD
 
     @Override
     public FunctionExecutionLoggerAndTimer getLogger() {
-        return new FunctionExecutionLoggerAndTimer(getBrowserHandlerLoggerDecoratee().getLogger());
+        SimpleLoggerInterface logger = getBrowserHandlerLoggerDecoratee().getLogger();
+        return new FunctionExecutionLoggerAndTimer(logger);
     }
 
     @Override

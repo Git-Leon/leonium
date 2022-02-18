@@ -12,13 +12,13 @@ import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
  * @created 05/03/2020 - 11:44 PM
  */
 public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerInterfaceDecorator {
-    private final BrowserHandlerLoggerInterface decoratee;
+    private final BrowserHandlerLoggerInterface browserHandlerDecoratee;
     private final ExtentTestLoggerFactory extentTestLoggerFactory;
     private final String testName;
     private final String testDescription;
 
     public BrowserHandlerLoggerExtentReporter(BrowserHandlerLoggerInterface decoratee, ExtentTestLoggerFactory extentTestLoggerFactory, String testName, String testDescription) {
-        this.decoratee = decoratee;
+        this.browserHandlerDecoratee = decoratee;
         this.extentTestLoggerFactory = extentTestLoggerFactory;
         this.testName = testName;
         this.testDescription = testDescription;
@@ -34,7 +34,7 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
 
     @Override
     public BrowserHandlerLoggerInterface getBrowserHandlerLoggerDecoratee() {
-        return decoratee;
+        return browserHandlerDecoratee;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
 
     @Override
     public BrowserHandlerInterface getBrowserHandlerDecoratee() {
-        return decoratee;
+        return browserHandlerDecoratee;
     }
 
     @Override
@@ -65,5 +65,13 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
 
     public ExtentTestLoggerFactory getExtentTestLoggerFactory() {
         return extentTestLoggerFactory;
+    }
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public String getTestDescription() {
+        return testDescription;
     }
 }
