@@ -69,6 +69,10 @@ public class ExtentTestLoggerFactory {
             ExtentTest newTest = getExtentReports().createTest(testName, description);
             ExtentTestLogger extentTestLogger = new ExtentTestLogger(newTest);
             getExtentTestLoggerMap().put(testName, extentTestLogger);
+            extentTestLogger // attach to ExtentReports
+                    .getExtentTest()
+                    .getModel()
+                    .setExtentInstance(getExtentReports());
             return extentTestLogger;
         }
     }
