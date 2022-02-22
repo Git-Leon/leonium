@@ -1,5 +1,7 @@
 package com.github.git_leon.leonium.browsertools.browserhandler.core;
 
+import com.github.git_leon.leonium.DirectoryReference;
+
 /**
  * Created by leon on 5/25/17.
  */
@@ -9,14 +11,12 @@ public final class BrowserHandlerOptions {
     public final BrowserOption<Boolean> SCREENSHOT_ON_CLICK = new BrowserOption<>(false);
     public final BrowserOption<Boolean> SCREENSHOT_ON_SELECT = new BrowserOption<>(false);
     public final BrowserOption<Boolean> SCREENSHOT_ON_SENDKEYS = new BrowserOption<>(false);
-    public final BrowserOption<Integer> DEFAULT_WAIT = new BrowserOption<>(15);
-    public final BrowserOption<String> SCREENSHOT_DIRECTORY = new BrowserOption<>(new StringBuilder()
-        .append(System.getProperty("user.dir"))
-        .append("/target/")
-        .toString());
+    public final BrowserOption<String> SCREENSHOT_DIRECTORY = new BrowserOption<>(DirectoryReference
+            .TARGET_DIRECTORY
+            .getDirectoryPath());
 
 
-    public class BrowserOption<T> {
+    public static class BrowserOption<T> {
         protected T value;
 
         public BrowserOption() {
@@ -35,7 +35,7 @@ public final class BrowserHandlerOptions {
         }
     }
 
-    private final BrowserOption<Boolean> screenshotOnEvent() {
+    private BrowserOption<Boolean> screenshotOnEvent() {
         return new BrowserOption<Boolean>() {
             @Override
             public void setValue(Boolean value) {

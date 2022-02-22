@@ -1,9 +1,7 @@
 package com.github.git_leon.leonium.extentreporting;
 
-import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.github.git_leon.stringutils.StringUtils;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 
 import java.io.PrintWriter;
@@ -15,14 +13,16 @@ import java.util.logging.Level;
  * @created 05/04/2020 - 2:03 AM
  */
 public class ExtentTestLogger implements SimpleLoggerInterface {
-    private final ExtentReports extentReports;
     private final ExtentTest extentTest;
     private boolean isEnabled;
 
-    public ExtentTestLogger(ExtentReports extentReports, String testName, String description) {
-        this.extentReports = extentReports;
-        this.extentTest = extentReports.createTest(testName, description);
-        this.isEnabled = true;
+    public ExtentTestLogger(ExtentTest extentTest, boolean isEnabled) {
+        this.extentTest = extentTest;
+        this.isEnabled = isEnabled;
+    }
+
+    public ExtentTestLogger(ExtentTest extentTest) {
+        this(extentTest, true);
     }
 
     @Override
@@ -52,18 +52,14 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
         StringWriter out = new StringWriter();
         t.printStackTrace(new PrintWriter(out));
         String description = out
-            .toString()
-            .replaceAll("\n", "<br>");
+                .toString()
+                .replaceAll("\n", "<br>");
         this.error(description);
     }
 
 
     public ExtentTest getExtentTest() {
         return extentTest;
-    }
-
-    public ExtentReports getExtentReports() {
-        return extentReports;
     }
 
     private Status getStatus(Level level) {

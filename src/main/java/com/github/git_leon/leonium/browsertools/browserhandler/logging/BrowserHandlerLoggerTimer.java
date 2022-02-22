@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -47,84 +48,97 @@ public class BrowserHandlerLoggerTimer implements BrowserHandlerLoggerInterfaceD
 
     @Override
     public WebElement getElement(By by) {
-        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getElement, by, "");
+        final String logMessage = String.format("Starting timer for `getElement(%s)`", by);
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getElement, by, logMessage);
     }
 
     @Override
     public WebEntity getWebEntity(By by) {
-        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getWebEntity, by, "");
+        final String logMessage = String.format("Starting timer for `getWebEntity(%s)`", by);
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getWebEntity, by, logMessage);
     }
 
 
     @Override
     public List<WebElement> getElements(By by) {
-        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getElements, by, "");
+        final String logMessage = String.format("Starting timer for `getElements(%s)`", by);
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getElements, by, logMessage);
     }
 
 
     @Override
     public String getPageLoadState() {
-        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getPageLoadState, "");
+        final String logMessage = String.format("Starting timer for `getPageLoadState()`");
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::getPageLoadState, logMessage);
     }
 
 
     @Override
     public void navigateTo(String newUrl) {
-        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::navigateTo, newUrl, "");
-
+        final String logMessage = String.format("Starting timer for `getWebEntity(%s)`", newUrl);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::navigateTo, newUrl, logMessage);
     }
 
     @Override
     public void click(By by) {
-        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::click, by, "");
+        final String logMessage = String.format("Starting timer for `click(%s)`", by);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::click, by, logMessage);
     }
 
 
     @Override
     public Select select(By by) {
-        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::select, by, "");
+        final String logMessage = String.format("Starting timer for `select(%s)`", by);
+        return getLogger().logAndInvoke(getBrowserHandlerDecoratee()::select, by, logMessage);
     }
 
 
     @Override
     public void selectByIndex(By by, int index) {
-        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::selectByIndex, by, index, "");
+        final String logMessage = String.format("Starting timer for `selectByIndex(%s, %s)`", by, index);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::selectByIndex, by, index, logMessage);
     }
 
 
     @Override
     public void selectByVisibleText(By by, String visibleText) {
-        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::selectByVisibleText, by, visibleText, "");
+        final String logMessage = String.format("Starting timer for `selectByVisibleText(%s, %s)`", by, visibleText);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::selectByVisibleText, by, visibleText, logMessage);
     }
 
 
     @Override
     public void sendKeys(By by, String keys) {
-        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::sendKeys, by, keys, "");
+        final String logMessage = String.format("Starting timer for `sendKeys(%s,%s)`", by, keys);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::sendKeys, by, keys, logMessage);
     }
 
 
     @Override
     public void close() {
-        getLogger().logAndInvoke(getBrowserHandlerDecoratee()::close, "");
+        final String logMessage = String.format("Starting timer for `close()`");
+        getLogger().logAndInvoke(getBrowserHandlerDecoratee()::close, logMessage);
     }
 
 
     @Override
     public void highlightElement(By by, String color) {
-        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::highlightElement, by, color, "");
+        final String logMessage = String.format("Starting timer for `highlightElement(%s)`", by, color);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::highlightElement, by, color, logMessage);
     }
 
 
     @Override
     public void highlightElements(By[] bys, String color) {
-        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::highlightElements, bys, color, "");
+        final String logMessage = String.format("Starting timer for `highlightElements(%s, %s)`", Arrays.toString(bys), color);
+        getLogger().consumeAndLog(getBrowserHandlerDecoratee()::highlightElements, bys, color, logMessage);
     }
 
 
     @Override
     public Screenshot screenshot() {
+        final String logMessage = String.format("Starting timer for `screenshot()`");
         Supplier<Screenshot> screenshotSupplier = getBrowserHandlerDecoratee()::screenshot;
-        return getLogger().logAndInvoke(screenshotSupplier, "");
+        return getLogger().logAndInvoke(screenshotSupplier, logMessage);
     }
 }

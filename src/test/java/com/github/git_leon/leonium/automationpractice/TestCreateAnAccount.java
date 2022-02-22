@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 public class TestCreateAnAccount {
+
     @Test
     public void test() {
         final String testName = "test-" + Long.toHexString(System.nanoTime());
@@ -22,7 +23,7 @@ public class TestCreateAnAccount {
                 .getBrowserHandler()
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
-                .setValue(false);
+                .setValue(true);
         try {
             homePage.navigateTo();
             final SignInPage signInPage = homePage.clickSignIn();
@@ -39,7 +40,6 @@ public class TestCreateAnAccount {
             final String reportFilePath = browserHandler.getReportFilePath();
             final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
             tempBrowser.navigateTo(reportFilePath);
-            System.out.println(tempBrowser.getDriver().getPageSource());
         }
     }
 }

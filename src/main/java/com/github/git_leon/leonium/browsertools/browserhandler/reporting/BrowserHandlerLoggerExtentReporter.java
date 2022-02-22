@@ -16,20 +16,21 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
     private final ExtentTestLoggerFactory extentTestLoggerFactory;
     private final String testName;
     private final String testDescription;
+    private ExtentTestLogger extentTestLogger;
 
-    public BrowserHandlerLoggerExtentReporter(BrowserHandlerLoggerInterface decoratee, ExtentTestLoggerFactory extentTestLoggerFactory, String testName, String testDescription) {
-        this.browserHandlerDecoratee = decoratee;
-        this.extentTestLoggerFactory = extentTestLoggerFactory;
-        this.testName = testName;
-        this.testDescription = testDescription;
+    public BrowserHandlerLoggerExtentReporter(BrowserHandlerLoggerInterface decoratee, String reportName, String testName) {
+        this(decoratee, reportName, testName, "");
     }
 
     public BrowserHandlerLoggerExtentReporter(BrowserHandlerLoggerInterface decoratee, String filePath, String testName, String testDescription) {
         this(decoratee, new ExtentTestLoggerFactory(filePath), testName, testDescription);
     }
 
-    public BrowserHandlerLoggerExtentReporter(BrowserHandlerLoggerInterface decoratee, String reportName, String testName) {
-        this(decoratee, reportName, testName, "");
+    public BrowserHandlerLoggerExtentReporter(BrowserHandlerLoggerInterface decoratee, ExtentTestLoggerFactory extentTestLoggerFactory, String testName, String testDescription) {
+        this.browserHandlerDecoratee = decoratee;
+        this.extentTestLoggerFactory = extentTestLoggerFactory;
+        this.testName = testName;
+        this.testDescription = testDescription;
     }
 
     @Override
@@ -39,7 +40,7 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
 
     @Override
     public ExtentTestLogger getLogger() {
-        return extentTestLoggerFactory.getExtentTestLogger(this.testName, testDescription);
+        return this.extentTestLogger;
     }
 
     @Override
@@ -59,7 +60,7 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
 
     @Override
     public void close() {
-        extentTestLoggerFactory.flush();
+        extentTestLoggerFactory.getExtentReports().flush();
         BrowserHandlerLoggerInterfaceDecorator.super.close();
     }
 

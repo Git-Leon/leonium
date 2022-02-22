@@ -12,30 +12,23 @@ import org.openqa.selenium.WebDriver;
  * @created 05/04/2020 - 3:33 PM
  */
 public class BrowserWaitLoggerExtentReporter implements BrowserWaitLoggerInterface {
-    private final ExtentTestLoggerFactory extentTestLoggerFactory;
     private final BrowserWaitInterface wait;
     private final ExtentTestLogger logger;
 
-    public BrowserWaitLoggerExtentReporter(BrowserWaitLoggerInterface browserHandlerImplementation, String filePath, String testName) {
-        this.extentTestLoggerFactory = new ExtentTestLoggerFactory(filePath);
-        this.wait = browserHandlerImplementation.getWait();
-        this.logger = extentTestLoggerFactory.getExtentTestLogger(testName);
-    }
-
-    public BrowserWaitLoggerExtentReporter(ExtentTestLoggerFactory extentTestLoggerFactory, BrowserWaitInterface wait, ExtentTestLogger logger) {
-        this.extentTestLoggerFactory = extentTestLoggerFactory;
+    public BrowserWaitLoggerExtentReporter(BrowserWaitInterface wait, ExtentTestLogger logger) {
         this.wait = wait;
         this.logger = logger;
     }
 
-    public ExtentTestLoggerFactory getExtentTestLoggerFactory() {
-        return extentTestLoggerFactory;
+    public BrowserWaitLoggerExtentReporter(BrowserWaitInterface wait, ExtentTestLoggerFactory extentTestLoggerFactory, String testName) {
+        this(wait, extentTestLoggerFactory.getExtentTestLogger(testName));
     }
 
     @Override
-    public SimpleLoggerInterface getLogger() {
+    public ExtentTestLogger getLogger() {
         return logger;
     }
+
     @Override
     public BrowserWaitInterface getWait() {
         return wait;

@@ -6,12 +6,12 @@ import org.openqa.selenium.WebDriver;
 
 public class BrowserWaitLogger extends AbstractBrowserWait implements BrowserWaitLoggerInterface {
     private final BrowserWaitInterface wait;
-    private final FunctionExecutionLoggerInterface logger;
+    private final SimpleLoggerInterface logger;
 
     public BrowserWaitLogger(BrowserWaitInterface browserWaitInterface, SimpleLoggerInterface simpleLogger) {
         super(browserWaitInterface.getWaitSeconds(), browserWaitInterface.getDriver());
         this.wait = browserWaitInterface;
-        this.logger = new FunctionExecutionLoggerImpl(simpleLogger);
+        this.logger = simpleLogger;
         this.logger.enable();
     }
 
@@ -20,6 +20,7 @@ public class BrowserWaitLogger extends AbstractBrowserWait implements BrowserWai
                 new BrowserWait(seconds, driver),
                 new FunctionExecutionLoggerImpl(SimpleLoggerWarehouse.getLogger(BrowserWaitLogger.class.toString())));
     }
+
 
     public BrowserWaitLogger(BrowserWaitInterface browserWaitInterface) {
         this(browserWaitInterface.getDriver(), browserWaitInterface.getWaitSeconds());

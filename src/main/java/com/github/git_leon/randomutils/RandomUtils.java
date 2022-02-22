@@ -8,7 +8,7 @@ import java.util.*;
  * Created by Leon on 2/4/2017.
  */
 public final class RandomUtils {
-    private static volatile Random random = new Random();
+    private static final RandomUtil random = new RandomUtil();
 
     private RandomUtils() {
         /** This class is uninstantiable */
@@ -18,64 +18,56 @@ public final class RandomUtils {
      * @return true with the likelihood of specified percentage
      */
     public static boolean createBoolean(float percentage) {
-        return percentage > createDouble(0, 100);
+        return random.createBoolean(percentage);
     }
 
     /**
      * @return a random character between the specified min and max character range
      */
     public static Character createCharacter(char min, char max) {
-        return (char) createInteger((int) min, (int) max).intValue();
+        return random.createCharacter(min, max);
     }
 
     /**
      * @return a random double between the specified min and max numeric range
      */
     public static Float createFloat(float min, float max) {
-        return createDouble(min, max).floatValue();
+        return random.createFloat(min, max);
     }
 
     /**
      * @return a random float between the specified min and max numeric range
      */
     public static Double createDouble(double min, double max) {
-        return random.nextDouble() * (max - min) + min;
+        return random.createDouble(min, max);
     }
 
     /**
      * @return a random integer between the specified min and max numeric range
      */
     public static Integer createInteger(int min, int max) {
-        return createDouble(min, max).intValue();
+        return random.createInteger(min, max);
     }
 
     /**
      * @return a random long between the specified min and max numeric range
      */
     public static Long createLong(long min, long max) {
-        return createDouble(min, max).longValue();
+        return random.createLong(min, max);
     }
 
     /**
      * @return a random string of the specified length containing characters in the specified range
      */
     public static String createString(char min, char max, int stringLength) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < stringLength; i++) {
-            sb.append(createCharacter(min, max));
-        }
-        return sb.toString();
+        return random.createString(min, max, stringLength);
     }
 
     /**
      * @return an array of random string objects of the specified length containing characters in the specified range
      */
     public static String[] createStrings(char min, char max, int stringLength, int stringCount) {
-        String[] strings = new String[stringCount];
-        for (int i = 0; i < strings.length; i++) {
-            strings[i] = createString(min, max, stringLength);
-        }
-        return strings;
+        return random.createStrings(min, max, stringLength, stringCount);
     }
 
     /**
@@ -84,10 +76,7 @@ public final class RandomUtils {
      * @return a random Date value within the specified min and max year
      */
     public static Date createDate(Number minYear, Number maxYear) {
-        assert minYear.doubleValue() < maxYear.doubleValue();
-        Date minDate = new Date(minYear.intValue(), 1, 1);
-        Date maxDate = new Date(maxYear.intValue(), 1, 1);
-        return createDate(minDate, maxDate);
+        return random.createDate(minYear, maxYear);
     }
 
     /**
@@ -96,7 +85,7 @@ public final class RandomUtils {
      * @return random date between the specified `minDate` and `maxDate`
      */
     public static Date createDate(Date minDate, Date maxDate) {
-        return new Date(createLong(minDate.getTime(), maxDate.getTime()));
+        return random.createDate(minDate, maxDate);
     }
 
     /**
@@ -105,7 +94,7 @@ public final class RandomUtils {
      * @return a randomly selected element from the specified array
      */
     public static <AnyType> AnyType selectElement(AnyType[] array) {
-        return selectElement(Arrays.asList(array));
+        return random.selectElement(array);
     }
 
     /**
@@ -114,41 +103,27 @@ public final class RandomUtils {
      * @return a randomly selected element from the specified array
      */
     public static <AnyType> AnyType selectElement(List<AnyType> list) {
-        Integer randomIndex = createInteger(0, list.size() - 1);
-        AnyType randomElement = list.get(randomIndex);
-        return randomElement;
+        return random.selectElement(list);
     }
 
     /**
      * @return specified string value with random upper and lower casing assigned to each character
      */
     public static String shuffleCasing(String str) {
-        StringBuffer sb = new StringBuffer();
-        for (String s : str.toLowerCase().split("")) {
-            sb.append(createBoolean(50) ? s.toUpperCase() : s.toLowerCase());
-        }
-        return sb.toString();
+        return random.shuffleCasing(str);
     }
 
     /**
      * @return shuffles the specified string array
      */
     public static <AnyType> AnyType[] shuffleArray(AnyType[] array) {
-        ArrayList<AnyType> list = new ArrayList<>(Arrays.asList(array));
-        Collections.shuffle(list);
-        for (int i = 0; i < array.length; i++) {
-            array[i] = list.get(i);
-        }
-        return array;
+        return random.shuffleArray(array);
     }
 
     /**
      * @return a random color with the specified maximum rgb values
      */
     public static Color createColor(int maxRed, int maxGreen, int maxBlue) {
-        int red = createInteger(0, maxRed);
-        int green = createInteger(0, maxGreen);
-        int blue = createInteger(0, maxBlue);
-        return new Color(red, green, blue);
+        return random.createColor(maxRed, maxGreen, maxBlue);
     }
 }
