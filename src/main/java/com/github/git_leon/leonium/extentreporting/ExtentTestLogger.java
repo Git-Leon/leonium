@@ -64,13 +64,13 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
 
     private Status getStatus(Level level) {
         switch (level.getName().toUpperCase()) {
-            case "WARN":
-                return Status.WARNING;
+            case "WARNING":
+                return Status.INFO;
             case "SEVERE":
-                return Status.FATAL;
+                return Status.WARNING;
             case "THROWABLE":
                 return Status.ERROR;
         }
-        return Status.INFO;
+        return Status.PASS;
     }
 }

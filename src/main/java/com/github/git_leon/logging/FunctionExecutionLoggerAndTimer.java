@@ -34,15 +34,13 @@ public final class FunctionExecutionLoggerAndTimer implements FunctionExecutionL
             BiFunction<FirstArgType, SecondArgType, ReturnType> function,
             FirstArgType firstArg, SecondArgType secondArg, String logMessage) {
         String timeElapsedLog = "Execution time: %s seconds.";
-        String resultValLog = "Resulted in %s";
 
         getLogger().info(logMessage);
         Long executionStartTime = System.currentTimeMillis();
         ReturnType returnValue = function.apply(firstArg, secondArg);
         double timeElapsedInSeconds = (System.currentTimeMillis() - executionStartTime) / 1000.0;
 
-        getLogger().info(resultValLog, returnValue);
-        getLogger().info(timeElapsedLog, timeElapsedInSeconds);
+        getLogger().warn(timeElapsedLog, timeElapsedInSeconds);
 
         return returnValue;
     }

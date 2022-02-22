@@ -23,7 +23,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to get `WebElement`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebElement` [ %s ], using selector [ %s ]";
 
-        getLogger().info(attemptMessage, by);
+        getLogger().warn(attemptMessage, by);
         WebElement we = getBrowserHandlerDecoratee().getElement(by);
         getLogger().info(successMessage, WebEntityInterface.toString(we), by);
         return we;
@@ -34,7 +34,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to wrap `WebElement` with `WebEntity`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebEntity` [ %s ], using selector [ %s ]";
 
-        getLogger().info(attemptMessage, by);
+        getLogger().warn(attemptMessage, by);
         WebEntity we = getBrowserHandlerDecoratee().getWebEntity(by);
         getLogger().info(successMessage, we.toString(), by);
 
@@ -47,7 +47,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to wrap `WebElement` with `WebEntity`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebEntity` [ %s ], using selector [ %s ]";
 
-        getLogger().info(attemptMessage, by);
+        getLogger().warn(attemptMessage, by);
         List<WebElement> elements = getBrowserHandlerDecoratee().getElements(by);
         List<String> webEntityStringsToBeLogged = elements
                 .stream()
@@ -67,7 +67,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String successMessage = "Successfully retrieved page-load-state of [ %s ] from [ %s ]";
 
 
-        getLogger().info(attemptMessage, currentUrl);
+        getLogger().warn(attemptMessage, currentUrl);
         getLogger().info(successMessage, pageLoadState, currentUrl);
 
         return pageLoadState;
@@ -80,7 +80,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String successMessage = "Successfully navigated to [ %s ] from [ %s ]";
 
         String formerUrl = getBrowserHandlerDecoratee().getCurrentUrl();
-        getLogger().info(attemptMessage, newUrl, formerUrl);
+        getLogger().warn(attemptMessage, newUrl, formerUrl);
         getBrowserHandlerDecoratee().navigateTo(newUrl);
         getLogger().info(successMessage, newUrl, formerUrl);
     }
@@ -104,7 +104,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             }
         };
 
-        getLogger().info(attemptMessage, by);
+        getLogger().warn(attemptMessage, by);
         screenshotLog.accept("before");
         getBrowserHandlerDecoratee().click(by);
         getLogger().info(successMessage, we.toString(), by);
@@ -130,7 +130,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             }
         };
 
-        getLogger().info(attemptMessage, by);
+        getLogger().warn(attemptMessage, by);
         screenshotLog.accept("before");
         Select select = getBrowserHandlerDecoratee().select(by);
         getLogger().info(successMessage, we.toString(), by);
@@ -157,7 +157,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             }
         };
 
-        getLogger().info(attemptMessage, index, by);
+        getLogger().warn(attemptMessage, index, by);
         screenshotLog.accept("before");
         getBrowserHandlerDecoratee().selectByIndex(by, index);
         getLogger().info(successMessage, index, by);
@@ -184,7 +184,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         };
 
 
-        getLogger().info(attemptMessage, visibleText, by);
+        getLogger().warn(attemptMessage, visibleText, by);
         screenshotLog.accept("before");
         getBrowserHandlerDecoratee().selectByVisibleText(by, visibleText);
         getLogger().info(successMessage, visibleText, by);
@@ -210,7 +210,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             }
         };
 
-        getLogger().info(attemptMessage, keys, by);
+        getLogger().warn(attemptMessage, keys, by);
         screenshotLog.accept("before");
         getBrowserHandlerDecoratee().sendKeys(by, keys);
         getLogger().info(successMessage, keys, by);
@@ -223,7 +223,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to close `BrowserHandler` instance, [ %s ]";
         String successMessage = "Successfully closed `BrowserHandler` instance, [ %s ]";
 
-        getLogger().info(attemptMessage, getBrowserHandlerDecoratee().toString());
+        getLogger().warn(attemptMessage, getBrowserHandlerDecoratee().toString());
         getBrowserHandlerDecoratee().close();
         getLogger().info(successMessage, getBrowserHandlerDecoratee().toString());
     }
@@ -234,7 +234,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to highlight element with color [ %s ], using selector [ %s ]";
         String successMessage = "Successfully highlighted element with color [ %s ], using selector [ %s ]";
 
-        getLogger().info(attemptMessage, color, by);
+        getLogger().warn(attemptMessage, color, by);
         getBrowserHandlerDecoratee().highlightElement(by, color);
         getLogger().info(successMessage, color, by);
     }
@@ -246,7 +246,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String successMessage = "Successfully highlighted elements with color [ %s ], using selectors [ %s ]";
         String selectors = Arrays.toString(bys);
 
-        getLogger().info(attemptMessage, color, selectors);
+        getLogger().warn(attemptMessage, color, selectors);
         getBrowserHandlerDecoratee().highlightElements(bys, color);
         getLogger().info(successMessage, color, selectors);
     }
@@ -257,7 +257,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to screenshot from [ %s ]";
         String successMessage = "Successfully retrieved screenshot of [ %s ]";
         String currentUrl = getBrowserHandlerDecoratee().getCurrentUrl();
-        getLogger().info(attemptMessage, currentUrl);
+        getLogger().warn(attemptMessage, currentUrl);
         Screenshot screenshot = getBrowserHandlerDecoratee().screenshot();
 
         if (screenshot.getFile().exists()) {

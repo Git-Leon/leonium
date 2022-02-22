@@ -55,7 +55,7 @@ public class TestCreateAnAccount {
                 .getBrowserHandler()
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
-                .setValue(true);
+                .setValue(false);
         try {
             homePage.navigateTo();
             final SignInPage signInPage = homePage.clickSignIn();
