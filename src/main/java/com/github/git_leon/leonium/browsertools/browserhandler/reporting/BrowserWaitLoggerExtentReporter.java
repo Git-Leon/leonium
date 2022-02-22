@@ -20,10 +20,6 @@ public class BrowserWaitLoggerExtentReporter implements BrowserWaitLoggerInterfa
         this.logger = logger;
     }
 
-    public BrowserWaitLoggerExtentReporter(BrowserWaitInterface wait, ExtentTestLoggerFactory extentTestLoggerFactory, String testName) {
-        this(wait, extentTestLoggerFactory.getExtentTestLogger(testName));
-    }
-
     @Override
     public ExtentTestLogger getLogger() {
         return logger;

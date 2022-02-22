@@ -37,7 +37,7 @@ public class TestCreateAnAccount {
         } finally {
             browserHandler.screenshot().getFile();
             browserHandler.close();
-            final String reportFilePath = browserHandler.getReportFilePath();
+            final String reportFilePath = browserHandler.getOptions().SCREENSHOT_DIRECTORY.getValue();
             final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
             tempBrowser.navigateTo(reportFilePath);
         }

@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ExtentTestLoggerFactory {
     private final ExtentReports extentReports;
     private final Map<String, ExtentTestLogger> extentTestLoggerMap;
+    private final ExtentHtmlReporter extentHtmlReporter;
 
     public ExtentTestLoggerFactory(String filePath) {
         this(new ExtentReports(), new ExtentHtmlReporter(filePath), new ConcurrentHashMap<>());
@@ -26,9 +27,14 @@ public class ExtentTestLoggerFactory {
 
     public ExtentTestLoggerFactory(ExtentReports extentReports, ExtentHtmlReporter extentHtmlReporter, Map<String, ExtentTestLogger> extentTestLoggerMap) {
         this.extentReports = extentReports;
+        this.extentHtmlReporter = extentHtmlReporter;
         this.extentTestLoggerMap = extentTestLoggerMap;
         extentReports.attachReporter(extentHtmlReporter);
         extentHtmlReporter.start();
+    }
+
+    public ExtentHtmlReporter getExtentHtmlReporter() {
+        return extentHtmlReporter;
     }
 
     public ExtentReports getExtentReports() {

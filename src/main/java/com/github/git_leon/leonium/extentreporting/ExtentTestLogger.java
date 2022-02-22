@@ -16,12 +16,12 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
     private final ExtentTest extentTest;
     private boolean isEnabled;
 
-    public ExtentTestLogger(ExtentTest extentTest, boolean isEnabled) {
+    ExtentTestLogger(ExtentTest extentTest, boolean isEnabled) {
         this.extentTest = extentTest;
         this.isEnabled = isEnabled;
     }
 
-    public ExtentTestLogger(ExtentTest extentTest) {
+    ExtentTestLogger(ExtentTest extentTest) {
         this(extentTest, true);
     }
 
