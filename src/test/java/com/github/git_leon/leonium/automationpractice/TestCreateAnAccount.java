@@ -10,16 +10,10 @@ import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactoryManager;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 public class TestCreateAnAccount {
-    private ExtentTestLoggerFactory extentTestLoggerFactory;
-    private BrowserHandlerLayeredLogger browserHandler;
-
-    @Before
-    public void instanceSetup() {
+    private void test(String arg) {
         final String testName = "create an account";
         final String description = "Attempting to create an account on automationpractice.com";
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
@@ -36,13 +30,7 @@ public class TestCreateAnAccount {
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
                 .setValue(true);
-        this.browserHandler = browserHandler;
-        this.extentTestLoggerFactory = extentTestLoggerFactory;
-    }
-
-    private void test(String arg) {
-        final String testName = "test-" + Long.toHexString(System.nanoTime());
-        final String email = testName + "@leonium.com";
+        final String email = Long.toHexString(System.nanoTime()) + "@leonium.com";
         final HomePage homePage = new HomePage(browserHandler);
         homePage
                 .getBrowserHandler()
@@ -62,18 +50,14 @@ public class TestCreateAnAccount {
         } finally {
             browserHandler.screenshot().getFile();
             browserHandler.close();
+            final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
+            extentTestLoggerFactory.getExtentHtmlReporter().flush();
+            extentTestLoggerFactory.getExtentReports().flush();
+            tempBrowser.navigateTo(extentTestLoggerFactory
+                    .getExtentHtmlReporter()
+                    .config()
+                    .getFilePath());
         }
-    }
-
-    @After
-    public void tearDown() {
-        final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
-        extentTestLoggerFactory.getExtentHtmlReporter().flush();
-        extentTestLoggerFactory.getExtentReports().flush();
-        tempBrowser.navigateTo(extentTestLoggerFactory
-                .getExtentHtmlReporter()
-                .config()
-                .getFilePath());
     }
 
     @Test
