@@ -1,27 +1,23 @@
 package com.github.git_leon.leonium.browsertools;
 
-import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandler;
+import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 
 /**
  * Created by leon on 5/25/17.
  */
+@Deprecated
 public abstract class WebCrawl {
-    protected final BrowserHandler browserHandler;
+    protected final BrowserHandlerInterface browserHandler;
 
     public WebCrawl() {
-        this(BrowserHandlerFactory.PHANTOMJS.getDriver());
+        this(BrowserHandlerFactory.PHANTOMJS.getBrowserHandler());
     }
 
-    public WebCrawl(WebDriver driver) {
-        this(new BrowserHandler(driver));
-    }
-
-    public WebCrawl(BrowserHandler browserHandler) {
+    public WebCrawl(BrowserHandlerInterface browserHandler) {
         this.browserHandler = browserHandler;
     }
 

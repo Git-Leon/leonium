@@ -12,6 +12,7 @@ import com.github.git_leon.leonium.browsertools.browserhandler.reporting.Browser
 import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLogger;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
+import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactoryManager;
 import com.github.git_leon.stringutils.StringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -21,22 +22,12 @@ import org.openqa.selenium.WebDriver;
 import java.time.LocalDateTime;
 
 public class TestCreateAnAccount {
-    private static ExtentTestLoggerFactory extentTestLoggerFactory;
-
-    static {
-        extentTestLoggerFactory = new ExtentTestLoggerFactory(
-                DirectoryReference
-                        .TARGET_DIRECTORY
-                        .getFileFromDirectory("reports/"
-                                .concat(StringUtils.removeCharacters(LocalDateTime.now().toString(), ":_"))
-                                .concat("/index.html"))
-                        .getAbsolutePath());
-    }
-
+    private ExtentTestLoggerFactory extentTestLoggerFactory;
     private BrowserHandlerLayeredLogger browserHandler;
 
     @Before
     public void instanceSetup() {
+        final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
         final WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
         final String testName = driver.toString();
         final ExtentTestLogger extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
@@ -53,6 +44,7 @@ public class TestCreateAnAccount {
                 .SCREENSHOT_ON_EVENT
                 .setValue(true);
         this.browserHandler = browserHandler;
+        this.extentTestLoggerFactory = extentTestLoggerFactory;
     }
 
     private void test(String arg) {
@@ -79,6 +71,7 @@ public class TestCreateAnAccount {
             browserHandler.close();
         }
     }
+
     @After
     public void tearDown() {
         final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();

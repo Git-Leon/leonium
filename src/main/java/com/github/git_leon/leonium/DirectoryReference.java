@@ -17,11 +17,11 @@ public enum DirectoryReference {
             .toString()),
     REPORT_DIRECTORY(new StringBuilder()
             .append(System.getProperty("user.dir")) // local directory
-            .append("/reports/")
+            .append("/target/reports/")
             .toString()),
     TEST_REPORT_DIRECTORY(new StringBuilder()
             .append(System.getProperty("user.dir")) // local directory
-            .append("/reports.test/")
+            .append("/target/reports.test/")
             .toString());
 
 
