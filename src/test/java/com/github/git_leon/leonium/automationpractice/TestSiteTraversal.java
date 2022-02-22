@@ -1,7 +1,5 @@
 package com.github.git_leon.leonium.automationpractice;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.github.git_leon.leonium.DirectoryReference;
 import com.github.git_leon.leonium.automationpractice.webpages.HomePage;
 import com.github.git_leon.leonium.automationpractice.webpages.SearchResultPage;
@@ -15,7 +13,6 @@ import com.github.git_leon.stringutils.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
 import java.time.LocalDateTime;
@@ -26,32 +23,42 @@ import java.time.LocalDateTime;
  */
 public class TestSiteTraversal {
     private static ExtentTestLoggerFactory extentTestLoggerFactory;
-    private WebDriver driver;
 
     static {
-        final String filePath = DirectoryReference
-                .TARGET_DIRECTORY
-                .getFileFromDirectory("reports/"
-                        .concat(StringUtils.removeCharacters(LocalDateTime.now().toString(), ":_"))
-                        .concat("/index.html"))
-                .getAbsolutePath();
-        ExtentReports extentReports = new ExtentReports();
-        ExtentHtmlReporter extentReporter = new ExtentHtmlReporter(filePath);
-        TestSiteTraversal.extentTestLoggerFactory = new ExtentTestLoggerFactory(extentReports, extentReporter);
+        TestSiteTraversal.extentTestLoggerFactory = new ExtentTestLoggerFactory(
+                DirectoryReference
+                        .TARGET_DIRECTORY
+                        .getFileFromDirectory("reports/"
+                                .concat(StringUtils.removeCharacters(LocalDateTime.now().toString(), ":_"))
+                                .concat("/index.html"))
+                        .getAbsolutePath());
     }
+
+    private BrowserHandlerLayeredLogger browserHandler;
 
     @Before
     public void instanceSetup() {
-        this.driver = BrowserHandlerFactory.CHROME.getDriver();
+        final WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
+        final String testName = driver.toString();
+        final ExtentTestLogger extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
+        final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);
+        browserHandler
+                .getOptions()
+                .SCREENSHOT_DIRECTORY
+                .setValue(extentTestLoggerFactory
+                        .getExtentHtmlReporter()
+                        .config()
+                        .getFilePath());
+        browserHandler
+                .getOptions()
+                .SCREENSHOT_ON_EVENT
+                .setValue(true);
+        this.browserHandler = browserHandler;
     }
 
     private void test(String searchText) {
-        String testName = driver.toString();
-        ExtentTestLogger extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
-        final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);
-        browserHandler.getOptions().SCREENSHOT_DIRECTORY.setValue(DirectoryReference.REPORT_DIRECTORY.getDirectoryPath());
         final HomePage homePage = new HomePage(browserHandler);
-        browserHandler.getOptions().SCREENSHOT_ON_EVENT.setValue(false);
+
         try {
             homePage.navigateTo();
             final SearchResultPage searchResultPage = homePage.search(searchText);
