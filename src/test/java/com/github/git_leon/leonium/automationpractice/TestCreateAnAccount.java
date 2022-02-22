@@ -16,10 +16,10 @@ public class TestCreateAnAccount {
     private void test(String arg) {
         final String testName = "create an account";
         final String description = "Attempting to create an account on automationpractice.com";
+        final String email = Long.toHexString(System.nanoTime()) + "@leonium.com";
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
         final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLoggerTimer(testName, description);
         final BrowserHandlerLayeredLogger browserHandler = BrowserHandlerFactory.CHROME.getBrowserHandlerLayeredLogger(extentTestLogger);
-        final String email = Long.toHexString(System.nanoTime()) + "@leonium.com";
         browserHandler
                 .getOptions()
                 .SCREENSHOT_DIRECTORY
