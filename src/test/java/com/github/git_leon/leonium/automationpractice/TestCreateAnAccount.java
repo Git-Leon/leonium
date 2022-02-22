@@ -19,6 +19,7 @@ public class TestCreateAnAccount {
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
         final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLoggerTimer(testName, description);
         final BrowserHandlerLayeredLogger browserHandler = BrowserHandlerFactory.CHROME.getBrowserHandlerLayeredLogger(extentTestLogger);
+        final String email = Long.toHexString(System.nanoTime()) + "@leonium.com";
         browserHandler
                 .getOptions()
                 .SCREENSHOT_DIRECTORY
@@ -30,7 +31,6 @@ public class TestCreateAnAccount {
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
                 .setValue(true);
-        final String email = Long.toHexString(System.nanoTime()) + "@leonium.com";
         final HomePage homePage = new HomePage(browserHandler);
         homePage
                 .getBrowserHandler()
