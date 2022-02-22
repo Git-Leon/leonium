@@ -1,23 +1,63 @@
 package com.github.git_leon.leonium.automationpractice;
 
+import com.github.git_leon.leonium.DirectoryReference;
 import com.github.git_leon.leonium.automationpractice.webpages.HomePage;
+import com.github.git_leon.leonium.automationpractice.webpages.SearchResultPage;
+import com.github.git_leon.leonium.automationpractice.webpages.ShoppingCartSummaryPage;
 import com.github.git_leon.leonium.automationpractice.webpages.SignInPage;
 import com.github.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPage;
 import com.github.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPageStateFactory;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
 import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
+import com.github.git_leon.leonium.extentreporting.ExtentTestLogger;
+import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
+import com.github.git_leon.stringutils.StringUtils;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-public class TestCreateAnAccount {
+import java.time.LocalDateTime;
 
-    @Test
-    public void test() {
+public class TestCreateAnAccount {
+    private static ExtentTestLoggerFactory extentTestLoggerFactory;
+
+    static {
+        extentTestLoggerFactory = new ExtentTestLoggerFactory(
+                DirectoryReference
+                        .TARGET_DIRECTORY
+                        .getFileFromDirectory("reports/"
+                                .concat(StringUtils.removeCharacters(LocalDateTime.now().toString(), ":_"))
+                                .concat("/index.html"))
+                        .getAbsolutePath());
+    }
+
+    private BrowserHandlerLayeredLogger browserHandler;
+
+    @Before
+    public void instanceSetup() {
+        final WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
+        final String testName = driver.toString();
+        final ExtentTestLogger extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
+        final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);
+        browserHandler
+                .getOptions()
+                .SCREENSHOT_DIRECTORY
+                .setValue(extentTestLoggerFactory
+                        .getExtentHtmlReporter()
+                        .config()
+                        .getFilePath());
+        browserHandler
+                .getOptions()
+                .SCREENSHOT_ON_EVENT
+                .setValue(true);
+        this.browserHandler = browserHandler;
+    }
+
+    private void test(String arg) {
         final String testName = "test-" + Long.toHexString(System.nanoTime());
         final String email = testName + "@leonium.com";
-        final WebDriver driver = BrowserHandlerFactory.PHANTOMJS.getDriver();
-        final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver);
         final HomePage homePage = new HomePage(browserHandler);
         homePage
                 .getBrowserHandler()
@@ -41,5 +81,25 @@ public class TestCreateAnAccount {
             final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
             tempBrowser.navigateTo(reportFilePath);
         }
+    }
+    @After
+    public void tearDown() {
+        final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
+        extentTestLoggerFactory.getExtentHtmlReporter().flush();
+        extentTestLoggerFactory.getExtentReports().flush();
+        tempBrowser.navigateTo(extentTestLoggerFactory
+                .getExtentHtmlReporter()
+                .config()
+                .getFilePath());
+    }
+
+    @Test
+    public void test1() {
+        test("shirt");
+    }
+
+    @Test
+    public void test2() {
+        test("pants");
     }
 }

@@ -45,23 +45,6 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
         this.extentTestLogger = extentTestLogger;
     }
 
-    public BrowserHandlerLayeredLogger(WebDriver driver, String reportFilePath, String testName) {
-        this(driver, new ExtentTestLoggerFactory(reportFilePath).getExtentTestLogger(testName));
-    }
-
-    public BrowserHandlerLayeredLogger(WebDriver driver, String reportFilePath) {
-        this(driver, reportFilePath, driver.toString());
-    }
-
-    public BrowserHandlerLayeredLogger(WebDriver driver) {
-        this(driver, DirectoryReference
-                .TARGET_DIRECTORY
-                .getFileFromDirectory("reports/"
-                        .concat(StringUtils.removeCharacters(LocalDateTime.now().toString(), ":_"))
-                        .concat("/index.html"))
-                .getAbsolutePath());
-    }
-
     @Override
     public ExtentTestLogger getLogger() {
         return extentTestLogger;

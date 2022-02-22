@@ -25,7 +25,7 @@ public class TestSiteTraversal {
     private static ExtentTestLoggerFactory extentTestLoggerFactory;
 
     static {
-        TestSiteTraversal.extentTestLoggerFactory = new ExtentTestLoggerFactory(
+        extentTestLoggerFactory = new ExtentTestLoggerFactory(
                 DirectoryReference
                         .TARGET_DIRECTORY
                         .getFileFromDirectory("reports/"
