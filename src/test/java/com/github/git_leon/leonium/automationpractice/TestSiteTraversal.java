@@ -71,8 +71,8 @@ public class TestSiteTraversal {
     @After
     public void tearDown() {
         final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
-        extentTestLoggerFactory.getExtentReports().flush();
         extentTestLoggerFactory.getExtentHtmlReporter().flush();
+        extentTestLoggerFactory.getExtentReports().flush();
         tempBrowser.navigateTo(extentTestLoggerFactory
                 .getExtentHtmlReporter()
                 .config()
