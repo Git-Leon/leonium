@@ -18,14 +18,6 @@ public class HomePage extends WebPage {
     private By buttonShirtCategory = With.tagAttributeValue("li", "title", "T-shirts");
     private By buttonSignIn = By.className("login");
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
-
-    public HomePage(WebDriver driver, String reportName, String testName) {
-        super(driver, reportName, testName);
-    }
-
     public HomePage(BrowserHandlerInterface browserHandler) {
         super(browserHandler);
     }

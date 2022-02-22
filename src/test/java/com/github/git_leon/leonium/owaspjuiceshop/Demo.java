@@ -14,7 +14,7 @@ public class Demo extends WebCrawl {
 
     @Override
     public void test() {
-        SearchPage searchPage = new SearchPage(this.browserHandler.getDriver());
+        SearchPage searchPage = new SearchPage(this.browserHandler);
         searchPage.navigateTo();
         searchPage.selectLanguage("English");
         searchPage.search("apple");

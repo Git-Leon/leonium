@@ -3,6 +3,9 @@ package com.github.git_leon.leonium.browsertools;
 import com.github.git_leon.leonium.ReflectionUtils;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
+
+import java.util.Collection;
 
 /**
  * @author leonhunter
@@ -18,6 +21,10 @@ public interface WebPageInterface {
 
     default void highlightElements() {
         getBrowserHandler().highlightElements(getDeclaredBys(), "yellow");
+    }
+
+    default Collection<Cookie> getAllCookies() {
+        return getBrowserHandler().getCookies();
     }
 
     BrowserHandlerInterface getBrowserHandler();
