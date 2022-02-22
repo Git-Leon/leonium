@@ -6,6 +6,7 @@ import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHa
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLogger;
+import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -48,7 +49,7 @@ public enum BrowserHandlerFactory {
         return new BrowserHandlerLoggerImpl(getDriver());
     }
 
-    public BrowserHandlerLayeredLogger getBrowserHandlerLayeredLogger(ExtentTestLogger extentTestLogger) {
+    public BrowserHandlerLayeredLogger getBrowserHandlerLayeredLogger(ExtentTestLoggerInterface extentTestLogger) {
         return new BrowserHandlerLayeredLogger(getDriver(), extentTestLogger);
     }
 

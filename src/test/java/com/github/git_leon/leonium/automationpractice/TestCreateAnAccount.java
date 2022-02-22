@@ -13,7 +13,6 @@ import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 
 public class TestCreateAnAccount {
     private ExtentTestLoggerFactory extentTestLoggerFactory;
@@ -21,11 +20,11 @@ public class TestCreateAnAccount {
 
     @Before
     public void instanceSetup() {
+        final String testName = "create an account";
+        final String description = "Attempting to create an account on automationpractice.com";
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
-        final WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
-        final String testName = driver.toString();
-        final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLoggerTimer(testName);
-        final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);
+        final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLoggerTimer(testName, description);
+        final BrowserHandlerLayeredLogger browserHandler = BrowserHandlerFactory.CHROME.getBrowserHandlerLayeredLogger(extentTestLogger);
         browserHandler
                 .getOptions()
                 .SCREENSHOT_DIRECTORY
