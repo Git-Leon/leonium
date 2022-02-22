@@ -1,20 +1,20 @@
 package com.github.git_leon.leonium.browsertools.browserhandler.reporting;
 
-import com.github.git_leon.leonium.DirectoryReference;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandler;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerTimer;
-import com.github.git_leon.leonium.browsertools.browserhandler.waiting.*;
+import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWait;
+import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
+import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
+import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLogger;
-import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
-import com.github.git_leon.logging.*;
-import com.github.git_leon.stringutils.StringUtils;
+import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
+import com.github.git_leon.logging.FunctionExecutionLoggerAndTimer;
+import com.github.git_leon.logging.SimpleLoggerInterface;
+import com.github.git_leon.logging.SimpleLoggerWarehouse;
 import org.openqa.selenium.WebDriver;
-
-import java.io.File;
-import java.time.LocalDateTime;
 
 /**
  * @author leonhunter
@@ -23,9 +23,9 @@ import java.time.LocalDateTime;
  */
 public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterface {
     private final BrowserHandlerLoggerExtentReporter browserHandlerExtentReporter;
-    private final ExtentTestLogger extentTestLogger;
+    private final ExtentTestLoggerInterface extentTestLogger;
 
-    public BrowserHandlerLayeredLogger(WebDriver driver, ExtentTestLogger extentTestLogger) {
+    public BrowserHandlerLayeredLogger(WebDriver driver, ExtentTestLoggerInterface extentTestLogger) {
         final String testName = extentTestLogger.getExtentTest().getModel().getName();
         final SimpleLoggerInterface simpleLogger              = SimpleLoggerWarehouse.getLogger(testName);
         final SimpleLoggerInterface simpleLoggerAndTimer      = new FunctionExecutionLoggerAndTimer(simpleLogger);
@@ -33,11 +33,10 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
 
 
         final BrowserWaitInterface browserWait                                       = new BrowserWait(5, driver);
-        final BrowserWaitLoggerInterface browserWaitLogger                           = new BrowserWaitLogger(browserWait, simpleLoggerAndTimer);
-        final BrowserWaitLoggerExtentReporter browserWaitExtentReporter              = new BrowserWaitLoggerExtentReporter(browserWaitLogger, extentTestLogger);
-        final BrowserWaitLoggerInterface browserWaitExtentReporterTimer              = new BrowserWaitLogger(browserWaitExtentReporter, extentTestLoggerAndTimer);
+        final BrowserWaitLoggerInterface browserWaitSimpleLogger                     = new BrowserWaitLogger(browserWait, simpleLoggerAndTimer);
+        final BrowserWaitLoggerExtentReporter browserWaitExtentReporter              = new BrowserWaitLoggerExtentReporter(browserWaitSimpleLogger, extentTestLogger);
 
-        final BrowserHandler browserHandlerImplementation                            = new BrowserHandler(driver, browserWaitExtentReporterTimer);
+        final BrowserHandler browserHandlerImplementation                            = new BrowserHandler(driver, browserWaitExtentReporter);
         final BrowserHandlerLoggerInterface browserHandlerLoggerImplLogger           = new BrowserHandlerLoggerImpl(browserHandlerImplementation, extentTestLoggerAndTimer);
         final BrowserHandlerLoggerInterface browserHandlerLoggerTimer                = new BrowserHandlerLoggerTimer(browserHandlerLoggerImplLogger);
         final BrowserHandlerLoggerInterface browserHandlerLoggerImplExtentTestLogger = new BrowserHandlerLoggerImpl(browserHandlerLoggerTimer, simpleLoggerAndTimer);
@@ -46,7 +45,7 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
     }
 
     @Override
-    public ExtentTestLogger getLogger() {
+    public ExtentTestLoggerInterface getLogger() {
         return extentTestLogger;
     }
 

@@ -12,7 +12,7 @@ import java.util.logging.Level;
  * @author leonhunter
  * @created 05/04/2020 - 2:03 AM
  */
-public class ExtentTestLogger implements SimpleLoggerInterface {
+public class ExtentTestLogger implements ExtentTestLoggerInterface {
     private final ExtentTest extentTest;
     private boolean isEnabled;
 
@@ -23,13 +23,6 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
 
     ExtentTestLogger(ExtentTest extentTest) {
         this(extentTest, true);
-    }
-
-    @Override
-    public void log(Level level, String logMessage, Object... logMessageArgs) {
-        if (isEnabled()) {
-            getExtentTest().log(getStatus(level), String.format(logMessage, logMessageArgs));
-        }
     }
 
     @Override
@@ -47,30 +40,7 @@ public class ExtentTestLogger implements SimpleLoggerInterface {
         return isEnabled;
     }
 
-    @Override
-    public void throwable(Throwable t, Level level) {
-        StringWriter out = new StringWriter();
-        t.printStackTrace(new PrintWriter(out));
-        String description = out
-                .toString()
-                .replaceAll("\n", "<br>");
-        this.error(description);
-    }
-
-
     public ExtentTest getExtentTest() {
         return extentTest;
-    }
-
-    private Status getStatus(Level level) {
-        switch (level.getName().toUpperCase()) {
-            case "WARNING":
-                return Status.INFO;
-            case "SEVERE":
-                return Status.WARNING;
-            case "THROWABLE":
-                return Status.ERROR;
-        }
-        return Status.PASS;
     }
 }

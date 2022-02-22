@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ExtentTestLoggerFactory {
     private final ExtentReports extentReports;
-    private final Map<String, ExtentTestLogger> extentTestLoggerMap;
+    private final Map<String, ExtentTestLoggerInterface> extentTestLoggerMap;
     private final ExtentHtmlReporter extentHtmlReporter;
 
     public ExtentTestLoggerFactory(String filePath) {
@@ -25,7 +25,7 @@ public class ExtentTestLoggerFactory {
         this(extentReports, extentHtmlReporter, new ConcurrentHashMap<>());
     }
 
-    public ExtentTestLoggerFactory(ExtentReports extentReports, ExtentHtmlReporter extentHtmlReporter, Map<String, ExtentTestLogger> extentTestLoggerMap) {
+    public ExtentTestLoggerFactory(ExtentReports extentReports, ExtentHtmlReporter extentHtmlReporter, Map<String, ExtentTestLoggerInterface> extentTestLoggerMap) {
         this.extentReports = extentReports;
         this.extentHtmlReporter = extentHtmlReporter;
         this.extentTestLoggerMap = extentTestLoggerMap;
@@ -41,15 +41,23 @@ public class ExtentTestLoggerFactory {
         return extentReports;
     }
 
-    public Map<String, ExtentTestLogger> getExtentTestLoggerMap() {
+    public Map<String, ExtentTestLoggerInterface> getExtentTestLoggerMap() {
         return extentTestLoggerMap;
     }
 
-    public ExtentTestLogger getExtentTestLogger(String testName) {
+    public ExtentTestLoggerInterface getExtentTestLoggerTimer(String testName) {
+        return getExtentTestLoggerTimer(testName, "");
+    }
+
+    public ExtentTestLoggerInterface getExtentTestLoggerTimer(String testName, String description) {
+        return new ExtentTestLoggerTimer(getExtentTestLogger(testName, description));
+    }
+
+    public ExtentTestLoggerInterface getExtentTestLogger(String testName) {
         return getExtentTestLogger(testName, "");
     }
 
-    public ExtentTestLogger getExtentTestLogger(String testName, String description) {
+    public ExtentTestLoggerInterface getExtentTestLogger(String testName, String description) {
         Optional<String> mapKey = getExtentTestLoggerMap()
                 .keySet()
                 .stream()

@@ -2,6 +2,7 @@ package com.github.git_leon.logging;
 
 
 import java.util.function.BiFunction;
+import java.util.logging.Level;
 
 /**
  * @author leon on 5/25/18.
@@ -19,7 +20,9 @@ public final class FunctionExecutionLoggerAndTimer implements FunctionExecutionL
         return logger;
     }
 
+
     /**
+     * @param level           Level of logging
      * @param function        FunctionalInterface to be invoked
      * @param firstArg        first argument of FunctionalInterface to be invoked
      * @param secondArg       second argument of FunctionalInterface to be invoked
@@ -30,12 +33,12 @@ public final class FunctionExecutionLoggerAndTimer implements FunctionExecutionL
      * @return Return-Value of the invoked FunctionalInterface
      */
     @Override
-    public <FirstArgType, SecondArgType, ReturnType> ReturnType logAndInvoke(
-            BiFunction<FirstArgType, SecondArgType, ReturnType> function,
+    public  <FirstArgType, SecondArgType, ReturnType> ReturnType logAndInvoke(
+            Level level, BiFunction<FirstArgType, SecondArgType, ReturnType> function,
             FirstArgType firstArg, SecondArgType secondArg, String logMessage) {
         String timeElapsedLog = "Execution time: %s seconds.";
 
-        getLogger().info(logMessage);
+        getLogger().log(level, logMessage);
         Long executionStartTime = System.currentTimeMillis();
         ReturnType returnValue = function.apply(firstArg, secondArg);
         double timeElapsedInSeconds = (System.currentTimeMillis() - executionStartTime) / 1000.0;

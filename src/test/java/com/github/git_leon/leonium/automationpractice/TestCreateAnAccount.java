@@ -13,6 +13,7 @@ import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLogger;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactoryManager;
+import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
 import com.github.git_leon.stringutils.StringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -30,7 +31,7 @@ public class TestCreateAnAccount {
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
         final WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
         final String testName = driver.toString();
-        final ExtentTestLogger extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
+        final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLoggerTimer(testName);
         final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);
         browserHandler
                 .getOptions()
@@ -55,7 +56,7 @@ public class TestCreateAnAccount {
                 .getBrowserHandler()
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
-                .setValue(false);
+                .setValue(true);
         try {
             homePage.navigateTo();
             final SignInPage signInPage = homePage.clickSignIn();

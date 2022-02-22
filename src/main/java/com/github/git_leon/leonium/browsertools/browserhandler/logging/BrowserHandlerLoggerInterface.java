@@ -10,6 +10,7 @@ import java.awt.image.RasterFormatException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 /**
@@ -23,7 +24,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to get `WebElement`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebElement` [ %s ], using selector [ %s ]";
 
-        getLogger().warn(attemptMessage, by);
+        getLogger().log(Level.FINE, attemptMessage, by);
         WebElement we = getBrowserHandlerDecoratee().getElement(by);
         getLogger().info(successMessage, WebEntityInterface.toString(we), by);
         return we;
@@ -34,7 +35,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to wrap `WebElement` with `WebEntity`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebEntity` [ %s ], using selector [ %s ]";
 
-        getLogger().warn(attemptMessage, by);
+        getLogger().log(Level.FINE, attemptMessage, by);
         WebEntity we = getBrowserHandlerDecoratee().getWebEntity(by);
         getLogger().info(successMessage, we.toString(), by);
 
@@ -47,7 +48,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to wrap `WebElement` with `WebEntity`, using selector [ %s ]";
         String successMessage = "Successfully retrieved `WebEntity` [ %s ], using selector [ %s ]";
 
-        getLogger().warn(attemptMessage, by);
+        getLogger().log(Level.FINE, attemptMessage, by);
         List<WebElement> elements = getBrowserHandlerDecoratee().getElements(by);
         List<String> webEntityStringsToBeLogged = elements
                 .stream()
@@ -67,7 +68,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String successMessage = "Successfully retrieved page-load-state of [ %s ] from [ %s ]";
 
 
-        getLogger().warn(attemptMessage, currentUrl);
+        getLogger().log(Level.FINE, attemptMessage, currentUrl);
         getLogger().info(successMessage, pageLoadState, currentUrl);
 
         return pageLoadState;
@@ -80,7 +81,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String successMessage = "Successfully navigated to [ %s ] from [ %s ]";
 
         String formerUrl = getBrowserHandlerDecoratee().getCurrentUrl();
-        getLogger().warn(attemptMessage, newUrl, formerUrl);
+        getLogger().log(Level.FINE, attemptMessage, newUrl, formerUrl);
         getBrowserHandlerDecoratee().navigateTo(newUrl);
         getLogger().info(successMessage, newUrl, formerUrl);
     }
@@ -96,7 +97,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
                     String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
-                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                    getLogger().log(Level.FINE, "screenshot " + preposition + " execution<br> %s", screenshotFilePath);
                 } catch (RasterFormatException rfe) {
                     getLogger().error("Failed to get screenshot of interaction.");
                     getLogger().throwable(rfe);
@@ -104,7 +105,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             }
         };
 
-        getLogger().warn(attemptMessage, by);
+        getLogger().log(Level.FINE, attemptMessage, by);
         screenshotLog.accept("before");
         getBrowserHandlerDecoratee().click(by);
         getLogger().info(successMessage, we.toString(), by);
@@ -122,7 +123,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
                     String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
-                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                    getLogger().log(Level.FINE, "screenshot " + preposition + " execution<br> %s", screenshotFilePath);
                 } catch (RasterFormatException rfe) {
                     getLogger().error("Failed to get screenshot of interaction.");
                     getLogger().throwable(rfe);
@@ -130,7 +131,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             }
         };
 
-        getLogger().warn(attemptMessage, by);
+        getLogger().log(Level.FINE, attemptMessage, by);
         screenshotLog.accept("before");
         Select select = getBrowserHandlerDecoratee().select(by);
         getLogger().info(successMessage, we.toString(), by);
@@ -149,7 +150,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
                     String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
-                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                    getLogger().log(Level.FINE, "screenshot " + preposition + " execution<br> %s", screenshotFilePath);
                 } catch (RasterFormatException rfe) {
                     getLogger().error("Failed to get screenshot of interaction.");
                     getLogger().throwable(rfe);
@@ -157,7 +158,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             }
         };
 
-        getLogger().warn(attemptMessage, index, by);
+        getLogger().log(Level.FINE, attemptMessage, index, by);
         screenshotLog.accept("before");
         getBrowserHandlerDecoratee().selectByIndex(by, index);
         getLogger().info(successMessage, index, by);
@@ -175,7 +176,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
                     String screenshotFilePath = we.getScreenshot(screenshotDirectory).toString();
-                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                    getLogger().log(Level.FINE, "screenshot " + preposition + " execution<br> %s", screenshotFilePath);
                 } catch (RasterFormatException rfe) {
                     getLogger().error("Failed to get screenshot of interaction.");
                     getLogger().throwable(rfe);
@@ -184,7 +185,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         };
 
 
-        getLogger().warn(attemptMessage, visibleText, by);
+        getLogger().log(Level.FINE, attemptMessage, visibleText, by);
         screenshotLog.accept("before");
         getBrowserHandlerDecoratee().selectByVisibleText(by, visibleText);
         getLogger().info(successMessage, visibleText, by);
@@ -202,7 +203,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
                     WebElementScreenshot screenshotFilePath = we.getScreenshot(screenshotDirectory);
-                    getLogger().info("screenshot " + preposition + " execution<br> %s", screenshotFilePath);
+                    getLogger().log(Level.FINE, "screenshot " + preposition + " execution<br> %s", screenshotFilePath);
                 } catch (RasterFormatException rfe) {
                     getLogger().error("Failed to get screenshot of interaction.");
                     getLogger().throwable(rfe);
@@ -210,7 +211,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
             }
         };
 
-        getLogger().warn(attemptMessage, keys, by);
+        getLogger().log(Level.FINE, attemptMessage, keys, by);
         screenshotLog.accept("before");
         getBrowserHandlerDecoratee().sendKeys(by, keys);
         getLogger().info(successMessage, keys, by);
@@ -223,7 +224,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to close `BrowserHandler` instance, [ %s ]";
         String successMessage = "Successfully closed `BrowserHandler` instance, [ %s ]";
 
-        getLogger().warn(attemptMessage, getBrowserHandlerDecoratee().toString());
+        getLogger().log(Level.FINE, attemptMessage, getBrowserHandlerDecoratee().toString());
         getBrowserHandlerDecoratee().close();
         getLogger().info(successMessage, getBrowserHandlerDecoratee().toString());
     }
@@ -234,7 +235,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to highlight element with color [ %s ], using selector [ %s ]";
         String successMessage = "Successfully highlighted element with color [ %s ], using selector [ %s ]";
 
-        getLogger().warn(attemptMessage, color, by);
+        getLogger().log(Level.FINE, attemptMessage, color, by);
         getBrowserHandlerDecoratee().highlightElement(by, color);
         getLogger().info(successMessage, color, by);
     }
@@ -246,7 +247,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String successMessage = "Successfully highlighted elements with color [ %s ], using selectors [ %s ]";
         String selectors = Arrays.toString(bys);
 
-        getLogger().warn(attemptMessage, color, selectors);
+        getLogger().log(Level.FINE, attemptMessage, color, selectors);
         getBrowserHandlerDecoratee().highlightElements(bys, color);
         getLogger().info(successMessage, color, selectors);
     }
@@ -257,7 +258,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to screenshot from [ %s ]";
         String successMessage = "Successfully retrieved screenshot of [ %s ]";
         String currentUrl = getBrowserHandlerDecoratee().getCurrentUrl();
-        getLogger().warn(attemptMessage, currentUrl);
+        getLogger().log(Level.FINE, attemptMessage, currentUrl);
         Screenshot screenshot = getBrowserHandlerDecoratee().screenshot();
 
         if (screenshot.getFile().exists()) {

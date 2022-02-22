@@ -7,6 +7,7 @@ import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHa
 import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLogger;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
+import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
 
 /**
  * @author leonhunter
@@ -14,9 +15,9 @@ import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
  */
 public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerInterfaceDecorator {
     private final BrowserHandlerLoggerInterface browserHandlerDecoratee;
-    private final ExtentTestLogger extentTestLogger;
+    private final ExtentTestLoggerInterface extentTestLogger;
 
-    public BrowserHandlerLoggerExtentReporter(BrowserHandlerLoggerInterface browserHandlerLoggerTimer, ExtentTestLogger extentTestLogger) {
+    public BrowserHandlerLoggerExtentReporter(BrowserHandlerLoggerInterface browserHandlerLoggerTimer, ExtentTestLoggerInterface extentTestLogger) {
         this.browserHandlerDecoratee = browserHandlerLoggerTimer;
         this.extentTestLogger = extentTestLogger;
     }
@@ -27,7 +28,7 @@ public class BrowserHandlerLoggerExtentReporter implements BrowserHandlerLoggerI
     }
 
     @Override
-    public ExtentTestLogger getLogger() {
+    public ExtentTestLoggerInterface getLogger() {
         return this.extentTestLogger;
     }
 

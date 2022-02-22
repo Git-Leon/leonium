@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 
 public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, SimpleLoggerInterface {
@@ -31,7 +32,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "%s to be enabled";
         logMessage = formatMessage(logMessage, by);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forEnabled, by, isEnabled, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forEnabled, by, isEnabled, logMessage);
     }
 
     /**
@@ -45,7 +46,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "%s to be visible";
         logMessage = formatMessage(logMessage, by);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forVisibility, by, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forVisibility, by, logMessage);
     }
 
     /**
@@ -73,7 +74,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "%s to be clickable";
         logMessage = formatMessage(logMessage, by);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forClickability, by, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forClickability, by, logMessage);
     }
 
 
@@ -88,7 +89,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "%s to be present";
         logMessage = formatMessage(logMessage, by);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forPresence, by, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forPresence, by, logMessage);
     }
 
     /**
@@ -102,7 +103,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "%s to not be stale";
         logMessage = formatMessage(logMessage, by);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forNotStale, by, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forNotStale, by, logMessage);
     }
 
     /**
@@ -115,7 +116,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "an alert to be present";
         logMessage = formatMessage(logMessage);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forAlert, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forAlert, logMessage);
     }
 
     /**
@@ -129,7 +130,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "the url to contain any of the following: %s";
         logMessage = formatMessage(logMessage, Arrays.toString(partUrls));
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forUrlToContain, partUrls, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forUrlToContain, partUrls, logMessage);
     }
 
     /**
@@ -143,7 +144,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "visibilities of all elements selected by [ %s ]";
         logMessage = formatMessage(logMessage, by);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forVisibilities, by, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forVisibilities, by, logMessage);
     }
 
     /**
@@ -157,7 +158,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "presences of all elements selected by [ %s ]";
         logMessage = formatMessage(logMessage, by);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forPresences, by, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forPresences, by, logMessage);
     }
 
     /**
@@ -170,7 +171,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "page to load";
         logMessage = formatMessage(logMessage);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forPageLoad, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forPageLoad, logMessage);
     }
 
     /**
@@ -184,7 +185,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "page state to be [ %s ]";
         logMessage = formatMessage(logMessage, desiredState);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forPageState, desiredState, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forPageState, desiredState, logMessage);
     }
 
     /**
@@ -198,7 +199,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "[ %s ] to become keyable";
         logMessage = formatMessage(logMessage, by);
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forKeyable, by, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forKeyable, by, logMessage);
     }
 
     /**
@@ -211,7 +212,7 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
         String logMessage = "Selector\n\t\t[ %s ]\n\t\tto suffice each of the following conditions: %s";
         logMessage = formatMessage(logMessage, by, Arrays.toString(waitConditions));
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
-        return functionExecutionLogger.logAndInvoke(Level.WARNING, getWait()::forConditions, by, waitConditions, logMessage);
+        return functionExecutionLogger.logAndInvoke(Level.FINE, getWait()::forConditions, by, waitConditions, logMessage);
     }
 
     @Override
