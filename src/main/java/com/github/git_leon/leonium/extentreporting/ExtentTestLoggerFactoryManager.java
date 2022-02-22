@@ -10,7 +10,7 @@ public enum ExtentTestLoggerFactoryManager {
     RESOURCE_DIRECTORY(DirectoryReference.RESOURCE_DIRECTORY),
     TARGET_DIRECTORY(DirectoryReference.TARGET_DIRECTORY),
     REPORT_DIRECTORY(DirectoryReference.REPORT_DIRECTORY),
-    TEST_REPORT_DIRECTORY(DirectoryReference.TEST_REPORT_DIRECTORY);
+    TEST_REPORT_DIRECTORY(DirectoryReference.TEST_TARGET_DIRECTORY);
 
     private final File directoryFile;
     private ExtentTestLoggerFactory extentTestLoggerFactory;

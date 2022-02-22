@@ -19,9 +19,9 @@ public enum DirectoryReference {
             .append(System.getProperty("user.dir")) // local directory
             .append("/target/reports/")
             .toString()),
-    TEST_REPORT_DIRECTORY(new StringBuilder()
+    TEST_TARGET_DIRECTORY(new StringBuilder()
             .append(System.getProperty("user.dir")) // local directory
-            .append("/target/reports.test/")
+            .append("/target/test/")
             .toString());
 
 

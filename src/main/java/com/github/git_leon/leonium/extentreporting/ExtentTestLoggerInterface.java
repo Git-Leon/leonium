@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.logging.Level;
 
+import static java.util.logging.Level.FINER;
+
 public interface ExtentTestLoggerInterface extends SimpleLoggerInterface {
     ExtentTest getExtentTest();
 
@@ -16,6 +18,10 @@ public interface ExtentTestLoggerInterface extends SimpleLoggerInterface {
         if (isEnabled()) {
             getExtentTest().log(getStatus(level), String.format(logMessage, logMessageArgs));
         }
+    }
+    @Override
+    default void error(String s, Object... args) {
+        log(FINER, s, args);
     }
 
     @Override
@@ -30,12 +36,15 @@ public interface ExtentTestLoggerInterface extends SimpleLoggerInterface {
 
     default Status getStatus(Level level) {
         switch (level.getName().toUpperCase()) {
-            case "FINE":
-                return Status.INFO;
+            case "INFO":
+                return Status.PASS;
             case "WARNING":
                 return Status.WARNING;
-            case "THROWABLE":
+            case "FINE":
+                return Status.INFO;
+            case "FINER":
                 return Status.ERROR;
+            case "FINEST":
             case "SEVERE":
                 return Status.FAIL;
         }
