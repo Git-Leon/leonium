@@ -1,26 +1,19 @@
 package com.github.git_leon.leonium.automationpractice;
 
-import com.github.git_leon.leonium.DirectoryReference;
 import com.github.git_leon.leonium.automationpractice.webpages.HomePage;
-import com.github.git_leon.leonium.automationpractice.webpages.SearchResultPage;
-import com.github.git_leon.leonium.automationpractice.webpages.ShoppingCartSummaryPage;
 import com.github.git_leon.leonium.automationpractice.webpages.SignInPage;
 import com.github.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPage;
 import com.github.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPageStateFactory;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
 import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
-import com.github.git_leon.leonium.extentreporting.ExtentTestLogger;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactoryManager;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
-import com.github.git_leon.stringutils.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-
-import java.time.LocalDateTime;
 
 public class TestCreateAnAccount {
     private ExtentTestLoggerFactory extentTestLoggerFactory;
