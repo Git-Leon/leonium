@@ -32,11 +32,6 @@ public class TestCreateAnAccount {
                 .SCREENSHOT_ON_EVENT
                 .setValue(true);
         final HomePage homePage = new HomePage(browserHandler);
-        homePage
-                .getBrowserHandler()
-                .getOptions()
-                .SCREENSHOT_ON_EVENT
-                .setValue(true);
         try {
             homePage.navigateTo();
             final SignInPage signInPage = homePage.clickSignIn();
