@@ -30,7 +30,7 @@ public class RandomUtil {
      * @return a random character between the specified min and max character range
      */
     public Character createCharacter(char min, char max) {
-        return (char) createInteger((int) min, (int) max).intValue();
+        return (char) createInteger(min, max).intValue();
     }
 
     /**

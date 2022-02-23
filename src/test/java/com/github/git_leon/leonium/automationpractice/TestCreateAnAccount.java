@@ -12,25 +12,28 @@ import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactoryManage
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
 import org.junit.Test;
 
+import java.io.File;
+
 public class TestCreateAnAccount {
-    private void test(String arg) {
-        final String testName = "create an account";
+    private void test(String testName) {
         final String description = "Attempting to create an account on automationpractice.com";
         final String email = Long.toHexString(System.nanoTime()) + "@leonium.com";
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
         final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLoggerTimer(testName, description);
         final BrowserHandlerLayeredLogger browserHandler = BrowserHandlerFactory.CHROME.getBrowserHandlerLayeredLogger(extentTestLogger);
+        final File screenshotDirectory = new File(extentTestLoggerFactory
+                .getExtentHtmlReporter()
+                .config()
+                .getFilePath());
         browserHandler
                 .getOptions()
                 .SCREENSHOT_DIRECTORY
-                .setValue(extentTestLoggerFactory
-                        .getExtentHtmlReporter()
-                        .config()
-                        .getFilePath());
+                .setValue(screenshotDirectory.getAbsolutePath());
         browserHandler
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
                 .setValue(true);
+
         final HomePage homePage = new HomePage(browserHandler);
         try {
             homePage.navigateTo();
@@ -57,11 +60,11 @@ public class TestCreateAnAccount {
 
     @Test
     public void test1() {
-        test("shirt");
+        test("create an account1");
     }
 
     @Test
     public void test2() {
-        test("pants");
+        test("create an account2");
     }
 }

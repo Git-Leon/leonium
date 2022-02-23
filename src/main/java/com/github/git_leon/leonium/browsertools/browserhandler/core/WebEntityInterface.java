@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.awt.image.RasterFormatException;
+import java.io.File;
 
 public interface WebEntityInterface {
     static String toString(WebElement webElement) {
@@ -107,7 +108,7 @@ public interface WebEntityInterface {
     default WebElementScreenshot getScreenshot(String fileDirectory) {
         try {
             getWait().forConditions(getSelector(), SelectorWaitCondition.VISIBILITY);
-            return new WebElementScreenshot(getDriver(), getSelector(), fileDirectory);
+            return new WebElementScreenshot(getDriver(), getSelector(), new File(fileDirectory).getParent().concat("/"));
         } catch (RasterFormatException rfe) {
             return null;
         }
