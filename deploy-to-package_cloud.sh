@@ -1,5 +1,4 @@
 rm -rf target
-rm *jar
 rm dependency-reduced-pom.xml
 ls
 
