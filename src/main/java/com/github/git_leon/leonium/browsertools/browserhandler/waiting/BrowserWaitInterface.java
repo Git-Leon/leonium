@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface BrowserWaitInterface {
 
+    void setWaitSeconds(int waitSeconds);
+
     int getWaitSeconds();
 
     WebDriver getDriver();
@@ -213,7 +215,7 @@ public interface BrowserWaitInterface {
      */
     default WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
         for (SelectorWaitCondition condition : waitConditions) {
-            condition.waitFor(by, getDriver()); // TODO - Make a decision
+            condition.waitFor(by, getDriver(), getWaitSeconds()); // TODO - Make a decision
         }
         return forPresence(by);
     }

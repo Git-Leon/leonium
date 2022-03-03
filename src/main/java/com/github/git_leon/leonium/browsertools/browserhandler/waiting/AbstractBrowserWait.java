@@ -16,6 +16,11 @@ public class AbstractBrowserWait implements BrowserWaitInterface {
     }
 
     @Override
+    public void setWaitSeconds(int waitSeconds) {
+        this.waitSeconds = waitSeconds;
+    }
+
+    @Override
     public int getWaitSeconds() {
         return waitSeconds;
     }
