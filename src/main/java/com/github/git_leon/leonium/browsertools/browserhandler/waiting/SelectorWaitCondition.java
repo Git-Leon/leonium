@@ -14,13 +14,13 @@ public enum SelectorWaitCondition {
         new BrowserWait(driver).forInvisibility(by);
         return null;
     }),
-    VISIBILITY((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(driver).forVisibility(by)),
-    CLICKABILITY((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(driver).forClickability(by)),
-    ENABLED((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(driver).forEnabled(by, true)),
-    DISABLED((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(driver).forEnabled(by, false)),
-    PRESENT((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(driver).forPresence(by)),
-    PRESENCES((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(driver).forPresences(by)),
-    NOT_STALE((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(driver).forNotStale(by));
+    VISIBILITY((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(waitSeconds, driver).forVisibility(by)),
+    CLICKABILITY((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(waitSeconds, driver).forClickability(by)),
+    ENABLED((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(waitSeconds, driver).forEnabled(by, true)),
+    DISABLED((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(waitSeconds, driver).forEnabled(by, false)),
+    PRESENT((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(waitSeconds, driver).forPresence(by)),
+    PRESENCES((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(waitSeconds, driver).forPresences(by)),
+    NOT_STALE((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(waitSeconds, driver).forNotStale(by));
     private final TriFunction<By, WebDriver, Integer, Object> waitFunction;
 
     SelectorWaitCondition(TriFunction<By, WebDriver, Integer, Object> waitFunction) {
