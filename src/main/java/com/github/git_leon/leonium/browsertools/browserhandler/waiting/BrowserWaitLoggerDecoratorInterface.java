@@ -154,6 +154,11 @@ public interface BrowserWaitLoggerDecoratorInterface extends BrowserWaitLoggerIn
     }
 
     @Override
+    default void setWaitSeconds(int waitSeconds) {
+        getWait().setWaitSeconds(waitSeconds);
+    }
+
+    @Override
     default WebDriver getDriver() {
         return getWait().getDriver();
     }
