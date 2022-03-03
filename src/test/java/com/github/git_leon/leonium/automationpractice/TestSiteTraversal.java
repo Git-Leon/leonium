@@ -34,6 +34,11 @@ public class TestSiteTraversal {
         final String testName = driver.toString();
         final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
         final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);
+
+        browserHandler
+                .getWait()
+                .setWaitSeconds(15);
+
         browserHandler
                 .getOptions()
                 .SCREENSHOT_DIRECTORY
@@ -41,10 +46,12 @@ public class TestSiteTraversal {
                         .getExtentHtmlReporter()
                         .config()
                         .getFilePath());
+
         browserHandler
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
                 .setValue(true);
+
         this.browserHandler = browserHandler;
         this.extentTestLoggerFactory = extentTestLoggerFactory;
     }

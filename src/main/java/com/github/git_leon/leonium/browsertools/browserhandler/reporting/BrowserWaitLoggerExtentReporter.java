@@ -32,6 +32,11 @@ public class BrowserWaitLoggerExtentReporter implements BrowserWaitLoggerInterfa
     }
 
     @Override
+    public void setWaitSeconds(int waitSeconds) {
+        getWait().setWaitSeconds(waitSeconds);
+    }
+
+    @Override
     public int getWaitSeconds() {
         return getWait().getWaitSeconds();
     }
