@@ -30,7 +30,7 @@ public class BrowserHandlerLayeredLogger implements BrowserHandlerLoggerInterfac
         final SimpleLoggerInterface simpleLoggerAndTimer      = new FunctionExecutionLoggerAndTimer(simpleLogger);
         final SimpleLoggerInterface extentTestLoggerAndTimer  = new FunctionExecutionLoggerAndTimer(extentTestLogger);
 
-        final BrowserWaitInterface browserWait                                       = new BrowserWait(5, driver);
+        final BrowserWaitInterface browserWait                                       = new BrowserWait(15, driver);
         final BrowserWaitLoggerInterface browserWaitSimpleLogger                     = new BrowserWaitLogger(browserWait, simpleLoggerAndTimer);
         final BrowserWaitLoggerExtentReporter browserWaitExtentReporter              = new BrowserWaitLoggerExtentReporter(browserWaitSimpleLogger, extentTestLogger);
 
