@@ -13,10 +13,6 @@ abstract public class BrowserHandlerDecoratorAbstractClass implements BrowserHan
         this.decoratee = decoratee;
     }
 
-    public BrowserHandlerDecoratorAbstractClass(WebDriver driver) {
-        this(new BrowserHandler(driver));
-    }
-
     @Override
     public BrowserHandlerInterface getBrowserHandlerDecoratee() {
         return decoratee;

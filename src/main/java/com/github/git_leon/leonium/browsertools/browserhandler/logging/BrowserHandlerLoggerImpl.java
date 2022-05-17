@@ -29,10 +29,6 @@ public class BrowserHandlerLoggerImpl implements BrowserHandlerLoggerInterface {
         this(browserHandler, browserHandler.getLogger());
     }
 
-    public BrowserHandlerLoggerImpl(WebDriver driver) {
-        this(new BrowserHandler(driver));
-    }
-
     @Override
     public SimpleLoggerInterface getLogger() {
         return logger;
