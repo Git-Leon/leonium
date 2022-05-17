@@ -56,20 +56,19 @@ public interface WebEntityInterface {
 
     default void click() {
         getWait().forConditions(getSelector(),
-                SelectorWaitCondition.VISIBILITY,
-                SelectorWaitCondition.ENABLED,
-                SelectorWaitCondition.CLICKABILITY,
-                SelectorWaitCondition.NOT_STALE);
-        getElement().click();
+                        SelectorWaitCondition.VISIBILITY,
+                        SelectorWaitCondition.ENABLED,
+                        SelectorWaitCondition.CLICKABILITY,
+                        SelectorWaitCondition.NOT_STALE)
+                .click();
     }
 
     // toSelect by byType
     default Select toSelect() {
-        getWait().forConditions(getSelector(),
+        return new Select(getWait().forConditions(getSelector(),
                 SelectorWaitCondition.VISIBILITY,
                 SelectorWaitCondition.ENABLED,
-                SelectorWaitCondition.NOT_STALE);
-        return new Select(getElement());
+                SelectorWaitCondition.NOT_STALE));
     }
 
     // toSelect by WebElement and toSelect index option
@@ -107,7 +106,6 @@ public interface WebEntityInterface {
 
     default WebElementScreenshot getScreenshot(String fileDirectory) {
         try {
-            getWait().forConditions(getSelector(), SelectorWaitCondition.VISIBILITY);
             return new WebElementScreenshot(getWait(), getSelector(), new File(fileDirectory).getParent().concat("/"));
         } catch (RasterFormatException rfe) {
             return null;
