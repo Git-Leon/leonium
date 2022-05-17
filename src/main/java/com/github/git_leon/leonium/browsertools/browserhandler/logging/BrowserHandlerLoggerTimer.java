@@ -71,7 +71,7 @@ public class BrowserHandlerLoggerTimer implements BrowserHandlerLoggerInterfaceD
 
     @Override
     public void navigateTo(String newUrl) {
-        final String logMessage = String.format("Starting timer for `getWebEntity(%s)`", newUrl);
+        final String logMessage = String.format("Starting timer for `navigateTo(%s)`", newUrl);
         getLogger().consumeAndLog(Level.FINE, getBrowserHandlerDecoratee()::navigateTo, newUrl, logMessage);
     }
 
