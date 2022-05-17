@@ -4,12 +4,11 @@ package com.github.git_leon.leonium.browsertools.browserhandler.waiting;
 import com.github.git_leon.logging.*;
 import org.openqa.selenium.WebDriver;
 
-public class BrowserWaitLogger extends AbstractBrowserWait implements BrowserWaitLoggerInterface {
+public class BrowserWaitLogger implements BrowserWaitLoggerInterface {
     private final BrowserWaitInterface wait;
     private final SimpleLoggerInterface logger;
 
     public BrowserWaitLogger(BrowserWaitInterface browserWaitInterface, SimpleLoggerInterface simpleLogger) {
-        super(browserWaitInterface.getWaitSeconds(), browserWaitInterface.getDriver());
         this.wait = browserWaitInterface;
         this.logger = simpleLogger;
         this.logger.enable();
