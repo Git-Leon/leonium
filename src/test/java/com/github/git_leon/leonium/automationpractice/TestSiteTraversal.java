@@ -38,7 +38,7 @@ public class TestSiteTraversal {
 
         browserHandler
                 .getWait()
-                .setWaitSeconds(15);
+                .setWaitSeconds(3);
 
         browserHandler
                 .getOptions()
