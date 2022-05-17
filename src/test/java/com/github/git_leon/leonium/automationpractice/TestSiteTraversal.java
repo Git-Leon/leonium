@@ -48,7 +48,7 @@ public class TestSiteTraversal {
         browserHandler
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
-                .setValue(false);
+                .setValue(true);
 
         this.browserHandler = browserHandler;
         this.extentTestLoggerFactory = extentTestLoggerFactory;
@@ -88,7 +88,7 @@ public class TestSiteTraversal {
 
     @Test
     public void test1() {
-        test("shirt");
+        test("dress");
     }
 
     @Test

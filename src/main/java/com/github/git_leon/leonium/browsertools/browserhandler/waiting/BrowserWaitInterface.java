@@ -29,12 +29,12 @@ public interface BrowserWaitInterface {
      */
     default WebElement forEnabled(By by, boolean isEnabled) {
         long t0 = System.currentTimeMillis();
-        WebElement we = forPresence(by);
+        WebElement we = getDriver().findElement(by);
         if (we != null && isEnabled(we) != isEnabled) {
             int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
             until(remainingTime, ExpectedBrowserCondition.elementEnabledness(by, isEnabled));
         }
-        return forPresence(by);
+        return getDriver().findElement(by);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface BrowserWaitInterface {
      */
     default WebElement forVisibility(By by) {
         long t0 = System.currentTimeMillis();
-        WebElement we = forPresence(by);
+        WebElement we = getDriver().findElement(by);
         if (we != null && !we.isDisplayed()) {
             int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
             until(remainingTime, ExpectedConditions.visibilityOfElementLocated(by));
@@ -71,7 +71,7 @@ public interface BrowserWaitInterface {
      */
     default WebElement forClickability(By by) {
         until(getWaitSeconds(), ExpectedConditions.elementToBeClickable(by));
-        return forPresence(by);
+        return getDriver().findElement(by);
     }
 
     /**
@@ -97,7 +97,7 @@ public interface BrowserWaitInterface {
      */
     default WebElement forNotStale(By by) {
         long t0 = System.currentTimeMillis();
-        WebElement we = forPresence(by);
+        WebElement we = getDriver().findElement(by);
         try {
             we.getText();
         } catch (StaleElementReferenceException stere) {
@@ -134,7 +134,7 @@ public interface BrowserWaitInterface {
      */
     default List<WebElement> forVisibilities(By by) {
         long t0 = System.currentTimeMillis();
-        List<WebElement> webElements = forPresences(by);
+        List<WebElement> webElements = getDriver().findElements(by);
         int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
         until(remainingTime, ExpectedConditions.visibilityOfAllElements(webElements));
         return webElements;
@@ -175,7 +175,7 @@ public interface BrowserWaitInterface {
         if (currentState.equals(desiredState)) {
             return true;
         } else {
-            return condition.apply(getDriver()).booleanValue() ? true : until(getWaitSeconds(), condition);
+            return until(getWaitSeconds(), condition);
         }
     }
 
@@ -186,26 +186,27 @@ public interface BrowserWaitInterface {
      * @return respective WebElement
      */ // TODO - Migrate logic to ExpectedBrowserCondition
     default WebElement forKeyable(By by) {
-        boolean isKeyable = false;
-        long t0 = System.currentTimeMillis();
-
-        WebElement we = forPresence(by);
+        Throwable potentialError = null;
+        long executionStartTime = System.currentTimeMillis();
+        WebElement we = getDriver().findElement(by);
 
         try {
             we.sendKeys(" ", Keys.BACK_SPACE);
-            isKeyable = true;
         } catch (Exception e) {
-            while (!isKeyable && TimeUtils.timeRemains(getWaitSeconds(), t0)) {
+            double timeElapsedInSeconds = (System.currentTimeMillis() - executionStartTime) / 1000.0;
+            double timeRemaining = getWaitSeconds() - timeElapsedInSeconds;
+            boolean isTimeRemaining = timeRemaining > 0;
+            while (isTimeRemaining) {
                 try {
                     we.sendKeys(" ", Keys.BACK_SPACE);
-                    isKeyable = true;
-                    break;
+                    return we;
                 } catch (Exception ee) {
+                    potentialError = new RuntimeException(ee);
                     continue;
                 }
             }
         }
-        return we;
+        throw new RuntimeException(potentialError);
     }
 
     /**
@@ -214,10 +215,16 @@ public interface BrowserWaitInterface {
      * @return respective browserHandler element
      */
     default WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
+        long executionStartTime = System.currentTimeMillis();
         for (SelectorWaitCondition condition : waitConditions) {
-            condition.waitFor(by, getDriver(), getWaitSeconds()); // TODO - Make a decision
+            double timeElapsedInSeconds = (System.currentTimeMillis() - executionStartTime) / 1000.0;
+            Double timeRemaining = getWaitSeconds() - timeElapsedInSeconds;
+            until(timeRemaining.intValue(), (b) -> {
+                condition.waitFor(by, getDriver(), timeRemaining.intValue());
+                return true;
+            });
         }
-        return forPresence(by);
+        return getDriver().findElement(by);
     }
 
 
