@@ -14,7 +14,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
 import java.util.logging.Level;
 
 /**
@@ -22,13 +21,12 @@ import java.util.logging.Level;
  * @created 05/03/2020 - 5:36 PM
  */
 public class TestSiteTraversal {
-    private ExtentTestLoggerFactory extentTestLoggerFactory;
     private BrowserHandlerLayeredLogger browserHandler;
 
     @BeforeEach
     public void instanceSetup() {
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
-        final WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
+        final WebDriver driver = BrowserHandlerFactory.PHANTOMJS.getDriver();
         final String testName = driver.toString();
         final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
         final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);
@@ -51,7 +49,6 @@ public class TestSiteTraversal {
                 .setValue(true);
 
         this.browserHandler = browserHandler;
-        this.extentTestLoggerFactory = extentTestLoggerFactory;
     }
 
     private void test(String searchText) {

@@ -113,7 +113,7 @@ public class BrowserHandlerLoggerTimer implements BrowserHandlerLoggerInterfaceD
     @Override
     public void close() {
         final String logMessage = String.format("Starting timer for `close()`");
-        getLogger().logAndInvoke(getBrowserHandlerDecoratee()::close, logMessage);
+        getLogger().logAndInvoke(Level.FINE, getBrowserHandlerDecoratee()::close, logMessage);
     }
 
 
