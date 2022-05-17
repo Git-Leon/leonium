@@ -5,11 +5,27 @@ import org.openqa.selenium.WebDriver;
 /**
  * @author leon on 4/12/18.
  */
-public class BrowserWait extends AbstractBrowserWait {
+public class BrowserWait implements BrowserWaitInterface {
+    private int waitSeconds;
+    private final WebDriver driver;
+
     public BrowserWait(int waitSeconds, WebDriver driver) {
-        super(waitSeconds, driver);
+        this.waitSeconds = waitSeconds;
+        this.driver = driver;
     }
-    public BrowserWait(WebDriver driver) {
-        super(15, driver);
+
+    @Override
+    public int getWaitSeconds() {
+        return waitSeconds;
+    }
+
+    @Override
+    public void setWaitSeconds(int waitSeconds) {
+        this.waitSeconds = waitSeconds;
+    }
+
+    @Override
+    public WebDriver getDriver() {
+        return driver;
     }
 }

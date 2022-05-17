@@ -11,7 +11,7 @@ import java.util.function.BiFunction;
  */
 public enum SelectorWaitCondition {
     INVISIBILITY((By by, WebDriver driver, Integer waitSeconds) -> {
-        new BrowserWait(driver).forInvisibility(by);
+        new BrowserWait(waitSeconds, driver).forInvisibility(by);
         return null;
     }),
     VISIBILITY((By by, WebDriver driver, Integer waitSeconds) -> new BrowserWait(waitSeconds, driver).forVisibility(by)),
