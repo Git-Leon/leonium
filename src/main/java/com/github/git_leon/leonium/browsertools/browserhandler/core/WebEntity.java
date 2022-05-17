@@ -15,8 +15,8 @@ public class WebEntity implements WebEntityInterface {
     private BrowserWaitInterface wait;
     private WebElementScreenshot screenshot;
 
-    public WebEntity(By by, WebDriver driver) {
-        this(by, driver, new BrowserWaitLogger(driver));
+    public WebEntity(By by, WebDriver driver, int waitSeconds) {
+        this(by, driver, new BrowserWaitLogger(driver, waitSeconds));
     }
 
     public WebEntity(By by, WebDriver driver, BrowserWaitInterface browserWait) {

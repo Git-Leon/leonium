@@ -108,7 +108,7 @@ public interface WebEntityInterface {
     default WebElementScreenshot getScreenshot(String fileDirectory) {
         try {
             getWait().forConditions(getSelector(), SelectorWaitCondition.VISIBILITY);
-            return new WebElementScreenshot(getDriver(), getSelector(), new File(fileDirectory).getParent().concat("/"));
+            return new WebElementScreenshot(getWait(), getSelector(), new File(fileDirectory).getParent().concat("/"));
         } catch (RasterFormatException rfe) {
             return null;
         }

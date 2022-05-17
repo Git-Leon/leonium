@@ -91,7 +91,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
     default void click(By by) {
         String attemptMessage = "Attempting to click `WebElement`, using selector [ %s ]";
         String successMessage = "Successfully clicked `WebElement` [ %s ], using selector [ %s ]\n";
-        WebEntity we = new WebEntity(by, getDriver());
+        WebEntity we = new WebEntity(by, getDriver(), getWait().getWaitSeconds());
         Consumer<String> screenshotLog = (String preposition) -> {
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
                 try {
@@ -117,7 +117,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
     default Select select(By by) {
         String attemptMessage = "Attempting to select dropdown, using selector [ %s ]";
         String successMessage = "Successfully selected dropdown `WebElement` [ %s ], using selector [ %s ]";
-        WebEntity we = new WebEntity(by, getDriver());
+        WebEntity we = new WebEntity(by, getDriver(), getWait().getWaitSeconds());
         Consumer<String> screenshotLog = (String preposition) -> {
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
                 try {
@@ -145,7 +145,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to select index [ %s ], using selector [ %s ]";
         String successMessage = "Successfully selected index [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
-            WebEntity we = new WebEntity(by, getDriver());
+            WebEntity we = new WebEntity(by, getDriver(), getWait().getWaitSeconds());
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
@@ -171,7 +171,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to select text [ %s ], using selector [ %s ]";
         String successMessage = "Successfully selected text [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
-            WebEntity we = new WebEntity(by, getDriver());
+            WebEntity we = new WebEntity(by, getDriver(), getWait().getWaitSeconds());
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();
@@ -198,7 +198,7 @@ public interface BrowserHandlerLoggerInterface extends BrowserHandlerDecoratorIn
         String attemptMessage = "Attempting to send keys [ %s ], using selector [ %s ]";
         String successMessage = "Successfully sent keys [ %s ], using selector [ %s ]";
         Consumer<String> screenshotLog = (String preposition) -> {
-            WebEntity we = new WebEntity(by, getDriver());
+            WebEntity we = new WebEntity(by, getDriver(), getWait().getWaitSeconds());
             if (getBrowserHandlerDecoratee().getOptions().SCREENSHOT_ON_CLICK.getValue()) {
                 try {
                     String screenshotDirectory = getBrowserHandlerDecoratee().getOptions().SCREENSHOT_DIRECTORY.getValue();

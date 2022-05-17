@@ -1,5 +1,6 @@
 package com.github.git_leon.leonium.browsertools.browserhandler.core;
 
+import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
@@ -12,12 +13,12 @@ import java.awt.image.BufferedImage;
 public class WebElementScreenshot extends Screenshot {
     private final WebEntity webEntity;
 
-    public WebElementScreenshot(WebDriver driver, By by, String fileDirectory) {
-        super(driver, fileDirectory, new WebEntity(by, driver)
+    public WebElementScreenshot(BrowserWaitInterface wait, By by, String fileDirectory) {
+        super(wait.getDriver(), fileDirectory, new WebEntity(by, wait.getDriver(), wait.getWaitSeconds())
                 .toString()
                 .concat("@")
                 .concat(Long.toHexString(System.nanoTime())));
-        this.webEntity = new WebEntity(by, driver);
+        this.webEntity = new WebEntity(by, wait.getDriver(), wait.getWaitSeconds());
     }
 
     @Override
