@@ -2,6 +2,7 @@
 ### Java template
 # Compiled class file
 *.class
+nul
 
 # Log file
 *.log

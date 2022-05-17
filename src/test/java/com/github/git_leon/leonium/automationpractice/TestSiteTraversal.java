@@ -18,6 +18,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 import java.time.LocalDateTime;
+import java.util.logging.Level;
 
 /**
  * @author leonhunter
@@ -68,6 +69,7 @@ public class TestSiteTraversal {
             shoppingCartSummaryPage.clickProceedToCheckout();
             shoppingCartSummaryPage.clickCreateAnAccountButton();
         } catch (Throwable t) {
+            browserHandler.getLogger().log(Level.SEVERE, t.getMessage());
             throw new RuntimeException(t);
         } finally {
             browserHandler.screenshot().getFile();
