@@ -37,20 +37,20 @@ public enum BrowserHandlerFactory {
         this.capabilitiesSupplier = capabilitiesSupplier;
     }
 
-    public BrowserHandlerInterface getBrowserHandler() {
-        return getBrowserHandler(capabilitiesSupplier.get());
-    }
-
     public BrowserHandlerInterface getBrowserHandler(Capabilities capabilities) {
         return new BrowserHandler(getDriver(capabilities), 15);
     }
 
-    public BrowserHandlerLoggerInterface getBrowserHandlerLogger() {
-        return getBrowserHandlerLogger(capabilitiesSupplier.get());
+    public BrowserHandlerInterface getBrowserHandler() {
+        return getBrowserHandler(capabilitiesSupplier.get());
     }
 
     public BrowserHandlerLoggerInterface getBrowserHandlerLogger(Capabilities capabilities) {
         return new BrowserHandlerLoggerImpl(getBrowserHandler(capabilities));
+    }
+
+    public BrowserHandlerLoggerInterface getBrowserHandlerLogger() {
+        return getBrowserHandlerLogger(capabilitiesSupplier.get());
     }
 
     public BrowserHandlerLayeredLogger getBrowserHandlerLayeredLogger(ExtentTestLoggerInterface extentTestLogger) {
@@ -58,7 +58,7 @@ public enum BrowserHandlerFactory {
     }
 
     public WebDriver getDriver() {
-        return webDriverConstructor.apply(capabilitiesSupplier.get());
+        return getDriver(capabilitiesSupplier.get());
     }
 
     public WebDriver getDriver(Capabilities capabilities) {
