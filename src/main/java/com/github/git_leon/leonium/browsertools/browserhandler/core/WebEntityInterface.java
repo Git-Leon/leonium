@@ -55,21 +55,21 @@ public interface WebEntityInterface {
     By getSelector();
 
     default void click() {
-        getWait().forConditions(getSelector(),
-                SelectorWaitCondition.VISIBILITY,
-                SelectorWaitCondition.ENABLED,
-                SelectorWaitCondition.CLICKABILITY,
-                SelectorWaitCondition.NOT_STALE);
-        getElement().click();
+        getWait()
+                .forConditions(getSelector(),
+                        SelectorWaitCondition.VISIBILITY,
+                        SelectorWaitCondition.ENABLED,
+                        SelectorWaitCondition.CLICKABILITY,
+                        SelectorWaitCondition.NOT_STALE)
+                .click();
     }
 
     // toSelect by byType
     default Select toSelect() {
-        getWait().forConditions(getSelector(),
+        return new Select(getWait().forConditions(getSelector(),
                 SelectorWaitCondition.VISIBILITY,
                 SelectorWaitCondition.ENABLED,
-                SelectorWaitCondition.NOT_STALE);
-        return new Select(getElement());
+                SelectorWaitCondition.NOT_STALE));
     }
 
     // toSelect by WebElement and toSelect index option
@@ -84,19 +84,8 @@ public interface WebEntityInterface {
 
     // send keys by byType
     default void sendKeys(CharSequence... keys) {
-        WebElement we = getElement();
         if (keys != null) {
-            try {
-                we.clear();
-                we.sendKeys(Keys.HOME);
-            } catch (InvalidElementStateException iese) {
-                // NOTE** some input elements cannot be cleared
-                // this exception is caught when an unclearable element
-                // invokes the .clear() method
-                getWait().forKeyable(getSelector());
-            }
-
-            we.sendKeys(keys);
+            getWait().forKeyable(getSelector()).sendKeys(keys);
         }
     }
 

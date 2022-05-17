@@ -29,12 +29,12 @@ public interface BrowserWaitInterface {
      */
     default WebElement forEnabled(By by, boolean isEnabled) {
         long t0 = System.currentTimeMillis();
-        WebElement we = forPresence(by);
+        WebElement we = getDriver().findElement(by);
         if (we != null && isEnabled(we) != isEnabled) {
             int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
             until(remainingTime, ExpectedBrowserCondition.elementEnabledness(by, isEnabled));
         }
-        return forPresence(by);
+        return getDriver().findElement(by);
     }
 
     /**
@@ -45,7 +45,7 @@ public interface BrowserWaitInterface {
      */
     default WebElement forVisibility(By by) {
         long t0 = System.currentTimeMillis();
-        WebElement we = forPresence(by);
+        WebElement we = getDriver().findElement(by);
         if (we != null && !we.isDisplayed()) {
             int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
             until(remainingTime, ExpectedConditions.visibilityOfElementLocated(by));
@@ -71,7 +71,7 @@ public interface BrowserWaitInterface {
      */
     default WebElement forClickability(By by) {
         until(getWaitSeconds(), ExpectedConditions.elementToBeClickable(by));
-        return forPresence(by);
+        return getDriver().findElement(by);
     }
 
     /**
@@ -97,7 +97,7 @@ public interface BrowserWaitInterface {
      */
     default WebElement forNotStale(By by) {
         long t0 = System.currentTimeMillis();
-        WebElement we = forPresence(by);
+        WebElement we = getDriver().findElement(by);
         try {
             we.getText();
         } catch (StaleElementReferenceException stere) {
@@ -175,7 +175,7 @@ public interface BrowserWaitInterface {
         if (currentState.equals(desiredState)) {
             return true;
         } else {
-            return condition.apply(getDriver()).booleanValue() ? true : until(getWaitSeconds(), condition);
+            return condition.apply(getDriver()) || until(getWaitSeconds(), condition);
         }
     }
 
@@ -189,7 +189,7 @@ public interface BrowserWaitInterface {
         boolean isKeyable = false;
         long t0 = System.currentTimeMillis();
 
-        WebElement we = forPresence(by);
+        WebElement we = getDriver().findElement(by);
 
         try {
             we.sendKeys(" ", Keys.BACK_SPACE);
@@ -214,10 +214,24 @@ public interface BrowserWaitInterface {
      * @return respective browserHandler element
      */
     default WebElement forConditions(By by, SelectorWaitCondition... waitConditions) {
+        long t0 = System.currentTimeMillis();
         for (SelectorWaitCondition condition : waitConditions) {
-            condition.waitFor(by, getDriver(), getWaitSeconds()); // TODO - Make a decision
+            int remainingTime = TimeUtils.remainingTime(getWaitSeconds(), t0);
+            Function<WebDriver, Object> conditionAsFunction = new Function<WebDriver, Object>() {
+                @Override
+                public Object apply(WebDriver driver) {
+                    condition.waitFor(by, getDriver(), remainingTime);
+                    return null;
+                }
+
+                @Override
+                public String toString() {
+                    return condition.toString();
+                }
+            };
+            until(remainingTime, conditionAsFunction);
         }
-        return forPresence(by);
+        return getDriver().findElement(by);
     }
 
 
@@ -229,7 +243,6 @@ public interface BrowserWaitInterface {
      * @return true if condition is true within specified wait seconds
      */
     default <T> boolean until(int waitSeconds, Function<WebDriver, T> condition) {
-        boolean outcome = false;
         if (getWaitSeconds() > 0) {
             WebDriverWait wait = new WebDriverWait(getDriver(), getWaitSeconds());
             try {
@@ -237,9 +250,9 @@ public interface BrowserWaitInterface {
             } catch (ClassCastException cce) {
                 wait.until(condition);
             }
-            outcome = true;
+            return true;
         }
-        return outcome;
+        return false;
     }
 
 

@@ -35,7 +35,7 @@ public class TestSiteTraversal {
 
         browserHandler
                 .getWait()
-                .setWaitSeconds(3);
+                .setWaitSeconds(20);
 
         browserHandler
                 .getOptions()
@@ -48,7 +48,7 @@ public class TestSiteTraversal {
         browserHandler
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
-                .setValue(false);
+                .setValue(true);
 
         this.browserHandler = browserHandler;
         this.extentTestLoggerFactory = extentTestLoggerFactory;

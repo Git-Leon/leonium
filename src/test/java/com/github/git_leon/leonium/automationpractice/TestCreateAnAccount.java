@@ -1,6 +1,8 @@
 package com.github.git_leon.leonium.automationpractice;
 
 import com.github.git_leon.leonium.automationpractice.webpages.HomePage;
+import com.github.git_leon.leonium.automationpractice.webpages.SearchResultPage;
+import com.github.git_leon.leonium.automationpractice.webpages.ShoppingCartSummaryPage;
 import com.github.git_leon.leonium.automationpractice.webpages.SignInPage;
 import com.github.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPage;
 import com.github.git_leon.leonium.automationpractice.webpages.createanaccount.CreateAnAccountPageStateFactory;
@@ -10,30 +12,49 @@ import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactoryManager;
 import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.util.logging.Level;
 
 public class TestCreateAnAccount {
-    private void test(String testName) {
-        final String description = "Attempting to create an account on automationpractice.com";
-        final String email = Long.toHexString(System.nanoTime()) + "@leonium.com";
+    private ExtentTestLoggerFactory extentTestLoggerFactory;
+    private BrowserHandlerLayeredLogger browserHandler;
+
+    @BeforeEach
+    public void instanceSetup() {
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
-        final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLoggerTimer(testName, description);
-        final BrowserHandlerLayeredLogger browserHandler = BrowserHandlerFactory.CHROME.getBrowserHandlerLayeredLogger(extentTestLogger);
-        final File screenshotDirectory = new File(extentTestLoggerFactory
-                .getExtentHtmlReporter()
-                .config()
-                .getFilePath());
+        final WebDriver driver = BrowserHandlerFactory.CHROME.getDriver();
+        final String testName = driver.toString();
+        final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
+        final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);
+
+        browserHandler
+                .getWait()
+                .setWaitSeconds(3);
+
         browserHandler
                 .getOptions()
                 .SCREENSHOT_DIRECTORY
-                .setValue(screenshotDirectory.getAbsolutePath());
+                .setValue(extentTestLoggerFactory
+                        .getExtentHtmlReporter()
+                        .config()
+                        .getFilePath());
+
         browserHandler
                 .getOptions()
                 .SCREENSHOT_ON_EVENT
                 .setValue(true);
 
+        this.browserHandler = browserHandler;
+        this.extentTestLoggerFactory = extentTestLoggerFactory;
+    }
+
+    private void test(String searchText) {
+        final String email = Long.toHexString(System.nanoTime()) + "@leonium.com";
         final HomePage homePage = new HomePage(browserHandler);
         try {
             homePage.navigateTo();
@@ -45,25 +66,31 @@ public class TestCreateAnAccount {
                     .setPersonalInfoPassword(email)
                     .build());
             createAnAccountPage.inputData();
+        } catch (Throwable t) {
+            browserHandler.getLogger().log(Level.SEVERE, t.getMessage());
+            throw new RuntimeException(t);
         } finally {
             browserHandler.screenshot().getFile();
             browserHandler.close();
-            final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
-            extentTestLoggerFactory.getExtentHtmlReporter().flush();
-            extentTestLoggerFactory.getExtentReports().flush();
-            tempBrowser.navigateTo(extentTestLoggerFactory
-                    .getExtentHtmlReporter()
-                    .config()
-                    .getFilePath());
         }
     }
 
-    @Test
+    @AfterAll
+    public static void tearDown() {
+        final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
+        final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
+        extentTestLoggerFactory.getExtentHtmlReporter().flush();
+        extentTestLoggerFactory.getExtentReports().flush();
+        tempBrowser.navigateTo(extentTestLoggerFactory
+                .getExtentHtmlReporter()
+                .config()
+                .getFilePath());
+    }
+
     public void test1() {
         test("create an account1");
     }
 
-    @Test
     public void test2() {
         test("create an account2");
     }
