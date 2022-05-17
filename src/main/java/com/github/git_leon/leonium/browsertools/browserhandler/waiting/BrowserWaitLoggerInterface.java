@@ -3,6 +3,7 @@ package com.github.git_leon.leonium.browsertools.browserhandler.waiting;
 import com.github.git_leon.logging.FunctionExecutionLoggerInterface;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
@@ -237,5 +238,20 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
     default boolean isEnabled() {
         FunctionExecutionLoggerInterface functionExecutionLogger = this::getLogger;
         return functionExecutionLogger.isEnabled();
+    }
+
+    @Override
+    default void setWaitSeconds(int waitSeconds) {
+        getWait().setWaitSeconds(waitSeconds);
+    }
+
+    @Override
+    default int getWaitSeconds() {
+        return getWait().getWaitSeconds();
+    }
+
+    @Override
+    default WebDriver getDriver() {
+        return getWait().getDriver();
     }
 }
