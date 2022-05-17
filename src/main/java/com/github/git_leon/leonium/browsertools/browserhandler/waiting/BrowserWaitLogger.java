@@ -16,7 +16,7 @@ public class BrowserWaitLogger implements BrowserWaitLoggerInterface {
 
     public BrowserWaitLogger(WebDriver driver, int seconds) {
         this(
-                new BrowserWait(seconds, driver),
+                new BrowserWait(driver, seconds),
                 new FunctionExecutionLoggerImpl(SimpleLoggerWarehouse.getLogger(BrowserWaitLogger.class.toString())));
     }
 

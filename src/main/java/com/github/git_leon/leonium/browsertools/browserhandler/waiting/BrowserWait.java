@@ -9,7 +9,7 @@ public class BrowserWait implements BrowserWaitInterface {
     private int waitSeconds;
     private final WebDriver driver;
 
-    public BrowserWait(int waitSeconds, WebDriver driver) {
+    public BrowserWait(WebDriver driver, int waitSeconds) {
         this.waitSeconds = waitSeconds;
         this.driver = driver;
     }
