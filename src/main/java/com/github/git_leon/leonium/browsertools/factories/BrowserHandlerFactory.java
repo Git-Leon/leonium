@@ -38,23 +38,23 @@ public enum BrowserHandlerFactory {
     }
 
     public BrowserHandlerInterface getBrowserHandler() {
-        return new BrowserHandler(getDriver());
+        return getBrowserHandler(capabilitiesSupplier.get());
     }
 
     public BrowserHandlerInterface getBrowserHandler(Capabilities capabilities) {
-        return new BrowserHandler(getDriver(capabilities));
+        return new BrowserHandler(getDriver(capabilities), 15);
     }
 
     public BrowserHandlerLoggerInterface getBrowserHandlerLogger() {
-        return new BrowserHandlerLoggerImpl(getDriver());
+        return getBrowserHandlerLogger(capabilitiesSupplier.get());
+    }
+
+    public BrowserHandlerLoggerInterface getBrowserHandlerLogger(Capabilities capabilities) {
+        return new BrowserHandlerLoggerImpl(getBrowserHandler(capabilities));
     }
 
     public BrowserHandlerLayeredLogger getBrowserHandlerLayeredLogger(ExtentTestLoggerInterface extentTestLogger) {
         return new BrowserHandlerLayeredLogger(getDriver(), extentTestLogger);
-    }
-
-    public BrowserHandlerLoggerInterface getBrowserHandlerLogger(Capabilities capabilities) {
-        return new BrowserHandlerLoggerImpl(getDriver(capabilities));
     }
 
     public WebDriver getDriver() {
