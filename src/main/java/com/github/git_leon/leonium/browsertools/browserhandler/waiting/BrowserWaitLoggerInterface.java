@@ -16,9 +16,10 @@ public interface BrowserWaitLoggerInterface extends BrowserWaitInterface, Simple
 
     BrowserWaitInterface getWait();
 
-    static String formatMessage(String s, Object... o) {
-        String logMessagePrefix = "\n\nWaiting for ";
-        return String.format(logMessagePrefix + s, o);
+    default String formatMessage(String s, Object... o) {
+        String logMessagePrefix = "\n\nWaiting for [ %s ] for up to [ %s seconds ].";
+        logMessagePrefix = String.format(logMessagePrefix, s, getWaitSeconds());
+        return String.format(logMessagePrefix, o);
     }
 
     /**
