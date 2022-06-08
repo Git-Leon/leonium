@@ -49,8 +49,6 @@ public class TestCreateAnAccount {
             browserHandler.screenshot().getFile();
             browserHandler.close();
             final BrowserHandlerInterface tempBrowser = BrowserHandlerFactory.CHROME.getBrowserHandler();
-            extentTestLoggerFactory.getExtentHtmlReporter().flush();
-            extentTestLoggerFactory.getExtentReports().flush();
             tempBrowser.navigateTo(extentTestLoggerFactory
                     .getExtentHtmlReporter()
                     .config()

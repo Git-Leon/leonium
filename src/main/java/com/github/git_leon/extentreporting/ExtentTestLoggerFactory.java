@@ -76,4 +76,14 @@ public class ExtentTestLoggerFactory {
             return extentTestLogger;
         }
     }
+
+    public void flush() {
+        getExtentHtmlReporter().flush();
+        getExtentReports().flush();
+    }
+
+    @Override
+    protected void finalize() {
+        flush();
+    }
 }
