@@ -1,4 +1,4 @@
-package com.github.git_leon.leonium.extentreporting;
+package com.github.git_leon.extentreporting;
 
 import com.github.git_leon.leonium.DirectoryReference;
 import com.github.git_leon.stringutils.StringUtils;

@@ -1,4 +1,4 @@
-package com.github.git_leon.leonium.extentreporting;
+package com.github.git_leon.extentreporting;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;

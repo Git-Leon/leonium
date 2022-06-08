@@ -1,12 +1,6 @@
-package com.github.git_leon.leonium.extentreporting;
+package com.github.git_leon.extentreporting;
 
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.github.git_leon.logging.SimpleLoggerInterface;
-
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.logging.Level;
 
 /**
  * @author leonhunter

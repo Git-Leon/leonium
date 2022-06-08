@@ -5,8 +5,7 @@ import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandl
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
-import com.github.git_leon.leonium.extentreporting.ExtentTestLogger;
-import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
+import com.github.git_leon.extentreporting.ExtentTestLoggerInterface;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

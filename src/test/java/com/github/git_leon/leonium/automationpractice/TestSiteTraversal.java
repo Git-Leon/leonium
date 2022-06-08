@@ -6,9 +6,9 @@ import com.github.git_leon.leonium.automationpractice.webpages.ShoppingCartSumma
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
 import com.github.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
-import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactory;
-import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerFactoryManager;
-import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
+import com.github.git_leon.extentreporting.ExtentTestLoggerFactory;
+import com.github.git_leon.extentreporting.ExtentTestLoggerFactoryManager;
+import com.github.git_leon.extentreporting.ExtentTestLoggerInterface;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

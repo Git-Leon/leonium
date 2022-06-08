@@ -9,7 +9,7 @@ import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWa
 import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLogger;
 import com.github.git_leon.leonium.browsertools.browserhandler.waiting.BrowserWaitLoggerInterface;
-import com.github.git_leon.leonium.extentreporting.ExtentTestLoggerInterface;
+import com.github.git_leon.extentreporting.ExtentTestLoggerInterface;
 import com.github.git_leon.logging.FunctionExecutionLoggerAndTimer;
 import com.github.git_leon.logging.SimpleLoggerInterface;
 import com.github.git_leon.logging.SimpleLoggerWarehouse;
