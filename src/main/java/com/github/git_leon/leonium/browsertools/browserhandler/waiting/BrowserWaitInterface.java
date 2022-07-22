@@ -5,6 +5,7 @@ import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -238,7 +239,7 @@ public interface BrowserWaitInterface {
     default <T> boolean until(int waitSeconds, Function<WebDriver, T> condition) {
         boolean outcome = false;
         if (getWaitSeconds() > 0) {
-            WebDriverWait wait = new WebDriverWait(getDriver(), getWaitSeconds());
+            FluentWait<WebDriver> wait = getFluentWait();
             try {
                 wait.until(ExpectedConditions.refreshed((ExpectedCondition<T>) condition));
             } catch (ClassCastException cce) {
@@ -247,6 +248,10 @@ public interface BrowserWaitInterface {
             outcome = true;
         }
         return outcome;
+    }
+
+    default FluentWait<WebDriver> getFluentWait() {
+        return new WebDriverWait(getDriver(), getWaitSeconds());
     }
 
 
