@@ -30,7 +30,6 @@ public enum BrowserHandlerFactory {
     private final Supplier<Capabilities> capabilitiesSupplier;
 
     BrowserHandlerFactory(Supplier<Capabilities> capabilitiesSupplier, Function<Capabilities, WebDriver> constructor) {
-        Function<ChromeOptions, ChromeDriver> c = ChromeDriver::new;
         this.webDriverConstructor = constructor;
         this.capabilitiesSupplier = capabilitiesSupplier;
     }
@@ -52,7 +51,11 @@ public enum BrowserHandlerFactory {
     }
 
     public BrowserHandlerLayeredLogger getBrowserHandlerLayeredLogger(ExtentTestLoggerInterface extentTestLogger) {
-        return new BrowserHandlerLayeredLogger(getDriver(), extentTestLogger);
+        return new BrowserHandlerLayeredLogger(getDriver(capabilitiesSupplier.get()), extentTestLogger);
+    }
+
+    public BrowserHandlerLayeredLogger getBrowserHandlerLayeredLogger(Capabilities capabilities, ExtentTestLoggerInterface extentTestLogger) {
+        return new BrowserHandlerLayeredLogger(getDriver(capabilitiesSupplier.get().merge(capabilities)), extentTestLogger);
     }
 
     public WebDriver getDriver() {
