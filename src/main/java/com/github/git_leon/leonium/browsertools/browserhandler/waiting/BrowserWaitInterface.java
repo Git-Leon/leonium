@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 /**
@@ -238,7 +239,7 @@ public interface BrowserWaitInterface {
     default <T> boolean until(int waitSeconds, Function<WebDriver, T> condition) {
         boolean outcome = false;
         if (getWaitSeconds() > 0) {
-            WebDriverWait wait = new WebDriverWait(getDriver(), getWaitSeconds());
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(getWaitSeconds()));
             try {
                 wait.until(ExpectedConditions.refreshed((ExpectedCondition<T>) condition));
             } catch (ClassCastException cce) {

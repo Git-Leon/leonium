@@ -1,17 +1,17 @@
 package com.github.git_leon.leonium.browsertools.factories;
 
+import com.github.git_leon.extentreporting.ExtentTestLoggerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandler;
 import com.github.git_leon.leonium.browsertools.browserhandler.core.BrowserHandlerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerImpl;
 import com.github.git_leon.leonium.browsertools.browserhandler.logging.BrowserHandlerLoggerInterface;
 import com.github.git_leon.leonium.browsertools.browserhandler.reporting.BrowserHandlerLayeredLogger;
-import com.github.git_leon.extentreporting.ExtentTestLoggerInterface;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -21,17 +21,16 @@ import java.util.function.Supplier;
  * Produces new instances of
  */
 public enum BrowserHandlerFactory {
-    CHROME(DesiredCapabilitiesFactory::getChrome, ChromeDriver::new),
-    FIREFOX(DesiredCapabilitiesFactory::getFirefox, FirefoxDriver::new),
-    HEADLESS_CHROME(DesiredCapabilitiesFactory::getHeadlessChrome, ChromeDriver::new),
-    HEADLESS_FIREFOX(DesiredCapabilitiesFactory::getHeadlessFirefox, FirefoxDriver::new),
-    PHANTOMJS(DesiredCapabilitiesFactory::getPhantomJs, PhantomJSDriver::new),
-    HTMLUNIT(DesiredCapabilitiesFactory::getHtmlUnit, HtmlUnitDriver::new);
+    CHROME(DesiredCapabilitiesFactory::getChrome, (caps) -> new ChromeDriver(new ChromeOptions().merge(caps))),
+    FIREFOX(DesiredCapabilitiesFactory::getFirefox, (caps) -> new FirefoxDriver(new FirefoxOptions().merge(caps))),
+    HEADLESS_CHROME(DesiredCapabilitiesFactory::getHeadlessChrome, (caps) -> new ChromeDriver(new ChromeOptions().merge(caps))),
+    HEADLESS_FIREFOX(DesiredCapabilitiesFactory::getHeadlessFirefox, (caps) -> new FirefoxDriver(new FirefoxOptions().merge(caps)));
 
     private final Function<Capabilities, WebDriver> webDriverConstructor;
     private final Supplier<Capabilities> capabilitiesSupplier;
 
     BrowserHandlerFactory(Supplier<Capabilities> capabilitiesSupplier, Function<Capabilities, WebDriver> constructor) {
+        Function<ChromeOptions, ChromeDriver> c = ChromeDriver::new;
         this.webDriverConstructor = constructor;
         this.capabilitiesSupplier = capabilitiesSupplier;
     }

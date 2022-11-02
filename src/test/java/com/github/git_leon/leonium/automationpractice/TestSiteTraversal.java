@@ -26,7 +26,7 @@ public class TestSiteTraversal {
     @BeforeEach
     public void instanceSetup() {
         final ExtentTestLoggerFactory extentTestLoggerFactory = ExtentTestLoggerFactoryManager.TEST_REPORT_DIRECTORY.getExtentTestLoggerFactory();
-        final WebDriver driver = BrowserHandlerFactory.PHANTOMJS.getDriver();
+        final WebDriver driver = BrowserHandlerFactory.HEADLESS_CHROME.getDriver();
         final String testName = driver.toString();
         final ExtentTestLoggerInterface extentTestLogger = extentTestLoggerFactory.getExtentTestLogger(testName);
         final BrowserHandlerLayeredLogger browserHandler = new BrowserHandlerLayeredLogger(driver, extentTestLogger);

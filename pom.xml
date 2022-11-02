@@ -13,7 +13,7 @@
         <junit.version>5.8.2</junit.version>
         <shade.version>3.1.1</shade.version>
         <extentreports.version>3.1.5</extentreports.version>
-        <selenium.version>3.4.0</selenium.version>
+        <selenium.version>4.5.0</selenium.version>
         <webdrivermanager.version>3.8.1</webdrivermanager.version>
     </properties>
 
