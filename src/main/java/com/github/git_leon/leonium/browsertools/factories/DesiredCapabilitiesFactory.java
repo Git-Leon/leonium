@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
@@ -47,6 +48,7 @@ public final class DesiredCapabilitiesFactory {
         DesiredCapabilities desiredCapabilities = getLogless().merge(getFirefox());
         FirefoxOptions options = new FirefoxOptions();
         options.addPreference("log", "{level: info}");
+        options.setLogLevel(FirefoxDriverLogLevel.fromLevel(Level.OFF));
         desiredCapabilities.setCapability("moz:firefoxOptions", options);
         return desiredCapabilities;
     }
@@ -54,12 +56,12 @@ public final class DesiredCapabilitiesFactory {
 
     public static Capabilities getFirefox() {
         WebDriverManager.firefoxdriver().setup();
-        return getDefault();
+        return getDefault().merge(new FirefoxOptions());
     }
 
     public static Capabilities getChrome() {
         WebDriverManager.chromedriver().setup();
-        return getDefault();
+        return getDefault().merge(new ChromeOptions());
     }
 
     public static Capabilities getHeadlessFirefox() {
@@ -84,7 +86,8 @@ public final class DesiredCapabilitiesFactory {
         caps.merge(capabilities);
         caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         caps.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
-        return caps;
+        firefoxOptions.merge(capabilities);
+        return firefoxOptions;
     }
 
     public static Capabilities getHeadlessChrome() {
