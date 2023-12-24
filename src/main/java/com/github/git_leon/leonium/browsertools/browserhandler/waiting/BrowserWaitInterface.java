@@ -237,8 +237,8 @@ public interface BrowserWaitInterface {
      */
     default <T> boolean until(int waitSeconds, Function<WebDriver, T> condition) {
         boolean outcome = false;
-        if (getWaitSeconds() > 0) {
-            WebDriverWait wait = new WebDriverWait(getDriver(), getWaitSeconds());
+        if (waitSeconds > 0) {
+            WebDriverWait wait = new WebDriverWait(getDriver(), waitSeconds);
             try {
                 wait.until(ExpectedConditions.refreshed((ExpectedCondition<T>) condition));
             } catch (ClassCastException cce) {
